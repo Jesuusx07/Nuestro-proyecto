@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenny's - Aplicación Web</title>
+    <link rel="stylesheet" href="./css/registrarse.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registro</h2>
+        <form id="register">
+            <div class="input-group">
+                <label for="reg_user">Nombre de usuario</label>
+                <input type="text" id="reg_user" placeholder="usuario">
+            </div>
+
+            <div class="input-group">
+                <label for="reg_email">Correo electrónico</label>
+                <input type="email" id="reg_email" placeholder="tucorreo@gmail.com">
+            </div>
+
+            <div class="input-group">
+                <label for="reg_password">Contraseña</label>
+                <input type="password" id="reg_password">
+            </div>
+
+            <div class="input-group">
+                <label for="reg_rol">Rol</label>
+                <select id="reg_rol">
+                    <option value="">Rol</option>
+                    <option value="Empleado">Empleado</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+
+            <button type="submit" class="boton-registro" id="register-submit">Registrarse</button>
+        </form>
+    </div>
+
+    
+    <div class="señora">
+        <img src="img/señora.jpeg" alt="">
+    </div>
+    
+
+</body>
+<script>
+    const registerForm = document.getElementById('register');
+    const registerSubmit = document.getElementById('register-submit');
+    const mensajeDiv = document.getElementById('mensaje');
+
+    registerForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('reg_user').value.trim();
+        const email = document.getElementById('reg_email').value.trim();
+        const password = document.getElementById('reg_password').value;
+        const rol = document.getElementById('reg_rol').value;
+
+        if (!username || !email || !password || !rol) {
+            alert ('Por favor, complete todos los campos para registrarse.');
+            return;
+        }
+
+        const userData = {
+            username: username,
+            email: email,
+            password: password,
+            rol: rol
+        };
+
+        localStorage.setItem(email, JSON.stringify(userData));
+        alert ('Cuenta registrada exitosamente. Redirigiendo...');
+        registerForm.reset();
+
+        // Redireccionar a la página de inicio de sesión after a short delay
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 1500);
+    });
+</script>
+</body>
+
+</html>

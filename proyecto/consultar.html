@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Empleados</title>
+    <link rel="stylesheet" href="./css/consultar.css">
+</head>
+<body>
+
+    <div class="navbar">
+      <div class="navbar-left">
+        <a href="index.html"><img src="./img/logo_Favicon.png" alt=""></a>
+        <span>ADMINISTRADOR</span>
+      </div>
+      <div class="navbar-right">
+        <img src="./img/Logo Principal (1).png" alt="icono" />
+        <a class="login" href="login.html"><img src="./img/login (2).png" alt="login"></a>
+      </div>
+    </div>
+
+    <div class="container">
+        <!-- Título fuera del recuadro negro -->
+        <div class="contenido">
+            <!-- Menú lateral -->
+            <div class="menu-lateral">
+                <div class="menu-container">
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE CLIENTES</button>
+                    <div class="sub-menu">
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+        
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE PEDIDO</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+        
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE PRODUCTOS</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+        
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE HISTORIAL</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+        
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE PROVEEDOR</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+        
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE RESERVAS</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+        
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE VENTAS</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+              
+                  <div class="menu-item">
+                    <button class="btn-menu">GESTIÓN DE INVENTARIO</button>
+                    <div class="sub-menu">
+                      <a href="consultar.html" class="sub-btn">Consultar</a>
+                      <a href="registerUs.html" class="sub-btn">Registrar</a>
+                    </div>
+                  </div>
+              
+                </div>
+            </div>
+
+            <script>
+                const menuItems = document.querySelectorAll('.menu-item');
+              
+                menuItems.forEach(item => {
+                  const btnMenu = item.querySelector('.btn-menu');
+                  const subMenu = item.querySelector('.sub-menu');
+              
+                  btnMenu.addEventListener('click', () => {
+                    // Cierra cualquier otro submenú abierto
+                    menuItems.forEach(otherItem => {
+                      if (otherItem !== item) {
+                        const otherSubMenu = otherItem.querySelector('.sub-menu');
+                        if (otherSubMenu) {
+                          otherSubMenu.style.display = 'none';
+                        }
+                      }
+                    });
+              
+                    // Alterna la visibilidad del submenú actual
+                    if (subMenu) {
+                      subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+                    }
+                  });
+                });
+              </script>
+
+            <!-- Tabla de empleados -->
+            <div class="tabla-container">
+              <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DOCUMENTO</th>
+                            <th>NOMBRE</th>
+                            <th>CORREO</th>
+                            <th>TELÉFONO</th>
+                            <th>ROL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>49230928</td>
+                            <td>Jesús Bolívar</td>
+                            <td>jesusbolivar123@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>6593474</td>
+                            <td>Luis Pérez</td>
+                            <td>LuisPe382@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>2362384</td>
+                            <td>Paul Ortega</td>
+                            <td>PaulOG9283@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>3482394</td>
+                            <td>Daniel Garnica</td>
+                            <td>danielgarnica77@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>49230928</td>
+                            <td>Jesús Bolívar</td>
+                            <td>jesusbolivar123@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>6593474</td>
+                            <td>Luis Pérez</td>
+                            <td>LuisPe382@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>2362384</td>
+                            <td>Paul Ortega</td>
+                            <td>PaulOG9283@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>3482394</td>
+                            <td>Daniel Garnica</td>
+                            <td>danielgarnica77@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>49230928</td>
+                            <td>Jesús Bolívar</td>
+                            <td>jesusbolivar123@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>6593474</td>
+                            <td>Luis Pérez</td>
+                            <td>LuisPe382@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>2362384</td>
+                            <td>Paul Ortega</td>
+                            <td>PaulOG9283@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        <tr>
+                            <td>3482394</td>
+                            <td>Daniel Garnica</td>
+                            <td>danielgarnica77@gmail.com</td>
+                            <td>30586849</td>
+                            <td>Empleado</td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Botones de acción fuera del recuadro negro -->
+        <div class="botones">
+            <button class="btn amarillo">REGISTRAR</button>
+            <button class="btn rojo">EDITAR</button>
+        </div>
+    </div>
+
+</body>
+</html>

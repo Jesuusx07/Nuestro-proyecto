@@ -1,0 +1,239 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #e0e0e0;
+    color: #000;
+  }
+  
+  /* Barra de navegación */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #1c1c1c;
+    color: white;
+  }
+  
+  .navbar-left,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-left img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar-left span {
+    font-size: 20px;
+    color: #c0392b;
+    font-weight: bold;
+  }
+  
+  .navbar-right img {
+    height: 35px;
+    margin-left: 15px;
+  }
+
+  
+  
+  /* Contenedor principal */
+  .container {
+    display: flex; /* Asegura que los elementos hijos (sidebar y main) se alineen horizontalmente */
+    /* flex-direction: row; /* Por defecto es row, pero se puede explicitar */
+  }
+  
+  .menu-lateral {
+    width: 220px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-right: 15px;
+  }
+  
+  .menu-container {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+  }
+  
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .btn-menu {
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: 4px 4px 8px #bcbcbc, -4px -4px 8px #ffffff;
+  } 
+  .btn-menu:active {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .sub-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: transparent;
+    padding: 0;
+    z-index: 2;
+    animation: slideIn 0.2s ease-out forwards; /* Aplicamos la animación */
+    transform-origin: top left; /* Define el punto de origen de la animación */
+  }
+  
+  .sub-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #555;
+    background-color: #fff;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: auto;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sub-btn:hover {
+    background-color: #ccc;
+    color: #111;
+  }
+  
+  .sub-btn:active {
+    background-color: #bbb;
+    color: #222;
+  }
+  
+  /* Definimos la animación slideIn */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(10px); /* Comienza ligeramente a la derecha */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0); /* Termina en su posición original */
+    }
+  }
+  
+  /* Contenido principal */
+  .main {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    padding: 30px;
+    margin-top: 30px; /* Si el sidebar tiene margin-top, considera agregar uno similar aquí para alinear verticalmente */
+  }
+  
+  .welcome-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+  }
+  
+  .welcome-box h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .welcome-box p {
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    color: #c0392b;
+    font-weight: bold;
+  }
+  
+  .ventas-y-graficos {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  .ventas-lista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: flex-start;
+  }
+  
+  .ventas-item span {
+    padding-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    width: fit-content;
+  }
+  
+  .stat-box {
+    background: #d9d9d9;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .stat-box.dual {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+    flex: 2;
+  }
+  
+  .stat-box.dual .column {
+    flex: 1;
+  }
+  
+  .stat-number {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .dias {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2 / 1;
+  }

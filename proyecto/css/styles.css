@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+*{
+    font-family: "Cinzel", serif;
+    margin: 0;
+    padding: 0;
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+header{
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/bagground.png");
+    background-size: cover;
+    padding-top: 50px;
+}
+
+header nav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav li a{
+    padding-left: 280px;
+    align-items: right;
+}
+
+li a img:hover {
+    transition: .4s;
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
+}
+
+nav ul a{
+    width: 100px;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 25px;
+    transition: .4s;
+}
+
+nav ul a:hover{
+    border-bottom: 1px solid #FFAD60;
+}
+
+nav a:hover{
+    transition: .4s;
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
+}
+
+#hero {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 50px; /* Ajusta este valor para bajar los botones */
+    justify-content: flex-start;
+    align-items: center; /* Para alinear verticalmente los elementos */
+}
+
+#hero img {
+    max-width: 100%;
+    max-height: 290px;
+    height: auto;
+    margin: 0;
+}
+
+.boton-primario {
+    background-color: #A02334;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
+    display: inline-block; /* Añadimos esta línea */
+}
+
+.boton-primario:hover {
+    background-color: #C7374D; /* Un tono de rojo ligeramente más claro al pasar el cursor */
+    transform: scale(1.05); /* Escala el botón al 105% de su tamaño original */
+}
+
+.boton-secundario {
+    background-color: #FFAD60;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Agregamos la transición */
+    display: inline-block; /* Añadimos esta línea */
+}
+
+.boton-secundario:hover {
+    background-color: #FFC98A; /* Un tono de naranja ligeramente más claro al pasar el cursor */
+    transform: scale(1.05); /* Escala el botón al 105% */
+  }
+
+.boton-sesion{
+    background-color: #A02334;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+#botones{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 100px;
+}
+
+#botones a{
+    margin-left: 30px;
+    padding: 13px;
+}
+
+
+main{
+    width: 100%;
+    position: relative;
+}
+
+footer{
+    width: 100%;
+    position: relative;
+    padding: 60px 0px;
+    background: black;
+    color: #fff;
+    text-align: center;
+}
