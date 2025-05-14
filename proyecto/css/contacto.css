@@ -11,44 +11,117 @@ html{
 
 header{
     width: 100%;
-    min-height: 100vh;
-    background: url("../img/bagground.png");
+    background: url("../img/madera.png");
     background-size: cover;
     padding-top: 50px;
 }
 
 header nav{
+    height: 100px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-nav li a{
-    align-items: right;
-}
-
 nav img{
     width: 80px;
 }
 
-.logo1{
-    margin-right: 1000px;
-
+.flecha{
+    margin-left: 1050px;
+    width: 50px;
 }
 
-#hero {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center; /* Para alinear verticalmente los elementos */
+
+.logo {
+    margin-left: 50px;
+    height: 200px;
+    width: 500px;
+    display: block;
 }
 
-#hero img {
-    align-content: center;
-    max-width: 100%;
-    max-height: 200px;
+
+h2{
+    font-size: 50px;
+    color: white;
+    font-family: "Cinzel", serif;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+
+.flecha:hover{
+    transition: .4s;
+    transform: scale(1.20);
+}
+
+.input-group {
+    margin-bottom: 20px; 
+    text-align: left;  
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff; 
+}
+
+
+select{
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    background-color: #FFAD60;
+    border-radius: 50px;
+    box-sizing: border-box; 
+}
+
+input{
+    
+    width: calc(100% - 12px);
+    padding: 10px;
+    border: 1px solid #ffffff;
+    background-color: #FFAD60;
+    border-radius: 50px;
+    box-sizing: border-box; 
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.container {
+    font-size: 20px;
+    width: 50%;
     height: auto;
-    margin: 0;
+    padding: 45px;
+    border-radius: 30px;
+    margin-left: 280px;
+    text-align: center; 
+    font-weight: bolder;
+    
 }
 
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+.contenedor-botones {
+    display: flex;
+    gap: 20px; 
+}
+
+
+.boton-registro {
+    background-color: #A02334;
+    color: #fff;
+    padding: 10px 100px;
+    border-radius: 50px;
+    margin-top: 20px ;
+    line-height: 15px;
+    border: #A02334;
+}

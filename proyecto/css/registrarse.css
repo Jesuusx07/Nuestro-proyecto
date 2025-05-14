@@ -2,7 +2,6 @@
  body {
         font-family: "Exo 2", serif;
             color: #ccc;
-            background-image: url(../img/login.png);
             background-color: #201E1E;
             display: flex;
             justify-content: left;
@@ -20,8 +19,16 @@
         }
 
         h2 {
-            text-align: center;
+            text-align: left;
             margin-bottom: 20px;
+        }
+
+        h3{
+            text-align: left;
+        }
+
+        h3 a{
+            color: #96CEB4;
         }
 
         .input-group {
@@ -89,7 +96,7 @@
         }
 
         h2 {
-            margin-bottom: 10px;
+            margin-bottom: 40px;
         }
 
         .input-group {
@@ -108,15 +115,6 @@
             gap: 20px; 
         }
         
-        .boton-admin, .boton-empleado {
-            background-color: #a02334;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 15px;
-            text-decoration: none;
-            margin-top: 0; 
-            line-height: normal; 
-        } 
         
         .boton-registro {
             background-color: #A02334;
@@ -128,14 +126,15 @@
             line-height: 15px;
             justify-content: left;
             
-        
         }
+
         .señora img{
+            margin-top: 30px;
             width: 500px;
             align-items: right;
             padding: 50px;
             justify-content: right;
-
+            border-radius: 90px;
 
         }
         .inc{
