@@ -89,3 +89,20 @@ footer{
     color: #fff;
     text-align: center;
 }
+
+@media (min-width: 1290px){
+    nav li a{
+        padding-left: 800px;
+        align-items: right;
+    }
+    
+    nav a{
+        margin-left: 50px;
+    }
+
+    #OBJETIVO article img{
+        margin: 0px 170px;
+        width: 450px;    
+        transition: .4s;
+    }
+}

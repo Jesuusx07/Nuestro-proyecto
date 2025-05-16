@@ -89,3 +89,27 @@ footer{
     color: #fff;
     text-align: center;
 }
+
+@media (min-width: 1290px){
+    nav li a{
+        padding-left: 800px;
+        align-items: right;
+    }
+    
+    nav a{
+        margin-left: 50px;
+    }
+
+    #SEGURIDAD h2{
+        margin: 0px 50px;
+        color: #A02334;
+        font-size: 70px;
+        margin-left: 700px;
+    }
+
+    #SEGURIDAD p{
+        text-align: right;
+        font-size: 18px;
+        line-height: 50px;
+    }
+}

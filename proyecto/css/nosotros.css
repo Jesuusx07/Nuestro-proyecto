@@ -97,3 +97,29 @@ footer{
     color: #fff;
     text-align: center;
 }
+
+@media (min-width: 1290px){
+        nav li a{
+    padding-left: 800px;
+    align-items: right;
+    }
+    
+    nav a{
+    margin-left: 50px;
+    }
+
+    #hero img {
+        margin-top: 90px;
+        width: 800px;
+        max-height: 290px;
+        height: auto;
+    }
+
+    #NOSOTROS article{
+    margin: 0px 40px;
+    margin-bottom: 160px;
+    }
+    main{
+        width: 100%;
+    }
+}

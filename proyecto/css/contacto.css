@@ -109,3 +109,17 @@ label {
     line-height: 15px;
     border: #A02334;
 }
+
+@media (min-width: 1290px){
+    .flecha{
+        margin-left: 1600px;
+        width: 50px;
+    }
+
+    .logo {
+        margin-left: 100px;
+        height: 200px;
+        width: 500px;
+        display: block;
+    }
+}
