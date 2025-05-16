@@ -23,7 +23,7 @@ header nav{
 }
 
 nav li a{
-    padding-left: 280px;
+    margin-left: 280px;
     align-items: right;
 }
 
@@ -54,7 +54,6 @@ nav ul a:hover{
     color: #FFAD60;
     font-size: 70px;
     margin: 0px 50px;
-
 }
 
 #NOSOTROS p {
@@ -99,13 +98,13 @@ footer{
 }
 
 @media (min-width: 1290px){
-        nav li a{
-    padding-left: 800px;
-    align-items: right;
+    nav li a{
+        margin-left: 880px;
+        align-items: right;
     }
     
     nav a{
-    margin-left: 50px;
+        margin-left: 50px;
     }
 
     #hero img {
@@ -116,10 +115,35 @@ footer{
     }
 
     #NOSOTROS article{
-    margin: 0px 40px;
-    margin-bottom: 160px;
+        margin: 0px 40px;
+        margin-bottom: 160px;
     }
-    main{
-        width: 100%;
+
+    #NOSOTROS article img{
+        max-width: 100%;
+        max-height: 2000px;
+        position: relative;
+        top: 100px;
+        width: 750px;
+        transition: .4s;
     }
+
+    #NOSOTROS h2{
+        color: #FFAD60;
+        font-size: 90px;
+        margin: 0px 50px;
+        margin-top: 150px;
+    }
+
+    #NOSOTROS p {
+        color: #ffffff;
+        font-size: 20px;
+        line-height: 2.0; 
+        text-align: left; 
+        padding: 20px;
+        max-width: 600px; 
+        margin: 0; 
+    }
+
+
 }

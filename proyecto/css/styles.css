@@ -139,13 +139,13 @@ footer{
 @media (min-width: 1290px){
     
     nav li a{
-    padding-left: 800px;
-    align-items: right;
+        margin-left: 580px;
+        align-items: right;
     }
 
     nav a{
-    margin-left: 50px;
-    }
+        margin-left: 50px;
+        }
 
     #hero img {
         margin-top: 90px;
