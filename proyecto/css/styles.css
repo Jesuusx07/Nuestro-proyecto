@@ -25,7 +25,7 @@ header nav{
 }
 
 nav li a{
-    padding-left: 280px;
+    margin-left: 280px;
     align-items: right;
 }
 
@@ -139,7 +139,7 @@ footer{
 @media (min-width: 1290px){
     
     nav li a{
-        margin-left: 580px;
+        margin-left: 880px;
         align-items: right;
     }
 
