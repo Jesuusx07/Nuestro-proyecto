@@ -8,24 +8,28 @@ html{
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-
+/*contenedor de todo menu fodo*/
 header{
     background-color: #201E1E;
     width: 100%;
+    
 }
 
+/*contenedor de todo menu*/
 header nav{
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    
 }
-
+/*contenedor de login */
 nav li a{
-    margin-left: 280px;
+    padding-left: 280px;
     align-items: right;
 }
 
+/*contnedor de solo menu */
 nav ul a{
     width: 100px;
     color: #ffffff;
@@ -34,12 +38,14 @@ nav ul a{
     margin: 0 10px;
     padding: 8px 25px;
     transition: .4s;
+    
 }
 
+/*barra piso menu*/
 nav ul a:hover{
     border-bottom: 1px solid #fff;
 }
-
+/*contenedor de todo objetivo fondo*/
 #OBJETIVO{
     width: 100%;
     background-color: #201E1E;
@@ -49,6 +55,7 @@ nav ul a:hover{
     padding: 60px 0%;
 }
 
+/*titulo de objetivo*/
 #OBJETIVO h2{
     text-align: right;
     color: #96CEB4;
@@ -56,31 +63,40 @@ nav ul a:hover{
     margin: 0px 50px;
 }
 
+/*parrafo de objetivo*/
 #OBJETIVO p{
     text-align: right;
     font-size: 18px;
     line-height: 50px;
 }
 
+/*contenedor de todo objetivo*/
 #OBJETIVO .fila{
     display: flex;
     justify-content: left;
+   
 }
 
+
+
+/*contenedor de parrafo, titulo y img de objetivo*/
 #OBJETIVO article{
     margin: 0px 40px;
 }
 
+/*imagen de objetivo*/
 #OBJETIVO article img{
     margin: 0px 40px;
     width: 450px;    
     transition: .4s;
 }
 
+/*imagen de objetivo*/
 #OBJETIVO article img:hover{
     transform: scale(1.1) ;
 }
 
+/*footer de objetivo*/
 footer{
     width: 100%;
     position: relative;
@@ -91,18 +107,58 @@ footer{
 }
 
 @media (min-width: 1290px){
+    /*contenedor de login */
     nav li a{
-        margin-left: 880px;
+        padding-left: 800px;
         align-items: right;
     }
-    
+    /*contenedor de menu y logo*/
     nav a{
         margin-left: 50px;
+        
     }
 
+    /*parrafo de objetivo*/
+    #OBJETIVO p{
+    text-align: center;
+    font-size: 18px;
+    line-height: 50px;
+    
+    
+    }
+
+    /*titulo de objetivo*/
+    #OBJETIVO h2{
+    text-align: cen;
+    color: #96CEB4; 
+    font-size: 70px;
+    margin: 0px 50px;
+    margin-top: 50px;
+
+    }
+    /*imagen de objetivo*/
     #OBJETIVO article img{
-        margin: 0px 170px;
-        width: 450px;    
+        padding: none;
+        width: 600px;    
+        margin-bottom: 20px;
         transition: .4s;
     }
+    /*contenedor de todo objetivo fondo*/
+    #OBJETIVO{
+    width: 100%;
+    height: 695px;
+    background-color: #201E1E;
+    margin: 0 auto;
+    position: relative;
+    color: #ffffff;
+    padding: 60px 0%;
+    
+    }
+    /*contenedor de parrafo, titulo y img de objetivo */
+    #OBJETIVO article{
+    margin: 80px 40px;
+    margin-left: 300px;
+    }
+    
+
 }
