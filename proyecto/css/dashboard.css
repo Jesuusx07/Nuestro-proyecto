@@ -26,19 +26,7 @@
     display: flex;
     align-items: center;
   }
-  .navbar-left{
-    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
-  }
 
-  .navbar-right:hover {
-    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
-  }
-
-  .navbar-left:hover{
-    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
-  }
-
-  
   .navbar-left img {
     height: 40px;
     margin-right: 10px;
@@ -64,7 +52,6 @@
   }
   
   .menu-lateral {
-  
     width: 220px;
     padding: 20px;
     display: flex;
@@ -107,6 +94,7 @@
     box-shadow: 4px 4px 8px #bcbcbc, -4px -4px 8px #ffffff;
     margin-bottom: 30px;
   } 
+
   .btn-menu:active {
     background-color: #000000;
     color: #ffffff;
@@ -116,7 +104,6 @@
     display: none;
     flex-direction: column;
     gap: 5px;
-    background-color: red;
     position: absolute;
     top: 0;
     left: 100%;
@@ -207,7 +194,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 150px;
     justify-content: flex-start;
   }
   
@@ -237,6 +224,10 @@
   .stat-box.dual .column {
     flex: 1;
   }
+
+  .stat-box.dual h3{
+    font-size: 60px;
+  }
   
   .stat-number {
     font-size: 24px;
@@ -259,46 +250,83 @@
     aspect-ratio: 2 / 1;
   }
 
-  @media (min-width : 1370px) {
-     .menu-container {
-    background: #ffffff;
+  @media (max-width : 1370px) {
+
+    .menu-container {
     padding: 15px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
-    height: 800px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #e0d7d7;
     margin-top: 9px;
-    width: 210px;
-    
   }
+
+  .main {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    padding: 30px;
+    margin-top: 30px; /* Si el sidebar tiene margin-top, considera agregar uno similar aquí para alinear verticalmente */
+    padding-left: 70px;
+  }
+
+    .btn-menu {
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: 4px 4px 8px #bcbcbc, -4px -4px 8px #ffffff;
+    margin-bottom: 13px;
+  } 
+  
+    .welcome-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    height: 650px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #bcbcbc;
+    width: 920px;
+  }
+
+    .ventas-y-graficos {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+    .stat-box.dual h3{
+    font-size: 35px;
+  }
+
     .ventas-lista {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 100px;
     justify-content: flex-start;
-    font-size: 65px;
   }
+  
+
     .stat-box.dual {
     display: flex;
     justify-content: space-between;
     gap: 30px;
     align-items: flex-start;
     flex: 2;
-    font-size: 40px;
   }
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: #1c1c1c;
-    color: white;
-    height: 100px;
+
+    canvas {
+    width: 300px !important;
+    height: 120px !important;
+    aspect-ratio: 2 / 1;
   }
-  .navbar-left{
-    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
-  }
-  }
+
+}
