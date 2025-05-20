@@ -4,6 +4,7 @@
             color: #ccc;
             background-color: #201E1E;
             display: flex;
+            background: linear-gradient(to right, #201E1E,#201E1E, #A02334);
             justify-content: left;
             align-items: left;
             min-height: 100vh;
@@ -11,16 +12,18 @@
         }
 
         .logo {
-            width: 200px;
-            margin-bottom: 30px;
+            width: 175px;
+       
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+           
+            
+          
         }
 
         h2 {
             text-align: left;
             margin-bottom: 20px;
+            
         }
 
         h3{
@@ -42,7 +45,7 @@
             color: #ffffff; 
         }
         .input-empleado {
-            margin-bottom: 15px; /* Espacio inferior para separar de otros elementos */
+            margin-bottom: 15px; 
         }
         
         select{
@@ -90,11 +93,6 @@
             
         }
 
-        .logo {
-            width: 200px; 
-            margin-bottom: 20px;
-        }
-
         h2 {
             margin-bottom: 40px;
         }
@@ -129,13 +127,13 @@
         }
 
         .señora img{
-            margin-top: 30px;
             width: 500px;
             align-items: right;
             padding: 50px;
             justify-content: right;
-            border-radius: 90px;
 
+
+            
         }
         .inc{
             color: #96CEB4;
