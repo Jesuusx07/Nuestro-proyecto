@@ -3,7 +3,6 @@
         font-family: "Exo 2", serif;
             color: #ccc;
             background-color: #201E1E;
-         
             display: flex;
             background: linear-gradient(to right, #201E1E,#201E1E, #A02334);
             justify-content: left;
@@ -46,7 +45,7 @@
             color: #ffffff; 
         }
         .input-empleado {
-            margin-bottom: 15px; /* Espacio inferior para separar de otros elementos */
+            margin-bottom: 15px; 
         }
         
         select{
@@ -132,6 +131,8 @@
             align-items: right;
             padding: 50px;
             justify-content: right;
+
+
             
         }
         .inc{
