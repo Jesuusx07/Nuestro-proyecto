@@ -66,7 +66,7 @@ nav ul a:hover{
     margin: 0 auto;
     position: relative;
     color: #ffffff;
-    padding: 60px 0%;
+    padding: 80px 0%;
 }
 
 /*titulo de objetivo*/
@@ -79,7 +79,7 @@ nav ul a:hover{
 
 /*parrafo de objetivo*/
 #OBJETIVO p{
-    text-align: right;
+    text-align: center;
     font-size: 18px;
     line-height: 50px;
 }
@@ -111,6 +111,7 @@ nav ul a:hover{
 }
  #OBJETIVO_img{
     background-color: #201E1E;
+    padding: 80px 0%;
  }
 
     #OBJETIVO_img img {
@@ -139,15 +140,18 @@ nav ul a:hover{
         font-family: "Cinzel", serif; /* Fuente */
         border-radius: 8px;            /* Bordes redondeados */
         padding: 10px;                 /* Espaciado interior */
-        padding-bottom: 100px;
         text-align: center;
         /* Posición */
-        position: absolute;             /* Distancia desde la parte inferior del contenedor */
+        position: absolute;/* Distancia desde la parte inferior del contenedor */
+        margin-top: 200px;
+        bottom: 10px;             
         left: 37px;
         right: 10px;
         height:100px ;
         width: 200px;
-        transform: translate(0%, 120%);  /* Truco para centrar */
+        background-color: #00000098;
+        padding-bottom: 95px;
+        transform: translate(0%, 239%);  /* Truco para centrar */
         
         /* Efecto */
         opacity: 0;                    /* Oculto inicialmente */
@@ -162,7 +166,7 @@ nav ul a:hover{
         font-family: "Cinzel", serif; /* Fuente */
         border-radius: 8px;            /* Bordes redondeados */
         padding: 10px;                 /* Espaciado interior */
-        padding-bottom: 100px;
+        
         text-align: center;
         /* Posición */
         position: absolute;
@@ -171,7 +175,9 @@ nav ul a:hover{
         right: 10px;
         height:100px ;
         width: 200px;
-        transform: translate(143%, 120%);  /* Truco para centrar */
+        transform: translate(143%, 255%);  /* Truco para centrar */
+        background-color: #00000098;
+        padding-bottom: 165px;
         
         /* Efecto */
         opacity: 0;                    /* Oculto inicialmente */
@@ -186,7 +192,6 @@ nav ul a:hover{
         font-family: "Cinzel", serif; /* Fuente */
         border-radius: 8px;            /* Bordes redondeados */
         padding: 10px;                 /* Espaciado interior */
-        padding-bottom: 100px;
         text-align: center;
         /* Posición */
         position: absolute;
@@ -195,8 +200,9 @@ nav ul a:hover{
         right: 10px;
         height:100px ;
         width: 200px;
-        transform: translate(285%, 120%);  /* Truco para centrar */
-        
+        transform: translate(280%, 203%);
+        background-color: #00000098;
+        padding-bottom: 199px;  /* Truco para centrar */
         /* Efecto */
         opacity: 0;                    /* Oculto inicialmente */
         transition: opacity 0.3s ease;
@@ -219,7 +225,9 @@ nav ul a:hover{
         right: 10px;
         height:100px ;
         width: 200px;
-        transform: translate(430%, 120%);  /* Truco para centrar */
+        background-color: #00000098;
+        padding-bottom: 179px;
+        transform: translate(420%, 215%);  /* Truco para centrar */
         
         /* Efecto */
         opacity: 0;                    /* Oculto inicialmente */
@@ -259,15 +267,20 @@ footer{
 }
 
 @media (min-width: 1370px){
-    /*contenedor de login */
     nav li a{
-        padding-left: 800px;
+        margin-left: 880px;
         align-items: right;
     }
-    /*contenedor de menu y logo*/
+    
     nav a{
         margin-left: 50px;
-        
+    }
+
+    #hero img {
+        margin-top: 90px;
+        width: 800px;
+        max-height: 290px;
+        height: auto;
     }
 
     /*parrafo de objetivo*/

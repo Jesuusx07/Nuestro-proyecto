@@ -258,9 +258,8 @@
     height: auto !important;
     aspect-ratio: 2 / 1;
   }
-
-  @media (min-width : 1370px) {
-     .menu-container {
+  
+    .menu-container {
     background: #ffffff;
     padding: 15px;
     border-radius: 15px;
@@ -271,34 +270,4 @@
     height: 800px;
     margin-top: 9px;
     width: 210px;
-    
-  }
-    .ventas-lista {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-    justify-content: flex-start;
-    font-size: 65px;
-  }
-    .stat-box.dual {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    align-items: flex-start;
-    flex: 2;
-    font-size: 40px;
-  }
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: #1c1c1c;
-    color: white;
-    height: 100px;
-  }
-  .navbar-left{
-    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
-  }
   }
