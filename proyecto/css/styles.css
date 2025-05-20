@@ -22,11 +22,13 @@ header nav{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
 }
 
 nav li a{
     margin-left: 280px;
     align-items: right;
+    margin-top: 1px;
 }
 
 li a img{
