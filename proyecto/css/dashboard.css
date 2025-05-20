@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    font-family: "Exo 2", serif;
+}
+
 /* Estilos generales */
 * {
     margin: 0;
@@ -18,7 +24,7 @@
     align-items: center;
     padding: 10px 40px;
     background-color: #1c1c1c;
-    color: white;
+    color: #A02334;
   }
   
   .navbar-left,
@@ -45,9 +51,9 @@
   }
   
   .navbar-left span {
-    font-size: 20px;
-    color: #b8c9b0;
-    font-weight: bold;
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+    color: #A02334;
   }
   
   .navbar-right img {
@@ -57,20 +63,17 @@
 
   
   
-  /* Contenedor principal */
+     /* Contenedor principal */
   .container {
     display: flex; /* Asegura que los elementos hijos (sidebar y main) se alineen horizontalmente */
     /* flex-direction: row; /* Por defecto es row, pero se puede explicitar */
   }
   
   .menu-lateral {
-  
     width: 220px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
-    margin-right: 15px;
+    margin-right: 80px;
   }
   
   .menu-container {
@@ -81,7 +84,6 @@
     flex-direction: column;
     gap: 8px;
     box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #e0d7d7;
-    margin-top: 9px;
   }
   
   .menu-item {
@@ -92,6 +94,7 @@
   }
   
   .btn-menu {
+    font-size: 14px;
     padding: 17px;
     border: none;
     border-radius: 15px;
@@ -105,7 +108,7 @@
     position: relative;
     z-index: 1;
     box-shadow: 4px 4px 8px #bcbcbc, -4px -4px 8px #ffffff;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   } 
   .btn-menu:active {
     background-color: #000000;
@@ -259,46 +262,3 @@
     aspect-ratio: 2 / 1;
   }
 
-  @media (min-width : 1370px) {
-     .menu-container {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
-    height: 800px;
-    margin-top: 9px;
-    width: 210px;
-    
-  }
-    .ventas-lista {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-    justify-content: flex-start;
-    font-size: 65px;
-  }
-    .stat-box.dual {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    align-items: flex-start;
-    flex: 2;
-    font-size: 40px;
-  }
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: #1c1c1c;
-    color: white;
-    height: 100px;
-  }
-  .navbar-left{
-    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
-  }
-  }

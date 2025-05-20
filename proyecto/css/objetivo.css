@@ -317,15 +317,20 @@ nav ul a:hover{
 
 
 @media (min-width: 1370px){
-    /*contenedor de login */
     nav li a{
-        padding-left: 800px;
+        margin-left: 880px;
         align-items: right;
     }
-    /*contenedor de menu y logo*/
+    
     nav a{
         margin-left: 50px;
-        
+    }
+
+    #hero img {
+        margin-top: 90px;
+        width: 800px;
+        max-height: 290px;
+        height: auto;
     }
 
     /*parrafo de objetivo*/
