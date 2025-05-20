@@ -21,12 +21,26 @@ header nav{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 13px;
     
 }
-/*contenedor de login */
+
+.favicon{
+    margin-left: 13px;
+    width: 80px;
+}
+
 nav li a{
-    padding-left: 280px;
+    margin-left: 280px;
     align-items: right;
+}
+
+li a img{
+    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
+}
+
+li a img:hover {
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
 }
 
 /*contnedor de solo menu */
