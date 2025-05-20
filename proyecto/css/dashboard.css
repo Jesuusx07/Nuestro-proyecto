@@ -34,7 +34,7 @@
     transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
   }
 
-  .navbar-left:hover,{
+  .navbar-left:hover{
     transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
   }
 
@@ -46,7 +46,7 @@
   
   .navbar-left span {
     font-size: 20px;
-    color: #c0392b;
+    color: #b8c9b0;
     font-weight: bold;
   }
   
@@ -74,13 +74,13 @@
   }
   
   .menu-container {
-    background: #e00909;
+    background: #ffffff;
     padding: 15px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #c51818;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #e0d7d7;
     margin-top: 9px;
   }
   
@@ -259,7 +259,7 @@
     aspect-ratio: 2 / 1;
   }
 
-  @media (min-width : 1290px) {
+  @media (min-width : 1370px) {
      .menu-container {
     background: #ffffff;
     padding: 15px;

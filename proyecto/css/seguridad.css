@@ -105,7 +105,7 @@ footer{
     text-align: center;
 }
 
-@media (min-width: 1290px){
+@media (min-width: 1370px){
     nav li a{
         margin-left: 880px;
         align-items: right;
