@@ -100,6 +100,204 @@ nav ul a:hover{
  }
 
     #OBJETIVO_img img {
+        width: 250px;        /* O un tamaño fijo como 300px */
+        height: 380px;
+        border-radius: 15px;
+       padding-bottom: 5px;
+        
+    }
+    .obj_img {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
+        
+    }
+    #OBJETIVO_img img:hover{
+    transform: scale(1.1) ;
+    }
+
+    
+        .facturacion{
+        /* Visuales */
+        color: #ffffffe9;                 /* Color del texto */
+        font-size: 16px;               /* Tamaño del texto */
+        font-family: "Cinzel", serif; /* Fuente */
+        border-radius: 8px;            /* Bordes redondeados */
+        padding: 10px;                 /* Espaciado interior */
+        padding-bottom: 100px;
+        text-align: center;
+        /* Posición */
+        position: absolute;             /* Distancia desde la parte inferior del contenedor */
+        left: 37px;
+        right: 10px;
+        height:100px ;
+        width: 200px;
+        transform: translate(0%, 120%);  /* Truco para centrar */
+        
+        /* Efecto */
+        opacity: 0;                    /* Oculto inicialmente */
+        transition: opacity 0.3s ease;
+        pointer-events: none;         /* Evita que interfiera con el hover */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
+    }
+    .inventario {
+         /* Visuales */
+       color: #ffffffe9;                 /* Color del texto */
+        font-size: 16px;               /* Tamaño del texto */
+        font-family: "Cinzel", serif; /* Fuente */
+        border-radius: 8px;            /* Bordes redondeados */
+        padding: 10px;                 /* Espaciado interior */
+        padding-bottom: 100px;
+        text-align: center;
+        /* Posición */
+        position: absolute;
+        bottom: 190px;             /* Distancia desde la parte inferior del contenedor */
+        left: 37px;
+        right: 10px;
+        height:100px ;
+        width: 200px;
+        transform: translate(143%, 120%);  /* Truco para centrar */
+        
+        /* Efecto */
+        opacity: 0;                    /* Oculto inicialmente */
+        transition: opacity 0.3s ease;
+        pointer-events: none;         /* Evita que interfiera con el hover */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
+    }
+    .pedidos {
+        /* Visuales */
+       color: #ffffffe9;                 /* Color del texto */
+        font-size: 16px;               /* Tamaño del texto */
+        font-family: "Cinzel", serif; /* Fuente */
+        border-radius: 8px;            /* Bordes redondeados */
+        padding: 10px;                 /* Espaciado interior */
+        padding-bottom: 100px;
+        text-align: center;
+        /* Posición */
+        position: absolute;
+        bottom: 100px;             /* Distancia desde la parte inferior del contenedor */
+        left: 37px;
+        right: 10px;
+        height:100px ;
+        width: 200px;
+        transform: translate(285%, 120%);  /* Truco para centrar */
+        
+        /* Efecto */
+        opacity: 0;                    /* Oculto inicialmente */
+        transition: opacity 0.3s ease;
+        pointer-events: none;         /* Evita que interfiera con el hover */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
+    }
+    .ventas {
+       /* Visuales */
+        color: #ffffffe9;                 /* Color del texto */
+        font-size: 16px;               /* Tamaño del texto */
+        font-family: "Cinzel", serif; /* Fuente */
+        border-radius: 8px;            /* Bordes redondeados */
+        padding: 10px;                 /* Espaciado interior */
+        padding-bottom: 100px;
+        text-align: center;
+        /* Posición */
+        position: absolute;
+        bottom: 100px;             /* Distancia desde la parte inferior del contenedor */
+        left: 37px;
+        right: 10px;
+        height:100px ;
+        width: 200px;
+        transform: translate(430%, 120%);  /* Truco para centrar */
+        
+        /* Efecto */
+        opacity: 0;                    /* Oculto inicialmente */
+        transition: opacity 0.3s ease;
+        pointer-events: none;         /* Evita que interfiera con el hover */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
+    }
+    
+
+    /* Mostrar párrafo al hacer hover */
+    .contenedor-img:hover .facturacion {
+        opacity: 1;
+        
+    }
+    .contenedor-img:hover .inventario {
+        opacity: 1;
+    }
+    .contenedor-img:hover .pedidos {
+        opacity: 1;
+    }
+    .contenedor-img:hover .ventas {
+        opacity: 1;
+    }
+    
+
+    
+
+    
+/*footer de objetivo*/
+footer{
+    width: 100%;
+    position: relative;
+    padding: 60px 0px;
+    background: black;
+    color: #fff;
+    text-align: center;
+}
+
+@media (min-width: 1290px){
+    /*contenedor de login */
+    nav li a{
+        padding-left: 800px;
+        align-items: right;
+    }
+    /*contenedor de menu y logo*/
+    nav a{
+        margin-left: 50px;
+        
+    }
+
+    /*parrafo de objetivo*/
+    #OBJETIVO p{
+    text-align: center;
+    font-size: 18px;
+    line-height: 50px;
+    
+    
+    }
+
+    /*titulo de objetivo*/
+    #OBJETIVO h2{
+    text-align: cen;
+    color: #96CEB4; 
+    font-size: 70px;
+    margin: 0px 50px;
+    margin-top: 50px;
+
+    }
+    /*imagen de objetivo*/
+    #OBJETIVO article img{
+        padding: none;
+        width: 600px;    
+        margin-bottom: 20px;
+        transition: .4s;
+    }
+    /*contenedor de todo objetivo fondo*/
+    #OBJETIVO{
+    width: 100%;
+    height: 695px;
+    background-color: #201E1E;
+    margin: 0 auto;
+    position: relative;
+    color: #ffffff;
+    padding: 60px 0%;
+    
+    }
+    /*contenedor de parrafo, titulo y img de objetivo */
+    #OBJETIVO article{
+    margin: 80px 40px;
+    margin-left: 300px;
+    }
+    #OBJETIVO_img img {
         width: 280px;        /* O un tamaño fijo como 300px */
         height: auto;
         border-radius: 10px;
@@ -225,73 +423,6 @@ nav ul a:hover{
         opacity: 1;
     }
     
-
-    
-
-    
-/*footer de objetivo*/
-footer{
-    width: 100%;
-    position: relative;
-    padding: 60px 0px;
-    background: black;
-    color: #fff;
-    text-align: center;
-}
-
-@media (min-width: 1290px){
-    /*contenedor de login */
-    nav li a{
-        padding-left: 800px;
-        align-items: right;
-    }
-    /*contenedor de menu y logo*/
-    nav a{
-        margin-left: 50px;
-        
-    }
-
-    /*parrafo de objetivo*/
-    #OBJETIVO p{
-    text-align: center;
-    font-size: 18px;
-    line-height: 50px;
-    
-    
-    }
-
-    /*titulo de objetivo*/
-    #OBJETIVO h2{
-    text-align: cen;
-    color: #96CEB4; 
-    font-size: 70px;
-    margin: 0px 50px;
-    margin-top: 50px;
-
-    }
-    /*imagen de objetivo*/
-    #OBJETIVO article img{
-        padding: none;
-        width: 600px;    
-        margin-bottom: 20px;
-        transition: .4s;
-    }
-    /*contenedor de todo objetivo fondo*/
-    #OBJETIVO{
-    width: 100%;
-    height: 695px;
-    background-color: #201E1E;
-    margin: 0 auto;
-    position: relative;
-    color: #ffffff;
-    padding: 60px 0%;
-    
-    }
-    /*contenedor de parrafo, titulo y img de objetivo */
-    #OBJETIVO article{
-    margin: 80px 40px;
-    margin-left: 300px;
-    }
     
 
 }
