@@ -75,7 +75,7 @@ nav ul a:hover{
     color: #ffffff;
     font-size: 18px;
     line-height: 2.0; /* Reduce el espaciado entre líneas */
-    text-align: left; /* Asegura alineación a la izquierda */
+    text-align: center; /* Asegura alineación a la izquierda */
     padding: 20px;
     max-width: 600px; /* Evita que el texto se extienda demasiado */
     margin: 0; /* Elimina márgenes extra que puedan afectar el diseño */
