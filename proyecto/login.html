@@ -24,7 +24,6 @@
                     <label for="login_password">Contraseña</label>
                     <input type="password" id="login_password">
                 </div>
-
                 <button type="submit" class="boton-registro" id="login-submit">Iniciar Sesión</button>
             </form>
         </div>
@@ -41,9 +40,9 @@
 
         const email = document.getElementById('login_email').value.trim();
         const password = document.getElementById('login_password').value;
-        const rol = document.getElementById('login_rol').value;
 
-        if (!email || !password || !rol) {
+
+        if (!email || !password ) {
             alert ('Por favor, complete todos los campos para iniciar sesión.');
             return;
         }
@@ -52,8 +51,8 @@
 
         if (storedUser) {
             const userData = JSON.parse(storedUser);
-            if (userData.password === password && userData.rol === rol) {
-                alert ('Inicio de sesión exitoso como ${userData.rol} (${userData.username}). Redirigiendo...');
+            if (userData.password === password) {
+                alert ('Inicio de sesión exitoso. Redirigiendo...');
                 loginForm.reset();
                 // Redirigir al panel de control según el rol
                 setTimeout(() => {
@@ -61,11 +60,9 @@
                 }, 1500);
             } else if (userData.password !== password) {
                 alert ('Contraseña incorrecta.');
-            } else if (userData.rol !== rol) {
-                alert ('Rol incorrecto para la cuenta ${email}.');
             }
         } else {
-            alert ('No se encontró ninguna cuenta registrada con el correo electrónico: ${email}');
+            alert ('No se encontró ninguna cuenta registrada con el correo electrónico');
         }
     });
 </script>
