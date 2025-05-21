@@ -120,30 +120,26 @@ label {
     font-size: 20px;
 }
 /*todo footer*/
-.container{
-    max-width: 1200px;
-    margin:  0  auto;
-}
-.footer{
+.footer {
     background-color: #000000;
-    padding: 80px 0 ;
-}
-.footer-row{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: left;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 20px;
+    padding: 80px 0;
+    width: 100%;
     text-align: left;
 }
 
-.footer-links{
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: none;
+    margin: 0;
+    padding: 0 40px; /* puedes ajustar el padding si lo quieres más o menos pegado */
+}
 
+.footer-links {
     width: 20%;
-    padding: 0px 15PX;
-
+    padding: 0 15px;
 }
 
 .footer-links h4 {
@@ -151,40 +147,50 @@ label {
     color: #fff;
     margin-bottom: 25px;
     font-weight: 500;
-    border-bottom:  2px solid #00c3ff;
+    border-bottom: 2px solid #00c3ff;
     padding-bottom: 10px;
     display: inline-block;
+    text-transform: capitalize;
 }
-.footer-links ul li a{
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li a {
     font-size: 18px;
     text-decoration: none;
     color: #bbbbbb;
     display: block;
     margin-bottom: 15px;
     transition: all .3s ease;
+    text-transform: capitalize;
 }
 
-.footer-links ul li a:hover{
-    color:#fff;
+.footer-links ul li a:hover {
+    color: #fff;
     padding-left: 6px;
 }
 
-.social-links a{
+.social-links a {
     display: inline-block;
     min-height: 40px;
     width: 40px;
     background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 10px 10px 0 ;
+    margin: 0 10px 10px 0;
     text-align: center;
     line-height: 40px;
     border-radius: 45px;
     color: #fff;
-    transition: all .5 ease;
-
+    transition: all 0.5s ease;
+    font-size: 18px;
 }
-.social-links a:hover{
+
+.social-links a:hover {
     background-color: #00c3ff;
 }
+
 
 
 @media (min-width: 1370px){
