@@ -131,9 +131,13 @@ label {
 .footer-row{
     display: flex;
     flex-wrap: wrap;
-
+    align-items: left;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    text-align: left;
 }
-
 
 .footer-links{
 
