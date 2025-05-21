@@ -161,7 +161,6 @@ body {
 /* Contenedor de la Tabla (Recuadro Negro) */
 .tabla-container {
     background-color: #fff;
-    color: #000000;
     padding: 15px;
     border-radius: 10px;
     flex: 1;
@@ -171,6 +170,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-left: 35px;
     box-shadow: -8px -8px 15px #bcbcbc, -8px -8px 15px #ffffff;
 }
 
@@ -254,18 +254,73 @@ th, td {
     background-color: #FFAD60;
     color: black;
 }
-.sub-btn {
-    text-size-adjust: 5px;
-    margin: 10px 0px;
-    padding: 5px;
-    color: #000000; /* Color de texto inicial: negro */
+.sub-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: transparent;
+    padding: 0;
+    z-index: 2;
+    animation: slideIn 0.2s ease-out forwards; /* Aplicamos la animación */
+    transform-origin: top left; /* Define el punto de origen de la animación */
+  }
+  
+  .sub-btn {
+    padding: 8px 15px;
+    font-size: 13px;
     text-decoration: none;
-    background-color: #ffffff; /* Color de fondo inicial: blanco */
-    border-radius: 15px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Añadimos una transición suave */
-}
+    color: #555;
+    background-color: #fff;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: auto;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    margin-left: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sub-btn:hover {
+    background-color: #ccc;
+    color: #111;
+  }
+  
+  .sub-btn:active {
+    background-color: #bbb;
+    color: #222;
+  }
 
-.sub-btn:hover {
-    color: #ffffff; /* Color de texto al pasar el ratón: blanco */
-    background-color: #000000; /* Color de fondo al pasar el ratón: negro */
-}
+  @media (max-width : 1370px) {
+    .tabla-container {
+    margin-top: 20px;
+    background-color: #fff;
+    color: #000000;
+    padding: 15px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+    height: 490px; /* Mantiene el mismo alto que el recuadro rojo */
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: -8px -8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+    }
+
+    .menu-container {
+    margin-right: 20px;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+    }
+
+
+  }
