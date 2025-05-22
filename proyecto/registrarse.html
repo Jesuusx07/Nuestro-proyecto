@@ -12,13 +12,13 @@
     <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
     <h2>Crear una cuenta</h2>
     <p>Es rápido y fácil.</p>
-    <form>
+    <form action="./php/register.php" method="post">
       <div class="name-fields">
-        <input type="text" placeholder="Nombre" required>
-        <input type="text" placeholder="Apellido" required>
+        <input type="text" placeholder="Nombre" name="nombre" required>
+        <input type="text" placeholder="Apellido" name="apellido" required>
       </div>
-      <input type="email" placeholder="Correo electrónico o número de móvil" required>
-      <input type="password" placeholder="Nueva contraseña" required>
+      <input type="email" placeholder="Correo electrónico o número de móvil" name="correo" required>
+      <input type="password" placeholder="Nueva contraseña" name="pass" required>
 
       <div class="dob-gender">
       <div class="dob-gender">
