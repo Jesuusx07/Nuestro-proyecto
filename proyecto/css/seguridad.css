@@ -94,9 +94,10 @@ nav ul a:hover{
 
 .img_terminos article{
     background-color: #201E1E;
+    width: 100%;
 }
 .img_terminos article img{
-    width: 1000px;
+    width: auto;
     height: auto;
     margin-left: 100px;
     border-radius: 10px;
@@ -122,7 +123,7 @@ nav ul a:hover{
 
    
 }
-.botoom:hover{
+.botoom :hover{
     transform: scale(1.1) ;
 }
 
