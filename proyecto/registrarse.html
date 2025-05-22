@@ -1,84 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Aplicación Web</title>
-    <link rel="stylesheet" href="./css/registrarse.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/registrarse.css">
+  <title>Registrarse en Kennys</title>
 </head>
 <body>
-    
-    <div class="container">
-        <div class="navbar-right">
-            <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
-        </div>
-        <h2>Inicia tu Registro</h2>
-        <h3>Ya tienes cuenta? <a href="login.html">Inicia Sesion</a></h3>
-        <form id="register">
-            <div class="input-group">
-                <label for="reg_user">Nombre de usuario</label>
-                <input type="text" id="reg_user" placeholder="usuario">
-            </div>
 
-            <div class="input-group">
-                <label for="reg_email">Correo electrónico</label>
-                <input type="email" id="reg_email" placeholder="tucorreo@gmail.com">
-            </div>
+  <div class="container">
+    <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
+    <h2>Crear una cuenta</h2>
+    <p>Es rápido y fácil.</p>
+    <form>
+      <div class="name-fields">
+        <input type="text" placeholder="Nombre" required>
+        <input type="text" placeholder="Apellido" required>
+      </div>
+      <input type="email" placeholder="Correo electrónico o número de móvil" required>
+      <input type="password" placeholder="Nueva contraseña" required>
 
-            <div class="input-group">
-                <label for="reg_password">Contraseña</label>
-                <input type="password" id="reg_password">
-            </div>
+      <div class="dob-gender">
+      <div class="dob-gender">
+  
 
+      <button type="submit" class="btn-submit">Registrarte</button>
 
-
-            <button type="submit" class="boton-registro" id="register-submit">Registrarse</button>
-        </form>
-    </div>
-
-    
-    <div class="señora">
-        <img src="img/señora.png" alt="">
-    </div>
-    
+      <div class="terms">
+        Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
+      </div>
+    </form>
+  </div>
 
 </body>
-<script>
-    const registerForm = document.getElementById('register');
-    const registerSubmit = document.getElementById('register-submit');
-    const mensajeDiv = document.getElementById('mensaje');
-
-    registerForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const username = document.getElementById('reg_user').value.trim();
-        const email = document.getElementById('reg_email').value.trim();
-        const password = document.getElementById('reg_password').value;
-
-
-        if (!username || !email || !password) {
-            alert ('Por favor, complete todos los campos para registrarse.');
-            return;
-        }
-
-        const userData = {
-            username: username,
-            email: email,
-            password: password,
-       
-        };
-
-        localStorage.setItem(email, JSON.stringify(userData));
-        alert ('Cuenta registrada exitosamente. Redirigiendo...');
-        registerForm.reset();
-
-        // Redireccionar a la página de inicio de sesión after a short delay
-        setTimeout(() => {
-            window.location.href = 'login.html';
-        }, 1500);
-    });
-</script>
-</body>
-
 </html>
