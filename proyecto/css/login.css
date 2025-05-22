@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Readex+Pro:wght@160..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
  body {
         font-family: "Exo 2", serif;
-            color: #ccc;
+            color: #ffffff;
             background-image: url(../img/login.png);
-            background-color: #d89696;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -12,10 +12,10 @@
         }
 
         .container {
-            background-color: rgba(0, 0, 0, 0.571);
+            background-color:  rgba(0, 0, 0, 0.571);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center; 
             width: 350px; 
         }
 
@@ -39,7 +39,7 @@
         label {
             display: block;
             margin-bottom: 5px;
-            color: #777; 
+            color: #ffffff; 
         }
 
         input[type="email"],
@@ -66,18 +66,8 @@
             text-align: center;
             margin-top: 20px;
         }
-    .container {
-            background-color: rgba(24, 20, 20, 0.732);
-            padding: 20px;
-            border-radius: 30px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center; 
-        }
 
-        .logo {
-            width: 200px; 
-            margin-bottom: 20px;
-        }
+
 
         h2 {
             margin-bottom: 10px;
@@ -117,15 +107,16 @@
         }
 
         .boton-registro{
-            background-color: #A02334;
-            color: #fff;
-            padding: 10px 10px;
-            border-radius: 50px;
-            border: none;
-            margin-top: 20px ;
-            margin-left: 5px;
-            line-height: 15px;
-            justify-content: left;
+     background-color: #A02334;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      width: 50%;
+      margin: 20px auto 0;
+      display: block;
+      cursor: pointer;
 
         }
 
