@@ -283,9 +283,9 @@ html{
     }
   }
 
-  @media (min-width: 1290px){
+@media (min-width : 1370px){
 
-      .regis{
+    .regis{
       width: 100%;
       height: 80%;
       display: flex;
@@ -293,44 +293,44 @@ html{
       padding: 5px 15px;
     }
 
-      .parte1{
-    margin-top: 40px;
-    margin-bottom: 50px;
-  }
+    .parte1{
+      margin-top: 40px;
+      margin-bottom: 50px;
+    }
 
   .parte1 input{
-    width: 600px;
-    height: 50px;
-  }
+      width: 600px;
+      height: 50px;
+    }
 
   .parte2{
-    margin-top: 20px;
-    margin-bottom: 50px;
-  }
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
 
   .parte3 input{
-    height: 50px;
-    width: 1200px;
-  }
+      height: 50px;
+      width: 1200px;
+    }
 
   .parte2 input{
-    height: 50px;
-    width: 600px;
-  }
+      height: 50px;
+      width: 600px;
+    }
 
   .parte4 input{
-    width: 593px;
-    height: 50px;
-  }
+      width: 593px;
+      height: 50px;
+    }
   .parte4 select{
-    height: 50px;
-    width: 593px;
-  }
+      height: 50px;
+      width: 593px;
+    }
     
 
       .form h2{
-    font-size: 50px;
-  }
+      font-size: 50px;
+    }
 
     .form{
       margin-top: 40px;
@@ -338,6 +338,8 @@ html{
     }
 
     #boton{
-    margin-top: 60px;
-  }
+      margin-top: 60px;
+    }
+
+
 }
