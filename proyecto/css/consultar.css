@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    font-family: "Exo 2", serif;
+}
+
+html{
+  background-color: #e0e0e0;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Exo 2", serif;
   background-color: #111;
   color: white;
   display: flex;
@@ -79,7 +89,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #e0d7d7;
   }
   
   .menu-item {
@@ -89,7 +99,9 @@ body {
   }
   
   .btn-menu {
+    font-family: "Exo 2", serif;
     padding: 10px;
+    margin-top: 5px;
     border: none;
     border-radius: 15px;
     font-weight: bold;
@@ -308,7 +320,7 @@ th, td {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: -8px -8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #bcbcbc;
     }
 
     .menu-container {
@@ -319,7 +331,7 @@ th, td {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #bcbcbc;
     }
 
 

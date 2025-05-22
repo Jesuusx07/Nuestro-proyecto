@@ -14,56 +14,22 @@
         <p style="text-align: center;">¿No tienes cuenta? <a class="inc" href="registrarse.html">Registrarse</a></p>
 
         <div>
-            <form id="login">
+            <form id="login" action="./php/login.php" method="POST">
                 <div class="input-group">
                     <label for="login_email">Correo electrónico</label>
-                    <input type="email" id="login_email" placeholder="tucorreo@gmail.com">
+                    <input type="email" id="login_email" name="correo" placeholder="tucorreo@gmail.com">
                 </div>
     
                 <div class="input-group">
                     <label for="login_password">Contraseña</label>
-                    <input type="password" id="login_password">
+                    <input type="password" name="pass" id="login_password">
                 </div>
                 <button type="submit" class="boton-registro" id="login-submit">Iniciar Sesión</button>
             </form>
         </div>
+        
 
 </body>
 
-<script>
-    const loginForm = document.getElementById('login');
-    const loginSubmit = document.getElementById('login-submit');
-    const mensajeDiv = document.getElementById('mensaje');
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const email = document.getElementById('login_email').value.trim();
-        const password = document.getElementById('login_password').value;
-
-
-        if (!email || !password ) {
-            alert ('Por favor, complete todos los campos para iniciar sesión.');
-            return;
-        }
-
-        const storedUser = localStorage.getItem(email);
-
-        if (storedUser) {
-            const userData = JSON.parse(storedUser);
-            if (userData.password === password) {
-                alert ('Inicio de sesión exitoso. Redirigiendo...');
-                loginForm.reset();
-                // Redirigir al panel de control según el rol
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
-            } else if (userData.password !== password) {
-                alert ('Contraseña incorrecta.');
-            }
-        } else {
-            alert ('No se encontró ninguna cuenta registrada con el correo electrónico');
-        }
-    });
-</script>
 </html>
