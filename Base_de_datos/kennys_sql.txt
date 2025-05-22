@@ -1,11 +1,14 @@
-
 CREATE TABLE cliente(
     id_cliente int not null primary key,
     nombre varchar (30) not null,
     direccion varchar (30) not null,
-    telefono varchar (10) not null)
+    telefono varchar (10) not null);
 
---------
+
+CREATE TABLE categoria(
+    id_categoria int not null primary key,
+    nombre varchar (30) not null);
+
 
 
 CREATE TABLE producto(
@@ -15,9 +18,8 @@ CREATE TABLE producto(
     imagen varchar (50) not null,
     cantidad varchar (20) not null,
     precio int not null,
-    FOREIGN KEY (categoria) REFERENCES categoria(id_categoria))
+    FOREIGN KEY (categoria) REFERENCES categoria(id_categoria));
 
---------
 
 CREATE TABLE venta(
     id_venta int not null primary key,
@@ -26,15 +28,9 @@ CREATE TABLE venta(
     precio int not null,
     total int not null,
     fecha date not null,
-    FOREIGN KEY (producto) REFERENCES producto(id_producto))
+    FOREIGN KEY (producto) REFERENCES producto(id_producto));
 
-----------
 
-CREATE TABLE categoria(
-    id_categoria int not null primary key,
-    nombre varchar (30) not null)
-
------------
 
 CREATE TABLE pedido(
     id_pedido int not null primary key,
@@ -45,9 +41,8 @@ CREATE TABLE pedido(
     fecha date not null,
     direccion varchar (30) not null,
     estado boolean not null,
-    FOREIGN KEY (producto) REFERENCES producto(id_producto))
+    FOREIGN KEY (producto) REFERENCES producto(id_producto));
 
-------------
 
 CREATE TABLE historial(
     id_historial int not null primary key,
@@ -57,18 +52,16 @@ CREATE TABLE historial(
     producto int not null,
     fecha date not null,
     FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
-    FOREIGN KEY (producto) REFERENCES producto(id_producto))
+    FOREIGN KEY (producto) REFERENCES producto(id_producto));
 
---------------
 
 CREATE TABLE pago(
     id_pago int not null primary key,
     metodo_pago varchar (20) not null,
     total int not null,
     fecha date not null,
-    precio int not null)
+    precio int not null);
 
------------
 
 CREATE TABLE factura(
     id_factura int not null primary key,
@@ -78,9 +71,8 @@ CREATE TABLE factura(
     producto int not null,
     precio int not null,
     FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente))
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente));
 
-------------
 
 CREATE TABLE proveedor(
     id_proveedor int not null primary key,
@@ -88,9 +80,8 @@ CREATE TABLE proveedor(
     direccion varchar (30) not null,
     telefono varchar (10) not null,
     email varchar (50) not null,
-    producto int not null)
+    producto int not null);
 
-------------
 
 CREATE TABLE entrada(
     id_entrada int not null primary key,
@@ -100,9 +91,7 @@ CREATE TABLE entrada(
     producto int not null,
     fecha date not null,
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor),
-    FOREIGN KEY (producto) REFERENCES producto(id_producto))
-
-----------
+    FOREIGN KEY (producto) REFERENCES producto(id_producto));
 
 CREATE TABLE salida(
     id_salida int not null primary key,
@@ -110,32 +99,44 @@ CREATE TABLE salida(
     motivo_salida varchar (30) not null,
     producto int not null,
     fecha date not null,
-    FOREIGN KEY (producto) REFERENCES producto(id_producto))
+    FOREIGN KEY (producto) REFERENCES producto(id_producto));
 
-----------
 
 CREATE TABLE reserva(
     id_reserva int not null primary key,
     id_cliente int not null,
     estado boolean not null,
     fecha date not null,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente))
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente));
 
------------
 
-CREATE TABLE cargo(
-    id_cargo int not null primary key,
-    empleado varchar (20) not null,
-    nombre varchar (20) not null)
 
------------
+CREATE TABLE empleado(
+    id_empleado int not null primary key,
+    nombres varchar (20) not null,
+    apellidos varchar (20) not null,
+    correo varchar (100) not null),
+    contraseña varchar (20) not null,
+    telefono varchar (20) not null,
+    documento varchar (20) not null,;
+
+CREATE TABLE admin(
+    id_admin int not null primary key,
+    nombres varchar (20) not null,
+    apellidos varchar (20) not null,
+    correo varchar (100) not null),
+    contraseña varchar (20) not null,;
+
+
 
 CREATE TABLE roles(
     id_rol int not null primary key,
-    id_cargo int not null,
-    FOREIGN KEY (id_cargo) REFERENCES cargo(id_cargo))
+    id_empleado int not null,
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado));
 
------------
+CREATE TABLE plaCategoria(
+    id_plaCat int not null primary key,
+    nombre varchar (30) not null);
 
 CREATE TABLE platillo(
     id_pla int not null primary key,
@@ -143,11 +144,4 @@ CREATE TABLE platillo(
     descripcion varchar (30) not null,
     precio int not null,
     pla_categoria int not null,
-    FOREIGN KEY (pla_categoria) REFERENCES plaCategoria(id_plaCat))
-
------------
-CREATE TABLE plaCategoria(
-    id_plaCat int not null primary key,
-    nombre varchar (30) not null)
-
-
+    FOREIGN KEY (pla_categoria) REFERENCES plaCategoria(id_plaCat));
