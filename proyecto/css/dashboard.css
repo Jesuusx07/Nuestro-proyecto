@@ -17,16 +17,25 @@
     color: #000;
   }
   
-  /* Barra de navegación */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: #1c1c1c;
-    color: #A02334;
-  }
   
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px ;
+  background-color: #1c1c1c;
+  color: white;
+  }
+
+  .cerrarSesion{
+    background-color: #A02334;
+    border-radius: 300px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    
+  }
   .navbar-left,
   .navbar-right {
     display: flex;
@@ -42,6 +51,7 @@
     font-family: "Cinzel", serif;
     font-size: 30px;
     color: #A02334;
+    font-weight: bold;
   }
   
   .navbar-right img {
@@ -51,10 +61,9 @@
 
   
   
-     /* Contenedor principal */
+     
   .container {
-    display: flex; /* Asegura que los elementos hijos (sidebar y main) se alineen horizontalmente */
-    /* flex-direction: row; /* Por defecto es row, pero se puede explicitar */
+    display: flex; 
   }
   
   .menu-lateral {

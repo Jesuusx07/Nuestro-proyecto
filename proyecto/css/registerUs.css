@@ -38,14 +38,23 @@ body {
     border-radius: 15px;
 }
 .navbar {
+  height: 83px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px ;
   background-color: #1c1c1c;
-  height: 75px;
   color: white;
 }
-
+  .cerrarSesion{
+    background-color: #A02334;
+    border-radius: 300px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    
+  }
 .navbar-left,
 .navbar-right {
   display: flex;
@@ -59,9 +68,9 @@ body {
 }
 
 .navbar-left span {
-  font-family: "Cinzel", serif;
-  font-size: 20px;
-  color: #c0392b;
+   font-family: "Cinzel", serif;
+  font-size: 30px;
+  color: #A02334;
   font-weight: bold;
 }
 
@@ -69,6 +78,7 @@ body {
   margin-right: 30px;
   height: 35px;
   margin-left: 15px;
+  
 }
 
   .form{
