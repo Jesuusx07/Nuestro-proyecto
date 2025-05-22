@@ -1,13 +1,14 @@
 <?php
 require_once 'SessionManager.php';
+require_once 'register.php';
 
 $session = new SessionManager();
 
 // Simulación de autenticación (normalmente usarías base de datos)
-    $user = $_POST['correo'];
-    $pass = $_POST['pass'];
+    $user = $_GET['correo'];
+    $passw = $_GET['passw'];
 
-    if ($user === 'admin@gmail.com' && $pass === '1234') {
+    if ($user == $email && $passw == $pass) {
         $session->login(1, $user);
         header('Location: ../dashboard.html');
         exit;

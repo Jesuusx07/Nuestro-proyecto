@@ -7,12 +7,3 @@ if (!$session->isLoggedIn()) {
     header("Location: login.php");
     exit;
 }
-?>
-
-<!DOCTYPE html>
-<html>
-<head><title>Panel</title></head>
-<body>
-    <h1>Bienvenido, <?= htmlspecialchars($session->getUserName()) ?>!</h1>
-</body>
-</html>
