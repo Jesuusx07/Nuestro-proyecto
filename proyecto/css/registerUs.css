@@ -192,6 +192,7 @@ body {
   .menu-container {
     background: #ffffff;
     width: 180px;
+    height: 600px;
     padding: 15px;
     border-radius: 15px;
     display: flex;
@@ -209,7 +210,7 @@ body {
   .btn-menu {
     padding: 8px;
     border: none;
-    margin-top: 10px;
+    margin-top: 13px;
     border-radius: 15px;
     font-weight: bold;
     text-decoration: none;
