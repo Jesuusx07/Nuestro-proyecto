@@ -125,7 +125,7 @@ CREATE TABLE admin(
     nombres varchar (20) not null,
     apellidos varchar (20) not null,
     correo varchar (100) not null,
-    contraseña varchar (20) not null);
+    contraseña varchar (225) not null);
 
 
 
