@@ -123,3 +123,35 @@
         .inc{
             color: #96CEB4;
         }
+        
+        .toggle-password {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #A02334; /* color acorde a botones rojos */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding-right: 35px; /* espacio para el botón */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.toggle-password.active {
+  color: #FFAD60; /* por ejemplo, naranja para indicar estado activo */
+}
