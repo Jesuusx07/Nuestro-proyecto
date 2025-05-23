@@ -12,7 +12,7 @@ html{
 header{
     width: 100%;
     min-height: 100vh;
-    background: url("../img/bagground.png");
+
     background-size: cover;
 }
 
@@ -55,6 +55,7 @@ nav ul a{
     text-decoration: none;
     margin: 0 10px;
     padding: 9px 25px;
+    margin-bottom: 10px;
     transition: .4s;
 }
 
