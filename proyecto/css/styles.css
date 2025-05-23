@@ -12,7 +12,7 @@ html{
 header{
     width: 100%;
     min-height: 100vh;
-    background: url("../img/bagground.png");
+    background: url("/img/bagground.png");
     background-size: cover;
 }
 
@@ -25,7 +25,7 @@ header nav{
 
 }
  .login{
-  margin-left: 380px;
+  margin-left: 360px;
   height: 35px;
   margin-bottom: 100px;
   
@@ -55,6 +55,7 @@ nav ul a{
     text-decoration: none;
     margin: 0 10px;
     padding: 9px 25px;
+    margin-bottom: 10px;
     transition: .4s;
 }
 
@@ -200,6 +201,7 @@ main{
 .social-links a:hover{
    background-color: #A02334;
 }
+
 
 
 @media (min-width: 1370px){

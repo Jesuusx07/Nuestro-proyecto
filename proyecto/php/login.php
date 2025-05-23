@@ -1,4 +1,7 @@
 <?php
+
+
+
 require_once 'SessionManager.php';
 require_once 'sql.php';
 
