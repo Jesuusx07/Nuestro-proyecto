@@ -120,8 +120,8 @@
     background-color: transparent;
     padding: 0;
     z-index: 2;
-    animation: slideIn 0.2s ease-out forwards; /* Aplicamos la animación */
-    transform-origin: top left; /* Define el punto de origen de la animación */
+    animation: slideIn 0.2s ease-out forwards;
+    transform-origin: top left; 
   }
   
   .sub-btn {
@@ -150,23 +150,23 @@
     color: #222;
   }
   
-  /* Definimos la animación slideIn */
+  
   @keyframes slideIn {
     from {
       opacity: 0;
-      transform: translateX(10px); /* Comienza ligeramente a la derecha */
+      transform: translateX(10px); 
     }
     to {
       opacity: 1;
-      transform: translateX(0); /* Termina en su posición original */
+      transform: translateX(0); 
     }
   }
   
-  /* Contenido principal */
+ 
   .main {
-    flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    flex: 1; 
     padding: 30px;
-    margin-top: 30px; /* Si el sidebar tiene margin-top, considera agregar uno similar aquí para alinear verticalmente */
+    margin-top: 30px; 
     padding-left: 90px;
   }
   
@@ -260,7 +260,7 @@
     aspect-ratio: 2 / 1;
   }
     .perfil {
-      position: fixed; /* Para mantenerlo fijo aunque hagas scroll */
+      position: fixed; 
       top: 25px;
       right: 25px;
       z-index: 999;
