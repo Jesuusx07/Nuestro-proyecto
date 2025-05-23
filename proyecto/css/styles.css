@@ -203,6 +203,10 @@ main{
 
 
 @media (min-width: 1370px){
+
+    .login{
+        margin-left: 880px;
+    }
     
     nav li a{
         margin-left: 880px;

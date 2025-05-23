@@ -170,6 +170,10 @@ nav ul a:hover{
         margin-left: 880px;
         align-items: right;
     }
+
+    .login{
+        margin-left: 900px;
+    }
     
     nav a{
         margin-left: 50px;
