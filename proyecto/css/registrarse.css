@@ -122,4 +122,39 @@
       margin-top: 15px;
       text-align: center;
     }
-  
+  .password-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 6px 0 15px; /* un poco de margen para separar */
+}
+
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+  width: 100%;
+  padding-right: 40px; /* espacio para el botón */
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #fcfcfc;
+  padding: 12px;
+  background-color: #FFAD60;
+  color: #000000;
+  font-size: 15px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3em;
+  color: #A02334;
+  user-select: none;
+  outline: none;
+}
+
+.toggle-password:hover {
+  color: #ca0f28;
+}

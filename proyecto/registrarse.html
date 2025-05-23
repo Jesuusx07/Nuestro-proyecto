@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/registrarse.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/registrarse.css" />
   <title>Registrarse en Kennys</title>
 </head>
 <body>
@@ -14,26 +14,56 @@
     <p>Es rápido y fácil.</p>
     <form action="./php/register.php" method="post">
       <div class="name-fields">
-        <input type="text" placeholder="Nombre" name="nombre" required>
-        <input type="text" placeholder="Apellido" name="apellido" required>
+        <input type="text" placeholder="Nombre" name="nombre" required />
+        <input type="text" placeholder="Apellido" name="apellido" required />
       </div>
 
+      <input type="email" placeholder="Correo electrónico" name="email" required />
 
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="password" placeholder="Nueva contraseña" required>
-      <input type="email" placeholder="Correo electrónico o número de móvil" name="correo" required>
-      <input type="password" placeholder="Nueva contraseña" name="pass" required>
+      <!-- Campo contraseña 1 -->
+      <div class="password-wrapper">
+        <input type="password" placeholder="Nueva contraseña" id="pass1" required />
+        <button type="button" class="toggle-password" aria-label="Mostrar contraseña">👁️</button>
+      </div>
+
+      <input type="email" placeholder="Correo electrónico o número de móvil" name="correo" required />
+
+      <!-- Campo contraseña 2 -->
+      <div class="password-wrapper">
+        <input type="password" placeholder="Nueva contraseña" name="pass" id="pass2" required />
+        <button type="button" class="toggle-password" aria-label="Mostrar contraseña">👁️</button>
+      </div>
 
       <div class="dob-gender">
-      <div class="dob-gender">
+        <!-- Puedes agregar otros campos aquí -->
+      </div>
+
       <button type="submit" class="btn-submit">Registrarte</button>
-      
+
       <a class="btn-submit2" href="login.html">¿Ya tienes una cuenta?</a>
+
       <div class="terms">
         Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
       </div>
     </form>
   </div>
+
+  <script>
+    // Seleccionamos todos los botones toggle-password
+    const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+
+    togglePasswordButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Encontrar el input asociado (hermano anterior)
+        const passwordInput = button.previousElementSibling;
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        // Aquí decides si cambias el icono o no. Para mantenerlo igual, comentar la siguiente línea:
+        // button.textContent = isPassword ? '🙈' : '👁️';
+      });
+    });
+  </script>
 
 </body>
 </html>
