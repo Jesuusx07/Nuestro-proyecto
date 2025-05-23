@@ -7,16 +7,25 @@ require_once 'sql.php';
 
 $session = new SessionManager();
 
-// Simulación de autenticación (normalmente usarías base de datos)
-    $user = $_POST['correo'];
-    $contra = $_POST['contra'];
 
-    $sql = $enlace->query("select * from admin where correo='$user' and contraseña='$contra' ");
-    if ($datos = $sql->fetch_object()){
+    $user = trim($_POST['correo']);
+    $contra = trim($_POST['contra']);
+
+
+    $stmt = $enlace->prepare("SELECT nombres, contraseña FROM admin WHERE correo = ?");
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    $user_data = $result->fetch_assoc(); // Obtiene los datos del usuario como un array asociativo
+    $stored_hash = $user_data['contraseña']; // El hash de la contra
+
+    if (password_verify($contra, $stored_hash)) {
+
         header("location: ../dashboard.html");
-        exit;
-    }
-    else {
+
+    }else{
         $mensaje = "Credenciales inválidas. Inténtalo de nuevo.";
         echo "<script type='text/javascript'>";
         echo "alert('" . $mensaje . "');"; 
@@ -24,4 +33,6 @@ $session = new SessionManager();
         echo "</script>";
         exit; 
     }
+}
+
 ?>

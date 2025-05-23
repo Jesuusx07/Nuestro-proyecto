@@ -9,6 +9,8 @@ $session = new SessionManager();
     $email = $_POST['correo'];
     $apell = $_POST['apellido'];
 
+    $pass_hash = password_hash($pass, PASSWORD_BCRYPT);
+
 if($nom == "" || $pass == "" || $email == "" || $apell == ""){
         $mensaje = "Credenciales inválidas. Inténtalo de nuevo.";
         echo "<script type='text/javascript'>";
@@ -17,7 +19,7 @@ if($nom == "" || $pass == "" || $email == "" || $apell == ""){
         echo "</script>";
         exit; 
 }else{
-        $insertar = "INSERT INTO admin VALUES('', '$nom', '$apell', '$email', '$pass')";
+        $insertar = "INSERT INTO admin VALUES('', '$nom', '$apell', '$email', '$pass_hash')";
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
         header('Location: ../login.html');
         $mensaje = "Registro exitoso.";
