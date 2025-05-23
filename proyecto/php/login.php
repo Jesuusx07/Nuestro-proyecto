@@ -1,19 +1,19 @@
 <?php
 require_once 'SessionManager.php';
-require_once 'register.php';
+require_once 'sql.php';
 
 $session = new SessionManager();
 
 // Simulación de autenticación (normalmente usarías base de datos)
-    $user = $_GET['correo'];
-    $passw = $_GET['passw'];
+    $user = $_POST['correo'];
+    $contra = $_POST['contra'];
 
-    if ($user == $email && $passw == $pass) {
-        $session->login(1, $user);
-        header('Location: ../dashboard.html');
+    $sql = $enlace->query("select * from admin where correo='$user' and contraseña='$contra' ");
+    if ($datos = $sql->fetch_object()){
+        header("location: ../dashboard.html");
         exit;
-
-    } else {
+    }
+    else {
         $mensaje = "Credenciales inválidas. Inténtalo de nuevo.";
         echo "<script type='text/javascript'>";
         echo "alert('" . $mensaje . "');"; 

@@ -1,18 +1,18 @@
 CREATE TABLE cliente(
-    id_cliente int not null primary key,
+    id_cliente int not null primary key auto_increment,
     nombre varchar (30) not null,
     direccion varchar (30) not null,
     telefono varchar (10) not null);
 
 
 CREATE TABLE categoria(
-    id_categoria int not null primary key,
+    id_categoria int not null primary key auto_increment,
     nombre varchar (30) not null);
 
 
 
 CREATE TABLE producto(
-    id_producto int not null primary key,
+    id_producto int not null primary key auto_increment,
     nombre varchar (30) not null,
     categoria int not null,
     imagen varchar (50) not null,
@@ -22,7 +22,7 @@ CREATE TABLE producto(
 
 
 CREATE TABLE venta(
-    id_venta int not null primary key,
+    id_venta int not null primary key auto_increment,
     producto int not null,
     cantidad varchar (20) not null,
     precio int not null,
@@ -33,7 +33,7 @@ CREATE TABLE venta(
 
 
 CREATE TABLE pedido(
-    id_pedido int not null primary key,
+    id_pedido int not null primary key auto_increment,
     producto int not null,
     cantidad varchar (20) not null,
     precio int not null,
@@ -45,7 +45,7 @@ CREATE TABLE pedido(
 
 
 CREATE TABLE historial(
-    id_historial int not null primary key,
+    id_historial int not null primary key auto_increment,
     id_venta int not null,
     cantidad varchar (20) not null,
     precio int not null,
@@ -56,7 +56,7 @@ CREATE TABLE historial(
 
 
 CREATE TABLE pago(
-    id_pago int not null primary key,
+    id_pago int not null primary key auto_increment,
     metodo_pago varchar (20) not null,
     total int not null,
     fecha date not null,
@@ -64,7 +64,7 @@ CREATE TABLE pago(
 
 
 CREATE TABLE factura(
-    id_factura int not null primary key,
+    id_factura int not null primary key auto_increment,
     id_pedido int not null,
     id_cliente int not null,
     fecha date not null,
@@ -75,7 +75,7 @@ CREATE TABLE factura(
 
 
 CREATE TABLE proveedor(
-    id_proveedor int not null primary key,
+    id_proveedor int not null primary key auto_increment,
     nombre varchar (30) not null,
     direccion varchar (30) not null,
     telefono varchar (10) not null,
@@ -84,7 +84,7 @@ CREATE TABLE proveedor(
 
 
 CREATE TABLE entrada(
-    id_entrada int not null primary key,
+    id_entrada int not null primary key auto_increment,
     id_proveedor int not null,
     cantidad varchar (20) not null,
     total int not null,
@@ -94,7 +94,7 @@ CREATE TABLE entrada(
     FOREIGN KEY (producto) REFERENCES producto(id_producto));
 
 CREATE TABLE salida(
-    id_salida int not null primary key,
+    id_salida int not null primary key auto_increment,
     cantidad varchar (20) not null,
     motivo_salida varchar (30) not null,
     producto int not null,
@@ -103,7 +103,7 @@ CREATE TABLE salida(
 
 
 CREATE TABLE reserva(
-    id_reserva int not null primary key,
+    id_reserva int not null primary key auto_increment,
     id_cliente int not null,
     estado boolean not null,
     fecha date not null,
@@ -112,34 +112,34 @@ CREATE TABLE reserva(
 
 
 CREATE TABLE empleado(
-    id_empleado int not null primary key,
+    id_empleado int not null primary key auto_increment,
     nombres varchar (20) not null,
     apellidos varchar (20) not null,
-    correo varchar (100) not null),
+    correo varchar (100) not null,
     contraseña varchar (20) not null,
     telefono varchar (20) not null,
-    documento varchar (20) not null,;
+    documento varchar (20) not null);
 
 CREATE TABLE admin(
-    id_admin int not null primary key,
+    id_admin int not null primary key auto_increment,
     nombres varchar (20) not null,
     apellidos varchar (20) not null,
-    correo varchar (100) not null),
-    contraseña varchar (20) not null,;
+    correo varchar (100) not null,
+    contraseña varchar (20) not null);
 
 
 
 CREATE TABLE roles(
-    id_rol int not null primary key,
+    id_rol int not null primary key auto_increment,
     id_empleado int not null,
     FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado));
 
 CREATE TABLE plaCategoria(
-    id_plaCat int not null primary key,
+    id_plaCat int not null primary key auto_increment,
     nombre varchar (30) not null);
 
 CREATE TABLE platillo(
-    id_pla int not null primary key,
+    id_pla int not null primary key auto_increment,
     nombre varchar (30) not null,
     descripcion varchar (30) not null,
     precio int not null,

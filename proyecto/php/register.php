@@ -21,9 +21,7 @@ if($nom == "" || $pass == "" || $email == "" || $apell == ""){
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
         header('Location: ../login.html');
         $mensaje = "Registro exitoso.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "</script>";
+        echo "$mensaje";
 }
 
     
