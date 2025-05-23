@@ -13,7 +13,34 @@
         <span>ADMINISTRADOR</span>
       </div>
       <div class="navbar-right">
+<<<<<<< HEAD
         <a class="cerrarSesion" href="login.html">Cerrar Sesión</a>
+=======
+         </div>
+  <div class="perfil">
+  <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
+  <div class="menu-desplegable" id="menuPerfil">
+    <a href="login.html">Cerrar sesión</a>
+    
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menuPerfil");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.boton-perfil')) {
+      const menu = document.getElementById("menuPerfil");
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      }
+    }
+  }
+</script>
+>>>>>>> 40fa4f373255d2b0f31b734427abda982911c5f2
       </div>
     </div>
 
