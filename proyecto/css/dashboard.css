@@ -259,6 +259,46 @@
     height: auto !important;
     aspect-ratio: 2 / 1;
   }
+    .perfil {
+      position: fixed; /* Para mantenerlo fijo aunque hagas scroll */
+      top: 25px;
+      right: 25px;
+      z-index: 999;
+    }
+
+    .boton-perfil {
+      background-color: #A02334;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu-desplegable {
+      display: none;
+      position: absolute;
+      left: -50px; 
+      top: 45px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      min-width: 160px;
+      z-index: 1;
+ 
+    }
+
+    .menu-desplegable a {
+      color: black;
+      left: 20px;
+      padding: 10px 15px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .menu-desplegable a:hover {
+      background-color: #f1f1f1;
+    }
   
   @media (max-width : 1370px) {
 
