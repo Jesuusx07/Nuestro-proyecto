@@ -22,3 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+togglePassword.addEventListener('click', () => {
+    const isPassword = passwordInput.getAttribute('type') === 'password';
+    passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+    togglePassword.classList.toggle('active', isPassword);
+});
