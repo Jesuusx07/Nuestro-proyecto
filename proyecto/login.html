@@ -1,102 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kenny's - Aplicación Web</title>
-    <link rel="stylesheet" href="./css/login.css" />
-    <style>
-      /* Estilos para el botón mostrar/ocultar */
-      .password-wrapper {
-          position: relative;
-          width: 100%;
-      }
-      .password-wrapper input[type="password"],
-      .password-wrapper input[type="text"] {
-          width: 100%;
-          padding-right: 40px;
-          box-sizing: border-box;
-      }
-      .toggle-password {
-          position: absolute;
-          right: 12px;
-          top: 50%;
-          transform: translateY(-50%);
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          font-size: 1.3em;
-          color: #A02334;
-          user-select: none;
-          outline: none;
-      }
-      .toggle-password:hover {
-          color: #ca0f28;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/login.css">
+
 </head>
 
 <body>
     <div class="container">
-        <a href="index.html">
-            <img class="logo" src="img/Logo Principal (1).png" alt="Kenny's Logo" />
-        </a>
-
+   
+        <a href="index.html"> <img class="logo" src="img/Logo Principal (1).png" alt="Kenny's Logo"> </a>
+        
+      
         <h1>Inicia sesión</h1>
-        <p style="text-align: center;">
-            ¿No tienes cuenta?
-            <a class="inc" href="registrarse.html">Registrarse</a>
-        </p>
+        <p style="text-align: center;">¿No tienes cuenta? <a class="inc" href="registrarse.html">Registrarse</a></p>
 
-        <form id="login" action="./php/login.php" method="POST">
-            <div class="input-group">
-                <label for="login_email">Correo electrónico</label>
-                <input
-                    type="email"
-                    id="login_email"
-                    name="correo"
-                    placeholder="tucorreo@gmail.com"
-                    required
-                />
-            </div>
-
-            <div class="input-group password-group">
-                <label for="login_password">Contraseña</label>
-                <div class="password-wrapper">
-                    <input
-                        type="password"
-                        name="contra"
-                        id="login_password"
-                        required
-                        pattern="(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{12,}"
-                        title="Debe tener al menos 12 caracteres, incluyendo letras, números y símbolos."
-                        placeholder="Tu contraseña"
-                    />
-                    <button
-                        type="button"
-                        class="toggle-password"
-                        id="togglePassword"
-                        aria-label="Mostrar contraseña"
-                    >
-                        👁️
-                    </button>
+        <div>
+            <form id="login" action="./php/login.php" method="POST">
+                <div class="input-group">
+                    <label for="login_email">Correo electrónico</label>
+                    <input type="email" id="login_email" name="correo" placeholder="tucorreo@gmail.com">
                 </div>
-            </div>
+    
+                <div class="input-group">
+                    <label for="login_password">Contraseña</label>
+                    <input type="password" name="contra" id="login_password">
+                </div>
+                <button type="submit" class="boton-registro" id="login-submit">Iniciar Sesión</button>
+                
+            </form>
+        </div>
+        
 
-            <button type="submit" id="botons">Iniciar Sesion</button>
-        </form>
-    </div>
-
-    <script>
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordInput = document.getElementById('login_password');
-
-        togglePassword.addEventListener('click', () => {
-            const type =
-                passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            togglePassword.textContent = type === 'password' ? '👁️' : '👁️';
-        });
-    </script>
 </body>
+
+
 </html>
