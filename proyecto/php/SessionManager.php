@@ -1,8 +1,8 @@
 <?php
 class SessionManager {
-    private $timeout = 15; // Tiempo de expiración en segundos (15 min)
+    private $timeout = 1200; // Tiempo de expiración en segundos (15 min)
 
-    public function __construct($timeout = 15) {
+    public function __construct($timeout = 1200) {
         $this->timeout = $timeout;
         session_start();
         $this->checkSessionTimeout();
