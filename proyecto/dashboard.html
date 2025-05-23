@@ -38,6 +38,7 @@
       }
     }
   }
+
 </script>
 
   <div class="container">
@@ -113,7 +114,7 @@
 
     <div class="main">
       <div class="welcome-box">
-        <h2>Buenos Días, Usuario</h2>
+        <h2>Buenos Días, <span id="$nom">Usuario</span></h2>
         <p>Tomate un momento para ver tus <span class="highlight">estadísticas</span> generales :D</p>
 
         <div class="ventas-y-graficos">
@@ -213,6 +214,14 @@
       }
     });
   </script>
+
+  <script>
+  const nombreUsuario = localStorage.getItem('nombre');
+  if (nombreUsuario) {
+    document.getElementById('$nom').textContent = nombreUsuario;
+  }
+</script>
+
 
 </body>
 </html>
