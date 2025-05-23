@@ -65,9 +65,12 @@
   
   .menu-lateral {
     width: 220px;
+    margin-right: 5px;
+    margin-top: 65px;
+    margin-left: 30px;
+    width: 220px;
     display: flex;
     flex-direction: column;
-    margin-right: 80px;
   }
   
   .menu-container {
