@@ -132,126 +132,35 @@ nav ul a:hover{
     transform: scale(1.1) ;
     }
 
-    
-        .facturacion{
-        /* Visuales */
-        color: #ffffffe9;                 /* Color del texto */
-        font-size: 16px;               /* Tamaño del texto */
-        font-family: "Cinzel", serif; /* Fuente */
-        border-radius: 8px;            /* Bordes redondeados */
-        padding: 10px;                 /* Espaciado interior */
-        text-align: center;
-        /* Posición */
-        position: absolute;/* Distancia desde la parte inferior del contenedor */
-        margin-top: 200px;
-        bottom: 10px;             
-        left: 37px;
-        right: 10px;
-        height:100px ;
-        width: 200px;
-        background-color: #00000098;
-        padding-bottom: 95px;
-        transform: translate(0%, 239%);  /* Truco para centrar */
-        
-        /* Efecto */
-        opacity: 0;                    /* Oculto inicialmente */
-        transition: opacity 0.3s ease;
-        pointer-events: none;         /* Evita que interfiera con el hover */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
-    }
-    .inventario {
-         /* Visuales */
-       color: #ffffffe9;                 /* Color del texto */
-        font-size: 16px;               /* Tamaño del texto */
-        font-family: "Cinzel", serif; /* Fuente */
-        border-radius: 8px;            /* Bordes redondeados */
-        padding: 10px;                 /* Espaciado interior */
-        
-        text-align: center;
-        /* Posición */
-        position: absolute;
-        bottom: 190px;             /* Distancia desde la parte inferior del contenedor */
-        left: 37px;
-        right: 10px;
-        height:100px ;
-        width: 200px;
-        transform: translate(143%, 255%);  /* Truco para centrar */
-        background-color: #00000098;
-        padding-bottom: 165px;
-        
-        /* Efecto */
-        opacity: 0;                    /* Oculto inicialmente */
-        transition: opacity 0.3s ease;
-        pointer-events: none;         /* Evita que interfiera con el hover */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
-    }
-    .pedidos {
-        /* Visuales */
-       color: #ffffffe9;                 /* Color del texto */
-        font-size: 16px;               /* Tamaño del texto */
-        font-family: "Cinzel", serif; /* Fuente */
-        border-radius: 8px;            /* Bordes redondeados */
-        padding: 10px;                 /* Espaciado interior */
-        text-align: center;
-        /* Posición */
-        position: absolute;
-        bottom: 100px;             /* Distancia desde la parte inferior del contenedor */
-        left: 37px;
-        right: 10px;
-        height:100px ;
-        width: 200px;
-        transform: translate(280%, 203%);
-        background-color: #00000098;
-        padding-bottom: 199px;  /* Truco para centrar */
-        /* Efecto */
-        opacity: 0;                    /* Oculto inicialmente */
-        transition: opacity 0.3s ease;
-        pointer-events: none;         /* Evita que interfiera con el hover */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
-    }
-    .ventas {
-       /* Visuales */
-        color: #ffffffe9;                 /* Color del texto */
-        font-size: 16px;               /* Tamaño del texto */
-        font-family: "Cinzel", serif; /* Fuente */
-        border-radius: 8px;            /* Bordes redondeados */
-        padding: 10px;                 /* Espaciado interior */
-        padding-bottom: 100px;
-        text-align: center;
-        /* Posición */
-        position: absolute;
-        bottom: 100px;             /* Distancia desde la parte inferior del contenedor */
-        left: 37px;
-        right: 10px;
-        height:100px ;
-        width: 200px;
-        background-color: #00000098;
-        padding-bottom: 179px;
-        transform: translate(420%, 215%);  /* Truco para centrar */
-        
-        /* Efecto */
-        opacity: 0;                    /* Oculto inicialmente */
-        transition: opacity 0.3s ease;
-        pointer-events: none;         /* Evita que interfiera con el hover */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
-    }
-    
+.img{
+    width: 100% ;
+    height:100% ;
+    object-fit: cover;
+}
+.obj_img{
+    width: 500px;
+    height: 600px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+.contenedor-img{
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: flex 0.5s ease-in-out;
 
-    /* Mostrar párrafo al hacer hover */
-    .contenedor-img:hover .facturacion {
-        opacity: 1;
-        
-    }
-    .contenedor-img:hover .inventario {
-        opacity: 1;
-    }
-    .contenedor-img:hover .pedidos {
-        opacity: 1;
-    }
-    .contenedor-img:hover .ventas {
-        opacity: 1;
-    }
-    
+}
+.contenedor-img:hover{
+    flex: 4;
+}
+
+.obj_img:has(.contenedor-img:hover).obj_img:not(:hover).img{
+    filter: grayscale(100%);
+
+} 
 /*todo footer*/
 .container{
     max-width: 1200px;
