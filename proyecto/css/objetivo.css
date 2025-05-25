@@ -112,11 +112,12 @@ nav ul a:hover{
  #OBJETIVO_img{
     background-color: #201E1E;
     padding: 80px 0%;
+    
  }
 
     #OBJETIVO_img img {
-        width: 250px;        /* O un tamaño fijo como 300px */
-        height: 380px;
+        width: auto;        /* O un tamaño fijo como 300px */
+        height: 300px;
         border-radius: 15px;
        padding-bottom: 5px;
         
@@ -132,6 +133,45 @@ nav ul a:hover{
     transform: scale(1.1) ;
     }
 /*imgenes responsivas*/
+ .facturacion{
+        /* Visuales */
+        color: #ffffff;                 /* Color del texto */
+        font-size: 20px;               /* Tamaño del texto */
+        font-family: "Cinzel", serif;
+       
+        border-radius: 8px;            /* Bordes redondeados */
+        padding: 20px;                 /* Espaciado interior */
+        padding-bottom: 100px;
+        text-align: center;
+        /* Posición */
+        position: absolute;
+        bottom: 100px;             /* Distancia desde la parte inferior del contenedor */
+        left: 37px;
+        right: 10px;
+        height:100px ;
+        width: 300px;
+        transform: translate(65%, 240%);  /* Truco para centrar */
+        
+        /* Efecto */
+        opacity: 0;                    /* Oculto inicialmente */
+        pointer-events: none;         /* Evita que interfiera con el hover */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
+        
+        
+    }
+     .contenedor-img:hover .facturacion {
+        opacity: 5;
+        
+    }
+    .contenedor-img:hover .inventario {
+        opacity: 1;
+    }
+    .contenedor-img:hover .pedidos {
+        opacity: 1;
+    }
+    .contenedor-img:hover .ventas {
+        opacity: 1;
+    }
     .img{
         width: 100% ;
         height:100% ;
@@ -144,6 +184,8 @@ nav ul a:hover{
         display: flex;
         flex-direction: row;
         gap: 16px;
+
+        
     }
     .contenedor-img{
         flex: 1;
@@ -151,10 +193,13 @@ nav ul a:hover{
         cursor: pointer;
         border-radius: 10px;
         transition: flex 0.5s ease-in-out;
+        
+    
 
     }
     .contenedor-img:hover{
         flex: 4;
+       
     }
 
     .obj_img:has(.contenedor-img:hover).obj_img:not(:hover).img{
