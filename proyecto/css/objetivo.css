@@ -110,8 +110,10 @@ nav ul a:hover{
     transform: scale(1.1) ;
 }
  #OBJETIVO_img{
+    width:100%;
+    height:70%;
     background-color: #201E1E;
-    padding: 80px 0%;
+   
     
  }
 
@@ -119,7 +121,7 @@ nav ul a:hover{
         width: auto;        /* O un tamaño fijo como 300px */
         height: 300px;
         border-radius: 15px;
-       padding-bottom: 5px;
+        padding-bottom: 5px;
         
     }
     .obj_img {
@@ -129,39 +131,65 @@ nav ul a:hover{
         justify-content: space-around;
         
     }
-    #OBJETIVO_img img:hover{
-    transform: scale(1.1) ;
-    }
+    
 /*imgenes responsivas*/
- .facturacion{
-        /* Visuales */
-        color: #ffffff;                 /* Color del texto */
-        font-size: 20px;               /* Tamaño del texto */
-        font-family: "Cinzel", serif;
-       
-        border-radius: 8px;            /* Bordes redondeados */
-        padding: 20px;                 /* Espaciado interior */
-        padding-bottom: 100px;
-        text-align: center;
-        /* Posición */
-        position: absolute;
-        bottom: 100px;             /* Distancia desde la parte inferior del contenedor */
-        left: 37px;
-        right: 10px;
-        height:100px ;
-        width: 300px;
-        transform: translate(65%, 240%);  /* Truco para centrar */
-        
-        /* Efecto */
-        opacity: 0;                    /* Oculto inicialmente */
-        pointer-events: none;         /* Evita que interfiera con el hover */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);/* Sombra para mejor lectura */
-        
-        
+   .facturacion{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;         /* Evita que interfiera con el hover */
+    border-radius: 8px;            /* Bordes redondeados */
+    padding: 20px;                 /* Espaciado interior */
+    padding-bottom: 10px;
+    text-align: center;
+    color: #ffffff;                 /* Color del texto */
+    font-size: 20px;               /* Tamaño del texto */
+    font-family: "Cinzel", serif;
+    position: absolute;
     }
-     .contenedor-img:hover .facturacion {
-        opacity: 5;
-        
+
+    .ventas {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;         /* Evita que interfiera con el hover */
+    border-radius: 8px;            /* Bordes redondeados */
+    padding: 20px;                 /* Espaciado interior */
+    padding-bottom: 10px;
+    text-align: center;
+    color: #ffffff;                 /* Color del texto */
+    font-size: 20px;               /* Tamaño del texto */
+    font-family: "Cinzel", serif;
+    position: absolute;
+    }
+    .pedidos {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;         /* Evita que interfiera con el hover */
+    border-radius: 8px;            /* Bordes redondeados */
+    padding: 20px;                 /* Espaciado interior */
+    padding-bottom: 10px;
+    text-align: center;
+    color: #ffffff;                 /* Color del texto */
+    font-size: 20px;               /* Tamaño del texto */
+    font-family: "Cinzel", serif;
+    position: absolute;
+    }
+    .inventario {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;         /* Evita que interfiera con el hover */
+    border-radius: 8px;            /* Bordes redondeados */
+    padding: 20px;                 /* Espaciado interior */
+    padding-bottom: 100px;
+    text-align: center;
+    color: #ffffff;                 /* Color del texto */
+    font-size: 20px;               /* Tamaño del texto */
+    font-family: "Cinzel", serif;
+    position: absolute;
+    }
+
+
+    .contenedor-img:hover .facturacion {
+        opacity: 1;
     }
     .contenedor-img:hover .inventario {
         opacity: 1;
@@ -172,6 +200,7 @@ nav ul a:hover{
     .contenedor-img:hover .ventas {
         opacity: 1;
     }
+
     .img{
         width: 100% ;
         height:100% ;
@@ -188,18 +217,18 @@ nav ul a:hover{
         
     }
     .contenedor-img{
+        width:90%;
+        height:auto;
         flex: 1;
         overflow: hidden;
         cursor: pointer;
         border-radius: 10px;
         transition: flex 0.5s ease-in-out;
-        
-    
 
     }
     .contenedor-img:hover{
         flex: 4;
-       
+        filter: brightness(50%);
     }
 
     .obj_img:has(.contenedor-img:hover).obj_img:not(:hover).img{
