@@ -9,7 +9,7 @@ $session = new SessionManager();
     $email = $_POST['correo'];
     $apell = $_POST['apellido'];
 
-    $pass_hash = password_hash($pass, PASSWORD_BCRYPT);
+    $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
 if($nom == "" || $pass == "" || $email == "" || $apell == ""){
         $mensaje = "Credenciales inválidas. Inténtalo de nuevo.";

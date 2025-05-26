@@ -110,15 +110,21 @@ CREATE TABLE reserva(
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente));
 
 
+CREATE TABLE roles(
+    id_rol int not null primary key auto_increment,
+    rol varchar (30) not null);
+
 
 CREATE TABLE empleado(
     id_empleado int not null primary key auto_increment,
+    id_rol int not null,
     nombres varchar (20) not null,
     apellidos varchar (20) not null,
     correo varchar (100) not null,
     contraseña varchar (20) not null,
     telefono varchar (20) not null,
-    documento varchar (20) not null);
+    documento varchar (20) not null,
+    FOREIGN KEY (id_rol) REFERENCES roles(id_rol));
 
 CREATE TABLE admin(
     id_admin int not null primary key auto_increment,
@@ -127,12 +133,6 @@ CREATE TABLE admin(
     correo varchar (100) not null,
     contraseña varchar (225) not null);
 
-
-
-CREATE TABLE roles(
-    id_rol int not null primary key auto_increment,
-    id_empleado int not null,
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado));
 
 CREATE TABLE plaCategoria(
     id_plaCat int not null primary key auto_increment,
