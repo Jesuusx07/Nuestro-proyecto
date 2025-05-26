@@ -122,16 +122,7 @@ nav ul a:hover{
        padding-bottom: 5px;
         
     }
-    .obj_img {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: space-around;
-        
-    }
-    #OBJETIVO_img img:hover{
-    transform: scale(1.1) ;
-    }
+    
 /*imgenes responsivas*/
  .facturacion{
         /* Visuales */
