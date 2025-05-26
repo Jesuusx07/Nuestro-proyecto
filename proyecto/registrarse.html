@@ -21,20 +21,10 @@
       <input type="email" placeholder="Correo electrónico" name="email" required />
 
       <!-- Campo contraseña 1 -->
-<div class="input-group password-group">
-    <div class="password-wrapper">
-    <input 
-      type="password" 
-      placeholder="Nueva contraseña" 
-      id="pass1" 
-      name="pass" 
-      required 
-      pattern="(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{12,}" 
-      title="Debe tener al menos 12 caracteres, incluyendo letras, números y símbolos.">
-    <button type="button" class="toggle-password" aria-label="Mostrar contraseña">👁️</button>
-  </div>
-</div>
-
+      <div class="password-wrapper">
+        <input type="password" placeholder="Nueva contraseña" id="pass1" required />
+        <button type="button" class="toggle-password" aria-label="Mostrar contraseña">👁️</button>
+      </div>
 
       <button type="submit" class="btn-submit">Registrarte</button>
 
