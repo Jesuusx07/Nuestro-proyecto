@@ -110,103 +110,51 @@
                 });
             </script>
 
-            <div class="tabla-container">
-                <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTOS</h1> <table>
-                    <thead>
-                        <tr>
-                            <th>ID PRODUCTO</th>
-                            <th>NOMBRE</th>
-                            <th>CATEGORÍA</th>
-                            <th>CANTIDAD (kg/unid)</th>
-                            <th>PRECIO UNITARIO</th>
-                            <th>PROVEEDOR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PRD001</td>
-                            <td>Tomates Chonto</td>
-                            <td>Verduras</td>
-                            <td>10 kg</td>
-                            <td>$3.500</td>
-                            <td>Mercado Central</td>
-                        </tr>
-                        <tr>
-                            <td>PRD002</td>
-                            <td>Plátano Maduro</td>
-                            <td>Frutas</td>
-                            <td>15 unid</td>
-                            <td>$1.200</td>
-                            <td>Frutas Frescas S.A.</td>
-                        </tr>
-                        <tr>
-                            <td>PRD003</td>
-                            <td>Carne de Res (Lomo)</td>
-                            <td>Carnes</td>
-                            <td>5 kg</td>
-                            <td>$35.000</td>
-                            <td>Cárnicos Premium</td>
-                        </tr>
-                        <tr>
-                            <td>PRD004</td>
-                            <td>Pasta Penne</td>
-                            <td>Pastas</td>
-                            <td>8 kg</td>
-                            <td>$6.800</td>
-                            <td>La Gran Fábrica</td>
-                        </tr>
-                        <tr>
-                            <td>PRD005</td>
-                            <td>Sal Marina (Gruesa)</td>
-                            <td>Condimentos</td>
-                            <td>2 kg</td>
-                            <td>$2.500</td>
-                            <td>Sabor Natural</td>
-                        </tr>
-                        <tr>
-                            <td>PRD006</td>
-                            <td>Azúcar Blanca</td>
-                            <td>Condimentos</td>
-                            <td>3 kg</td>
-                            <td>$4.000</td>
-                            <td>Dulce Cosecha</td>
-                        </tr>
-                         <tr>
-                            <td>PRD007</td>
-                            <td>Lechuga Romana</td>
-                            <td>Verduras</td>
-                            <td>7 unid</td>
-                            <td>$2.000</td>
-                            <td>Huerta Orgánica</td>
-                        </tr>
-                        <tr>
-                            <td>PRD008</td>
-                            <td>Pechuga de Pollo</td>
-                            <td>Carnes</td>
-                            <td>12 kg</td>
-                            <td>$18.000</td>
-                            <td>Avícola Sana</td>
-                        </tr>
-                        <tr>
-                            <td>PRD009</td>
-                            <td>Espagueti Integral</td>
-                            <td>Pastas</td>
-                            <td>6 kg</td>
-                            <td>$7.500</td>
-                            <td>Alimentaria S.A.S.</td>
-                        </tr>
-                        <tr>
-                            <td>PRD010</td>
-                            <td>Pimientos Rojos</td>
-                            <td>Verduras</td>
-                            <td>4 kg</td>
-                            <td>$4.800</td>
-                            <td>Finca el Sol</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+          <?php
+$conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+?>
+
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1> 
+
+    <table border="1">
+        <tr>
+            <th>id_empleado</th>
+            <th>id_rol</th>
+            <th>nombres</th>
+            <th>apellidos</th>
+            <th>correo</th>
+            <th>contraseña</th>
+            <th>telefono</th>
+            <th>documento</th>
+        </tr>
+
+<?php
+$sql = "SELECT * FROM producto";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+        <tr>
+            <td><?php echo $mostrar['id_producto']; ?></td>
+            <td><?php echo $mostrar['nombre']; ?></td>
+            <td><?php echo $mostrar['categoria']; ?></td>
+            <td><?php echo $mostrar['imagen']; ?></td>
+            <td><?php echo $mostrar['cantidad']; ?></td>
+  
+            <td><?php echo $mostrar['precio']; ?></td>
+           
+        </tr>
+<?php
+}
+?>
+    </table>
+</div>
+
 
         <div class="botones">
             <button class="btn amarillo">REGISTRAR PRODUCTO</button> <button class="btn rojo">EDITAR PRODUCTO</button> </div>
