@@ -105,7 +105,7 @@ else if(strpos($pass, " ") !== false){
 }
 
 else{
-        $insertar = "INSERT INTO admin VALUES(null, '$nom', '$apell', '$email', '$pass_hash')";
+        $insertar = "INSERT INTO admin VALUES(null, '$nom', '$apell', '$email', '$pass_hash', null, null)";
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
         $mensaje = "registro exitoso";
         echo "<script type='text/javascript'>";
