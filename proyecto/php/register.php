@@ -110,7 +110,7 @@ else{
         $mensaje = "registro exitoso";
         echo "<script type='text/javascript'>";
         echo "alert('" . $mensaje . "');"; 
-        echo "window.location.href = '../login.html'"; 
+        echo "window.location.href = '../login.php'"; 
         echo "</script>";
 
 }
