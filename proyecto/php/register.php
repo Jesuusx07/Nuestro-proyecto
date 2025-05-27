@@ -6,7 +6,7 @@ $session = new SessionManager();
 
     $nom = $_POST['nombre'];
     $pass = $_POST['pass'];
-    $email = $_POST['correo'];
+    $email = $_POST['email'];
     $apell = $_POST['apellido'];
 
     $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
