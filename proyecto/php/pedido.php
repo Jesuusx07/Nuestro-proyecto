@@ -13,11 +13,7 @@
         <span>ADMINISTRADOR</span>
       </div>
       <div class="navbar-right">
-<<<<<<< HEAD
 
-=======
-        <a class="cerrarSesion" href="login.html">Cerrar Sesión</a>
->>>>>>> d3008b71462a35fe1d6c605ab309f6f200663046
          </div>
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
@@ -50,7 +46,7 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>CLIENTES</button>
+                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
@@ -140,73 +136,50 @@
                 });
             </script>
 
-            <div class="tabla-container">
-                <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> <table>
-                    <thead>
-                        <tr>
-                            <th>ESTADO</th><th>NOMBRE</th>  <th>TELEFONO</th><th>FECHA</th><th>DETALLES</th>  </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ACTIVO</td>
-                            <td>Jesús Bolívar</td>
-                            <td>3058684900</td>
-                            <td>25/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>FINALIZADO</td>
-                            <td>Luis Pérez</td>
-                            <td>Av. Siempre Viva 742</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>FINALIZADO</td>
-                            <td>Paul Ortega</td>
-                            <td>Carrera 8 #9-10</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>ACTIVO</td>
-                            <td>Daniel Garnica</td>
-                            <td>Diagonal 5 #6-78</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>ACTIVO</td>
-                            <td>Ana López</td>
-                            <td>Calle Falsa 123</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>ACTIVO</td>
-                            <td>Carlos Ruiz</td>
-                            <td>Cra. 10 #20-30</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>ACTIVO</td>
-                            <td>Sofía Vargas</td>
-                            <td>Av. Principal 45</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                        <tr>
-                            <td>FINALIZADO</td>
-                            <td>Pedro Martínez</td>
-                            <td>Mz. 1 Lt. 2, El Sol</td>
-                            <td>5/02/2025</td>
-                            <td>MESA 3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<?php
+$conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+?>
+
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
+
+    <table border="1">
+        <tr>
+            <th>id_empleado</th>
+            <th>id_rol</th>
+            <th>nombres</th>
+            <th>apellidos</th>
+            <th>correo</th>
+            <th>contraseña</th>
+            <th>telefono</th>
+            <th>documento</th>
+        </tr>
+
+<?php
+$sql = "SELECT * FROM pedido";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+        <tr>
+            <td><?php echo $mostrar['id_pedido']; ?></td>
+            <td><?php echo $mostrar['prducto']; ?></td>
+            <td><?php echo $mostrar['cantidad']; ?></td>
+            <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['total']; ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
+
+        </tr>
+<?php
+}
+?>
+    </table>
+</div>
+
 
         <div class="botones">
             <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>

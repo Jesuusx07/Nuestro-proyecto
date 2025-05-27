@@ -146,7 +146,7 @@
 
             <br>
             <div class="regis">
-                <form id="formu">
+                <form id="formu" action="./php/registerUs.php" method="POST">
                     <div class="parte1">
                         <label for="fname"></label>
                         <input type="text" id="nombre" name="fname" placeholder="Nombre">
@@ -156,20 +156,20 @@
 
                     <div class="parte3">
                         <label for="lname"></label>
-                        <input type="email" id="correo" name="lname" placeholder="Correo">
+                        <input type="email" id="correo" name="email" placeholder="Correo">
                     </div>
                     
                     <div class="parte2">
                         <label for="fname"></label>
-                        <input type="text" id="contra" name="fname" placeholder="Contraseña">
+                        <input type="text" id="contra" name="password" placeholder="Contraseña">
                         <label for="lname"></label>
-                        <input type="text" id="telefono" name="lname" placeholder="Telefono">
+                        <input type="text" id="telefono" name="tele" placeholder="Telefono">
                     </div>
 
                     <div class="parte4">
                         <label for="lname"></label>
-                        <input type="number" id="id" name="lname" placeholder="Documento de identidad">
-                        <select name="" id="rol">
+                        <input type="number" id="id" name="documento" placeholder="Documento de identidad">
+                        <select name="select" id="rol">
                             <option value="">Rol</option>
                             <option value="Mesero">Mesero</option>
                             <option value="Cocinero">Cocinero</option>
@@ -184,28 +184,3 @@
 
 
 </body>
-<script type="text/javascript">
-    document.getElementById('formu').addEventListener('submit', function (e)
-{
-    e.preventDefault();
-    const user = document.getElementById('nombre').value.trim();
-    const pass = document.getElementById('contra').value.trim();
-    const surname = document.getElementById('apelli').value.trim();
-    const email = document.getElementById('correo').value.trim();
-    const cell = document.getElementById('telefono').value.trim();
-    const id = document.getElementById('id').value.trim();
-    const rol = document.getElementById('rol').value.trim();
-
-    if (user == '' || pass == '' || id == '' || email == '' || cell == '' || surname == '' || rol == '')
-{
-    alert('Faltan datos por rellenar');
-    return;
-}else{
-    alert('Registro exitoso');
-    return;
-}
-
-})
-</script>
-
-</html>
