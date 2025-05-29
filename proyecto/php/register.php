@@ -15,24 +15,9 @@ $session = new SessionManager();
     $longMax = 40;
     $longMaxnom = 20;
 
-    $stmt = $enlace->prepare("SELECT correo FROM admin WHERE correo = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user_email = $result->fetch_assoc();
-    $email_bd = $user_email['correo'];
-
 
 if($nom == "" || $pass == "" || $email == "" || $apell == ""){
         $mensaje = "Credenciales inválidas. Inténtalo de nuevo.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
-}
-else if($email_bd == $email){
-        $mensaje = "Este correo ya esta registrado";
         echo "<script type='text/javascript'>";
         echo "alert('" . $mensaje . "');"; 
         echo "window.history.back();"; 
@@ -105,13 +90,31 @@ else if(strpos($pass, " ") !== false){
 }
 
 else{
-        $insertar = "INSERT INTO admin VALUES(null, '$nom', '$apell', '$email', '$pass_hash', null, null)";
-        $ejecutarInsertar = mysqli_query($enlace, $insertar);
-        $mensaje = "registro exitoso";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.location.href = '../login.php'"; 
-        echo "</script>";
+    $stmt = $enlace->prepare("SELECT correo FROM admin WHERE correo = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user_email = $result->fetch_assoc();
+    $email_bd = $user_email['correo'];
+
+        if($email_bd == $email){
+                $mensaje = "Este correo ya esta registrado";
+                echo "<script type='text/javascript'>";
+                echo "alert('" . $mensaje . "');"; 
+                echo "window.history.back();"; 
+                echo "</script>";
+                exit; 
+        }
+        else{
+                $insertar = "INSERT INTO admin VALUES(null, '$nom', '$apell', '$email', '$pass_hash', null, null)";
+                $ejecutarInsertar = mysqli_query($enlace, $insertar);
+                $mensaje = "registro exitoso";
+                echo "<script type='text/javascript'>";
+                echo "alert('" . $mensaje . "');"; 
+                echo "window.location.href = '../login.php'"; 
+                echo "</script>";
+                exit;
+        }
 
 }
 
