@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
   <div class="menu-desplegable" id="menuPerfil">
-    <a href="./php/logout.php">Cerrar sesión</a>
+    <a href="login.html">Cerrar sesión</a>
     
   </div>
 </div>
@@ -46,7 +46,7 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
                         <div class="sub-menu">
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
@@ -55,7 +55,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="pedido.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -147,17 +147,17 @@ if (!$conexion) {
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
 
-    <table border="1">
-        <tr>
-            <th>id_empleado</th>
-            <th>id_rol</th>
-            <th>nombres</th>
-            <th>apellidos</th>
-            <th>correo</th>
-            <th>contraseña</th>
-            <th>telefono</th>
-            <th>documento</th>
-        </tr>
+<table border="1">
+    <tr>
+        <th>Empleado</th>
+        <th>Rol</th>
+        <th>Nombres</th>
+        <th>correo</th>
+        <th>contraseña</th>
+        <th>telefono</th>
+        <th>documento</th>
+    </tr>
+
 
 <?php
 $sql = "SELECT * FROM empleado";
@@ -171,13 +171,16 @@ while ($mostrar = mysqli_fetch_array($result)) {
             <td><?php echo $mostrar['nombres']; ?></td>
             <td><?php echo $mostrar['apellidos']; ?></td>
             <td><?php echo $mostrar['correo']; ?></td>
-            <td>****</td> <!-- Contraseña oculta -->
+            <td><?php echo $mostrar['contraseña']; ?></td>
             <td><?php echo $mostrar['telefono']; ?></td>
-            <td><?php echo $mostrar['documento']; ?></td>
+           <td><?php echo $mostrar['documento']; ?></td>
         </tr>
 <?php
 }
 ?>
+    </table>
+</div>
+
     </table>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
 </head>
 <body>
 
@@ -13,10 +13,7 @@
         <span>ADMINISTRADOR</span>
       </div>
       <div class="navbar-right">
-<<<<<<< HEAD:proyecto/consultar.html
-=======
 
->>>>>>> 34670ea7b9130872835bb09e9b7560997137756c:proyecto/php/pedido.php
          </div>
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
@@ -49,7 +46,7 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
                         <div class="sub-menu">
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
@@ -58,7 +55,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="pedido.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -74,7 +71,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="historial.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -148,38 +145,41 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE HISTORIAL</h1> 
 
-    <table border="1">
-        <tr>
-            <th>id_empleado</th>
-            <th>id_rol</th>
-            <th>nombres</th>
-            <th>apellidos</th>
-            <th>correo</th>
-            <th>contraseña</th>
-            <th>telefono</th>
-            <th>documento</th>
-        </tr>
+<table border="1">
+    <tr>
+        <th>Historial</th>
+        <th>Nventa</th>
+        <th>cantidad</th>
+        <th>precio</th>
+        <th>producto</th>
+        <th>fecha</th>
+       
+    </tr>
+
 
 <?php
-$sql = "SELECT * FROM pedido";
+$sql = "SELECT * FROM HISTORIAL";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
-            <td><?php echo $mostrar['id_pedido']; ?></td>
-            <td><?php echo $mostrar['prducto']; ?></td>
+            <td><?php echo $mostrar['id_historial']; ?></td>
+            <td><?php echo $mostrar['id_venta']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
             <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['total']; ?></td>
+            <td><?php echo $mostrar['producto']; ?></td>
             <td><?php echo $mostrar['fecha']; ?></td>
-
+         
         </tr>
 <?php
 }
 ?>
+    </table>
+</div>
+
     </table>
 </div>
 

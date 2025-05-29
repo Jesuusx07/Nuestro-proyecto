@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Productos</title> <link rel="stylesheet" href="./css/producto.css">
+    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
 </head>
 <body>
 
     <div class="navbar">
       <div class="navbar-left">
-        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a> <span>ADMINISTRADOR</span>
+        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
+        <span>ADMINISTRADOR</span>
       </div>
       <div class="navbar-right">
-        <img src="./img/Logo Principal (1).png" alt="Logo Principal Kenny's" /> <a class="login" href="login.html"><img src="./img/login (2).png" alt="Icono de Login"></a> </div>
+<<<<<<< HEAD:proyecto/consultar.html
+=======
+
+>>>>>>> 34670ea7b9130872835bb09e9b7560997137756c:proyecto/php/pedido.php
+         </div>
+  <div class="perfil">
+  <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
+  <div class="menu-desplegable" id="menuPerfil">
+    <a href="login.html">Cerrar sesión</a>
+    
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menuPerfil");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.boton-perfil')) {
+      const menu = document.getElementById("menuPerfil");
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      }
+    }
+  }
+</script>
+      </div>
     </div>
 
     <div class="container">
@@ -20,9 +49,8 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>CLIENTES</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -30,7 +58,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="pedido.php class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -38,6 +66,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
+                            <a href="producto.html" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -119,12 +148,11 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
 
 <table border="1">
     <tr>
-        <th>id_producto</th>
-        <th>nombre</th>
+        <th>id_pedido</th>
         <th>categoria</th>
         <th>imagen</th>
         <th>cantidad</th>
@@ -133,29 +161,33 @@ if (!$conexion) {
 
 
 <?php
-$sql = "SELECT * FROM producto";
+$sql = "SELECT * FROM pedido";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
-            <td><?php echo $mostrar['id_producto']; ?></td>
-            <td><?php echo $mostrar['nombre']; ?></td>
-            <td><?php echo $mostrar['categoria']; ?></td>
-            <td><?php echo $mostrar['imagen']; ?></td>
+            <td><?php echo $mostrar['id_pedido']; ?></td>
+            <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
             <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['direccion']; ?></td>
+            <td><?php echo $mostrar['total']; ?></td>
            
         </tr>
 <?php
-   }
+}
 ?>
+    </table>
+</div>
+
     </table>
 </div>
 
 
         <div class="botones">
-            <button class="btn amarillo">REGISTRAR PRODUCTO</button> <button class="btn rojo">EDITAR PRODUCTO</button> </div>
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
     </div>
 
 </body>
