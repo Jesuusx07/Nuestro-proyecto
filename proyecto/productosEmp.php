@@ -25,7 +25,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="pedidoEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>

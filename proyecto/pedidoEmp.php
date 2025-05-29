@@ -44,12 +44,6 @@
         <div class="contenido">
             <div class="menu-lateral">
                 <div class="menu-container">
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
-                        <div class="sub-menu">
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
         
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
@@ -62,15 +56,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
-                            <a href="producto.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
-                        <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="productosEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -78,7 +64,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
-                            <a href="proveedor.html" class="sub-btn">Consultar</a>
+                            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -91,21 +77,6 @@
                         </div>
                     </div>
         
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
-                        <div class="sub-menu">
-                            <a href="ventas.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
-                        <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
                 </div>
             </div>
 
