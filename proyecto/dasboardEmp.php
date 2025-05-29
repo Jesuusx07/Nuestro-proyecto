@@ -65,7 +65,7 @@
         <div class="menu-item">
           <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
           <div class="sub-menu">
-            <a href="proveedorEmp.html" class="sub-btn">Consultar</a>
+            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
             <a href="registerUs.html" class="sub-btn">Registrar</a>
           </div>
         </div>

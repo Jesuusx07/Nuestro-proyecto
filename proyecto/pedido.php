@@ -13,10 +13,6 @@
         <span>ADMINISTRADOR</span>
       </div>
       <div class="navbar-right">
-<<<<<<< HEAD:proyecto/consultar.html
-=======
-
->>>>>>> 34670ea7b9130872835bb09e9b7560997137756c:proyecto/php/pedido.php
          </div>
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
