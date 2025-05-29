@@ -46,7 +46,7 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
                         <div class="sub-menu">
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
@@ -55,7 +55,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="pedido.php class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -147,17 +147,15 @@ if (!$conexion) {
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
 
-    <table border="1">
-        <tr>
-            <th>id_empleado</th>
-            <th>id_rol</th>
-            <th>nombres</th>
-            <th>apellidos</th>
-            <th>correo</th>
-            <th>contraseña</th>
-            <th>telefono</th>
-            <th>documento</th>
-        </tr>
+<table border="1">
+    <tr>
+        <th>id_pedido</th>
+        <th>categoria</th>
+        <th>imagen</th>
+        <th>cantidad</th>
+        <th>precio</th>
+    </tr>
+
 
 <?php
 $sql = "SELECT * FROM pedido";
@@ -167,16 +165,20 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
             <td><?php echo $mostrar['id_pedido']; ?></td>
-            <td><?php echo $mostrar['prducto']; ?></td>
+            <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
             <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['direccion']; ?></td>
             <td><?php echo $mostrar['total']; ?></td>
-            <td><?php echo $mostrar['fecha']; ?></td>
-
+           
         </tr>
 <?php
 }
 ?>
+    </table>
+</div>
+
     </table>
 </div>
 
