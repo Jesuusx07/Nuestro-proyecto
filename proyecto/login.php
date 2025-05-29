@@ -6,7 +6,7 @@ $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
     }else{
-        header("location: dashboard.html");
+        header("location: dashboard.php");
     }
 
 ?>

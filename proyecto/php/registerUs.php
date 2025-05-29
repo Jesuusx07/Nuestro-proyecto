@@ -10,7 +10,9 @@ $tele = $_POST["tele"];
 $docu = $_POST["documento"];
 $select = $_POST["select"];
 
-$stmt = $enlace->prepare("SELECT correo FROM admin WHERE correo = ?");
+$password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+$stmt = $enlace->prepare("SELECT correo FROM empleado WHERE correo = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -36,7 +38,7 @@ else{
         exit; 
     }
     elseif($select == "Mesero"){
-        $insertar = "INSERT INTO empleado VALUES(null, 1, '$fname', '$lname', '$email', '$password', '$tele', '$docu', null, null)";
+        $insertar = "INSERT INTO empleado VALUES(null, 1, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
         $mensaje = "Registro exitoso.";
         echo "<script type='text/javascript'>";
@@ -45,7 +47,7 @@ else{
         echo "</script>";
     }
     elseif($select == "Cocinero"){
-        $insertar = "INSERT INTO empleado VALUES(null, 2, '$fname', '$lname', '$email', '$password', '$tele', '$docu', null, null)";
+        $insertar = "INSERT INTO empleado VALUES(null, 2, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
         $mensaje = "Registro exitoso.";
         echo "<script type='text/javascript'>";
@@ -54,7 +56,7 @@ else{
         echo "</script>";
     }    
     elseif($select == "Limpieza"){
-        $insertar = "INSERT INTO empleado VALUES(null, 3, '$fname', '$lname', '$email', '$password', '$tele', '$docu', null, null)";
+        $insertar = "INSERT INTO empleado VALUES(null, 3, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
         $mensaje = "Registro exitoso.";
         echo "<script type='text/javascript'>";
