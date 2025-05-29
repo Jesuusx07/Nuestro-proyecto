@@ -150,4 +150,8 @@ CREATE TABLE platillo(
     precio INT NOT NULL,
     pla_categoria INT NOT NULL,
     FOREIGN KEY (pla_categoria) REFERENCES plaCategoria(id_plaCat)
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> 34670ea7b9130872835bb09e9b7560997137756c

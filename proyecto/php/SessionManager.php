@@ -1,8 +1,8 @@
 <?php
 class SessionManager {
-    private $timeout = 1200; // Tiempo de expiración en segundos (15 min)
+    private $timeout = 900; // Tiempo de expiración en segundos (15 min)
 
-    public function __construct($timeout = 1200) {
+    public function __construct($timeout = 900) {
         $this->timeout = $timeout;
         session_start();
         $this->checkSessionTimeout();
@@ -31,7 +31,11 @@ class SessionManager {
         if (isset($_SESSION['last_activity'])) {
             if (time() - $_SESSION['last_activity'] > $this->timeout) {
                 $this->logout();
-                header("Location: login.php");
+                $mensaje = "Sesion cerrada por inactividad.";
+                echo "<script type='text/javascript'>";
+                echo "alert('" . $mensaje . "');"; 
+                echo "window.location.href = 'login.php'"; 
+                echo "</script>";
                 exit;
             } else {
                 $_SESSION['last_activity'] = time(); // Renueva la actividad
