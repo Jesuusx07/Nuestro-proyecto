@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/reservasEmp.css">
 </head>
 <body>
 
@@ -13,6 +13,7 @@
         <span>EMPLEADO</span>
       </div>
       <div class="navbar-right">
+
          </div>
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
@@ -48,6 +49,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
+                            <a href="pedidoEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -59,7 +61,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
@@ -71,11 +73,10 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
-                            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                 </div>
             </div>
 
@@ -114,33 +115,30 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
 
 <table border="1">
     <tr>
-        <th>id_pedido</th>
-        <th>categoria</th>
-        <th>imagen</th>
-        <th>cantidad</th>
-        <th>precio</th>
+        <th>id_reserva</th>
+        <th>id_cliente</th>
+        <th>estado</th>
+        <th>fecha</th>
+       
     </tr>
 
 
 <?php
-$sql = "SELECT * FROM pedido";
+$sql = "SELECT * FROM reserva";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
-            <td><?php echo $mostrar['id_pedido']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['id_reserva']; ?></td>
+            <td><?php echo $mostrar['id_cliente']; ?></td>
+            <td><?php echo $mostrar['estado']; ?></td>
             <td><?php echo $mostrar['fecha']; ?></td>
-            <td><?php echo $mostrar['cantidad']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['direccion']; ?></td>
-            <td><?php echo $mostrar['total']; ?></td>
-           
+            
         </tr>
 <?php
 }
