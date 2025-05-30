@@ -6,7 +6,14 @@ $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
     }else{
-        header("location: dashboard.php");
+        if($_SESSION['user_id'] == 1){
+            header("location: dashboard.php");
+        }
+        else{
+            header("location: dashboardEmp.php");
+        }
+
+
     }
 
 ?>
