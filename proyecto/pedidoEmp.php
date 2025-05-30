@@ -10,7 +10,7 @@
     <div class="navbar">
       <div class="navbar-left">
         <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
-        <span>ADMINISTRADOR</span>
+        <span>EMPLEADO</span>
       </div>
       <div class="navbar-right">
          </div>
@@ -48,7 +48,6 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="pedido.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -72,7 +71,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>

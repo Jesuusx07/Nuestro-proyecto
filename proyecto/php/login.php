@@ -51,7 +51,7 @@ $session = new SessionManager();
 
                     }
                     elseif (password_verify($contra, $stored_hash_emple) && $user == $email_emple){
-                        $session->login(1, $user);
+                        $session->login(2, $user);
                         header("location: ../dashboardEmp.php");
                         exit;
                     }
