@@ -32,8 +32,24 @@ else if(strlen($apell) > $longMaxnom){
         echo "</script>";
         exit; 
 }
+else if(strpos($apell, " ") !== false){
+        $mensaje = "El apellido no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+}
 else if(strlen($nom) > $longMaxnom){
         $mensaje = "La longitud maxima para el nombre son 20 caracteres";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+}
+else if(strpos($nom, " ") !== false){
+        $mensaje = "El nombre no puede contener espacios es blanco";
         echo "<script type='text/javascript'>";
         echo "alert('" . $mensaje . "');"; 
         echo "window.history.back();"; 

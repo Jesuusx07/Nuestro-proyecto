@@ -146,7 +146,7 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE VENTAS</h1> 
 
 <table border="1">
     <tr>

@@ -37,6 +37,54 @@ else{
         echo "</script>";
         exit; 
     }
+    elseif(preg_match('/[A-Z]/', $tele)){
+        $mensaje = "No se aceptan letras en el telefono";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+    }
+        elseif(preg_match('/[a-z]/', $tele)){
+        $mensaje = "No se aceptan letras en el telefono";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+    }
+    else if(strpos($fname, " ") !== false){
+        $mensaje = "El nombre no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+    }
+    else if(strpos($lname, " ") !== false){
+        $mensaje = "El apellido no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+    }
+    else if(strpos($password, " ") !== false){
+        $mensaje = "La contraseña no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+    }
+    else if(strpos($tele, " ") !== false){
+        $mensaje = "El telefono no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+    }
     elseif($select == "Mesero"){
         $insertar = "INSERT INTO empleado VALUES(null, 1, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
         $ejecutarInsertar = mysqli_query($enlace, $insertar);
