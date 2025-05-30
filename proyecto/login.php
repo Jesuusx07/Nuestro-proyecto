@@ -42,7 +42,7 @@ $session = new SessionManager();
                 </div>
                 <button type="submit" class="boton-registro" id="login-submit">Iniciar Sesión</button>
 
-                <a href="forgot_password.php" class="Recupera">¿Olvidaste tu contraseña?</a>
+                <a href="forgotPASS.php" class="Recupera">¿Olvidaste tu contraseña?</a>
                 
             </form>
         </div>
