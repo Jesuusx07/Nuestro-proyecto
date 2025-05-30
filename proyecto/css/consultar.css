@@ -224,7 +224,7 @@ body {
   }
 /* Contenedor de la Tabla (Recuadro Negro) */
 .tabla-container {
-    background-color: #ff0000;
+    background-color: #fff;
     padding: 15px;
     border-radius: 10px;
     flex: 1;
@@ -357,6 +357,10 @@ th, td {
   .sub-btn:active {
     background-color: #bbb;
     color: #222;
+  }
+
+  .tabla-container {
+    color: #000000;
   }
 
   @media (max-width : 1370px) {
