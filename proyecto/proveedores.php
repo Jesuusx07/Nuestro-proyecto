@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar Productos</title> <link rel="stylesheet" href="./css/producto.css">
 </head>
 <body>
 
     <div class="navbar">
       <div class="navbar-left">
-        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
-        <span>ADMINISTRADOR</span>
+        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a> <span>ADMINISTRADOR</span>
       </div>
       <div class="navbar-right">
-
-         </div>
-  <div class="perfil">
-  <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
-  <div class="menu-desplegable" id="menuPerfil">
-    <a href="login.html">Cerrar sesión</a>
-    
-  </div>
-</div>
-
+        <img src="./img/Logo Principal (1).png" alt="Logo Principal Kenny's" /> <a class="login" href="login.html"><img src="./img/login (2).png" alt="Icono de Login"></a> </div>
+    </div>
 
     <div class="container">
         <div class="contenido">
@@ -129,30 +120,32 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDORES</h1> 
 
 <table border="1">
     <tr>
-        <th>id_producto</th>
+        <th>id_proveedor</th>
         <th>nombre</th>
-        <th>categoria</th>
-        <th>cantidad</th>
-        <th>precio</th>
+        <th>direccion</th>
+        <th>telefono</th>
+        <th>email</th>
+        <th>producto</th>
     </tr>
 
 
 <?php
-$sql = "SELECT * FROM producto";
+$sql = "SELECT * FROM proveedores";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
-            <td><?php echo $mostrar['id_producto']; ?></td>
+            <td><?php echo $mostrar['id_proveedor']; ?></td>
             <td><?php echo $mostrar['nombre']; ?></td>
-            <td><?php echo $mostrar['categoria']; ?></td>
-            <td><?php echo $mostrar['cantidad']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
+            <td><?php echo $mostrar['direccion']; ?></td>
+            <td><?php echo $mostrar['telefono']; ?></td>
+            <td><?php echo $mostrar['email']; ?></td>
+             <td><?php echo $mostrar['producto']; ?></td>
            
         </tr>
 <?php

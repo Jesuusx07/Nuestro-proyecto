@@ -23,15 +23,32 @@
   </div>
 </div>
 
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menuPerfil");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.boton-perfil')) {
+      const menu = document.getElementById("menuPerfil");
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      }
+    }
+  }
+</script>
+      </div>
+    </div>
 
     <div class="container">
         <div class="contenido">
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
                         <div class="sub-menu">
-                            <a href="empleado.php" class="sub-btn">Consultar</a>
+                             <a href="empleado.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -47,7 +64,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
-                             <a href="producto.php" class="sub-btn">Consultar</a>
+                            <a href="producto.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -63,7 +80,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
-                            <a href="proveedores.php" class="sub-btn">Consultar</a>
+                            <a href="proveedor.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -129,41 +146,46 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
 
 <table border="1">
     <tr>
-        <th>id_producto</th>
-        <th>nombre</th>
-        <th>categoria</th>
+        <th>id_venta</th>
+        <th>producto</th>
         <th>cantidad</th>
         <th>precio</th>
+        <th>total</th>
+        <th>fecha</th>
+       
     </tr>
 
 
 <?php
-$sql = "SELECT * FROM producto";
+$sql = "SELECT * FROM venta";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
-            <td><?php echo $mostrar['id_producto']; ?></td>
-            <td><?php echo $mostrar['nombre']; ?></td>
-            <td><?php echo $mostrar['categoria']; ?></td>
+            <td><?php echo $mostrar['id_venta']; ?></td>
+            <td><?php echo $mostrar['producto']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
             <td><?php echo $mostrar['precio']; ?></td>
-           
+            <td><?php echo $mostrar['total']; ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
         </tr>
 <?php
-   }
+}
 ?>
+    </table>
+</div>
+
     </table>
 </div>
 
 
         <div class="botones">
-            <button class="btn amarillo">REGISTRAR PRODUCTO</button> <button class="btn rojo">EDITAR PRODUCTO</button> </div>
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
     </div>
 
 </body>

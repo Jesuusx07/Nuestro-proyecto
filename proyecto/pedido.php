@@ -63,7 +63,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
-                            <a href="producto.html" class="sub-btn">Consultar</a>
+                            <a href="producto.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="historial.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
-                            <a href="proveedor.html" class="sub-btn">Consultar</a>
+                            <a href="proveedores.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="reservas.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
                         <div class="sub-menu">
-                            <a href="ventas.html" class="sub-btn">Consultar</a>
+                            <a href="ventas.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="inventario.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -150,10 +150,13 @@ if (!$conexion) {
 <table border="1">
     <tr>
         <th>id_pedido</th>
-        <th>categoria</th>
-        <th>imagen</th>
+        <th>producto</th>
         <th>cantidad</th>
-        <th>precio</th>
+ 
+        <th>total</th>
+        <th>fecha</th>
+        <th>direccion</th>
+        <th>estado</th>
     </tr>
 
 
@@ -165,12 +168,13 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
             <td><?php echo $mostrar['id_pedido']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['fecha']; ?></td>
+            <td><?php echo $mostrar['producto']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['direccion']; ?></td>
+         
             <td><?php echo $mostrar['total']; ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
+            <td><?php echo $mostrar['direccion']; ?></td>
+            <td><?php echo $mostrar['estado']; ?></td>
            
         </tr>
 <?php
