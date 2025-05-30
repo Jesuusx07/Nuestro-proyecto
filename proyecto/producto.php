@@ -181,7 +181,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
 
         <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR PRODUCTO</a> <button class="btn rojo">EDITAR PRODUCTO</button> </div>
     </div>
 
 </body>
