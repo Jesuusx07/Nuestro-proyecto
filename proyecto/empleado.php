@@ -152,6 +152,7 @@ if (!$conexion) {
         <th>Empleado</th>
         <th>Rol</th>
         <th>Nombres</th>
+        <th>Apellidos</th>
         <th>correo</th>
         <th>contraseña</th>
         <th>telefono</th>
