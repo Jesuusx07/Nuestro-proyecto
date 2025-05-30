@@ -1,16 +1,3 @@
-<?php
-
-require_once './php/SessionManager.php';
-
-$session = new SessionManager();
-
-    if (!$session->isLoggedIn()){
-        header("location: login.php");
-    }
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,7 +12,7 @@ $session = new SessionManager();
   <div class="navbar">
     <div class="navbar-left">
       <a href="index.html"><img src="./img/logo_Favicon.png" alt=""></a>
-      <span>ADMINISTRADOR</span>
+      <span>EMPLEADO</span>
     </div>
  
   </div>
@@ -58,18 +45,11 @@ $session = new SessionManager();
     
     <div class="menu-lateral">
       <div class="menu-container">
-        <div class="menu-item">
-          <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
-          <div class="sub-menu">
-            <a href="empleado.php" class="sub-btn">Consultar</a>
-           <a href="registerUs.html" class="sub-btn">Registrar</a>
-          </div>
-        </div>
 
         <div class="menu-item">
           <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
           <div class="sub-menu">
-            <a href="pedido.php" class="sub-btn">Consultar</a>
+            <a href="pedidoEmp.php" class="sub-btn">Consultar</a>
             <a href="registerUs.html" class="sub-btn">Registrar</a>
           </div>
         </div>
@@ -77,15 +57,7 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
           <div class="sub-menu">
-            <a href="producto.php" class="sub-btn">Consultar</a>
-            <a href="registerUs.html" class="sub-btn">Registrar</a>
-          </div>
-        </div>
-
-        <div class="menu-item">
-          <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
-          <div class="sub-menu">
-            <a href="historial.php" class="sub-btn">Consultar</a>
+            <a href="productosEmp.html" class="sub-btn">Consultar</a>
             <a href="registerUs.html" class="sub-btn">Registrar</a>
           </div>
         </div>
@@ -93,7 +65,7 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
           <div class="sub-menu">
-            <a href="proveedores.php" class="sub-btn">Consultar</a>
+            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
             <a href="registerUs.html" class="sub-btn">Registrar</a>
           </div>
         </div>
@@ -101,23 +73,7 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
           <div class="sub-menu">
-            <a href="reserva.php" class="sub-btn">Consultar</a>
-            <a href="registerUs.html" class="sub-btn">Registrar</a>
-          </div>
-        </div>
-
-        <div class="menu-item">
-          <button class="btn-menu">GESTIÓN DE <br>VENTAS</button>
-          <div class="sub-menu">
-            <a href="ventas.php" class="sub-btn">Consultar</a>
-            <a href="registerUs.html" class="sub-btn">Registrar</a>
-          </div>
-        </div>
-    
-        <div class="menu-item">
-          <button class="btn-menu">GESTIÓN DE <br>INVENTARIO</button>
-          <div class="sub-menu">
-            <a href="inventario.php" class="sub-btn">Consultar</a>
+            <a href="consultar.html" class="sub-btn">Consultar</a>
             <a href="registerUs.html" class="sub-btn">Registrar</a>
           </div>
         </div>

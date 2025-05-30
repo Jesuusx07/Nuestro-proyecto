@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    font-family: "Exo 2", serif;
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #e0e0e0;
+    color: #000;
+  }
+  
+  
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px ;
+  background-color: #1c1c1c;
+  color: white;
+  }
+
+  .cerrarSesion{
+    background-color: #A02334;
+    border-radius: 300px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    
+  }
+  .navbar-left,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-left img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar-left span {
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+    color: #A02334;
+    font-weight: bold;
+  }
+  
+  .navbar-right img {
+    height: 45px;
+
+  }
+
+  .container {
+    display: flex; 
+  }
+  
+  .menu-lateral {
+    width: 220px;
+    margin-right: 5px;
+    margin-top: 65px;
+    margin-left: 30px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu-container {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #e0d7d7;
+  }
+  
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+  }
+  
+  .btn-menu {
+    font-size: 14px;
+    padding: 17px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: 4px 4px 8px #bcbcbc, -4px -4px 8px #ffffff;
+    margin-bottom: 25px;
+  } 
+
+  .btn-menu:active {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .sub-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: transparent;
+    padding: 0;
+    z-index: 2;
+    animation: slideIn 0.2s ease-out forwards;
+    transform-origin: top left; 
+  }
+  
+  .sub-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #555;
+    background-color: #fff;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: auto;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    margin-left: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sub-btn:hover {
+    background-color: #ccc;
+    color: #111;
+  }
+  
+  .sub-btn:active {
+    background-color: #bbb;
+    color: #222;
+  }
+  
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(10px); 
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0); 
+    }
+  }
+  
+ 
+  .main {
+    flex: 1; 
+    padding: 30px;
+    margin-top: 30px; 
+    padding-left: 90px;
+  }
+  
+  .welcome-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    height: 800px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #bcbcbc;
+    width: 1570px;
+  }
+  
+  .welcome-box h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .welcome-box p {
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    color: #c0392b;
+    font-weight: bold;
+  }
+  
+  .ventas-y-graficos {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  .ventas-lista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    justify-content: flex-start;
+  }
+  
+  .ventas-item span {
+    padding-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    width: fit-content;
+  }
+  
+  .stat-box {
+    background: #d9d9d9;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .stat-box.dual {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+    flex: 2;
+  }
+  
+  .stat-box.dual .column {
+    flex: 1;
+  }
+
+  .stat-box.dual h3{
+    font-size: 60px;
+  }
+  
+  .stat-number {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .dias {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2 / 1;
+  }
+    .perfil {
+      position: fixed; 
+      top: 25px;
+      right: 25px;
+      z-index: 999;
+    }
+
+    .boton-perfil {
+      background-color: #A02334;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu-desplegable {
+      display: none;
+      position: absolute;
+      left: -50px; 
+      top: 45px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      min-width: 160px;
+      z-index: 1;
+ 
+    }
+
+    .menu-desplegable a {
+      color: black;
+      left: 20px;
+      padding: 10px 15px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .menu-desplegable a:hover {
+      background-color: #f1f1f1;
+    }
+  
+  @media (max-width : 1370px) {
+
+
+  .menu-lateral {
+    margin-top: 50px;
+    margin-left: 30px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-container {
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #e0d7d7;
+    margin-top: 9px;
+  }
+
+  .main {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    padding: 30px;
+    margin-top: 30px; /* Si el sidebar tiene margin-top, considera agregar uno similar aquí para alinear verticalmente */
+
+  }
+
+    .btn-menu {
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: 4px 4px 8px #bcbcbc, -4px -4px 8px #ffffff;
+    margin-bottom: 13px;
+  } 
+  
+    .welcome-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    height: 650px;
+    box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #bcbcbc;
+    width: 920px;
+  }
+
+    .ventas-y-graficos {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+    .stat-box.dual h3{
+    font-size: 35px;
+  }
+
+    .ventas-lista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: flex-start;
+  }
+  
+
+    .stat-box.dual {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+    flex: 2;
+  }
+
+    canvas {
+    width: 300px !important;
+    height: 120px !important;
+    aspect-ratio: 2 / 1;
+  }
+
+}
