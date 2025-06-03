@@ -53,22 +53,6 @@ else{
         echo "</script>";
         exit; 
     }
-    else if(strpos($fname, " ") !== false){
-        $mensaje = "El nombre no puede contener espacios es blanco";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
-    }
-    else if(strpos($lname, " ") !== false){
-        $mensaje = "El apellido no puede contener espacios es blanco";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
-    }
     else if(strpos($password, " ") !== false){
         $mensaje = "La contraseña no puede contener espacios es blanco";
         echo "<script type='text/javascript'>";

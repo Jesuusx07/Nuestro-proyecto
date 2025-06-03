@@ -18,7 +18,7 @@
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
   <div class="menu-desplegable" id="menuPerfil">
-    <a href="login.php">Cerrar sesión</a>
+    <a href="./php/logout.php">Cerrar sesión</a>
     
   </div>
 </div>

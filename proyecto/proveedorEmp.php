@@ -24,15 +24,15 @@
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
                             <a href="pedidoEmp.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
+                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
                         </div>
                     </div>
         
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
-                            <a href="productosEmp.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
+                            <a href="productosEmp.php" class="sub-btn">Consultar</a>
+                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
+                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
                         </div>
                     </div>
         
@@ -48,7 +48,7 @@
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
                             <a href="reservasEmp.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
+                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
                         </div>
                     </div>
                 </div>
