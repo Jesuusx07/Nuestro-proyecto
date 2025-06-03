@@ -13,8 +13,13 @@ $user_password = $_POST['contra'] ?? '';
 // 2. Validación inicial: campos vacíos.
 if (empty($user_email) || empty($user_password)) {
     // Redirige al login con un mensaje específico si faltan credenciales.
-    header("Location: ../login.php?message=empty_credentials");
+    $mensaje = "Credenciales invalidas.";
+    echo "<script type='text/javascript'>";
+    echo "alert('" . $mensaje . "');"; 
+    echo "window.history.back();"; 
+    echo "</script>";
     exit();
+
 }
 
 // 3. Intentar autenticar como ADMINISTRADOR.
@@ -64,7 +69,11 @@ if ($result_empleado->num_rows === 1) {
 
 // 5. Si no se autenticó en ninguna de las tablas (credenciales inválidas o usuario no encontrado).
 // Redirige al login con un mensaje de error genérico para seguridad (no dice si el usuario existe o no).
-header("Location: ../login.php?message=invalid_credentials");
+$mensaje = "Credenciales invalidas.";
+echo "<script type='text/javascript'>";
+echo "alert('" . $mensaje . "');"; 
+echo "window.history.back();"; 
+echo "</script>";
 exit();
 
 // Cierre de la conexión a la base de datos (Buena práctica).

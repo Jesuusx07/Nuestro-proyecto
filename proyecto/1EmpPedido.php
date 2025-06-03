@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
-</head>
+<!DOCTYPE html>    
+<html lang="es"> 
+<head> 
+    <title>Registrar usuario</title> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="./css/registerUs.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
+</head> 
 <body>
 
     <div class="navbar">
       <div class="navbar-left">
-        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
+        <a href="index.html"><img src="./img/logo_Favicon.png" alt=""></a>
         <span>EMPLEADO</span>
       </div>
       <div class="navbar-right">
-         </div>
+   
+                 </div>
   <div class="perfil">
   <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
   <div class="menu-desplegable" id="menuPerfil">
-    <a href="login.html">Cerrar sesión</a>
+    <a href="./php/logout.php">Cerrar sesión</a>
     
   </div>
 </div>
@@ -40,121 +44,112 @@
       </div>
     </div>
 
-    <div class="container">
-        <div class="contenido">
-            <div class="menu-lateral">
-                <div class="menu-container">
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
-                        <div class="sub-menu">
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
-                        <div class="sub-menu">
-                            <a href="1EmpProducto.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
-                        <div class="sub-menu">
-                            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
-                        <div class="sub-menu">
-                            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                </div>
-            </div>
+    <div class="fila">
 
-            <script>
-                const menuItems = document.querySelectorAll('.menu-item');
-              
-                menuItems.forEach(item => {
-                  const btnMenu = item.querySelector('.btn-menu');
-                  const subMenu = item.querySelector('.sub-menu');
-              
-                  btnMenu.addEventListener('click', () => {
-                    // Cierra cualquier otro submenú abierto
-                    menuItems.forEach(otherItem => {
-                      if (otherItem !== item) {
-                        const otherSubMenu = otherItem.querySelector('.sub-menu');
-                        if (otherSubMenu) {
-                          otherSubMenu.style.display = 'none';
-                        }
-                      }
-                    });
-              
-                    // Alterna la visibilidad del submenú actual
-                    if (subMenu) {
-                      subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-                    }
-                  });
-                });
-            </script>
+    <div class="menu-lateral">
+      <div class="menu-container">
 
-<?php
-$conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
+        <div class="menu-item">
+          <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
+          <div class="sub-menu">
+            <a href="pedidoEmp.php" class="sub-btn">Consultar</a>
+            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
+          </div>
+        </div>
 
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
-}
-?>
+        <div class="menu-item">
+          <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
+          <div class="sub-menu">
+            <a href="productosEmp.php" class="sub-btn">Consultar</a>
+            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
+          </div>
+        </div>
 
-<div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
+        <div class="menu-item">
+          <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
+          <div class="sub-menu">
+            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
+            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
+          </div>
+        </div>
 
-<table border="1">
-    <tr>
-        <th>id_pedido</th>
-        <th>categoria</th>
-        <th>imagen</th>
-        <th>cantidad</th>
-        <th>precio</th>
-    </tr>
-
-
-<?php
-$sql = "SELECT * FROM pedido";
-$result = mysqli_query($conexion, $sql);
-
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-        <tr>
-            <td><?php echo $mostrar['id_pedido']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['fecha']; ?></td>
-            <td><?php echo $mostrar['cantidad']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['direccion']; ?></td>
-            <td><?php echo $mostrar['total']; ?></td>
-           
-        </tr>
-<?php
-}
-?>
-    </table>
-</div>
-
-    </table>
-</div>
-
-
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
+        <div class="menu-item">
+          <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
+          <div class="sub-menu">
+            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
+            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
+          </div>
+        </div>
+    
+      </div>
     </div>
 
+          <script>
+            const menuItems = document.querySelectorAll('.menu-item');
+          
+            menuItems.forEach(item => {
+              const btnMenu = item.querySelector('.btn-menu');
+              const subMenu = item.querySelector('.sub-menu');
+          
+              btnMenu.addEventListener('click', () => {
+                // Cierra cualquier otro submenú abierto
+                menuItems.forEach(otherItem => {
+                  if (otherItem !== item) {
+                    const otherSubMenu = otherItem.querySelector('.sub-menu');
+                    if (otherSubMenu) {
+                      otherSubMenu.style.display = 'none';
+                    }
+                  }
+                });
+          
+                // Alterna la visibilidad del submenú actual
+                if (subMenu) {
+                  subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+                }
+              });
+            });
+          </script>
+
+        <div class="form">
+            <h2>Registrar Empleados</h2>
+
+            <br>
+            <div class="regis">
+                <form id="formu" action="./php/registerUs.php" method="POST">
+                    <div class="parte1">
+                        <label for="fname"></label>
+                        <input type="text" id="nombre" name="fname" placeholder="Nombre">
+                        <label for="lname"></label>
+                        <input type="text" id="apelli" name="lname" placeholder="Apellido">
+                    </div>
+
+                    <div class="parte3">
+                        <label for="lname"></label>
+                        <input type="email" id="correo" name="email" placeholder="Correo">
+                    </div>
+                    
+                    <div class="parte2">
+                        <label for="fname"></label>
+                        <input type="text" id="contra" name="password" placeholder="Contraseña">
+                        <label for="lname"></label>
+                        <input type="text" id="telefono" name="tele" placeholder="Telefono">
+                    </div>
+
+                    <div class="parte4">
+                        <label for="lname"></label>
+                        <input type="number" id="id" name="documento" placeholder="Documento de identidad">
+                        <select name="select" id="rol">
+                            <option value="">Rol</option>
+                            <option value="Mesero">Mesero</option>
+                            <option value="Cocinero">Cocinero</option>
+                            <option value="Limpieza">Limpieza</option>
+                        </select>
+                    </div>
+                    <input type="submit" id="boton" value="Registrar">
+                </form> 
+            </div>
+        </div>
+    </div>
+
+
 </body>
-</html>
