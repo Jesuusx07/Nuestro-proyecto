@@ -75,8 +75,12 @@ if ($result && $result->num_rows > 0) { // Se añadió `&& $result` para verific
 
         $mail->send();
         // Redirige al login con un mensaje de éxito (correo enviado)
-        header("Location: ../login.php?message=recovery_email_sent");
-        exit(); // Termina el script
+        $mensaje = "Correo enviado.";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.location.href = '../login.php'";  
+        echo "</script>";
+        exit();
     } catch (Exception $e) {
         // En caso de error en el envío del correo, redirige con un mensaje de error
         // Para depurar: echo "Error al enviar correo: {$mail->ErrorInfo}";
