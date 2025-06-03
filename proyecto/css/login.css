@@ -1,83 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Readex+Pro:wght@160..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
- body {
-        font-family: "Exo 2", serif;
-            color: #ffffff;
-            background-image: url(../img/login.png);
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
 
-        .container {
-            background-color:  rgba(0, 0, 0, 0.571);
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center; 
-            width: 350px; 
-        }
+body {
+    font-family: "Exo 2", serif;
+    color: #ffffff;
+    background-image: url(../img/login.png);
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
 
-        .logo {
-            width: 200px;
-            margin-bottom: 30px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.container {
+    background-color: rgba(0, 0, 0, 0.571);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center; 
+    width: 350px; 
+}
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.logo {
+    width: 200px;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .input-group {
-            margin-bottom: 20px;
-        }
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #ffffff; 
-        }
+.input-group {
+    margin-bottom: 20px;
+    text-align: left; 
+}
 
-        input[type="email"],
-        input[type="password"] {
-            width: calc(100% - 12px);
-            padding: 10px;
-            border: 1px solid #ffffff;
-            background-color: #FFAD60;
-            border-radius: 4px;
-            box-sizing: border-box; 
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff; 
+}
 
-        select{
-            margin-top: 15px;
-            padding: 10px;
-            border: 1px solid #ffffff;
-            background-color: #FFAD60;
-            border-radius: 50px;
-            box-sizing: border-box; 
-        }
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #FFAD60;
+    box-sizing: border-box; 
+}
 
+select {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    background-color: #FFAD60;
+    border-radius: 50px;
+    box-sizing: border-box; 
+}
 
-        .signup-link {
-            text-align: center;
-            margin-top: 20px;
-        }
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
 
+.input-group2 {
+    margin-bottom: 15px;
+    text-align: left; 
+}
 
+#botons {
+    background-color: #A02334;
+    color: #fff;
+    margin-top: 20px;
+    padding: 7px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: transparent;
+}
 
-        h2 {
-            margin-bottom: 10px;
-        }
+.boton-registro {
+    background-color: #A02334;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    width: 50%;
+    margin: 20px auto 0;
+    display: block;
+    cursor: pointer;
+}
 
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left; 
-        }
+.inc {
+    color: #96CEB4;
+}
 
+<<<<<<< HEAD
         .input-group2 {
             margin-bottom: 15px;
             text-align: left; 
@@ -136,23 +159,53 @@
   top: 50%;
   transform: translateY(-50%);
   padding: 0;
+=======
+.toggle-password {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #A02334;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+>>>>>>> 169d9edd2b89c796ea374226b66873d121f8211d
 }
 
 .password-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-input[type="password"],
 input[type="text"] {
-  width: 100%;
-  padding-right: 35px; /* espacio para el botón */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
-  box-sizing: border-box;
+    width: 100%;
+    padding-right: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
 }
+
 .toggle-password.active {
-  color: #FFAD60; /* por ejemplo, naranja para indicar estado activo */
+    color: #FFAD60;
+}
+
+a.link-button {
+    background-color: #A02334;
+    color: #fff !important;
+    margin: 10px auto 0;
+    padding: 10px 30px;
+    border-radius: 4px;
+    display: block;
+    width: fit-content;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
 }

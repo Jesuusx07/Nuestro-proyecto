@@ -3,36 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Proveedores</title> <link rel="stylesheet" href="./css/proveedor.css">
+    <title>Kenny's - Consultar Proveedores</title> <link rel="stylesheet" href="./css/proveedorEmp.css">
 </head>
 <body>
 
     <div class="navbar">
       <div class="navbar-left">
         <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
-        <span>ADMINISTRADOR</span>
+        <span>EMPLEADO</span>
       </div>
-      <div class="navbar-right">
-        <img src="./img/Logo Principal (1).png" alt="Logo Principal Kenny's" />
-        <a class="login" href="login.html"><img src="./img/login (2).png" alt="Icono de Login"></a>
-      </div>
+
     </div>
 
     <div class="container">
         <div class="contenido">
             <div class="menu-lateral">
                 <div class="menu-container">
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>CLIENTES</button>
-                        <div class="sub-menu">
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
         
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="1EmpPedido.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -40,23 +31,15 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
-                            <a href="producto.html" class="sub-btn">Consultar</a>
+                            <a href="productosEmp.html" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
-                        <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
+
         
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
-                            <a href="proveedor.html" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -64,23 +47,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
-                        <div class="sub-menu">
-                            <a href="ventas.html" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
-                        <div class="sub-menu">
-                            <a href="consultar.html" class="sub-btn">Consultar</a>
+                            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>

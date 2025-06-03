@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
 </head>
 <body>
 
@@ -23,6 +23,23 @@
   </div>
 </div>
 
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menuPerfil");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.boton-perfil')) {
+      const menu = document.getElementById("menuPerfil");
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      }
+    }
+  }
+</script>
+      </div>
+    </div>
 
     <div class="container">
         <div class="contenido">
@@ -31,7 +48,6 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
                         <div class="sub-menu">
-                            <a href="empleado.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -47,7 +63,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
-                             <a href="producto.php" class="sub-btn">Consultar</a>
+                            <a href="producto.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -87,7 +103,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
                         <div class="sub-menu">
-                            <a href="inventario.php" class="sub-btn">Consultar</a>
+                            <a href="inventario.php." class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -133,11 +149,11 @@ if (!$conexion) {
 
 <table border="1">
     <tr>
-        <th>id_producto</th>
-        <th>nombre</th>
-        <th>categoria</th>
-        <th>cantidad</th>
-        <th>precio</th>
+        <th>Id_producto</th>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
     </tr>
 
 
@@ -153,17 +169,19 @@ while ($mostrar = mysqli_fetch_array($result)) {
             <td><?php echo $mostrar['categoria']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
             <td><?php echo $mostrar['precio']; ?></td>
-           
         </tr>
 <?php
-   }
+}
 ?>
+    </table>
+</div>
+
     </table>
 </div>
 
 
         <div class="botones">
-            <button class="btn amarillo">REGISTRAR PRODUCTO</button> <button class="btn rojo">EDITAR PRODUCTO</button> </div>
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR PRODUCTO</a> <button class="btn rojo">EDITAR PRODUCTO</button> </div>
     </div>
 
 </body>

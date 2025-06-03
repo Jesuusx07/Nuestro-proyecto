@@ -42,7 +42,18 @@ else if(strlen($apell) > $longMaxnom){
     echo "</script>";
     exit; 
 }
+<<<<<<< HEAD
 // Validación de longitud máxima para nombre.
+=======
+else if(strpos($apell, " ") !== false){
+        $mensaje = "El apellido no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+}
+>>>>>>> 169d9edd2b89c796ea374226b66873d121f8211d
 else if(strlen($nom) > $longMaxnom){
     $mensaje = "La longitud máxima para el nombre son 20 caracteres.";
     echo "<script type='text/javascript'>";
@@ -51,7 +62,18 @@ else if(strlen($nom) > $longMaxnom){
     echo "</script>";
     exit; 
 }
+<<<<<<< HEAD
 // Validación de longitud mínima para la contraseña.
+=======
+else if(strpos($nom, " ") !== false){
+        $mensaje = "El nombre no puede contener espacios es blanco";
+        echo "<script type='text/javascript'>";
+        echo "alert('" . $mensaje . "');"; 
+        echo "window.history.back();"; 
+        echo "</script>";
+        exit; 
+}
+>>>>>>> 169d9edd2b89c796ea374226b66873d121f8211d
 else if(strlen($pass) < $longMin){
     $mensaje = "La contraseña necesita mínimo 8 caracteres.";
     echo "<script type='text/javascript'>";
