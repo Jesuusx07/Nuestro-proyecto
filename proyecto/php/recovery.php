@@ -88,7 +88,6 @@ if ($result && $result->num_rows > 0) { // Se añadió `&& $result` para verific
 } else {
     // Si el correo no se encuentra en la base de datos, redirige con un mensaje
     header("Location: ../login.php?message=email_not_found");
-    exit(); // Termina el script
 }
 
 // Cierre de la conexión a la base de datos (Buena práctica, aunque PHP lo cierra al terminar)
