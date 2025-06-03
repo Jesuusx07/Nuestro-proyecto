@@ -1,7 +1,9 @@
+
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
+
 
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
@@ -47,16 +49,16 @@ if ($result && $result->num_rows > 0) { // Se añadió `&& $result` para verific
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com'; // Servidor SMTP de Gmail
         $mail->SMTPAuth   = true;              // Habilitar autenticación SMTP
-        $mail->Username   = 'evannicolasg777@gmail.com'; // **¡Cámbialo con TU CORREO REAL DE GMAIL!**
+        $mail->Username   = 'jesuusx71@gmail.com'; // **¡Cámbialo con TU CORREO REAL DE GMAIL!**
         // **¡IMPORTANTE PARA GMAIL CON 2FA!: Si tienes la verificación en dos pasos,
         // usa una CONTRASEÑA DE APLICACIÓN generada en tu cuenta de Google.**
-        $mail->Password   = 'Modernwarfare2023'; // **¡Cámbialo con TU CONTRASEÑA REAL!**
+        $mail->Password   = 'q h h c f j p t o p j q h q x w'; // **¡Cámbialo con TU CONTRASEÑA REAL!**
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Usar SSL (para puerto 465)
         $mail->Port       = 465;                      // Puerto SMTP para SSL
 
         // Remitente y Destinatario
         // **¡AJUSTE: Usa la misma cuenta de Gmail que en Username para setFrom!**
-        $mail->setFrom('evannicolasg777@gmail.com', 'Equipo de Kenny\'s'); // **¡Cámbialo con TU CORREO REAL y NOMBRE!**
+        $mail->setFrom('jesuusx71@gmail.com', 'Equipo de Kenny\'s'); // **¡Cámbialo con TU CORREO REAL y NOMBRE!**
         $mail->addAddress($email, $row['correo']); // Enviar al correo que el usuario proporcionó
 
         // Contenido del Correo
