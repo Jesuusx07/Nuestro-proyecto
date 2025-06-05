@@ -2,7 +2,7 @@
 
 $servidor = "localhost";
 $usuario = "root"; 
-$clave = "12345";
+$clave = "";
 $baseDatos = "proyecto_kenny";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDatos);

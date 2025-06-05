@@ -100,7 +100,6 @@ select {
     color: #96CEB4;
 }
 
-<<<<<<< HEAD
         .input-group2 {
             margin-bottom: 15px;
             text-align: left; 
@@ -209,7 +208,8 @@ a.link-button {
     font-family: inherit;
     font-size: 1rem;
 }
+
 .Recupera{
-    color: #96CEB4;;
+    color: #96CEB4;
     font-weight: bold;
-}
+}}

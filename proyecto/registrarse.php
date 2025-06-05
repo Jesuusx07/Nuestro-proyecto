@@ -43,6 +43,22 @@ if (!$session->isLoggedIn()) {
         <button type="button" class="toggle-password" aria-label="Mostrar contraseña">👁️</button>
       </div>
 
+      <?php
+      // Aquí es donde verificas y muestras el mensaje
+        if ($session->has('error_message')) {
+        echo '<div class="error-message">';
+        echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+        echo '</div>';
+        $session->remove('error_message'); // Borra el mensaje después de mostrarlo
+      }
+      ?>
+      <style>
+          .p-error{
+              color: #A02334;
+              text-align: center;
+          }
+      </style>
+
       <button type="submit" class="btn-submit">Registrarte</button>
 
       <a class="btn-submit2" href="login.php">¿Ya tienes una cuenta?</a>

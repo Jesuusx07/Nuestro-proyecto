@@ -253,7 +253,7 @@ $session = new SessionManager();
 
     <script type="text/javascript">
         // Tiempo de inactividad en milisegundos (del servidor)
-        const INACTIVITY_TIMEOUT = <?php echo $timeout_seconds * 5000; ?>; // Convertir a milisegundos
+        const INACTIVITY_TIMEOUT = <?php echo $timeout_seconds * 1000; ?>; // Convertir a milisegundos
 
         let inactivityTimer;
 
@@ -264,7 +264,7 @@ $session = new SessionManager();
 
         function logoutUser() {
             alert('Su sesión ha caducado por inactividad. Por favor, inicie sesión de nuevo.');
-            window.location.href = 'login.php?message=session_expired'; // Redirige al login con un mensaje
+            window.location.href = './php/logout.php'; // Redirige al login con un mensaje
         }
 
         // Eventos que reinician el temporizador (cualquier actividad del usuario)
