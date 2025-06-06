@@ -1,6 +1,9 @@
 <?php
 
+require_once 'SessionManager.php';
 require_once 'sql.php';
+
+$session = new SessionManager();
 
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
@@ -17,84 +20,71 @@ $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 $user_email = $result->fetch_assoc();
-$email_bd = $user_email['correo'];
+
 
 
 if($fname == "" || $lname == "" || $email == "" || $password == "" || $tele == "" || $docu == "" || $select == ""){
-        $mensaje = "Credenciales inválidas. Inténtalo de nuevo.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+    $session->set('error_message', 'Por favor, llene todos los campos.');
+
+    header('Location: ../registerUs.php'); 
+    exit();
 }
 else{
-    if($email_bd == $email){
-        $mensaje = "Este correo ya esta registrado";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+    if($user_email){
+        $session->set('error_message', 'Este correo ya esta registrado.');
+
+        header('Location: ../registrarse.php');
     }
     elseif(preg_match('/[A-Z]/', $tele)){
-        $mensaje = "No se aceptan letras en el telefono";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+        $session->set('error_message', 'No se aceptan letras en el telefono.');
+
+        header('Location: ../registerUs.php'); 
+        exit();
     }
-        elseif(preg_match('/[a-z]/', $tele)){
-        $mensaje = "No se aceptan letras en el telefono";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+    elseif(preg_match('/[a-z]/', $tele)){
+        $session->set('error_message', 'No se aceptan letras en el telefono.');
+
+        header('Location: ../registerUs.php'); 
+        exit();
     }
     else if(strpos($password, " ") !== false){
-        $mensaje = "La contraseña no puede contener espacios es blanco";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+        $session->set('error_message', 'La contraseña no puede tener espacios en blanco.');
+
+        header('Location: ../registerUs.php'); 
+        exit();
     }
     else if(strpos($tele, " ") !== false){
-        $mensaje = "El telefono no puede contener espacios es blanco";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+        $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
+
+        header('Location: ../registerUs.php'); 
+        exit();
     }
-    elseif($select == "Mesero"){
-        $insertar = "INSERT INTO empleado VALUES(null, 1, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
-        $ejecutarInsertar = mysqli_query($enlace, $insertar);
-        $mensaje = "Registro exitoso.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-    }
-    elseif($select == "Cocinero"){
-        $insertar = "INSERT INTO empleado VALUES(null, 2, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
-        $ejecutarInsertar = mysqli_query($enlace, $insertar);
-        $mensaje = "Registro exitoso.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-    }    
-    elseif($select == "Limpieza"){
-        $insertar = "INSERT INTO empleado VALUES(null, 3, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
-        $ejecutarInsertar = mysqli_query($enlace, $insertar);
-        $mensaje = "Registro exitoso.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
+    else{
+        if($select == "Mesero"){
+            $insertar = "INSERT INTO empleado VALUES(null, 1, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
+            $ejecutarInsertar = mysqli_query($enlace, $insertar);
+            $session->set('exito', 'Empleado registrado exitosamente.');
+
+            header('Location: ../registerUs.php'); 
+            exit();
+        }
+        elseif($select == "Cocinero"){
+            $insertar = "INSERT INTO empleado VALUES(null, 2, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
+            $ejecutarInsertar = mysqli_query($enlace, $insertar);
+            $session->set('exito', 'Empleado registrado exitosamente.');
+
+            header('Location: ../registerUs.php'); 
+            exit();
+        }    
+        elseif($select == "Limpieza"){
+            $insertar = "INSERT INTO empleado VALUES(null, 3, '$fname', '$lname', '$email', '$password_hash', '$tele', '$docu', null, null)";
+            $ejecutarInsertar = mysqli_query($enlace, $insertar);
+            $session->set('exito', 'Empleado registrado exitosamente.');
+
+            header('Location: ../registerUs.php'); 
+            exit();
+        }
+
     }
 
 

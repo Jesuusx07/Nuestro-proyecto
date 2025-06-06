@@ -97,11 +97,15 @@ nav ul a:hover{
     width: 100%;
 }
 .img_terminos article img{
-    width: auto;
-    height: auto;
-    margin-left: 100px;
-    border-radius: 10px;
-   padding-bottom: 10PX;
+    width: 900px;
+    height: 600px;
+    margin-left: 150px;
+    border-radius: 10px;    
+}
+.img_terminos article p{
+    width: 900px;
+    margin-left: 150px;
+    background-color: #fff;
 }
 
 .botoom{
