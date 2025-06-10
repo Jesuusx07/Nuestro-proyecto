@@ -234,7 +234,50 @@ $session = new SessionManager();
     document.getElementById('$nom').textContent = nombreUsuario;
   }
 </script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
 
+    <?php
+    // Incluye tu SessionManager en cada página protegida
+    require_once 'php/SessionManager.php';
+    $session = new SessionManager();
+
+
+    // Obtiene el tiempo de inactividad desde la clase SessionManager
+    $timeout_seconds = $session->getTimeoutSeconds();
+    ?>
+
+    <script type="text/javascript">
+        // Tiempo de inactividad en milisegundos (del servidor)
+        const INACTIVITY_TIMEOUT = <?php echo $timeout_seconds * 1000; ?>; // Convertir a milisegundos
+
+        let inactivityTimer;
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(logoutUser, INACTIVITY_TIMEOUT);
+        }
+
+        function logoutUser() {
+            alert('Su sesión ha caducado por inactividad. Por favor, inicie sesión de nuevo.');
+            window.location.href = './php/logout.php'; // Redirige al login con un mensaje
+        }
+
+        // Eventos que reinician el temporizador (cualquier actividad del usuario)
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keypress', resetInactivityTimer);
+        document.addEventListener('click', resetInactivityTimer);
+        document.addEventListener('scroll', resetInactivityTimer); // Opcional: si el scroll cuenta como actividad
+
+        // Inicia el temporizador cuando la página carga
+        resetInactivityTimer();
+    </script>
+</body>
+</html>
 
 </body>
 </html>

@@ -147,7 +147,7 @@ if (!$conexion) {
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
 
-<table border="1">
+<table>
     <tr>
         <th>Empleado</th>
         <th>Rol</th>
