@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultarNew.css">
 </head>
 <body>
 
@@ -46,7 +46,7 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
                         <div class="sub-menu">
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
@@ -186,9 +186,6 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR EMPLEADO</a> <button class="btn rojo">EDITAR EMPLEADO</button> </div>
-    </div>
 
 </body>
 </html>

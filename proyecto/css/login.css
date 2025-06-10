@@ -100,7 +100,7 @@ select {
     color: #96CEB4;
 }
 
-<<<<<<< HEAD
+
         .input-group2 {
             margin-bottom: 15px;
             text-align: left; 
@@ -159,7 +159,7 @@ select {
   top: 50%;
   transform: translateY(-50%);
   padding: 0;
-=======
+
 .toggle-password {
     background-color: transparent;
     border: none;
@@ -171,7 +171,7 @@ select {
     top: 50%;
     transform: translateY(-50%);
     padding: 0;
->>>>>>> 169d9edd2b89c796ea374226b66873d121f8211d
+
 }
 
 .password-wrapper {
@@ -209,3 +209,7 @@ a.link-button {
     font-family: inherit;
     font-size: 1rem;
 }
+ .Recupera {
+    color: #96CEB4;;
+    font-weight: bold;
+}}
