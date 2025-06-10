@@ -23,6 +23,11 @@ $longMin = 8;
 $longMax = 40; // Esta longitud se aplica a la contraseña en texto plano, no al hash.
 $longMaxnom = 20; // Longitud máxima para nombres y apellidos.
 
+require_once 'UsuarioController.php';
+
+$db = (new Database())->conectar();
+$controlador = new UsuarioController($db);
+
 // 4. Validaciones de los datos recibidos.
 //    Se usan `empty()` para verificar si los campos están vacíos.
 if(empty($nom) || empty($pass) || empty($email) || empty($apell)){
@@ -118,15 +123,10 @@ else {
     // ***MEJORA DE SEGURIDAD Y PREVENCIÓN DE INYECCIÓN SQL:***
     // Se utiliza una sentencia preparada (prepared statement) para evitar inyección SQL.
     // Esto es muy importante cuando insertas datos recibidos del usuario.
-    $stmt = $enlace->prepare("SELECT correo FROM admin WHERE correo = ?");
-    // 's' indica que el parámetro es de tipo string (cadena).
-    $stmt->bind_param("s", $email); 
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user_email = $result->fetch_assoc();
+    $usuario = $controlador->obtener($email);
     
     // Si se encontró un correo, significa que ya está registrado.
-    if($user_email){ // Cambiado de $email_bd == $email a simplemente verificar $user_email
+    if($usuario){ // Cambiado de $email_bd == $email a simplemente verificar $user_email
         $session->set('error_message', 'Este correo ya esta registrado.');
 
         header('Location: ../registrarse.php');
@@ -140,14 +140,9 @@ else {
         // 'null' para 'id_admin' (AUTO_INCREMENT), 'reset_token', 'reset_token_expires_at'.
         // ***MEJORA DE SEGURIDAD Y PREVENCIÓN DE INYECCIÓN SQL:***
         // Se utiliza otra sentencia preparada para la inserción.
-        $insertar_query = "INSERT INTO admin (nombres, apellidos, correo, contraseña, reset_token, reset_token_expires_at) VALUES (?, ?, ?, ?, NULL, NULL)";
-        $stmt_insert = $enlace->prepare($insertar_query);
-        // 'ssss' indica que los 4 parámetros son de tipo string.
-        $stmt_insert->bind_param("ssss", $nom, $apell, $email, $pass_hash);
-        
-        $ejecutarInsertar = $stmt_insert->execute();
+        $usuario = $controlador->insertar($nom, $apell, $email, $pass_hash);
 
-        if ($ejecutarInsertar) {
+        if ($usuario) {
             $session->set('exito', 'Registro exitoso.');
 
             header('Location: login.php');

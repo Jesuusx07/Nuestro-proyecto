@@ -55,6 +55,7 @@ if (!$session->isLoggedIn()) {
                 echo '<p>' . htmlspecialchars($session->get('exito')) . '</p>';
                 echo '</div>';
                 $session->remove('exito'); // Borra el mensaje después de mostrarlo
+                $session->remove('error_message'); // Borra el mensaje después de mostrarlo
             }
             else if ($session->has('error_message')) {
                 echo '<div class="error-message">';

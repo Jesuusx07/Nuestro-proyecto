@@ -193,6 +193,7 @@ $session = new SessionManager();
                         font-size: 20px;    
                       }
                       .exito{
+                        
                         color: #96CEB4;
                         text-align: center;
                         font-size: 20px;    
@@ -212,6 +213,7 @@ $session = new SessionManager();
                           echo '<p>' . htmlspecialchars($session->get('exito')) . '</p>';
                           echo '</div>';
                           $session->remove('exito'); // Borra el mensaje después de mostrarlo
+                          $session->remove('error_message'); // Borra el mensaje después de mostrarlo
                       }
                     ?>
                 </form> 
