@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kenny's - Consultar</title>
+    <link rel="stylesheet" href="css/consultarNew.css">
+
 </head>
 <body>
 
@@ -11,39 +13,21 @@
       <div class="navbar-left">
         <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
         <a><span>ADMINISTRADOR</span></a>
-        
       </div>
       <div class="navbar-right">
-
          </div>
-  <div class="perfil">
-  <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
-  <div class="menu-desplegable" id="menuPerfil">
-    <a href="./php/logout.php">Cerrar sesión</a>
-    
-  </div>
-</div>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("menuPerfil");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  window.onclick = function(event) {
-    if (!event.target.matches('.boton-perfil')) {
-      const menu = document.getElementById("menuPerfil");
-      if (menu.style.display === "block") {
-        menu.style.display = "none";
-      }
-    }
-  }
-</script>
+      <div class="perfil">
+        <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
+        <div class="menu-desplegable" id="menuPerfil">
+          <a href="./php/logout.php">Cerrar sesión</a>
+        </div>
       </div>
     </div>
 
+
     <div class="container">
         <div class="contenido">
+          
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
@@ -51,10 +35,9 @@
                         <div class="sub-menu">
                           <a href="empleado.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
-                            
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
@@ -62,7 +45,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
@@ -70,7 +53,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
                         <div class="sub-menu">
@@ -78,7 +61,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
@@ -86,7 +69,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
@@ -94,7 +77,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
                         <div class="sub-menu">
@@ -102,7 +85,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-        
+
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
                         <div class="sub-menu">
@@ -112,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            
 
             <script>
                 const menuItems = document.querySelectorAll('.menu-item');
@@ -137,6 +121,20 @@
                     }
                   });
                 });
+
+                function toggleMenu() {
+                  const menu = document.getElementById("menuPerfil");
+                  menu.style.display = menu.style.display === "block" ? "none" : "block";
+                }
+
+                window.onclick = function(event) {
+                  if (!event.target.matches('.boton-perfil')) {
+                    const menu = document.getElementById("menuPerfil");
+                    if (menu.style.display === "block") {
+                      menu.style.display = "none";
+                    }
+                  }
+                }
             </script>
 
 <?php
@@ -148,8 +146,8 @@ if (!$conexion) {
 ?>
 
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
-
+<h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1>  
+ <button class="btn-registrar">Registrar Usuario</button>
     <table border="1">
         <tr>
             <th>id_empleado</th>
@@ -160,34 +158,91 @@ if (!$conexion) {
             <th>contraseña</th>
             <th>telefono</th>
             <th>documento</th>
+            <th>Acciones</th>
         </tr>
-
-<?php
-$sql = "SELECT * FROM empleado";
-$result = mysqli_query($conexion, $sql);
-
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-        <tr>
-            <td><?php echo $mostrar['id_empleado']; ?></td>
-            <td><?php echo $mostrar['id_rol']; ?></td>
-            <td><?php echo $mostrar['nombres']; ?></td>
-            <td><?php echo $mostrar['apellidos']; ?></td>
-            <td><?php echo $mostrar['correo']; ?></td>
-            <td>****</td> <!-- Contraseña oculta -->
-            <td><?php echo $mostrar['telefono']; ?></td>
-            <td><?php echo $mostrar['documento']; ?></td>
-        </tr>
-<?php
-}
-?>
-    </table>
-</div>
-
-
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
-    </div>
-
-</body>
-</html>
+          <tbody>
+            <tr>
+                <td>1</td>
+                <td>Admin</td>
+                <td>Ana</td>
+                <td>Pérez</td>
+                <td>ana.perez@example.com</td>
+                <td>****</td>
+                <td>3124567890</td>
+                <td>1098765432</td>
+                <td class="acciones">
+                    <button class="btn-tabla editar">✏️</button>
+                    <button class="btn-tabla eliminar">🗑️</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Vendedor</td>
+                <td>Carlos</td>
+                <td>López</td>
+                <td>carlos.lopez@example.com</td>
+                <td>****</td>
+                <td>3001234567</td>
+                <td>1023456789</td>
+                <td class="acciones">
+                    <button class="btn-tabla editar">✏️</button>
+                    <button class="btn-tabla eliminar">🗑️</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Inventario</td>
+                <td>Lucía</td>
+                <td>Martínez</td>
+                <td>lucia.martinez@example.com</td>
+                <td>****</td>
+                <td>3119876543</td>
+                <td>1009988776</td>
+                <td class="acciones">
+                    <button class="btn-tabla editar">✏️</button>
+                    <button class="btn-tabla eliminar">🗑️</button>
+                </td>
+            </tr>
+ 
+            <tr>
+                <td>1</td>
+                <td>Admin</td>
+                <td>Ana</td>
+                <td>Pérez</td>
+                <td>ana.perez@example.com</td>
+                <td>****</td>
+                <td>3124567890</td>
+                <td>1098765432</td>
+                <td class="acciones">
+                    <button class="btn-tabla editar">✏️</button>
+                    <button class="btn-tabla eliminar">🗑️</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Vendedor</td>
+                <td>Carlos</td>
+                <td>López</td>
+                <td>carlos.lopez@example.com</td>
+                <td>****</td>
+                <td>3001234567</td>
+                <td>1023456789</td>
+                <td class="acciones">
+                    <button class="btn-tabla editar">✏️</button>
+                    <button class="btn-tabla eliminar">🗑️</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Inventario</td>
+                <td>Lucía</td>
+                <td>Martínez</td>
+                <td>lucia.martinez@example.com</td>
+                <td>****</td>
+                <td>3119876543</td>
+                <td>1009988776</td>
+                <td class="acciones">
+                    <button class="btn-tabla editar">✏️</button>
+                    <button class="btn-tabla eliminar">🗑️</button>
+                </td>
+            </tr>
