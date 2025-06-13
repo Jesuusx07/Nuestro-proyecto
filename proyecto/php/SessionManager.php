@@ -4,7 +4,7 @@ class SessionManager {
     // Por ejemplo:
     // 900 segundos = 15 minutos (15 * 60)
     // 1800 segundos = 30 minutos (30 * 60)
-    private $timeout = 1; // Por defecto a 15 minutos
+    private $timeout = 300; // Por defecto a 15 minutos
 
     public function __construct($timeout_override = null) {
         // Si se proporciona un valor de timeout en el constructor, lo usamos.
@@ -17,10 +17,25 @@ class SessionManager {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-
-        // Llama a la función para verificar el timeout de la sesión.
-        $this->checkSessionTimeout();
     }
+
+
+    public function set($id_error, $valor_error){
+        $_SESSION[$id_error] = $valor_error;
+    }
+
+        public function has($id_error) {
+        return isset($_SESSION[$id_error]);
+    }
+
+    public function remove($id_error) {
+        unset($_SESSION[$id_error]);
+    }
+
+    public function get($id_error) {
+        return $_SESSION[$id_error] ?? null;
+    }
+    
 
     public function login($userId, $userName) {
         $_SESSION['user_id'] = $userId;
@@ -43,30 +58,6 @@ class SessionManager {
         session_unset();
         // Destruye la sesión actual.
         session_destroy();
-    }
-
-    private function checkSessionTimeout() {
-        // Solo verificamos el timeout si hay un usuario logueado y tenemos el registro de su última actividad.
-        if ($this->isLoggedIn() && isset($_SESSION['last_activity'])) {
-            // Calcula el tiempo transcurrido desde la última actividad.
-            $elapsed_time = time() - $_SESSION['last_activity'];
-
-            // Si el tiempo transcurrido es mayor que el timeout definido, la sesión ha expirado.
-            if ($elapsed_time > $this->timeout) {
-                $this->logout(); // Cierra la sesión.
-
-                // Muestra una alerta y redirige al usuario a la página de login.
-                // Es crucial que esta salida se realice antes de cualquier HTML para evitar errores de "headers already sent".
-                echo "<script type='text/javascript'>";
-                echo "alert('Su sesión ha caducado por inactividad. Por favor, inicie sesión de nuevo.');";
-                echo "window.location.href = 'login.php';"; // Redirige a la página de login.
-                echo "</script>";
-                exit(); // Detiene la ejecución del script PHP para asegurar la redirección.
-            } else {
-                // Si la sesión no ha expirado, actualiza el tiempo de la última actividad para extender la sesión.
-                $_SESSION['last_activity'] = time();
-            }
-        }
     }
 
     // Un método público para que otras partes del código puedan obtener el valor del timeout,

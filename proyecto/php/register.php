@@ -23,105 +23,99 @@ $longMin = 8;
 $longMax = 40; // Esta longitud se aplica a la contraseña en texto plano, no al hash.
 $longMaxnom = 20; // Longitud máxima para nombres y apellidos.
 
+require_once 'UsuarioController.php';
+
+$db = (new Database())->conectar();
+$controlador = new UsuarioController($db);
+
 // 4. Validaciones de los datos recibidos.
 //    Se usan `empty()` para verificar si los campos están vacíos.
 if(empty($nom) || empty($pass) || empty($email) || empty($apell)){
-    $mensaje = "Todos los campos son obligatorios. Por favor, rellénalos.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'Por favor, llene todos los campos.');
+
+    header('Location: ../login.php'); 
+    exit();
 }
 // Validación de longitud máxima para apellido.
 else if(strlen($apell) > $longMaxnom){
-    $mensaje = "La longitud máxima para el apellido son 20 caracteres.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La longitud maxima para el apellido son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 
 else if(strpos($apell, " ") !== false){
-        $mensaje = "El apellido no puede contener espacios es blanco";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
-}
+    $session->set('error_message', 'El apellido no puede contener espacios en blanco.');
 
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(preg_match('/[0-9]/', $apell)){
+    $session->set('error_message', 'El apellido no debe contener numeros.');
+
+    header('Location: ../registrarse.php');
+    exit(); 
+}
+else if(preg_match('/[0-9]/', $nom)){
+    $session->set('error_message', 'El nombre no debe contener numeros.');
+
+    header('Location: ../registrarse.php');
+    exit(); 
+}
 else if(strlen($nom) > $longMaxnom){
-    $mensaje = "La longitud máxima para el nombre son 20 caracteres.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 
 else if(strpos($nom, " ") !== false){
-        $mensaje = "El nombre no puede contener espacios es blanco";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+    $session->set('error_message', 'El nombre no puede contener espacios en blanco.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 
 else if(strlen($pass) < $longMin){
-    $mensaje = "La contraseña necesita mínimo 8 caracteres.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 // Validación de longitud máxima para la contraseña.
 else if(strlen($pass) > $longMax){
-    $mensaje = "La longitud máxima de la contraseña son 40 caracteres.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La longitud maxima de la contraseña son 40 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 // Validación de mayúscula en la contraseña.
 else if(!preg_match('/[A-Z]/', $pass)){
-    $mensaje = "La contraseña necesita al menos una letra mayúscula.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La contraseña necesita al menos una letra mayuscula.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 // Validación de minúscula en la contraseña.
 else if(!preg_match('/[a-z]/', $pass)){
-    $mensaje = "La contraseña necesita al menos una letra minúscula.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La contraseña necesita al menos una letra minuscula.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
 }
 // Validación de número en la contraseña.
 else if(!preg_match('/[0-9]/', $pass)){
-    $mensaje = "La contraseña necesita al menos un número.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La contraseña necesita al menos un numero.');
+
+    header('Location: ../registrarse.php');
+    exit(); 
 }
 // Validación de espacios en blanco en la contraseña.
 else if(strpos($pass, " ") !== false){
-    $mensaje = "La contraseña no debe contener espacios en blanco.";
-    echo "<script type='text/javascript'>";
-    echo "alert('" . $mensaje . "');"; 
-    echo "window.history.back();"; 
-    echo "</script>";
-    exit; 
+    $session->set('error_message', 'La contraseña no debe contener espacios en blanco.');
+
+    header('Location: ../registrarse.php');
+    exit(); 
 }
 // Si todas las validaciones pasan...
 else {
@@ -129,21 +123,14 @@ else {
     // ***MEJORA DE SEGURIDAD Y PREVENCIÓN DE INYECCIÓN SQL:***
     // Se utiliza una sentencia preparada (prepared statement) para evitar inyección SQL.
     // Esto es muy importante cuando insertas datos recibidos del usuario.
-    $stmt = $enlace->prepare("SELECT correo FROM admin WHERE correo = ?");
-    // 's' indica que el parámetro es de tipo string (cadena).
-    $stmt->bind_param("s", $email); 
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user_email = $result->fetch_assoc();
+    $usuario = $controlador->obtener($email);
     
     // Si se encontró un correo, significa que ya está registrado.
-    if($user_email){ // Cambiado de $email_bd == $email a simplemente verificar $user_email
-        $mensaje = "Este correo ya está registrado. Por favor, utiliza otro.";
-        echo "<script type='text/javascript'>";
-        echo "alert('" . $mensaje . "');"; 
-        echo "window.history.back();"; 
-        echo "</script>";
-        exit; 
+    if($usuario){ // Cambiado de $email_bd == $email a simplemente verificar $user_email
+        $session->set('error_message', 'Este correo ya esta registrado.');
+
+        header('Location: ../registrarse.php');
+    exit(); 
     }
     // Si el correo no está registrado, procede con la inserción.
     else {
@@ -153,29 +140,18 @@ else {
         // 'null' para 'id_admin' (AUTO_INCREMENT), 'reset_token', 'reset_token_expires_at'.
         // ***MEJORA DE SEGURIDAD Y PREVENCIÓN DE INYECCIÓN SQL:***
         // Se utiliza otra sentencia preparada para la inserción.
-        $insertar_query = "INSERT INTO admin (nombres, apellidos, correo, contraseña, reset_token, reset_token_expires_at) VALUES (?, ?, ?, ?, NULL, NULL)";
-        $stmt_insert = $enlace->prepare($insertar_query);
-        // 'ssss' indica que los 4 parámetros son de tipo string.
-        $stmt_insert->bind_param("ssss", $nom, $apell, $email, $pass_hash);
-        
-        $ejecutarInsertar = $stmt_insert->execute();
+        $usuario = $controlador->insertar($nom, $apell, $email, $pass_hash);
 
-        if ($ejecutarInsertar) {
-            $mensaje = "¡Registro exitoso! Ya puedes iniciar sesión.";
-            echo "<script type='text/javascript'>";
-            echo "alert('" . $mensaje . "');"; 
-            echo "window.location.href = '../login.php'"; 
-            echo "</script>";
-            exit;
+        if ($usuario) {
+            $session->set('exito', 'Registro exitoso.');
+
+            header('Location: login.php');
+            exit(); 
         } else {
             // Manejo de error si la inserción falla (por ejemplo, problema con la base de datos)
-            $mensaje = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
-            error_log("Error al insertar usuario: " . $stmt_insert->error); // Registra el error en los logs del servidor
-            echo "<script type='text/javascript'>";
-            echo "alert('" . $mensaje . "');"; 
-            echo "window.history.back();"; 
-            echo "</script>";
-            exit;
+            $session->set('error_message', 'Error con la base de datos.');
+
+            header('Location: ../registrarse.php');
         }
     }
 }

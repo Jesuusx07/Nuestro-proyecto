@@ -1,3 +1,12 @@
+<?php
+
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+?>
+
 <!DOCTYPE html>    
 <html lang="es"> 
 <head> 
@@ -177,7 +186,36 @@
                             <option value="Limpieza">Limpieza</option>
                         </select>
                     </div>
+                    <style>
+                      .p-error{
+                        color: #A02334;
+                        text-align: center;
+                        font-size: 20px;    
+                      }
+                      .exito{
+                        
+                        color: #96CEB4;
+                        text-align: center;
+                        font-size: 20px;    
+                      }
+                    </style>
                     <input type="submit" id="boton" value="Registrar">
+                    <?php
+                    // Aquí es donde verificas y muestras el mensaje
+                        if ($session->has('error_message')) {
+                          echo '<div class="error-message">';
+                          echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+                          echo '</div>';
+                          $session->remove('error_message'); // Borra el mensaje después de mostrarlo
+                      }
+                        else if ($session->has('exito')) {
+                          echo '<div class="exito">';
+                          echo '<p>' . htmlspecialchars($session->get('exito')) . '</p>';
+                          echo '</div>';
+                          $session->remove('exito'); // Borra el mensaje después de mostrarlo
+                          $session->remove('error_message'); // Borra el mensaje después de mostrarlo
+                      }
+                    ?>
                 </form> 
             </div>
         </div>

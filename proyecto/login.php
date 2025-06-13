@@ -47,6 +47,33 @@ if (!$session->isLoggedIn()) {
                 <a href="recovery.php" class="Recupera">¿Olvidaste tu contraseña?</a>
 
             </form>
+
+            <?php
+    // Aquí es donde verificas y muestras el mensaje
+            if ($session->has('exito')) {
+                echo '<div class="exito">';
+                echo '<p>' . htmlspecialchars($session->get('exito')) . '</p>';
+                echo '</div>';
+                $session->remove('exito'); // Borra el mensaje después de mostrarlo
+                $session->remove('error_message'); // Borra el mensaje después de mostrarlo
+            }
+            else if ($session->has('error_message')) {
+                echo '<div class="error-message">';
+                echo '<p>' . htmlspecialchars($session->get('error_message')) . '</p>';
+                echo '</div>';
+                $session->remove('error_message'); // Borra el mensaje después de mostrarlo
+            }
+            ?>
         </div>
+
+        <style>
+            .error-message{
+                color: #A02334;
+            }
+
+            .exito{
+                color: #96CEB4;
+            }
+        </style>
 </body>
 </html>
