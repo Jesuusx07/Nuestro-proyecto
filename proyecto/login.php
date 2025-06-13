@@ -29,7 +29,7 @@ if (!$session->isLoggedIn()) {
         <a href="index.html"> <img class="logo" src="img/Logo Principal (1).png" alt="Kenny's Logo"> </a>
 
         <h1>Inicia sesión</h1>
-        <p style="text-align: center;">¿No tienes cuenta? <a class="inc" href="registrarse.html">Registrarse</a></p>
+        <p style="text-align: center;">¿No tienes cuenta? <a class="inc" href="registrarse.php">Registrarse</a></p>
 
         <div>
             <form id="login" action="./php/login.php" method="POST">
