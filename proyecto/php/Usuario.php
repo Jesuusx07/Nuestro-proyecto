@@ -11,8 +11,8 @@ class Usuario {
     public $apellido;
     public $email;
     public $contraseña;
-    public $reset_token;
-    public $reset_token_expires_at; 
+    public $token;
+    public $date_token;
 
 
     public function __construct($db) {
@@ -20,12 +20,15 @@ class Usuario {
     }
 
     public function insertar() {
-        $query = "CALL insertar_admin(:nombres, :apellidos, :correo, :contraseña)";
+        $query = "CALL insertar_admin(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':nombres', $this->nombre);
-        $stmt->bindParam(':apellidos', $this->apellido);
-        $stmt->bindParam(':correo', $this->email);
-        $stmt->bindParam(':contraseña', $this->contraseña);
+    
+        $stmt->bindParam(1, $this->nombre);
+        $stmt->bindParam(2, $this->apellido);
+        $stmt->bindParam(3, $this->email);
+        $stmt->bindParam(4, $this->contraseña);
+        $stmt->bindParam(5, $this->token);
+        $stmt->bindParam(6, $this->date_token);
         return $stmt->execute();
     }
 
