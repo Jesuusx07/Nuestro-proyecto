@@ -12,6 +12,8 @@ $nom = $_POST['nombre'] ?? '';
 $pass = $_POST['pass'] ?? '';
 $email = $_POST['email'] ?? '';
 $apell = $_POST['apellido'] ?? '';
+$token = null;
+$date = null;
 
 // 2. Hashear la contraseña antes de cualquier validación de longitud o caracteres.
 //    Esto asegura que siempre trabajas con el hash si decides guardar temporalmente,
@@ -140,7 +142,7 @@ else {
         // 'null' para 'id_admin' (AUTO_INCREMENT), 'reset_token', 'reset_token_expires_at'.
         // ***MEJORA DE SEGURIDAD Y PREVENCIÓN DE INYECCIÓN SQL:***
         // Se utiliza otra sentencia preparada para la inserción.
-        $usuario = $controlador->insertar($nom, $apell, $email, $pass_hash);
+        $usuario = $controlador->insertar($nom, $apell, $email, $pass_hash, $token, $date);
 
         if ($usuario) {
             $session->set('exito', 'Registro exitoso.');
