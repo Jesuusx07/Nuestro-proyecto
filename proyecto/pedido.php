@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/pedido.css">
 </head>
 <body>
 
@@ -143,20 +143,21 @@ if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>
-
+        <div class="botones">
+            <a class="btn amarillo" href="registrarPedidos.php">REGISTRAR PEDIDO</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
+    </div>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE PEDIDO</h1> 
 
 <table border="1">
     <tr>
-        <th>id_pedido</th>
-        <th>producto</th>
-        <th>cantidad</th>
- 
-        <th>total</th>
-        <th>fecha</th>
-        <th>direccion</th>
-        <th>estado</th>
+        <th>Pedido</th>
+        <th>Empleado</th>
+        <th>Fecha</th>
+        <th>Direccion de envio</th>
+        <th>Estado del Pedido</th>
+        <th>Total pedido</th>
+    
     </tr>
 
 
@@ -168,13 +169,12 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
             <td><?php echo $mostrar['id_pedido']; ?></td>
-            <td><?php echo $mostrar['producto']; ?></td>
-            <td><?php echo $mostrar['cantidad']; ?></td>
-         
-            <td><?php echo $mostrar['total']; ?></td>
-            <td><?php echo $mostrar['fecha']; ?></td>
-            <td><?php echo $mostrar['direccion']; ?></td>
-            <td><?php echo $mostrar['estado']; ?></td>
+            <td><?php echo $mostrar['id_empleado']; ?></td>
+            <td><?php echo $mostrar['fecha_pedido']; ?></td>  
+            <td><?php echo $mostrar['direccion_envio']; ?></td>
+            <td><?php echo $mostrar['estado_pedido']; ?></td>
+            <td><?php echo $mostrar['total_pedido']; ?></td>
+            
            
         </tr>
 <?php
@@ -187,9 +187,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
-    </div>
+
 
 </body>
 </html>

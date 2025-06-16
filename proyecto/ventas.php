@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultarNew.css">
 </head>
 <body>
 
@@ -151,11 +151,10 @@ if (!$conexion) {
 <table border="1">
     <tr>
         <th>id_venta</th>
-        <th>producto</th>
-        <th>cantidad</th>
-        <th>precio</th>
-        <th>total</th>
+        <th>id_producto</th>
         <th>fecha</th>
+        <th>total_venta</th>
+
        
     </tr>
 
@@ -168,11 +167,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
             <td><?php echo $mostrar['id_venta']; ?></td>
-            <td><?php echo $mostrar['producto']; ?></td>
-            <td><?php echo $mostrar['cantidad']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['total']; ?></td>
+            <td><?php echo $mostrar['id_producto']; ?></td>
             <td><?php echo $mostrar['fecha']; ?></td>
+            <td><?php echo $mostrar['total_venta']; ?></td>
+  
         </tr>
 <?php
 }
@@ -184,9 +182,6 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
-    </div>
 
 </body>
 </html>

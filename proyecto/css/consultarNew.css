@@ -1,4 +1,4 @@
-* {
+ * {        
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -31,7 +31,7 @@
         }
 
         .boton-perfil {
-            background-color: #A02334;
+            background-color: #40a023;
             color: white;
             border: none;
             padding: 8px 12px;
@@ -174,7 +174,8 @@
         .titulo {
             margin-top: 70px;
             height: 5px;
-            color: #ff0000;
+            background-color: #31b0d5;
+            color: #201E1E;
         }
 
         table {
@@ -295,6 +296,7 @@
   margin: 10px 20px 10px auto; /* empuja hacia la derecha */
   padding: 10px 10px;
   border: none;
+  text-decoration: none;
     font-size: bold ;
   border-radius: 6px;
   cursor: pointer;
