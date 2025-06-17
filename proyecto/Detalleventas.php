@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/Detalleventa.css">
 </head>
 <body>
 
@@ -70,9 +70,9 @@
                     </div>
         
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
+                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
                         <div class="sub-menu">
-                            <a href="historial.php" class="sub-btn">Consultar</a>
+                            <a href="Detalleventas.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -144,36 +144,39 @@ if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>
-
+        <div class="botones">
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR VENTA</a> <button class="btn rojo">EDITAR VENTA</button> </div>
+    </div>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE HISTORIAL</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE DETALLES DE VENTAS</h1> 
 
 <table border="1">
     <tr>
-        <th>Historial</th>
-        <th>Nventa</th>
-        <th>cantidad</th>
-        <th>precio</th>
-        <th>producto</th>
-        <th>fecha</th>
+        <th>Venta</th>
+        <th>IDVenta</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Fecha</th>
+          <th>Total de la venta</th>
        
     </tr>
 
 
 <?php
-$sql = "SELECT * FROM HISTORIAL";
+$sql = "SELECT * FROM venta_detalle";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
-            <td><?php echo $mostrar['id_historial']; ?></td>
+            <td><?php echo $mostrar['id_venta_detalle']; ?></td>
             <td><?php echo $mostrar['id_venta']; ?></td>
+            <td><?php echo $mostrar['id_producto']; ?></td>
             <td><?php echo $mostrar['cantidad']; ?></td>
-            <td><?php echo $mostrar['precio']; ?></td>
-            <td><?php echo $mostrar['producto']; ?></td>
+            <td><?php echo $mostrar['precio_unitario_venta']; ?></td>
             <td><?php echo $mostrar['fecha']; ?></td>
-         
+          <td><?php echo $mostrar['total_venta']; ?></td>
         </tr>
 <?php
 }
@@ -185,9 +188,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
-    </div>
+
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/reserva.css">
 </head>
 <body>
 
@@ -46,8 +46,9 @@
             <div class="menu-lateral">
                 <div class="menu-container">
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
                         <div class="sub-menu">
+                               <a href="empleado.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -69,7 +70,7 @@
                     </div>
         
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
+                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
                         <div class="sub-menu">
                             <a href="historial.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
@@ -103,7 +104,7 @@
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
                         <div class="sub-menu">
-                            <a href="inventario.php." class="sub-btn">Consultar</a>
+                            <a href="inventario.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -143,18 +144,20 @@ if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>
-
+        <div class="botones">
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
+    </div>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDOR</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
 
 <table border="1">
     <tr>
-        <th>Id_proveedor</th>
+        <th>Proveedor</th>
         <th>Nombre</th>
-        <th>Direccion</th>
+        <th>Dirección</th>
         <th>Telefono</th>
-        <th>Email</th>
-        <th>Producto</th>
+          <th>Email</th>
+       
     </tr>
 
 
@@ -169,8 +172,8 @@ while ($mostrar = mysqli_fetch_array($result)) {
             <td><?php echo $mostrar['nombre']; ?></td>
             <td><?php echo $mostrar['direccion']; ?></td>
             <td><?php echo $mostrar['telefono']; ?></td>
-            <td><?php echo $mostrar['email']; ?></td>
-            <td><?php echo $mostrar['producto']; ?></td>
+                        <td><?php echo $mostrar['email']; ?></td>
+            
         </tr>
 <?php
 }
@@ -182,9 +185,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
-    </div>
+
 
 </body>
 </html>

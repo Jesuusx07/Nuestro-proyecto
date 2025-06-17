@@ -28,14 +28,13 @@
         <div class="contenido">
             <div class="menu-lateral">
                 <div class="menu-container">
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADOS</button>
+                     <div class="menu-item">
+                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
                         <div class="sub-menu">
-                                <a href="empleado.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
                         <div class="sub-menu">
@@ -43,7 +42,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
                         <div class="sub-menu">
@@ -51,15 +50,15 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
+                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
                         <div class="sub-menu">
-                            <a href="historial.php" class="sub-btn">Consultar</a>
+                            <a href="Detalleventas.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
                         <div class="sub-menu">
@@ -67,7 +66,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
                         <div class="sub-menu">
@@ -75,7 +74,7 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
                         <div class="sub-menu">
@@ -83,11 +82,11 @@
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
-
+        
                     <div class="menu-item">
                         <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
                         <div class="sub-menu">
-                            <a href="inventario.php" class="sub-btn">Consultar</a>
+                            <a href="inventario.php." class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
