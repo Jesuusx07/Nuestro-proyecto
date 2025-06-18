@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+    background-color: #ffffff; /* Un verde muy claro para el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    width: 100%;
+    max-width: 500px; /* Un poco más ancho para este formulario */
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #A02334; /* Un verde oscuro */
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #424242;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #c8e6c9; /* Borde suave */
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #A02334; /* Verde brillante al enfocar */
+    outline: none;
+    box-shadow: 0 0 8px#A02334(76, 175, 80, 0.4);
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #A02334;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.05em;
+}
+
+.btn:hover {
+    background-color: #A02334; /* Verde un poco más oscuro */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+.btn:active {
+    background-color: #A02334; /* Verde aún más oscuro al hacer clic */
+    transform: translateY(0);
+}

@@ -8,14 +8,13 @@ class UsuarioController {
         $this->usuario = new Usuario($db);
     }
 
-    public function insertar($id, $nombre, $apellido, $email, $contraseña, $reset_token, $reset_token_expires_at) {
-        $this->usuario->id = $id;
+    public function insertar($nombre, $apellido, $email, $contraseña, $token, $date_token) {
+        $this->usuario->token = $token;
+        $this->usuario->date_token = $date_token;
         $this->usuario->nombre = $nombre;
         $this->usuario->apellido = $apellido;
         $this->usuario->email = $email;
         $this->usuario->contraseña = $contraseña;
-        $this->usuario->reset_token = $reset_token;
-        $this->usuario->reset_token_expires_at = $reset_token_expires_at;
         return $this->usuario->insertar();
     }
 

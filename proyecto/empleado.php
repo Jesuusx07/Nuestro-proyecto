@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/consultarNew.css">
+    <title>Kenny's - Consultar </title> <link rel="stylesheet" href="./css/empleado.css">
 </head>
 <body>
 
@@ -69,9 +69,9 @@
                     </div>
         
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
+                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
                         <div class="sub-menu">
-                            <a href="historial.php" class="sub-btn">Consultar</a>
+                            <a href="Detalleventas.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
                         </div>
                     </div>
@@ -143,6 +143,10 @@ if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>
+   <div class="botones">
+                <a class="btn amarillo" href="registrarProducto.php">REGISTRAR PRODUCTO</a>
+                <button class="btn rojo">EDITAR PRODUCTO</button>
+            </div>
 
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 

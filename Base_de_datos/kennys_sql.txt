@@ -158,3 +158,21 @@ roles
 
 INSERT INTO roles VALUES ("","Mesero"), ("","Cocinero"), ("","Limpieza")
 
+
+Procedure-----------------------------
+
+insertar admin
+
+DELIMITER //
+
+BEGIN 
+INSERT INTO admin(nombres, apellidos, correo, contraseña, reset_token, reset_token_expires_at) VALUES(a_nombre, a_apellido, a_email, a_contraseña, a_token, a_date); 
+END //
+
+obtener admin
+
+DELIMITER //
+CREATE PROCEDURE obtener_admin(IN a_correo varchar(100))
+BEGIN
+    SELECT * FROM admin WHERE correo = a_correo;
+END //

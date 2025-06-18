@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/consultar.css">
+    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/reserva.css">
 </head>
 <body>
 
@@ -70,7 +70,7 @@
                     </div>
         
                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>HISTORIAL</button>
+                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
                         <div class="sub-menu">
                             <a href="historial.php" class="sub-btn">Consultar</a>
                             <a href="registerUs.html" class="sub-btn">Registrar</a>
@@ -144,16 +144,18 @@ if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>
-
+        <div class="botones">
+            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
+    </div>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
 
 <table border="1">
     <tr>
-        <th>id_reserva</th>
-        <th>id_cliente</th>
-        <th>estado</th>
-        <th>fecha</th>
+        <th>Reserva</th>
+        <th>Empleado</th>
+        <th>Estado</th>
+        <th>Fecha</th>
        
     </tr>
 
@@ -166,9 +168,9 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
         <tr>
             <td><?php echo $mostrar['id_reserva']; ?></td>
-            <td><?php echo $mostrar['id_cliente']; ?></td>
-            <td><?php echo $mostrar['estado']; ?></td>
-            <td><?php echo $mostrar['fecha']; ?></td>
+            <td><?php echo $mostrar['id_empleado']; ?></td>
+            <td><?php echo $mostrar['estado_reserva']; ?></td>
+            <td><?php echo $mostrar['fecha_reserva']; ?></td>
             
         </tr>
 <?php
@@ -181,9 +183,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
-    </div>
+
 
 </body>
 </html>
