@@ -18,10 +18,30 @@ class UsuarioController {
         return $this->usuario->insertar();
     }
 
-    public function actualizar($id, $nombre, $email) {
-        $this->usuario->id = $id;
+    public function insertarEmp($idRol, $nombre, $apellido, $email, $contraseña, $telefono, $documento, $token, $date_token) {
+        $this->usuario->token = $token;
+        $this->usuario->date_token = $date_token;
+        $this->usuario->idRol = $idRol;
+        $this->usuario->telefono = $telefono;
+        $this->usuario->documento = $documento;
         $this->usuario->nombre = $nombre;
+        $this->usuario->apellido = $apellido;
         $this->usuario->email = $email;
+        $this->usuario->contraseña = $contraseña;
+        return $this->usuario->insertarEmp();
+    }
+
+    public function actualizar($id, $idRol, $nombre, $apellido, $email, $contraseña, $telefono, $documento, $token, $date_token) {
+        $this->usuario->id = $id;
+        $this->usuario->token = $token;
+        $this->usuario->date_token = $date_token;
+        $this->usuario->idRol = $idRol;
+        $this->usuario->telefono = $telefono;
+        $this->usuario->documento = $documento;
+        $this->usuario->nombre = $nombre;
+        $this->usuario->apellido = $apellido;
+        $this->usuario->email = $email;
+        $this->usuario->contraseña = $contraseña;
         return $this->usuario->actualizar();
     }
 

@@ -7,10 +7,13 @@ class Usuario {
     private $tabla = "usuarios";
 
     public $id;
+    public $idRol;
     public $nombre;
     public $apellido;
     public $email;
     public $contraseña;
+    public $telefono;
+    public $documento;
     public $token;
     public $date_token;
 
@@ -32,12 +35,35 @@ class Usuario {
         return $stmt->execute();
     }
 
-    public function actualizar() {
-        $query = "CALL actualizar_usuario(:id, :nombre, :email)";
+    public function insertarEmp() {
+        $query = "CALL insertar_empleado(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':nombre', $this->nombre);
-        $stmt->bindParam(':email', $this->email);
+    
+        $stmt->bindParam(1, $this->idRol);
+        $stmt->bindParam(2, $this->nombre);
+        $stmt->bindParam(3, $this->apellido);
+        $stmt->bindParam(4, $this->email);
+        $stmt->bindParam(5, $this->contraseña);
+        $stmt->bindParam(6, $this->telefono);
+        $stmt->bindParam(7, $this->documento);
+        $stmt->bindParam(8, $this->token);
+        $stmt->bindParam(9, $this->date_token);
+        return $stmt->execute();
+    }
+
+    public function actualizar() {
+        $query = "CALL actualizar_empleado(?, ?, ? ,? ,? ,? ,? ,? ,?, ?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(2, $this->idRol);
+        $stmt->bindParam(3, $this->nombre);
+        $stmt->bindParam(4, $this->apellido);
+        $stmt->bindParam(5, $this->email);
+        $stmt->bindParam(6, $this->contraseña);
+        $stmt->bindParam(7, $this->telefono);
+        $stmt->bindParam(8, $this->documento);
+        $stmt->bindParam(9, $this->token);
+        $stmt->bindParam(10, $this->date_token);
         return $stmt->execute();
     }
 
@@ -58,7 +84,7 @@ class Usuario {
     }
 
     public function eliminar() {
-        $query = "CALL eliminar_usuario(:id)";
+        $query = "CALL eliminar_empleado(:id)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $this->id);
         return $stmt->execute();
