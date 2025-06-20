@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar</title>
+    <title>Kenny's - Consultar Producto</title>
     <link rel="stylesheet" href="./css/producto.css">
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="navbar-left">
-            <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
-            <span>ADMINISTRADOR</span>
-        </div>
-        <div class="navbar-right">
-            </div>
-        <div class="perfil">
-            <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
-            <div class="menu-desplegable" id="menuPerfil">
-                <a href="./php/logout.php">Cerrar sesión</a>
-            </div>
-        </div>
+  <div class="navbar">
+    <div class="navbar-left">
+       <img src="./img/Logo Principal 2.png" alt="Logo Kenny's" class="logo-navbar" />
+  
+      <a href="index.html"> <img src="./img/logo_Favicon.png" alt="Logo Kenny's"></a>
+      <span>ADMINISTRADOR</span>
     </div>
+    <div class="perfil">
+      <button class="boton-perfil" onclick="toggleMenu()"><i class="fas fa-user"></i> Perfil</button>
+      <div class="menu-desplegable" id="menuPerfil">
+        <a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
         
 
     <div class="container">

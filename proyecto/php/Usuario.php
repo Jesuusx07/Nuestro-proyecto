@@ -5,7 +5,7 @@ require_once 'sql.php';
 class Usuario {
     private $conn;
     private $tabla = "usuarios";
-
+    
     public $id;
     public $nombre;
     public $apellido;
