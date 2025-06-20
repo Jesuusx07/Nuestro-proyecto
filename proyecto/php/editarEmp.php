@@ -10,6 +10,7 @@ require_once 'UsuarioController.php';
 $db = (new Database())->conectar();
 $controlador = new UsuarioController($db);
 
+$id_empleado = $_POST["id_empleado"];
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $email = $_POST["email"];
@@ -20,69 +21,55 @@ $select = $_POST["select"];
 
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-$usuario = $controlador->obtenerEmp($email);
-
-
 
 if($fname == "" || $lname == "" || $email == "" || $password == "" || $tele == "" || $docu == "" || $select == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
-    header('Location: ../registerUs.php'); 
+    header('Location: ../editar_empleado.php?id=1' . $id_empleado); 
     exit();
 }
 else{
-    if($usuario){
-        $session->set('error_message', 'Este correo ya esta registrado.');
-
-        header('Location: ../registerUs.php');
-    }
-    elseif(preg_match('/[A-Z]/', $tele)){
+    if(preg_match('/[A-Z]/', $tele)){
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 
-        header('Location: ../registerUs.php'); 
+        header('Location: ../editar_empleado.php?id=3' . $id_empleado); 
         exit();
     }
     elseif(preg_match('/[a-z]/', $tele)){
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 
-        header('Location: ../registerUs.php'); 
+        header('Location: ../editar_empleado.php?id=4' . $id_empleado); 
         exit();
     }
     else if(strpos($password, " ") !== false){
         $session->set('error_message', 'La contraseña no puede tener espacios en blanco.');
 
-        header('Location: ../registerUs.php'); 
+        header('Location: ../editar_empleado.php?id=5' . $id_empleado); 
         exit();
     }
     else if(strpos($tele, " ") !== false){
         $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
 
-        header('Location: ../registerUs.php'); 
+        header('Location: ../editar_empleado.php?id=6' . $id_empleado); 
         exit();
     }
     else{
         if($select == "Mesero"){
-            $usuario = $controlador->insertarEmp(1, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+            $usuario = $controlador->actualizar($id_empleado, 1, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
 
-            $session->set('exito', 'Empleado registrado exitosamente.');
-
-            header('Location: ../registerUs.php'); 
+            header('Location: ../empleado.php'); 
             exit();
         }
         elseif($select == "Cocinero"){
-            $usuario = $controlador->insertarEmp(2, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+            $usuario = $controlador->actualizar($id_empleado, 2, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
 
-            $session->set('exito', 'Empleado registrado exitosamente.');
-
-            header('Location: ../registerUs.php'); 
+            header('Location: ../empleado.php'); 
             exit();
         }    
         elseif($select == "Limpieza"){
-            $usuario = $controlador->insertarEmp(3, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+            $usuario = $controlador->actualizar($id_empleado, 3, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
 
-            $session->set('exito', 'Empleado registrado exitosamente.');
-
-            header('Location: ../registerUs.php'); 
+            header('Location: ../empleado.php'); 
             exit();
         }
 

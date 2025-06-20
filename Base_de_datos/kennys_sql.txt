@@ -164,7 +164,7 @@ Procedure-----------------------------
 insertar admin
 
 DELIMITER //
-
+CREATE PROCEDURE insertar_admin(IN a_nombre VARCHAR(20), IN a_apellido VARCHAR(20), IN a_email VARCHAR(100), IN a_contraseña VARCHAR(255), IN a_token VARCHAR(100), IN a_date datetime)
 BEGIN 
 INSERT INTO admin(nombres, apellidos, correo, contraseña, reset_token, reset_token_expires_at) VALUES(a_nombre, a_apellido, a_email, a_contraseña, a_token, a_date); 
 END //
@@ -175,4 +175,36 @@ DELIMITER //
 CREATE PROCEDURE obtener_admin(IN a_correo varchar(100))
 BEGIN
     SELECT * FROM admin WHERE correo = a_correo;
+END //
+
+obtener empleado
+
+DELIMITER //
+CREATE PROCEDURE obtener_empleado(IN e_correo varchar(100))
+BEGIN
+    SELECT * FROM empleado WHERE correo = e_correo;
+END //
+
+insertar empleado
+
+DELIMITER //
+CREATE PROCEDURE insertar_empleado(IN e_id_rol int, IN e_nombre VARCHAR(100), IN e_apellido VARCHAR(100), IN e_email VARCHAR(100), IN e_contraseña VARCHAR(100), IN e_telefono VARCHAR(100), IN e_documento int, IN e_token VARCHAR(100), IN e_date datetime)
+BEGIN
+    INSERT INTO empleado(id_rol, nombres, apellidos, correo, contraseña, telefono, documento, reset_token, reset_token_expires_at) VALUES(e_id_rol, e_nombre, e_apellido, e_email, e_contraseña, e_telefono, e_documento, e_token, e_date);
+END //
+
+actualizar empleado
+
+DELIMITER //
+CREATE PROCEDURE actualizar_empleado(IN e_id int, IN e_id_rol int, IN e_nombre VARCHAR(100), IN e_apellido VARCHAR(100), IN e_email VARCHAR(100), IN e_contraseña VARCHAR(100), IN e_telefono VARCHAR(100), IN e_documento int, IN e_token VARCHAR(100), IN e_date datetime)
+BEGIN
+    UPDATE empleado SET id_rol = e_id_rol, nombres = e_nombre, apellidos = e_apellido, correo = e_email, contraseña = e_contraseña, telefono = e_telefono, documento = e_documento, reset_token = e_token, reset_token_expires_at = e_date WHERE id_empleado = e_id;
+END //
+
+eliminar empleado
+
+DELIMITER //
+CREATE PROCEDURE eliminar_empleado(IN e_id INT)
+BEGIN
+    DELETE FROM empleado WHERE id_empleado = e_id;
 END //
