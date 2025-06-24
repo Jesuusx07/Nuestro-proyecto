@@ -165,21 +165,29 @@ if (!$conexion) {
 
 
 <?php
+// Assuming $conexion is already established
+
 $sql = "SELECT * FROM empleado";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
-        <tr>
-            <td><?php echo $mostrar['id_empleado']; ?></td>
-            <td><?php echo $mostrar['id_rol']; ?></td>
-            <td><?php echo $mostrar['nombres']; ?></td>
-            <td><?php echo $mostrar['apellidos']; ?></td>
-            <td><?php echo $mostrar['correo']; ?></td>
-            <td><?php echo $mostrar['contraseña']; ?></td>
-            <td><?php echo $mostrar['telefono']; ?></td>
-           <td><?php echo $mostrar['documento']; ?></td>
-        </tr>
+    <tr>
+        <td><?php echo $mostrar['id_empleado']; ?></td>
+        <td><?php echo $mostrar['id_rol']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['apellidos']; ?></td>
+        <td><?php echo $mostrar['correo']; ?></td>
+        <td><?php echo $mostrar['contraseña']; ?></td>
+        <td><?php echo $mostrar['telefono']; ?></td>
+        <td><?php echo $mostrar['documento']; ?></td>
+        <td>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_empleado']; ?>" class="btn btn-primary btn-sm">Editar</a>
+        </td>
+        <td>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_empleado']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+        </td>
+    </tr>
 <?php
 }
 ?>
