@@ -204,7 +204,15 @@ END //
 eliminar empleado
 
 DELIMITER //
-CREATE PROCEDURE eliminar_empleado(IN e_id INT)
+
+CREATE PROCEDURE eliminar_empleado (IN e_id INT)
 BEGIN
-    DELETE FROM empleado WHERE id_empleado = e_id;
+
+	DELETE FROM venta   WHERE id_empleado = e_id;
+        DELETE FROM pedido  WHERE id_empleado = e_id;
+        DELETE FROM reserva WHERE id_empleado = e_id;
+        DELETE FROM factura WHERE id_empleado = e_id;
+
+        DELETE FROM empleado WHERE id_empleado = e_id;
+
 END //

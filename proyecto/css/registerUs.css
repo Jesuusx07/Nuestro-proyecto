@@ -20,41 +20,6 @@ body {
 }
 
 
-.fila{
-    width: 100%;
-    display: flex;
-    justify-content: left;
-    padding: 40px 40px;
-    background-color: #e0e0e0;
-}
-
-.fila ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 20px;
-    width: 60%;
-    background-color: #A02334;
-    text-align: center;
-    border-radius: 15px;
-}
-.navbar {
-  height: 83px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px ;
-  background-color: #1c1c1c;
-  color: white;
-}
-  .cerrarSesion{
-    background-color: #A02334;
-    border-radius: 300px;
-    padding: 10px;
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    
-  }
 .navbar-left,
 .navbar-right {
   display: flex;
@@ -70,7 +35,7 @@ body {
 .navbar-left span {
    font-family: "Cinzel", serif;
   font-size: 30px;
-  color: #A02334;
+  color: #00ff15;
   font-weight: bold;
 }
 
@@ -86,7 +51,7 @@ body {
     margin-left: 15px;
     text-align: center;
     border-radius: 10px;
-    background-color: #f5f5f5;
+    background-color: #d80000;
     box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #bcbcbc;
   }
 
@@ -101,6 +66,7 @@ body {
   }
   
   .regis{
+    background-color: #d80000;
     width: 100%;
     display: flex;
     justify-content: center;

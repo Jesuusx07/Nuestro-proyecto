@@ -22,7 +22,7 @@ $select = $_POST["select"];
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 
-if($fname == "" || $lname == "" || $email == "" || $password == "" || $tele == "" || $docu == "" || $select == ""){
+if($fname == "" || $lname == "" || $email == "" || $tele == "" || $docu == "" || $select == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
     header('Location: ../editar_empleado.php?id=1' . $id_empleado); 
@@ -39,12 +39,6 @@ else{
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 
         header('Location: ../editar_empleado.php?id=4' . $id_empleado); 
-        exit();
-    }
-    else if(strpos($password, " ") !== false){
-        $session->set('error_message', 'La contraseña no puede tener espacios en blanco.');
-
-        header('Location: ../editar_empleado.php?id=5' . $id_empleado); 
         exit();
     }
     else if(strpos($tele, " ") !== false){
