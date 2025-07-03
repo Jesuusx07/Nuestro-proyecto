@@ -1,4 +1,8 @@
 <?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
 $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
 
 if (!$conexion) {
@@ -43,7 +47,8 @@ if (isset($_GET['docu'])) {
         <form action="./php/editarEmp.php" method="POST">
             <div class="form-group">
                     <input type="hidden" name="id_empleado" value="<?php echo htmlspecialchars($id_empleado); ?>">
-                    
+                    <input type="hidden" name="id_rol" value="<?php echo htmlspecialchars($id_rol); ?>">
+
                     <label for="fname">Nombre</label>
                     <input type="text" id="nombre" name="fname" value="<?php echo trim($nombre)?>">
                     <label for="lname">Apellido</label>
@@ -63,7 +68,7 @@ if (isset($_GET['docu'])) {
                     <input type="number" id="id" name="documento" value="<?php echo $documento?>">
                     <label for="rol">Rol</label>
                     <?php
-                    if ($id_rol == 1){ 
+                    if ($id_rol == 'Mesero'){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Mesero">Mesero</option>
@@ -73,8 +78,8 @@ if (isset($_GET['docu'])) {
                     <?php
                     }
                     ?>
-                                        <?php
-                    if ($id_rol == 2){ 
+                    <?php
+                    if ($id_rol == 'Cocinero'){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Cocinero">Cocinero</option>
@@ -85,7 +90,7 @@ if (isset($_GET['docu'])) {
                     }
                     ?>
                     <?php
-                    if ($id_rol == 3){ 
+                    if ($id_rol == 'Limpieza'){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Limpieza">Limpieza</option>
@@ -96,7 +101,22 @@ if (isset($_GET['docu'])) {
                     }
                     ?>
             </div>
-
+                    <style>
+                      .p-error{
+                        color: #A02334;
+                        text-align: center;
+                        font-size: 20px;    
+                      }
+                    </style>
+                    <?php
+                    // Aquí es donde verificas y muestras el mensaje
+                        if ($session->has('error_message')) {
+                          echo '<div class="error-message">';
+                          echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+                          echo '</div>';
+                          $session->remove('error_message'); // Borra el mensaje después de mostrarlo
+                      }
+                    ?>
             <button type="submit" class="btn">Editar empleado</button>
         </form>
     </div>

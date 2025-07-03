@@ -59,7 +59,7 @@ if ($result && $result->num_rows > 0) { // Se añadió `&& $result` para verific
         // Remitente y Destinatario
         // **¡AJUSTE: Usa la misma cuenta de Gmail que en Username para setFrom!**
         $mail->setFrom('jesuusx71@gmail.com', 'Equipo de Kenny\'s'); // **¡Cámbialo con TU CORREO REAL y NOMBRE!**
-        $mail->addAddress($email, $row['correo']); // Enviar al correo que el usuario proporcionó
+        $mail->addAddress($email); // Enviar al correo que el usuario proporcionó
 
         // Contenido del Correo
         $mail->isHTML(true); // El correo es en formato HTML

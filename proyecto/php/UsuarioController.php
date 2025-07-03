@@ -8,17 +8,8 @@ class UsuarioController {
         $this->usuario = new Usuario($db);
     }
 
-    public function insertar($nombre, $apellido, $email, $contraseña, $token, $date_token) {
-        $this->usuario->token = $token;
-        $this->usuario->date_token = $date_token;
-        $this->usuario->nombre = $nombre;
-        $this->usuario->apellido = $apellido;
-        $this->usuario->email = $email;
-        $this->usuario->contraseña = $contraseña;
-        return $this->usuario->insertar();
-    }
 
-    public function insertarEmp($idRol, $nombre, $apellido, $email, $contraseña, $telefono, $documento, $token, $date_token) {
+    public function insertar($idRol, $nombre, $apellido, $email, $contraseña, $telefono, $documento, $token, $date_token) {
         $this->usuario->token = $token;
         $this->usuario->date_token = $date_token;
         $this->usuario->idRol = $idRol;
@@ -28,10 +19,10 @@ class UsuarioController {
         $this->usuario->apellido = $apellido;
         $this->usuario->email = $email;
         $this->usuario->contraseña = $contraseña;
-        return $this->usuario->insertarEmp();
+        return $this->usuario->insertar();
     }
 
-    public function actualizar($id, $idRol, $nombre, $apellido, $email, $contraseña, $telefono, $documento, $token, $date_token) {
+    public function actualizar($id, $idRol, $nombre, $apellido, $email, $telefono, $documento, $token, $date_token) {
         $this->usuario->id = $id;
         $this->usuario->token = $token;
         $this->usuario->date_token = $date_token;
@@ -41,18 +32,13 @@ class UsuarioController {
         $this->usuario->nombre = $nombre;
         $this->usuario->apellido = $apellido;
         $this->usuario->email = $email;
-        $this->usuario->contraseña = $contraseña;
         return $this->usuario->actualizar();
     }
+
 
     public function obtener($email) {
         $this->usuario->email = $email;
         return $this->usuario->obtener();
-    }
-
-    public function obtenerEmp($email) {
-        $this->usuario->email = $email;
-        return $this->usuario->obtenerEmp();
     }
 
     public function eliminar($id) {
