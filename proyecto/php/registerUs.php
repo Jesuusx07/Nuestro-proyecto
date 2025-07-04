@@ -20,7 +20,7 @@ $select = $_POST["select"];
 
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-$usuario = $controlador->obtenerEmp($email);
+$usuario = $controlador->obtener($email);
 
 
 
@@ -62,7 +62,7 @@ else{
     }
     else{
         if($select == "Mesero"){
-            $usuario = $controlador->insertarEmp(1, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+            $usuario = $controlador->insertar("Mesero", $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
 
             $session->set('exito', 'Empleado registrado exitosamente.');
 
@@ -70,7 +70,7 @@ else{
             exit();
         }
         elseif($select == "Cocinero"){
-            $usuario = $controlador->insertarEmp(2, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+            $usuario = $controlador->insertar("Cocinero", $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
 
             $session->set('exito', 'Empleado registrado exitosamente.');
 
@@ -78,7 +78,7 @@ else{
             exit();
         }    
         elseif($select == "Limpieza"){
-            $usuario = $controlador->insertarEmp(3, $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+            $usuario = $controlador->insertar("Limpieza", $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
 
             $session->set('exito', 'Empleado registrado exitosamente.');
 

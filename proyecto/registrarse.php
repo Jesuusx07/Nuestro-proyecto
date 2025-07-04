@@ -42,6 +42,10 @@ if (!$session->isLoggedIn()) {
         <input type="password" placeholder="Nueva contraseña" name="pass" id="pass1" required />
         <button type="button" class="toggle-password" aria-label="Mostrar contraseña">👁️</button>
       </div>
+      <div class="name-fields">
+        <input type="text" placeholder="Telefono" name="telefono" required />
+        <input type="text" placeholder="Documento" name="documento" required />
+      </div>
 
       <?php
       // Aquí es donde verificas y muestras el mensaje

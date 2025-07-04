@@ -34,7 +34,7 @@ if ($usuario) {
     $stored_hash = $usuario['contraseña']; // Obtiene la contraseña hasheada.
 
     // Verifica si la contraseña ingresada coincide con la hasheada.
-    if (password_verify($user_password, $stored_hash)) {
+    if (password_verify($user_password, $stored_hash) && $usuario['id_rol'] == 'admin') {
         // Autenticación exitosa como administrador.
         // Asume que el rol '1' es para administradores.
         $session->login(1, $user_email); // Puedes pasar $admin_data['id_admin'] si tu SessionManager lo espera.
@@ -46,7 +46,7 @@ if ($usuario) {
 // 4. Si NO es administrador O la contraseña de admin no coincidió, intentar autenticar como EMPLEADO.
 // Prepara la consulta para buscar en la tabla 'empleado'.
 // ¡Asegúrate de que la tabla 'empleado' también tenga la columna 'contraseña' y 'correo' para que esto funcione!
-$usuario = $controlador->obtenerEmp($user_email);
+$usuario = $controlador->obtener($user_email);
 
 // Si se encontró un empleado con ese correo...
 if ($usuario) {

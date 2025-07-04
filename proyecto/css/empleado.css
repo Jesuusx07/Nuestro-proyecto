@@ -205,16 +205,6 @@
             gap: 15px;
         }
 
-        .btn {
-            padding: 10px 20px;
-            text-decoration: none;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
 
         .btn.amarillo {
             background-color: #f0ad4e;
@@ -349,7 +339,6 @@ tr:hover td {
 }
 
 
-AAAAAAAAAAAAAAAAAAA
 /* Estilos para el botón que abre el modal */
 .open-modal-btn {
     padding: 10px 20px;
@@ -446,20 +435,7 @@ select:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
-
-.btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #45a049;
+a.boton-edi {
+    width: 20px;
+    background: rebeccapurple;
 }
