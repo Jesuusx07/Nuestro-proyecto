@@ -57,12 +57,6 @@ else if(strlen($apell) > $longMaxnom){
     exit();
 }
 
-else if(strpos($apell, " ") !== false){
-    $session->set('error_message', 'El apellido no puede contener espacios en blanco.');
-
-    header('Location: ../registrarse.php'); 
-    exit();
-}
 else if(preg_match('/[0-9]/', $apell)){
     $session->set('error_message', 'El apellido no debe contener numeros.');
 
@@ -82,12 +76,6 @@ else if(strlen($nom) > $longMaxnom){
     exit();
 }
 
-else if(strpos($nom, " ") !== false){
-    $session->set('error_message', 'El nombre no puede contener espacios en blanco.');
-
-    header('Location: ../registrarse.php'); 
-    exit();
-}
 elseif(preg_match('/[A-Z]/', $tele)){
     $session->set('error_message', 'No se aceptan letras en el telefono.');
 

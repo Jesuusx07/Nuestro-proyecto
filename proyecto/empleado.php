@@ -68,8 +68,8 @@
     <div class="menu-item">
       <button class="btn-menu">Gestión de Reservas</button>
       <div class="sub-menu">
-        <a href="reservas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="reservas_consultar.html" class="sub-btn">Consultar</a>
+        <a href="reservasRegis.php" class="sub-btn">Registrar</a>
+        <a href="reservas.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -77,7 +77,7 @@
       <button class="btn-menu">Gestión de Ventas</button>
       <div class="sub-menu">
         <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="ventas_consultar.html" class="sub-btn">Consultar</a>
+        <a href="ventas.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
       <button class="btn-menu">Gestión de Inventario</button>
       <div class="sub-menu">
         <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
-        <a href="inventario_consultar.html" class="sub-btn">Consultar</a>
+        <a href="inventario.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -161,7 +161,7 @@
 
 <table>
     <tr>
-        <th>Empleado</th>
+        <th>id_Empleado</th>
         <th>Rol</th>
         <th>Nombres</th>
         <th>Apellidos</th>

@@ -31,8 +31,8 @@ if (!$session->isLoggedIn()) {
     <p>Es rápido y fácil.</p>
     <form action="./php/register.php" method="post">
       <div class="name-fields">
-        <input type="text" placeholder="Nombre" name="nombre" required />
-        <input type="text" placeholder="Apellido" name="apellido" required />
+        <input type="text" placeholder="Nombres" name="nombre" required />
+        <input type="text" placeholder="Apellidos" name="apellido" required />
       </div>
 
       <input type="email" placeholder="Correo electrónico" name="email" required />
