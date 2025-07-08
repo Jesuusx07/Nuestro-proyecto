@@ -19,7 +19,7 @@ if (!$conexion) {
 <body>
 <?php
 if (isset($_GET['id'])) {
-    $id_empleado = mysqli_real_escape_string($conexion, $_GET['id']);
+    $id_usuario = mysqli_real_escape_string($conexion, $_GET['id']);
 }
 if (isset($_GET['id_rol'])) {
     $id_rol = mysqli_real_escape_string($conexion, $_GET['id_rol']);
@@ -46,7 +46,7 @@ if (isset($_GET['docu'])) {
         <h2>Editar empleado</h2>
         <form action="./php/editarEmp.php" method="POST">
             <div class="form-group">
-                    <input type="hidden" name="id_empleado" value="<?php echo htmlspecialchars($id_empleado); ?>">
+                    <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
                     <input type="hidden" name="id_rol" value="<?php echo htmlspecialchars($id_rol); ?>">
 
                     <label for="fname">Nombre</label>
@@ -68,7 +68,7 @@ if (isset($_GET['docu'])) {
                     <input type="number" id="id" name="documento" value="<?php echo $documento?>">
                     <label for="rol">Rol</label>
                     <?php
-                    if ($id_rol == 'Mesero'){ 
+                    if ($id_rol == "Mesero "){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Mesero">Mesero</option>
@@ -79,7 +79,7 @@ if (isset($_GET['docu'])) {
                     }
                     ?>
                     <?php
-                    if ($id_rol == 'Cocinero'){ 
+                    if ($id_rol == 'Cocinero '){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Cocinero">Cocinero</option>
@@ -90,7 +90,7 @@ if (isset($_GET['docu'])) {
                     }
                     ?>
                     <?php
-                    if ($id_rol == 'Limpieza'){ 
+                    if ($id_rol == 'Limpieza '){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Limpieza">Limpieza</option>
@@ -100,6 +100,7 @@ if (isset($_GET['docu'])) {
                     <?php
                     }
                     ?>
+                    
             </div>
                     <style>
                       .p-error{
