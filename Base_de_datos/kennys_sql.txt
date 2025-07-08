@@ -1,12 +1,5 @@
 -- 1. Tablas sin dependencias de FK (o solo de sí mismas)
 
-CREATE TABLE cliente(
-    id_cliente INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) NOT NULL,
-    direccion VARCHAR(100) NOT NULL,
-    telefono VARCHAR(20) NOT NULL
-);
-
 CREATE TABLE categoria(
     id_categoria INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL
@@ -18,18 +11,11 @@ CREATE TABLE plaCategoria(
     nombre VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE proveedor(
-    id_proveedor INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    direccion VARCHAR(100) NOT NULL,
-    telefono VARCHAR(20) NOT NULL,
-    email VARCHAR(100) NOT NULL
-);
 
 -- 2. Tablas que dependen de las anteriores
 
 CREATE TABLE usuario(
-    id_empleado INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_rol VARCHAR(50) NOT NULL,
     nombres VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
@@ -47,7 +33,6 @@ CREATE TABLE producto(
     nombre VARCHAR(50) NOT NULL,
     categoria INT NOT NULL,
     imagen VARCHAR(255) NOT NULL,
-    cantidad_en_stock INT NOT NULL DEFAULT 0,
     precio_unitario DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (categoria) REFERENCES categoria(id_categoria)
 );
@@ -76,33 +61,16 @@ CREATE TABLE reserva(
     fecha_reserva DATE NOT NULL
 );
 
-CREATE TABLE proveedor_producto(
-    id_proveedor INT NOT NULL,
+
+CREATE TABLE inventario(
+    id_inventario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_producto INT NOT NULL,
-    PRIMARY KEY (id_proveedor, id_producto),
-    FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor),
+    cantidad INT NOT NULL,
+    fecha DATE NOT NULL,
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
-CREATE TABLE entrada_inventario(
-    id_entrada INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_proveedor INT NOT NULL,
-    id_producto INT NOT NULL,
-    cantidad_entrada INT NOT NULL,
-    precio_unitario_compra DECIMAL(10, 2) NOT NULL,
-    fecha_entrada DATE NOT NULL,
-    FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor),
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
-);
 
-CREATE TABLE salida_inventario(
-    id_salida INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_producto INT NOT NULL,
-    cantidad_salida INT NOT NULL,
-    motivo_salida VARCHAR(100) NOT NULL,
-    fecha_salida DATE NOT NULL,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
-);
 
 
 -- 4. Tablas de detalle que dependen de transacciones principales y productos/platillos
@@ -160,17 +128,17 @@ CREATE TABLE reserva_item(
     FOREIGN KEY (id_platillo) REFERENCES platillo(id_pla)
 );
 
-INSERTAR EN TABLAS -------------------
+-- INSERTAR EN TABLAS -------------------
 
-roles
+-- roles
 
 INSERT INTO roles VALUES ("","Mesero"), ("","Cocinero"), ("","Limpieza")
 
 
-Procedure-----------------------------
+-- Procedure-----------------------------
 
 
-obtener usuario
+-- obtener usuario
 
 DELIMITER //
 
@@ -179,7 +147,7 @@ BEGIN
     SELECT * FROM usuario WHERE correo = e_correo;
 END //
 
-insertar usuario
+-- insertar usuario
 
 DELIMITER //
 CREATE PROCEDURE insertar_usuario(IN e_id_rol VARCHAR(50), IN e_nombre VARCHAR(100), IN e_apellido VARCHAR(100), IN e_email VARCHAR(100), IN e_contraseña VARCHAR(100), IN e_telefono VARCHAR(100), IN e_documento int, IN e_token VARCHAR(100), IN e_date datetime)
@@ -187,7 +155,7 @@ BEGIN
     INSERT INTO usuario(id_rol, nombres, apellidos, correo, contraseña, telefono, documento, reset_token, reset_token_expires_at) VALUES(e_id_rol, e_nombre, e_apellido, e_email, e_contraseña, e_telefono, e_documento, e_token, e_date);
 END //
 
-actualizar usuario
+-- actualizar usuario
 
 DELIMITER //
 CREATE PROCEDURE actualizar_usuario(IN e_id int, IN e_id_rol VARCHAR (50), IN e_nombre VARCHAR(100), IN e_apellido VARCHAR(100), IN e_email VARCHAR(100), IN e_telefono VARCHAR(100), IN e_documento int, IN e_token VARCHAR(100), IN e_date datetime)
@@ -195,18 +163,13 @@ BEGIN
     UPDATE usuario SET id_rol = e_id_rol, nombres = e_nombre, apellidos = e_apellido, correo = e_email, telefono = e_telefono, documento = e_documento, reset_token = e_token, reset_token_expires_at = e_date WHERE id_empleado = e_id;
 END //
 
-eliminar empleado
+-- eliminar empleado
 
 DELIMITER //
 
-CREATE PROCEDURE eliminar_empleado (IN e_id INT)
+CREATE PROCEDURE eliminar_usuario (IN e_id INT)
 BEGIN
 
-	DELETE FROM venta   WHERE id_empleado = e_id;
-        DELETE FROM pedido  WHERE id_empleado = e_id;
-        DELETE FROM reserva WHERE id_empleado = e_id;
-        DELETE FROM factura WHERE id_empleado = e_id;
-
-        DELETE FROM empleado WHERE id_empleado = e_id;
+        DELETE FROM usuario WHERE id_usuario = e_id;
 
 END //
