@@ -160,7 +160,7 @@ END //
 DELIMITER //
 CREATE PROCEDURE actualizar_usuario(IN e_id int, IN e_id_rol VARCHAR (50), IN e_nombre VARCHAR(100), IN e_apellido VARCHAR(100), IN e_email VARCHAR(100), IN e_telefono VARCHAR(100), IN e_documento int, IN e_token VARCHAR(100), IN e_date datetime)
 BEGIN
-    UPDATE usuario SET id_rol = e_id_rol, nombres = e_nombre, apellidos = e_apellido, correo = e_email, telefono = e_telefono, documento = e_documento, reset_token = e_token, reset_token_expires_at = e_date WHERE id_empleado = e_id;
+    UPDATE usuario SET id_rol = e_id_rol, nombres = e_nombre, apellidos = e_apellido, correo = e_email, telefono = e_telefono, documento = e_documento, reset_token = e_token, reset_token_expires_at = e_date WHERE id_usuario = e_id;
 END //
 
 -- eliminar empleado

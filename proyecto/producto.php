@@ -68,8 +68,8 @@
     <div class="menu-item">
       <button class="btn-menu">Gestión de Reservas</button>
       <div class="sub-menu">
-        <a href="reservas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="reservas_consultar.html" class="sub-btn">Consultar</a>
+        <a href="reservasRegis.php" class="sub-btn">Registrar</a>
+        <a href="reservas.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -77,7 +77,7 @@
       <button class="btn-menu">Gestión de Ventas</button>
       <div class="sub-menu">
         <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="ventas_consultar.html" class="sub-btn">Consultar</a>
+        <a href="ventas.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
       <button class="btn-menu">Gestión de Inventario</button>
       <div class="sub-menu">
         <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
-        <a href="inventario_consultar.html" class="sub-btn">Consultar</a>
+        <a href="inventario.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -156,7 +156,53 @@
       });
     }
   </script>
-  <!-- Agrega Chart.js desde CDN si lo necesitas -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
+
+<table>
+    <tr>
+        <th>Empleado</th>
+        <th>Rol</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>correo</th>
+        <th>contraseña</th>
+        <th>telefono</th>
+        <th>documento</th>
+    </tr>
+
+
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM usuario where id_rol != 'admin'";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $mostrar['id_usuario']; ?></td>
+        <td><?php echo $mostrar['id_rol']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['apellidos']; ?></td>
+        <td><?php echo $mostrar['correo']; ?></td>
+        <td><?php echo $mostrar['contraseña']; ?></td>
+        <td><?php echo $mostrar['telefono']; ?></td>
+        <td><?php echo $mostrar['documento']; ?></td>
+        <td>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+        </td>
+        <td>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+        </td>
+    </tr>
+<?php
+}
+?>
+    </table>
+</div>
+
+    </table>
+</div>
 </body>
 </html>

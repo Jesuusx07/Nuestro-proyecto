@@ -40,8 +40,8 @@ $session = new SessionManager();
     <h2>Registrar Empleados</h2>
     <div class="regis">
       <form id="formu" action="./php/registerUs.php" method="POST">
-        <input type="text" id="nombre" name="fname" placeholder="Nombre">
-        <input type="text" id="apelli" name="lname" placeholder="Apellido">
+        <input type="text" id="nombre" name="fname" placeholder="Nombres">
+        <input type="text" id="apelli" name="lname" placeholder="Apellidos">
         <input type="email" id="correo" name="email" placeholder="Correo">
         <input type="password" id="contra" name="password" placeholder="Contraseña">
         <input type="text" id="telefono" name="tele" placeholder="Teléfono">
