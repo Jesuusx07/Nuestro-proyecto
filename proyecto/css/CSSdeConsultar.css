@@ -1,0 +1,272 @@
+ 
+    :root {
+      --color-principal: #1c1c1c;
+      --color-acento: #A02334;
+      --color-fondo: #f4f4f4;
+      --color-fondo-oscuro: #2a2a2a;
+      --color-texto: #333;
+      --color-texto-claro: #f0f0f0;
+      --fuente-principal: 'Exo 2', sans-serif;
+    }
+     /* Modo oscuro: al añadir la clase .dark-theme al <body> se sobreescriben las variables */
+    body.dark-theme {
+      --color-bg: #1e1e1e;
+      --color-bg-secondary: #2b2b2b;
+      --color-text: #f1f1f1;
+      --shadow-1: 0 4px 8px rgba(0, 0, 0, 0.6);
+      --shadow-2: 0 8px 20px rgba(0, 0, 0, 0.8);
+    }
+
+       :root {
+      --color-primary: #a02334;
+      --color-bg-light:rgb(244, 244, 244);
+      --color-bg-secondary-light:rgb(100, 87, 87);
+      --color-text-light: #1c1c1c;
+
+      --color-bg-dark: #181818;
+      --color-bg-secondary-dark: #242424;
+      --color-text-dark:rgb(0, 0, 0);
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      margin: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-theme {
+      background: var(--color-bg-light);
+      color: var(--color-text-light);
+    }
+
+    body.dark-theme {
+      background: var(--color-bg-dark);
+      color: var(--color-text-dark);
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px;
+      background-color: #1c1c1c;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #themeToggle {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .boton-perfil {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .menu-desplegable {
+      display: none;
+      position: absolute;
+      top: 48px;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    body.dark-theme .menu-desplegable {
+      background: var(--color-bg-secondary-dark);
+    }
+
+    .menu-desplegable.open {
+      display: block;
+    }
+
+    .menu-desplegable a {
+      display: block;
+      padding: 10px 16px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .menu-desplegable a:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--fuente-principal);
+    }
+    body {
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: var(--color-principal);
+      color: white;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-left img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .navbar-left span {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .perfil {
+      position: relative;
+    }
+    .boton-perfil {
+      background-color: var(--color-acento);
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+}
+    .btn {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .amarillo {
+      background-color: #f0ad4e;
+      color: white;
+    }
+    .rojo {
+      background-color: #5ad94f;
+      color: white;
+    }
+    .tabla-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .tabla-container table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .tabla-container th, .tabla-container td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    .boton-edi, .boton {
+      background-color: var(--color-acento);
+      color: white;
+      padding: 6px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .titulo {
+      margin-bottom: 15px;
+      color: var(--color-acento);
+      text-align: center;
+    }
+    .menu-lateral {
+      width: 220px;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: sticky;
+      top: 80px; /* bajo el navbar */
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+
+    .menu-container {
+      background: var(--color-bg-secondary);
+      padding: 20px;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-1);
+      transition: var(--transition);
+    }
+
+    .btn-menu {
+      padding: 14px 18px;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      background: var(--color-bg-secondary);
+      color: var(--color-text);
+      text-align: left;
+      cursor: pointer;
+      box-shadow: var(--shadow-1);
+      transition: var(--transition);
+    }
+
+    .btn-menu:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+    }
+
+    .sub-menu {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin-left: 15px;
+      margin-top: 6px;
+    }
+
+    .sub-btn {
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      background: var(--color-bg-secondary);
+      color: var(--color-text);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+      transition: var(--transition);
+    }
+
+    .sub-btn:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+    }

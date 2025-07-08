@@ -1,187 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Producto</title>
-    <link rel="stylesheet" href="./css/producto.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Administrativo</title>
+  <link rel="stylesheet" href="./css/dashboard.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+   
 </head>
 <body>
-
-  <div class="navbar">
-    <div class="navbar-left">
-       <img src="./img/Logo Principal 2.png" alt="Logo Kenny's" class="logo-navbar" />
+  <!-- ░░░░░░░░░░  NAVBAR  ░░░░░░░░░░ -->
+  <header class="navbar">
   
-      <a href="index.html"> <img src="./img/logo_Favicon.png" alt="Logo Kenny's"></a>
-      <span>ADMINISTRADOR</span>
+
+     <span class="logo-text">ADMINISTRADOR</span>
     </div>
-    <div class="perfil">
-      <button class="boton-perfil" onclick="toggleMenu()"><i class="fas fa-user"></i> Perfil</button>
-      <div class="menu-desplegable" id="menuPerfil">
-        <a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+
+    <div class="navbar-right">
+      <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
+      
+      <div class="perfil">
+        <button class="boton-perfil" id="perfilBtn">👤</button>
+       <div class="menu-desplegable" id="perfilMenu">
+
+  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+</div>
+
       </div>
     </div>
-  </div>
-        
+  </header>
 
-    <div class="container">
-        <div class="contenido">
-            <div class="menu-lateral">
-                <div class="menu-container">
-                     <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
-                        <div class="sub-menu">
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
-                        <div class="sub-menu">
-                            <a href="pedido.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
-                        <div class="sub-menu">
-                            <a href="producto.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
-                        <div class="sub-menu">
-                            <a href="Detalleventas.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
-                        <div class="sub-menu">
-                            <a href="proveedores.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
-                        <div class="sub-menu">
-                            <a href="reservas.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
-                        <div class="sub-menu">
-                            <a href="ventas.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
-                        <div class="sub-menu">
-                            <a href="inventario.php." class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ░░░░░░░░░░ CONTENIDO ░░░░░░░░░░ -->
+  <div class="container">
+    <!-- ░░░  SIDEBAR  ░░░ -->
+    <aside class="menu-lateral">
+  <nav class="menu-container">
 
-            <?php
-            $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
-
-            if (!$conexion) {
-                die("Error de conexión: " . mysqli_connect_error());
-            }
-            ?>
-    <div class="botones">
-                <a class="btn amarillo" href="registrarProducto.php">REGISTRAR PRODUCTO</a>
-                <button class="btn rojo">EDITAR PRODUCTO</button>
-            </div>
-            <div class="tabla-container">
-                <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1>
-
-                <table border="1">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Nombre</th>
-                        <th>Categoria</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                    </tr>
-
-                    <?php
-                    $sql = "SELECT * FROM producto";
-                    $result = mysqli_query($conexion, $sql);
-
-                    while ($mostrar = mysqli_fetch_array($result)) {
-                    ?>
-                        <tr>
-                            <td><?php echo $mostrar['id_producto']; ?></td>
-                            <td><?php echo $mostrar['nombre']; ?></td>
-                            <td><?php echo $mostrar['categoria']; ?></td>
-                 
-                            <td><?php echo $mostrar['cantidad_en_stock']; ?></td>
-                            <td><?php echo $mostrar['precio_unitario']; ?></td>
-                        </tr>
-                    <?php
-                    }
-                    mysqli_close($conexion); // Close the database connection
-                    ?>
-                </table>
-            </div>
-
-
-        </div>
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Empleados</button>
+      <div class="sub-menu">
+        <a href="registerUs.php" class="sub-btn">Registrar</a>
+        <a href="empleado.php" class="sub-btn">Consultar</a>
+      </div>
     </div>
 
-    <script>
-        // Script for the profile dropdown menu
-        function toggleMenu() {
-            const menu = document.getElementById("menuPerfil");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Productos</button>
+      <div class="sub-menu">
+        <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+        <a href="producto.php" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Proveedor</button>
+      <div class="sub-menu">
+        <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
+        <a href="proveedores.php" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Reservas</button>
+      <div class="sub-menu">
+        <a href="reservas_registrar.html" class="sub-btn">Registrar</a>
+        <a href="reservas_consultar.html" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Ventas</button>
+      <div class="sub-menu">
+        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
+        <a href="ventas_consultar.html" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Inventario</button>
+      <div class="sub-menu">
+        <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
+        <a href="inventario_consultar.html" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+  </nav>
+</aside>
+     <!-- ░░░  MAIN  ░░░ -->
+    
+
+  <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
+  <script>
+    // ----- Tema claro / oscuro -----
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // ----- Menú perfil desplegable -----
+    const perfilBtn = document.getElementById('perfilBtn');
+    const perfilMenu = document.getElementById('perfilMenu');
+    perfilBtn.addEventListener('click', () => {
+      perfilMenu.style.display = perfilMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!perfilBtn.contains(e.target) && !perfilMenu.contains(e.target)) {
+        perfilMenu.style.display = 'none';
+      }
+    });
+
+    // ----- Sub-menús laterales -----
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      const button = item.querySelector('.btn-menu');
+      const subMenu = item.querySelector('.sub-menu');
+      button.addEventListener('click', () => {
+        const isOpen = subMenu.style.display === 'flex';
+        // Cierra otros submenús
+        document.querySelectorAll('.sub-menu').forEach(sm => sm.style.display = 'none');
+        if (!isOpen) {
+          subMenu.style.display = 'flex';
         }
+      });
+    });
 
-        window.onclick = function(event) {
-            if (!event.target.matches('.boton-perfil')) {
-                const menu = document.getElementById("menuPerfil");
-                if (menu.style.display === "block") {
-                    menu.style.display = "none";
-                }
-            }
+    // ----- Grafico Placeholder (Chart.js) -----
+    // Solo un ejemplo para que puedas conectar tus datos reales
+    if (typeof Chart !== 'undefined') {
+      const ctx = document.getElementById('graficoVentas');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+          datasets: [{
+            label: 'Ventas',
+            data: [12, 19, 3, 5, 2, 3, 7],
+            fill: false,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true }
+          }
         }
-
-        // Script for the side menu items with sub-menus
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        menuItems.forEach(item => {
-            const btnMenu = item.querySelector('.btn-menu');
-            const subMenu = item.querySelector('.sub-menu');
-
-            btnMenu.addEventListener('click', () => {
-                // Cierra cualquier otro submenú abierto
-                menuItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        const otherSubMenu = otherItem.querySelector('.sub-menu');
-                        if (otherSubMenu) {
-                            otherSubMenu.style.display = 'none';
-                        }
-                    }
-                });
-
-                // Alterna la visibilidad del submenú actual
-                if (subMenu) {
-                    subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-                }
-            });
-        });
-    </script>
-
+      });
+    }
+  </script>
+  <!-- Agrega Chart.js desde CDN si lo necesitas -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 </body>
 </html>

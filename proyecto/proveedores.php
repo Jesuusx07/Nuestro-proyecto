@@ -1,191 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
+<head><!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Clientes</title> <link rel="stylesheet" href="./css/reserva.css">
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenny's – Consultar</title>
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="./css/CSSdeConsultar.css" />
 
-    <div class="navbar">
-      <div class="navbar-left">
-        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
-        <span>ADMINISTRADOR</span>
-      </div>
-      <div class="navbar-right">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-         </div>
-  <div class="perfil">
-  <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
-  <div class="menu-desplegable" id="menuPerfil">
-    <a href="./php/logout.php">Cerrar sesión</a>
-    
-  </div>
-</div>
+  <style>
+    :root {
+      --color-primary: #a02334;
+      --color-bg-light: #f4f4f4;
+      --color-bg-secondary-light: #ffffff;
+      --color-text-light: #1c1c1c;
 
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("menuPerfil");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  window.onclick = function(event) {
-    if (!event.target.matches('.boton-perfil')) {
-      const menu = document.getElementById("menuPerfil");
-      if (menu.style.display === "block") {
-        menu.style.display = "none";
-      }
+      --color-bg-dark: #181818;
+      --color-bg-secondary-dark: #242424;
+      --color-text-dark: #f1f1f1;
     }
-  }
-</script>
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      margin: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-theme {
+      background: var(--color-bg-light);
+      color: var(--color-text-light);
+    }
+
+    body.dark-theme {
+      background: var(--color-bg-dark);
+      color: var(--color-text-dark);
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px;
+      background-color: #1c1c1c;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #themeToggle {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .boton-perfil {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .menu-desplegable {
+      display: none;
+      position: absolute;
+      top: 48px;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    body.dark-theme .menu-desplegable {
+      background: var(--color-bg-secondary-dark);
+    }
+
+    .menu-desplegable.open {
+      display: block;
+    }
+
+    .menu-desplegable a {
+      display: block;
+      padding: 10px 16px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .menu-desplegable a:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body class="light-theme">
+  <header class="navbar">
+    <div class="navbar-left">
+
+      <span class="logo-text">ADMINISTRADOR</span>
+    </div>
+    <div class="navbar-right">
+      <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
+      <div class="perfil" style="position:relative;">
+        <button class="boton-perfil" id="perfilBtn">👤</button>
+        <div class="menu-desplegable" id="perfilMenu">
+
+          <a href="#">Cerrar sesión</a>
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="container">
-        <div class="contenido">
-            <div class="menu-lateral">
-                <div class="menu-container">
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>EMPLEADO</button>
-                        <div class="sub-menu">
-                               <a href="empleado.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
-                        <div class="sub-menu">
-                            <a href="pedido.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
-                        <div class="sub-menu">
-                            <a href="producto.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">DETALLES DE <br>VENTAS</button>
-                        <div class="sub-menu">
-                            <a href="historial.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
-                        <div class="sub-menu">
-                            <a href="proveedores.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
-                        <div class="sub-menu">
-                            <a href="reservas.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> VENTAS</button>
-                        <div class="sub-menu">
-                            <a href="ventas.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br> INVENTARIO</button>
-                        <div class="sub-menu">
-                            <a href="inventario.php" class="sub-btn">Consultar</a>
-                            <a href="registerUs.html" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="contenido">
+      <div class="menu-lateral">
+        <div class="menu-container">
+          <!-- aquí tu menú -->
+        </div>
+      </div>
 
-            <script>
-                const menuItems = document.querySelectorAll('.menu-item');
-              
-                menuItems.forEach(item => {
-                  const btnMenu = item.querySelector('.btn-menu');
-                  const subMenu = item.querySelector('.sub-menu');
-              
-                  btnMenu.addEventListener('click', () => {
-                    // Cierra cualquier otro submenú abierto
-                    menuItems.forEach(otherItem => {
-                      if (otherItem !== item) {
-                        const otherSubMenu = otherItem.querySelector('.sub-menu');
-                        if (otherSubMenu) {
-                          otherSubMenu.style.display = 'none';
-                        }
-                      }
-                    });
-              
-                    // Alterna la visibilidad del submenú actual
-                    if (subMenu) {
-                      subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-                    }
-                  });
-                });
-            </script>
+      <?php
+      $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
+      if (!$conexion) {
+          die("Error de conexión: " . mysqli_connect_error());
+      }
+      ?>
 
-<?php
-$conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
+      <div class="botones">
+        <a class="btn amarillo" href="registrarProducto.php">REGISTRAR PROVEEDOR</a>
+     
+      </div>
 
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
-}
-?>
-        <div class="botones">
-            <a class="btn amarillo" href="registerUs.html">REGISTRAR CLIENTE</a> <button class="btn rojo">EDITAR CLIENTE</button> </div>
+      <div class="tabla-container">
+        <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDOR</h1>
+        <table>
+          <tr>
+            <th>IDProveedor</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+          <?php
+          $sql = "SELECT * FROM usuario WHERE id_rol != 'admin'";
+          $result = mysqli_query($conexion, $sql);
+
+          while ($mostrar = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>{$mostrar['id_empleado']}</td>";
+            echo "<td>{$mostrar['id_rol']}</td>";
+            echo "<td>{$mostrar['nombres']}</td>";
+            echo "<td>{$mostrar['apellidos']}</td>";
+            echo "<td>{$mostrar['correo']}</td>";
+            echo "<td>{$mostrar['contraseña']}</td>";
+            echo "<td>{$mostrar['telefono']}</td>";
+            echo "<td>{$mostrar['documento']}</td>";
+            echo "<td><a href='editar_empleado.php?id={$mostrar['id_empleado']}&id_rol={$mostrar['id_rol']}&nom={$mostrar['nombres']}&apell={$mostrar['apellidos']}&email={$mostrar['correo']}&tel={$mostrar['telefono']}&docu={$mostrar['documento']}' class='boton-edi'>Editar</a></td>";
+            echo "<td><a href='./php/eliminarEmp.php?id={$mostrar['id_empleado']}' class='boton' onclick=\"return confirm('¿Estás seguro de que quieres eliminar este empleado?');\">Eliminar</a></td>";
+            echo "</tr>";
+          }
+          ?>
+        </table>
+      </div>
     </div>
-<div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
+  </div>
 
-<table border="1">
-    <tr>
-        <th>Proveedor</th>
-        <th>Nombre</th>
-        <th>Dirección</th>
-        <th>Telefono</th>
-          <th>Email</th>
-       
-    </tr>
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
 
+    themeToggle.addEventListener('click', () => {
+      if (body.classList.contains('dark-theme')) {
+        body.classList.replace('dark-theme', 'light-theme');
+      } else {
+        body.classList.replace('light-theme', 'dark-theme');
+      }
+    });
 
-<?php
-$sql = "SELECT * FROM proveedor";
-$result = mysqli_query($conexion, $sql);
+    const perfilBtn = document.getElementById('perfilBtn');
+    const perfilMenu = document.getElementById('perfilMenu');
 
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-        <tr>
-            <td><?php echo $mostrar['id_proveedor']; ?></td>
-            <td><?php echo $mostrar['nombre']; ?></td>
-            <td><?php echo $mostrar['direccion']; ?></td>
-            <td><?php echo $mostrar['telefono']; ?></td>
-                        <td><?php echo $mostrar['email']; ?></td>
-            
-        </tr>
-<?php
-}
-?>
-    </table>
-</div>
+    perfilBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      perfilMenu.classList.toggle('open');
+    });
 
-    </table>
-</div>
-
-
-
-
+    document.addEventListener('click', (e) => {
+      if (!perfilBtn.contains(e.target) && !perfilMenu.contains(e.target)) {
+        perfilMenu.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
