@@ -25,15 +25,15 @@ $session = new SessionManager();
     <div class="navbar-left">
       <a href="index.html"><img src="./img/logo_Favicon.png" alt=""></a>
       <span>EMPLEADO</span>
+      <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
     </div>
- 
   </div>
+
   <div class="perfil">
-  <button class="boton-perfil" onclick="toggleMenu()">👤 Perfil</button>
-  <div class="menu-desplegable" id="menuPerfil">
-    <a href="./php/logout.php">Cerrar sesión</a>
-    
+   <div class="menu-desplegable" id="menuPerfil">
+   <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
   </div>
+  
 </div>
 
 <script>
@@ -52,6 +52,7 @@ $session = new SessionManager();
   }
 
 </script>
+
 
   <div class="container">
     

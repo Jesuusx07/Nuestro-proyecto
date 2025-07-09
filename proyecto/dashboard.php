@@ -26,71 +26,70 @@
       <div class="perfil">
         <button class="boton-perfil" id="perfilBtn">👤</button>
        <div class="menu-desplegable" id="perfilMenu">
-
-  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
-</div>
-
+       <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
       </div>
+
     </div>
+
   </header>
 
   <!-- ░░░░░░░░░░ CONTENIDO ░░░░░░░░░░ -->
   <div class="container">
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
-  <nav class="menu-container">
+      <nav class="menu-container">
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Empleados</button>
-      <div class="sub-menu">
-        <a href="registerUs.php" class="sub-btn">Registrar</a>
-        <a href="empleado.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Empleados</button>
+          <div class="sub-menu">
+            <a href="registerUs.php" class="sub-btn">Registrar</a>
+            <a href="empleado.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Productos</button>
-      <div class="sub-menu">
-        <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-        <a href="producto.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Productos</button>
+          <div class="sub-menu">
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="producto.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Proveedor</button>
-      <div class="sub-menu">
-        <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
-        <a href="proveedores.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Proveedor</button>
+          <div class="sub-menu">
+            <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
+            <a href="proveedores.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Reservas</button>
-      <div class="sub-menu">
-        <a href="reservas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="reservas_consultar.html" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Reservas</button>
+          <div class="sub-menu">
+            <a href="reservas_registrar.html" class="sub-btn">Registrar</a>
+            <a href="reservas_consultar.html" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Ventas</button>
-      <div class="sub-menu">
-        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="ventas_consultar.html" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Ventas</button>
+          <div class="sub-menu">
+            <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
+            <a href="ventas_consultar.html" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Inventario</button>
-      <div class="sub-menu">
-        <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
-        <a href="inventario_consultar.html" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
+            <a href="inventario_consultar.html" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-  </nav>
-</aside>
+      </nav>
+    </aside>
      <!-- ░░░  MAIN  ░░░ -->
     <main class="main">
       <section class="welcome-box">
