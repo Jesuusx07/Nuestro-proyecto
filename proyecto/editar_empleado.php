@@ -15,7 +15,7 @@ if (!$conexion) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Producto - Kenny's Restaurante</title>
-    <link rel="stylesheet" href="registrarProductos.css"> </head>
+    <link rel="stylesheet" href=".css/registrarProductos.css"> </head>
 <body>
 <?php
 if (isset($_GET['id'])) {

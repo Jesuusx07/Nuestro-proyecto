@@ -157,43 +157,38 @@
     }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1> 
 
 <table>
     <tr>
-        <th>Empleado</th>
-        <th>Rol</th>
-        <th>Nombres</th>
-        <th>Apellidos</th>
-        <th>correo</th>
-        <th>contraseña</th>
-        <th>telefono</th>
-        <th>documento</th>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Imagen</th>
+        <th>Precio</th>
     </tr>
 
 
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin'";
+$sql = "SELECT * FROM producto";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
+  $ruta_completa_imagen = "img_producto/" . $mostrar['imagen'];
 ?>
     <tr>
-        <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['id_rol']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
-        <td><?php echo $mostrar['apellidos']; ?></td>
-        <td><?php echo $mostrar['correo']; ?></td>
-        <td><?php echo $mostrar['contraseña']; ?></td>
-        <td><?php echo $mostrar['telefono']; ?></td>
-        <td><?php echo $mostrar['documento']; ?></td>
+        <td><?php echo $mostrar['id_producto']; ?></td>
+        <td><?php echo $mostrar['nombre']; ?></td>
+        <td><?php echo $mostrar['categoria']; ?></td>
+        <td><?php echo "<img src='" . htmlspecialchars($ruta_completa_imagen) . " ' style='width:200px; height:auto;'>";?></td>
+        <td><?php echo $mostrar['precio_unitario']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+            <a href="editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/eliminarPro.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php
