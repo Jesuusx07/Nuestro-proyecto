@@ -44,7 +44,7 @@ if (!$session->isLoggedIn()) {
                 </div>
                 <button type="submit" class="boton-registro" id="login-submit">Iniciar Sesión</button>
 
-                <a href="recovery.php" class="Recupera">¿Olvidaste tu contraseña?</a>
+                <a class="inc" href="recovery.php">Olvidaste tu contraseña?</a>
 
             </form>
 

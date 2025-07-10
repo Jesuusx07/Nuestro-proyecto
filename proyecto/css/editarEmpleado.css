@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap');
+
+:root {
+  --color-principal: #1c1c1c;
+  --color-acento: #A02334;
+  --color-texto: #333;
+  --color-fondo: #f4f4f4;
+  --color-fondo-oscuro: #2a2a2a;
+  --color-texto-claro: #f0f0f0;
+  --fuente-principal: 'Exo 2', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fuente-principal);
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-claro);
+}
+
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+body.dark .container {
+  background-color: #333;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--color-acento);
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: white;
+  color: var(--color-texto);
+  transition: border-color 0.3s ease;
+}
+
+body.dark input,
+body.dark select {
+  background-color: #444;
+  color: var(--color-texto-claro);
+  border-color: #666;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-acento);
+  outline: none;
+}
+
+/* Imagen del producto */
+img {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Botón */
+.btn {
+  padding: 12px;
+  background-color: var(--color-acento);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #881d2c;
+}
+
+/* Mensajes */
+.p-error {
+  color: var(--color-acento);
+  text-align: center;
+  font-size: 16px;
+}
+
+.error-message {
+  background-color: #ffe6e9;
+  border: 1px solid #ff4d6d;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+body.dark .error-message {
+  background-color: #5a1e2c;
+  border-color: #ff7c8a;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .btn {
+    font-size: 15px;
+  }
+}
