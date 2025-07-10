@@ -39,55 +39,54 @@
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
   <nav class="menu-container">
+      <div class="menu-item">
+          <button class="btn-menu">Gestión de Empleados</button>
+          <div class="sub-menu">
+            <a href="registerUs.php" class="sub-btn">Registrar</a>
+            <a href="empleado.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Empleados</button>
-      <div class="sub-menu">
-        <a href="registerUs.php" class="sub-btn">Registrar</a>
-        <a href="empleado.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Productos</button>
-      <div class="sub-menu">
-        <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-        <a href="producto.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Productos</button>
+          <div class="sub-menu">
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="producto.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Proveedor</button>
-      <div class="sub-menu">
-        <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
-        <a href="proveedores.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Proveedor</button>
+          <div class="sub-menu">
+            <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
+            <a href="proveedores.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Reservas</button>
-      <div class="sub-menu">
-        <a href="reservasRegis.php" class="sub-btn">Registrar</a>
-        <a href="reservas.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Reservas</button>
+          <div class="sub-menu">
+            <a href="reservasRegis.php" class="sub-btn">Registrar</a>
+            <a href="reservas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Ventas</button>
-      <div class="sub-menu">
-        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="ventas.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Ventas</button>
+          <div class="sub-menu">
+            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
+            <a href="ventas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Inventario</button>
-      <div class="sub-menu">
-        <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
-        <a href="inventario.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
+            <a href="inventario.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
   </nav>
 </aside>

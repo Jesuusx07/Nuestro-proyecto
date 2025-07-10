@@ -67,24 +67,24 @@
         <div class="menu-item">
           <button class="btn-menu">Gestión de Reservas</button>
           <div class="sub-menu">
-            <a href="reservas_registrar.html" class="sub-btn">Registrar</a>
-            <a href="reservas_consultar.html" class="sub-btn">Consultar</a>
+            <a href="reservasRegis.php" class="sub-btn">Registrar</a>
+            <a href="reservas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Ventas</button>
           <div class="sub-menu">
-            <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-            <a href="ventas_consultar.html" class="sub-btn">Consultar</a>
+            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
+            <a href="ventas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
-            <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
-            <a href="inventario_consultar.html" class="sub-btn">Consultar</a>
+            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
+            <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
@@ -119,6 +119,7 @@
           <!-- Placeholder para gráfico -->
           <div class="stat-box" style="flex:1 1 400px;">
             <canvas id="graficoVentas"></canvas>
+            
           </div>
         </div>
       </section>
