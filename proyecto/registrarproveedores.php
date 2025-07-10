@@ -43,7 +43,6 @@ $session = new SessionManager();
         <input type="text" id="nombre" name="fname" placeholder="Nombres">
         <input type="text" id="apelli" name="lname" placeholder="Apellidos">
         <input type="email" id="correo" name="email" placeholder="Correo">
-        <input type="password" id="contra" name="password" placeholder="Contraseña">
         <input type="text" id="telefono" name="tele" placeholder="Teléfono">
         <input type="number" id="id" name="documento" placeholder="Documento de identidad">
         <input type="submit" id="boton" value="Registrar">

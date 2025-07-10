@@ -156,11 +156,11 @@
     }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE RESERVA</h1> 
 
 <table>
     <tr>
-        <th>id_reserva</th>
+        <th>Reserva</th>
         <th>estado_reserva</th>
         <th>fecha_reserva</th>
     </tr>
@@ -179,10 +179,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['estado_reserva']; ?></td>
         <td><?php echo $mostrar['fecha_reserva']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
+            <a href="editar_reserva.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_reserva']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
+            <a href="./php/eliminarReserva.php?id=<?php echo $mostrar['id_reserva']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
         </td>
     </tr>
 <?php
