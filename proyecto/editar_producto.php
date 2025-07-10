@@ -15,6 +15,7 @@ if (!$conexion) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Producto - Kenny's Restaurante</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="registrarProductos.css"> </head>
 <body>
 <?php
@@ -38,12 +39,32 @@ if (isset($_GET['tel'])) {
 }
 if (isset($_GET['docu'])) {
     $documento = mysqli_real_escape_string($conexion, $_GET['docu']);
+=======
+    <link rel="stylesheet" href=".css/editarProducto.css"> </head>
+<body>
+<?php
+if (isset($_GET['id'])) {
+    $id_producto = mysqli_real_escape_string($conexion, $_GET['id']);
+}
+if (isset($_GET['categoria'])) {
+    $categoria = mysqli_real_escape_string($conexion, $_GET['categoria']);
+}
+if (isset($_GET['nombre'])) {
+    $nombre = mysqli_real_escape_string($conexion, $_GET['nombre']);
+}
+if (isset($_GET['imagen'])) {
+    $imagen = mysqli_real_escape_string($conexion, $_GET['imagen']);
+}
+if (isset($_GET['precio_unitario'])) {
+    $precio = mysqli_real_escape_string($conexion, $_GET['precio_unitario']);
+>>>>>>> c3d6b9b8fd7ad0852f06d8b8101314b4008a411c
 }
 
 ?>
 
     <div class="container">
         <h2>Editar empleado</h2>
+<<<<<<< HEAD
         <form action="./php/editarEmp.php" method="POST">
             <div class="form-group">
                     <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
@@ -74,28 +95,72 @@ if (isset($_GET['docu'])) {
                         <option value="Mesero">Mesero</option>
                         <option value="Cocinero">Cocinero</option>
                         <option value="Limpieza">Limpieza</option>
+=======
+        <form action="./php/editarProducto.php" method="POST">
+            <div class="form-group">
+                    <input type="hidden" name="id_producto" value="<?php echo htmlspecialchars($id_producto); ?>">
+                    <input type="hidden" name="imagen1" value="<?php echo htmlspecialchars($imagen); ?>">
+
+                    <label for="fname">nombre</label>
+                    <input type="text" id="nombre" name="nombre" value="<?php echo trim($nombre)?>">
+                    <label for="lname">imagen</label>
+                    <?php echo "<img src='" . "img_producto/" . htmlspecialchars($imagen) . " ' style='width:200px; height:auto;'>";?>
+                    <input type="file" id="imagen" name="imagen" accept="image/*"?>">
+            </div>
+            <div class="form-group">
+                    <label for="lname">precio</label>
+                    <input type="number" id="precio" name="precio" step="0.01" min="0" value="<?php echo($precio)?>">
+            </div>
+
+                    <label for="categoria">categoria</label>
+                    <?php
+                    if ($categoria == "Vegetal "){ 
+                    ?>
+                        <select name="categoria" id="categoria">
+                        <option value="Vegetal">Vegetal</option>
+                        <option value="Salsa">Salsa</option>
+                        <option value="Fruta">Fruta</option>
+>>>>>>> c3d6b9b8fd7ad0852f06d8b8101314b4008a411c
                         </select>
                     <?php
                     }
                     ?>
                     <?php
+<<<<<<< HEAD
                     if ($id_rol == 'Cocinero '){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Cocinero">Cocinero</option>
                         <option value="Limpieza">Limpieza</option>
                         <option value="Mesero">Mesero</option>
+=======
+                    if ($categoria == 'Salsa '){ 
+                    ?>
+                        <select name="categoria" id="categoria">
+                        <option value="Salsa">Salsa</option>
+                        <option value="Fruta">Fruta</option>
+                        <option value="Vegetal">Vegetal</option>
+>>>>>>> c3d6b9b8fd7ad0852f06d8b8101314b4008a411c
                         </select>
                     <?php
                     }
                     ?>
                     <?php
+<<<<<<< HEAD
                     if ($id_rol == 'Limpieza '){ 
                     ?>
                         <select name="select" id="rol">
                         <option value="Limpieza">Limpieza</option>
                         <option value="Cocinero">Cocinero</option>
                         <option value="Mesero">Mesero</option>
+=======
+                    if ($categoria == 'Fruta '){ 
+                    ?>
+                        <select name="categoria" id="categoria">
+                        <option value="Fruta">Fruta</option>
+                        <option value="Salsa">Salsa</option>
+                        <option value="Vegetal">Vegetal</option>
+>>>>>>> c3d6b9b8fd7ad0852f06d8b8101314b4008a411c
                         </select>
                     <?php
                     }
@@ -118,7 +183,11 @@ if (isset($_GET['docu'])) {
                           $session->remove('error_message'); // Borra el mensaje después de mostrarlo
                       }
                     ?>
+<<<<<<< HEAD
             <button type="submit" class="btn">Editar empleado</button>
+=======
+            <button type="submit" class="btn">Editar producto</button>
+>>>>>>> c3d6b9b8fd7ad0852f06d8b8101314b4008a411c
         </form>
     </div>
 

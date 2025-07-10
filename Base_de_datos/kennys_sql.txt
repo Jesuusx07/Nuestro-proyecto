@@ -1,16 +1,3 @@
--- 1. Tablas sin dependencias de FK (o solo de sí mismas)
-
-CREATE TABLE categoria(
-    id_categoria INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) NOT NULL
-);
-
-
-CREATE TABLE plaCategoria(
-    id_plaCat INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) NOT NULL
-);
-
 
 -- 2. Tablas que dependen de las anteriores
 
@@ -31,10 +18,9 @@ CREATE TABLE usuario(
 CREATE TABLE producto(
     id_producto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    categoria INT NOT NULL,
+    categoria VARCHAR (50) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
-    precio_unitario DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (categoria) REFERENCES categoria(id_categoria)
+    precio_unitario DECIMAL(10, 2) NOT NULL
 );
 
 CREATE TABLE platillo(
@@ -42,8 +28,7 @@ CREATE TABLE platillo(
     nombre VARCHAR(50) NOT NULL,
     descripcion VARCHAR(500) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
-    pla_categoria INT NOT NULL,
-    FOREIGN KEY (pla_categoria) REFERENCES plaCategoria(id_plaCat)
+    pla_categoria VARCHAR (50) NOT NULL
 );
 
 -- 3. Tablas transaccionales principales que dependen de empleados/productos
@@ -137,6 +122,7 @@ INSERT INTO roles VALUES ("","Mesero"), ("","Cocinero"), ("","Limpieza")
 
 -- Procedure-----------------------------
 
+-- USUARIO
 
 -- obtener usuario
 
@@ -171,5 +157,43 @@ CREATE PROCEDURE eliminar_usuario (IN e_id INT)
 BEGIN
 
         DELETE FROM usuario WHERE id_usuario = e_id;
+
+END //
+
+-- PRODUCTO
+
+-- obtener producto
+
+DELIMITER //
+
+CREATE PROCEDURE obtener_producto(IN p_id INT)
+BEGIN
+    SELECT * FROM producto WHERE id_producto = p_id;
+END //
+
+-- insertar producto
+
+DELIMITER //
+CREATE PROCEDURE insertar_producto(IN p_nombre VARCHAR(100), IN p_categoria VARCHAR(50), IN p_imagen VARCHAR(100), IN p_precio DECIMAL(10,2))
+BEGIN
+    INSERT INTO producto(nombre, categoria, imagen, precio_unitario) VALUES(p_nombre, p_categoria, p_imagen, p_precio);
+END //
+
+-- actualizar producto
+
+DELIMITER //
+CREATE PROCEDURE actualizar_producto(IN p_id INT, IN p_nombre VARCHAR(100), IN p_categoria VARCHAR(50), IN p_imagen VARCHAR(100), IN p_precio DECIMAL(10,2))
+BEGIN
+    UPDATE producto SET categoria = p_categoria, nombre = p_nombre, imagen = p_imagen, precio_unitario = p_precio WHERE id_producto = p_id;
+END //
+
+-- eliminar producto
+
+DELIMITER //
+
+CREATE PROCEDURE eliminar_usuario (IN e_id INT)
+BEGIN
+
+        DELETE FROM producto WHERE id_usuario = e_id;
 
 END //

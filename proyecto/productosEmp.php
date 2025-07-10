@@ -9,7 +9,6 @@ $session = new SessionManager();
     }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,19 +29,20 @@ $session = new SessionManager();
   
 
      <span class="logo-text">EMPLEADO</span>
-
-     <div class="navbar-right">
-      <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
-      
-        <div class="perfil">
-          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
-            <div class="menu-desplegable" id="perfilMenu">
-              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
-            </div>
-        </div>
     </div>
 
+    <div class="navbar-right">
+      <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
+      
+      <div class="perfil">
+        <button class="boton-perfil" id="perfilBtn">👤</button>
+       <div class="menu-desplegable" id="perfilMenu">
 
+  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+</div>
+
+      </div>
+    </div>
   </header>
 
   <!-- ░░░░░░░░░░ CONTENIDO ░░░░░░░░░░ -->
@@ -51,11 +51,12 @@ $session = new SessionManager();
     <aside class="menu-lateral">
   <nav class="menu-container">
 
+
     <div class="menu-item">
       <button class="btn-menu">Gestión de Productos</button>
       <div class="sub-menu">
         <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
-        <a href="productoseEmp.php" class="sub-btn">Consultar</a>
+        <a href="productosEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
@@ -63,28 +64,35 @@ $session = new SessionManager();
     <div class="menu-item">
       <button class="btn-menu">Gestión de Proveedor</button>
       <div class="sub-menu">
-        <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
-        <a href="proveedores.php" class="sub-btn">Consultar</a>
+        <a href="registerEmpProv.php" class="sub-btn">Registrar</a>
+        <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
     <div class="menu-item">
       <button class="btn-menu">Gestión de Reservas</button>
       <div class="sub-menu">
-        <a href="reservasRegis.php" class="sub-btn">Registrar</a>
-        <a href="reservas.php" class="sub-btn">Consultar</a>
+        <a href="registerEmpRes.php" class="sub-btn">Registrar</a>
+        <a href="reservasEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
     <div class="menu-item">
-      <button class="btn-menu">Gestión de Ventas</button>
+      <button class="btn-menu">Gestión de Platillos</button>
       <div class="sub-menu">
         <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="ventas.php" class="sub-btn">Consultar</a>
+        <a href="platilloEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 
+
   </nav>
+
+    <div class="menu-item">
+      <button class="btn-venta">HACER UNA VENTA</button>
+    </div>
+
+
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
@@ -152,43 +160,50 @@ $session = new SessionManager();
     }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTOS</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE PRODUCTO</h1> 
 
 <table>
     <tr>
-        <th>id_Producto</th>
-        <th>Nombres</th>
+        <th>Id</th>
+        <th>Nombre</th>
         <th>Categoria</th>
         <th>Imagen</th>
-        <th>Precio Unitario</th>
+        <th>Precio</th>
     </tr>
 
 
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM producto where id_producto != 'admin'";
+$sql = "SELECT * FROM producto";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
+  $ruta_completa_imagen = "img_producto/" . $mostrar['imagen'];
 ?>
     <tr>
         <td><?php echo $mostrar['id_producto']; ?></td>
         <td><?php echo $mostrar['nombre']; ?></td>
         <td><?php echo $mostrar['categoria']; ?></td>
-        <td><?php echo $mostrar['imagen']; ?></td>
+        <td><?php echo "<img src='" . htmlspecialchars($ruta_completa_imagen) . " ' style='width:200px; height:auto;'>";?></td>
         <td><?php echo $mostrar['precio_unitario']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+            <a href="editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/eliminarPro.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
+
     </tr>
+
+    
 <?php
 }
 ?>
     </table>
+  
+
+
 </div>
 
 </div>

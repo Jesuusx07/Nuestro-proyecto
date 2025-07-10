@@ -344,7 +344,7 @@
     /* ---------------------
        RESPONSIVE
     --------------------- */
-    @media (max-width: 1024px) {
+    @media (max-width: 1434px) {
       .container {
         flex-direction: column;
       }
@@ -458,7 +458,7 @@ tr:hover {
 }
 
 /* Media queries para responsividad */
-@media (max-width: 768px) {
+@media (max-width: 1324px) {
     .tabla-container {
         padding: 15px;
         margin: 10px;
@@ -484,7 +484,7 @@ tr:hover {
     */
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
     .tabla-container {
         padding: 10px;
         margin: 5px;

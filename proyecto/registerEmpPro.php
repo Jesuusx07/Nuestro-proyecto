@@ -43,13 +43,19 @@ $session = new SessionManager();
 
 
   <div class="form">
-    <h2>Registrar Empleados</h2>
+    <h2>Registrar Producto</h2>
     <div class="regis">
       <form id="formu" action="./php/registerEmpPro.php" method="POST">
-        <input type="text" id="nombre" name="fname" placeholder="Nombres">
-        <input type="email" id="correo" name="email" placeholder="Correo">
-        <input type="text" id="telefono" name="tele" placeholder="Teléfono">
-        <input type="number" id="id" name="documento" placeholder="Documento de identidad">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <select name="select" id="cat">
+          <option value="">Categoria</option>
+          <option value="Fruta">Fruta</option>
+          <option value="Vegetal">Vegetal</option>
+          <option value="Salsa">Salsa</option>
+        </select>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+        <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
+
         <input type="submit" id="boton" value="Registrar">
 
         <?php

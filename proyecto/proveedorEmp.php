@@ -1,162 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny's - Consultar Proveedores</title> <link rel="stylesheet" href="./css/proveedorEmp.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Empleado</title>
+  <link rel="stylesheet" href="./css/dashboard.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+   
 </head>
 <body>
+  <!-- ░░░░░░░░░░  NAVBAR  ░░░░░░░░░░ -->
+  <header class="navbar">
+  
 
-    <div class="navbar">
-      <div class="navbar-left">
-        <a href="index.html"><img src="./img/logo_Favicon.png" alt="Logo Kenny's Favicon"></a>
-        <span>EMPLEADO</span>
+     <span class="logo-text">EMPLEADO</span>
+    </div>
+
+    <div class="navbar-right">
+      <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
+      
+      <div class="perfil">
+        <button class="boton-perfil" id="perfilBtn">👤</button>
+       <div class="menu-desplegable" id="perfilMenu">
+
+  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+</div>
+
       </div>
+    </div>
+  </header>
 
+  <!-- ░░░░░░░░░░ CONTENIDO ░░░░░░░░░░ -->
+  <div class="container">
+    <!-- ░░░  SIDEBAR  ░░░ -->
+    <aside class="menu-lateral">
+  <nav class="menu-container">
+
+
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Productos</button>
+      <div class="sub-menu">
+        <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
+        <a href="productosEmp.php" class="sub-btn">Consultar</a>
+      </div>
     </div>
 
-    <div class="container">
-        <div class="contenido">
-            <div class="menu-lateral">
-                <div class="menu-container">
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PEDIDO</button>
-                        <div class="sub-menu">
-                            <a href="pedidoEmp.php" class="sub-btn">Consultar</a>
-                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PRODUCTOS</button>
-                        <div class="sub-menu">
-                            <a href="productosEmp.php" class="sub-btn">Consultar</a>
-                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
 
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>PROVEEDOR</button>
-                        <div class="sub-menu">
-                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu-item">
-                        <button class="btn-menu">GESTIÓN DE <br>RESERVAS</button>
-                        <div class="sub-menu">
-                            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
-                            <a href="1EmpPedido.php" class="sub-btn">Registrar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                const menuItems = document.querySelectorAll('.menu-item');
-              
-                menuItems.forEach(item => {
-                  const btnMenu = item.querySelector('.btn-menu');
-                  const subMenu = item.querySelector('.sub-menu');
-              
-                  btnMenu.addEventListener('click', () => {
-                    // Cierra cualquier otro submenú abierto
-                    menuItems.forEach(otherItem => {
-                      if (otherItem !== item) {
-                        const otherSubMenu = otherItem.querySelector('.sub-menu');
-                        if (otherSubMenu) {
-                          otherSubMenu.style.display = 'none';
-                        }
-                      }
-                    });
-              
-                    // Alterna la visibilidad del submenú actual
-                    if (subMenu) {
-                      subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-                    }
-                  });
-                });
-            </script>
-
-            <div class="tabla-container">
-                <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDORES</h1> <table>
-                    <thead>
-                        <tr>
-                            <th>ID PROVEEDOR</th>
-                            <th>RAZÓN SOCIAL / NOMBRE</th>
-                            <th>TIPO DE PRODUCTO</th>
-                            <th>CONTACTO (Email/Teléfono)</th>
-                            <th>DIRECCIÓN</th>
-                            <th>ESTADO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PROV001</td>
-                            <td>Mercado Central S.A.</td>
-                            <td>Frutas y Verduras</td>
-                            <td>info@mercadocentral.com / 555-1234</td>
-                            <td>Calle 10 # 25-30, Bogotá</td>
-                            <td>Activo</td>
-                        </tr>
-                        <tr>
-                            <td>PROV002</td>
-                            <td>Cárnicos Premium Ltda.</td>
-                            <td>Carnes Rojas y Blancas</td>
-                            <td>ventas@carnicospremium.co / 555-5678</td>
-                            <td>Av. Principal 123, Medellín</td>
-                            <td>Activo</td>
-                        </tr>
-                        <tr>
-                            <td>PROV003</td>
-                            <td>La Gran Fábrica de Pastas</td>
-                            <td>Pastas y Cereales</td>
-                            <td>pedidos@granfabrica.com / 555-9012</td>
-                            <td>Carrera 7 # 8-15, Cali</td>
-                            <td>Activo</td>
-                        </tr>
-                        <tr>
-                            <td>PROV004</td>
-                            <td>Sabor Natural Distribuciones</td>
-                            <td>Sal, Azúcar y Especias</td>
-                            <td>contacto@sabornatural.net / 555-3456</td>
-                            <td>Diagonal 45 # 67-89, Barranquilla</td>
-                            <td>Activo</td>
-                        </tr>
-                        <tr>
-                            <td>PROV005</td>
-                            <td>Pescados Frescos del Mar</td>
-                            <td>Pescados y Mariscos</td>
-                            <td>info@pescadosfrescos.com / 555-7890</td>
-                            <td>Ruta Costera Km 5, Cartagena</td>
-                            <td>Activo</td>
-                        </tr>
-                         <tr>
-                            <td>PROV006</td>
-                            <td>Lácteos del Campo S.A.S.</td>
-                            <td>Lácteos y Derivados</td>
-                            <td>ventas@lacteosdelcampo.com / 555-2345</td>
-                            <td>Finca La Esmeralda, Boyacá</td>
-                            <td>Activo</td>
-                        </tr>
-                        <tr>
-                            <td>PROV007</td>
-                            <td>Bodega de Vinos Selectos</td>
-                            <td>Vinos y Licores</td>
-                            <td>pedidos@vinosselectos.com / 555-6789</td>
-                            <td>Zona Industrial, Envigado</td>
-                            <td>Activo</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="botones">
-            <button class="btn amarillo">REGISTRAR PROVEEDOR</button> <button class="btn rojo">EDITAR PROVEEDOR</button> </div>
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Proveedor</button>
+      <div class="sub-menu">
+        <a href="registerEmpProv.php" class="sub-btn">Registrar</a>
+        <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
+      </div>
     </div>
 
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Reservas</button>
+      <div class="sub-menu">
+        <a href="registerEmpRes.php" class="sub-btn">Registrar</a>
+        <a href="reservasEmp.php" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button class="btn-menu">Gestión de Platillo</button>
+      <div class="sub-menu">
+        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
+        <a href="platilloEmp.php" class="sub-btn">Consultar</a>
+      </div>
+    </div>
+
+
+  </nav>
+
+    <div class="menu-item">
+      <button class="btn-venta">HACER UNA VENTA</button>
+    </div>
+
+</aside>
+     <!-- ░░░  MAIN  ░░░ -->
+    
+
+  <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
+  <script>
+    // ----- Tema claro / oscuro -----
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // ----- Menú perfil desplegable -----
+    const perfilBtn = document.getElementById('perfilBtn');
+    const perfilMenu = document.getElementById('perfilMenu');
+    perfilBtn.addEventListener('click', () => {
+      perfilMenu.style.display = perfilMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!perfilBtn.contains(e.target) && !perfilMenu.contains(e.target)) {
+        perfilMenu.style.display = 'none';
+      }
+    });
+
+    // ----- Sub-menús laterales -----
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      const button = item.querySelector('.btn-menu');
+      const subMenu = item.querySelector('.sub-menu');
+      button.addEventListener('click', () => {
+        const isOpen = subMenu.style.display === 'flex';
+        // Cierra otros submenús
+        document.querySelectorAll('.sub-menu').forEach(sm => sm.style.display = 'none');
+        if (!isOpen) {
+          subMenu.style.display = 'flex';
+        }
+      });
+    });
+
+    // ----- Grafico Placeholder (Chart.js) -----
+    // Solo un ejemplo para que puedas conectar tus datos reales
+    if (typeof Chart !== 'undefined') {
+      const ctx = document.getElementById('graficoVentas');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+          datasets: [{
+            label: 'Ventas',
+            data: [12, 19, 3, 5, 2, 3, 7],
+            fill: false,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
+  </script>
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDORES</h1> 
+
+<table>
+    <tr>
+        <th>Proveedor</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>correo</th>
+        <th>telefono</th>
+        <th>documento</th>
+    </tr>
+
+
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $mostrar['id_usuario']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['apellidos']; ?></td>
+        <td><?php echo $mostrar['correo']; ?></td>
+        <td><?php echo $mostrar['telefono']; ?></td>
+        <td><?php echo $mostrar['documento']; ?></td>
+        <td>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+        </td>
+        <td>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+        </td>
+    </tr>
+<?php
+}
+?>
+    </table>
+</div>
+
+    </table>
+</div>
 </body>
 </html>

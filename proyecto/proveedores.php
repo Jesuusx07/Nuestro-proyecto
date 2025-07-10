@@ -157,16 +157,14 @@
     }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDORES</h1> 
 
 <table>
     <tr>
-        <th>Empleado</th>
-        <th>Rol</th>
+        <th>Proveedor</th>
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>correo</th>
-        <th>contraseña</th>
         <th>telefono</th>
         <th>documento</th>
     </tr>
@@ -175,22 +173,20 @@
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin'";
+$sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['id_rol']; ?></td>
         <td><?php echo $mostrar['nombres']; ?></td>
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td><?php echo $mostrar['correo']; ?></td>
-        <td><?php echo $mostrar['contraseña']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
             <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
