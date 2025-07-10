@@ -1,10 +1,22 @@
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel Administrativo</title>
-  <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="stylesheet" href="./css/dashboardEmp.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -18,20 +30,19 @@
   
 
      <span class="logo-text">ADMINISTRADOR</span>
-    </div>
-
+    
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
-      <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
-       <div class="menu-desplegable" id="perfilMenu">
-
-  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
-</div>
-
-      </div>
+        <div class="perfil">
+          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
+            <div class="menu-desplegable" id="perfilMenu">
+              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+            </div>
+        </div>
     </div>
+
+
   </header>
 
   <!-- ░░░░░░░░░░ CONTENIDO ░░░░░░░░░░ -->
@@ -90,6 +101,11 @@
     </div>
 
   </nav>
+
+  <div class="menu-item">
+      <button class="btn-venta">HACER UNA VENTA</button>
+    </div>
+
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     <main class="main">
@@ -188,6 +204,43 @@
       });
     }
   </script>
+
+  <?php
+    // Incluye tu SessionManager en cada página protegida
+    require_once 'php/SessionManager.php';
+    $session = new SessionManager();
+
+
+    // Obtiene el tiempo de inactividad desde la clase SessionManager
+    $timeout_seconds = $session->getTimeoutSeconds();
+    ?>
+
+    <script type="text/javascript">
+        // Tiempo de inactividad en milisegundos (del servidor)
+        const INACTIVITY_TIMEOUT = <?php echo $timeout_seconds * 5000; ?>; // Convertir a milisegundos
+
+        let inactivityTimer;
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(logoutUser, INACTIVITY_TIMEOUT);
+        }
+
+        function logoutUser() {
+            alert('Su sesión ha caducado por inactividad. Por favor, inicie sesión de nuevo.');
+            window.location.href = 'login.php?message=session_expired'; // Redirige al login con un mensaje
+        }
+
+        // Eventos que reinician el temporizador (cualquier actividad del usuario)
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keypress', resetInactivityTimer);
+        document.addEventListener('click', resetInactivityTimer);
+        document.addEventListener('scroll', resetInactivityTimer); // Opcional: si el scroll cuenta como actividad
+
+        // Inicia el temporizador cuando la página carga
+        resetInactivityTimer();
+    </script>
+
   <!-- Agrega Chart.js desde CDN si lo necesitas -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 </body>

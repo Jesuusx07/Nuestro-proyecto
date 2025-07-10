@@ -26,7 +26,7 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+     <span class="logo-text">EMPLEADO</span>
     </div>
 
     <div class="navbar-right">
@@ -45,19 +45,11 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Empleados</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerUs.php" method="POST">
+      <form id="formu" action="./php/registerEmpPro.php" method="POST">
         <input type="text" id="nombre" name="fname" placeholder="Nombres">
-        <input type="text" id="apelli" name="lname" placeholder="Apellidos">
         <input type="email" id="correo" name="email" placeholder="Correo">
-        <input type="password" id="contra" name="password" placeholder="Contraseña">
         <input type="text" id="telefono" name="tele" placeholder="Teléfono">
         <input type="number" id="id" name="documento" placeholder="Documento de identidad">
-        <select name="select" id="rol">
-          <option value="">Rol</option>
-          <option value="Mesero">Mesero</option>
-          <option value="Cocinero">Cocinero</option>
-          <option value="Limpieza">Limpieza</option>
-        </select>
         <input type="submit" id="boton" value="Registrar">
 
         <?php

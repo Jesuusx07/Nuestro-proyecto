@@ -215,6 +215,25 @@
       color: #fff;
     }
 
+
+    .btn-venta {
+      padding: 34px 18px;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      background-color: #34ce34;
+      color: var(--color-text);
+      text-align: left;
+      cursor: pointer;
+      box-shadow: var(--shadow-1);
+      transition: var(--transition);
+    }
+
+    .btn-venta:hover {
+      background-color: #44f444;
+      color: #fff;
+    }
+
     /* ---------------------
        CONTENIDO PRINCIPAL
     --------------------- */
