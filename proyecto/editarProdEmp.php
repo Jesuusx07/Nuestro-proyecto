@@ -39,7 +39,7 @@ if (isset($_GET['precio_unitario'])) {
 
     <div class="container">
         <h2>Editar Producto</h2>
-        <form action="./php/editarProducto.php" method="POST">
+        <form action="./php/editarProductoEmp.php" method="POST">
             <div class="form-group">
                     <input type="hidden" name="id_producto" value="<?php echo htmlspecialchars($id_producto); ?>">
                     <input type="hidden" name="imagen1" value="<?php echo htmlspecialchars($imagen); ?>">

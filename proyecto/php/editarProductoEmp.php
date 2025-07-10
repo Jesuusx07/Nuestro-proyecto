@@ -23,7 +23,7 @@ $categoria = $_POST["categoria"];
 if($nombre == "" || $precio_unitario == "" || $categoria == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
-    header('Location: ../editar_producto.php?id=' . $id_producto . '&categoria=' . $categoria . ' &nombre=' . $nombre . '&imagen=' . $imagen1 . '&precio_unitario=' . $precio_unitario); 
+    header('Location: ../editarProdEmp.php?id=' . $id_producto . '&categoria=' . $categoria . ' &nombre=' . $nombre . '&imagen=' . $imagen1 . '&precio_unitario=' . $precio_unitario); 
 
     exit();
 }
@@ -34,18 +34,18 @@ else{
         if($categoria == "Fruta"){
             $producto = $controlador->actualizar($id_producto, $nombre, 'Fruta', $imagen, $precio_unitario);
 
-            header('Location: ../producto.php'); 
+            header('Location: ../productosEmp.php'); 
             exit();
         }
         elseif($categoria == "Salsa"){
             $producto = $controlador->actualizar($id_producto, $nombre, 'Salsa', $imagen, $precio_unitario);
-            header('Location: ../producto.php'); 
+            header('Location: ../productosEmp.php'); 
             exit();
         }    
         elseif($categoria == "Vegetal"){
             $producto = $controlador->actualizar($id_producto, $nombre, 'Vegetal', $imagen, $precio_unitario);
 
-            header('Location: ../producto.php'); 
+            header('Location: ../productosEmp.php'); 
             exit();
         }
 

@@ -42,7 +42,7 @@ if (isset($_GET['docu'])) {
 
     <div class="container">
         <h2>Editar Proveedor</h2>
-        <form action="./php/editarProveedor.php" method="POST">
+        <form action="./php/editarProveedorEmp.php" method="POST">
             <div class="form-group">
                     <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
 
