@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Administrativo</title>
+  <title>Ventas</title>
   <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
@@ -40,54 +40,55 @@
     <aside class="menu-lateral">
   <nav class="menu-container">
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Empleados</button>
-      <div class="sub-menu">
-        <a href="registerUs.php" class="sub-btn">Registrar</a>
-        <a href="empleado.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+            <div class="menu-item">
+          <button class="btn-menu">Gestión de Empleados</button>
+          <div class="sub-menu">
+            <a href="registerUs.php" class="sub-btn">Registrar</a>
+            <a href="empleado.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Productos</button>
-      <div class="sub-menu">
-        <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-        <a href="producto.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Productos</button>
+          <div class="sub-menu">
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="producto.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Proveedor</button>
-      <div class="sub-menu">
-        <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
-        <a href="proveedores.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Proveedor</button>
+          <div class="sub-menu">
+            <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
+            <a href="proveedores.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Reservas</button>
-      <div class="sub-menu">
-        <a href="reservasRegis.php" class="sub-btn">Registrar</a>
-        <a href="reservas.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Reservas</button>
+          <div class="sub-menu">
+            <a href="reservasRegis.php" class="sub-btn">Registrar</a>
+            <a href="reservas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Ventas</button>
-      <div class="sub-menu">
-        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="ventas.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Ventas</button>
+          <div class="sub-menu">
+            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
+            <a href="ventas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Inventario</button>
-      <div class="sub-menu">
-        <a href="inventario_registrar.html" class="sub-btn">Registrar</a>
-        <a href="inventario.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
+            <a href="inventario.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
+
 
   </nav>
 </aside>
@@ -157,43 +158,35 @@
     }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE VENTAS</h1> 
 
 <table>
     <tr>
-        <th>Empleado</th>
-        <th>Rol</th>
-        <th>Nombres</th>
-        <th>Apellidos</th>
-        <th>correo</th>
-        <th>contraseña</th>
-        <th>telefono</th>
-        <th>documento</th>
+        <th>id_venta</th>
+        <th>Fecha</th>
+        <th>Venta</th>
+ 
     </tr>
 
 
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin'";
+$sql = "SELECT * FROM venta";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
-        <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['id_rol']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
-        <td><?php echo $mostrar['apellidos']; ?></td>
-        <td><?php echo $mostrar['correo']; ?></td>
-        <td><?php echo $mostrar['contraseña']; ?></td>
-        <td><?php echo $mostrar['telefono']; ?></td>
-        <td><?php echo $mostrar['documento']; ?></td>
+        <td><?php echo $mostrar['id_venta']; ?></td>
+        <td><?php echo $mostrar['fecha']; ?></td>
+        <td><?php echo $mostrar['total_venta']; ?></td>
+
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
-        </td>
+          <a href="editar_empleado.php?id=<?php echo $mostrar['id_venta']; ?>&fecha=<?php echo $mostrar['fecha']; ?>&total=<?php echo $mostrar['total_venta']; ?>" class="boton-edi">Editar</a>
+
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_venta']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php
