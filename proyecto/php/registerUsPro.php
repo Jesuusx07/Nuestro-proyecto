@@ -17,13 +17,11 @@ $password = $_POST["password"];
 $tele = $_POST["tele"];
 $docu = $_POST["documento"];
 
-$password_hash = password_hash($password, PASSWORD_DEFAULT);
-
 $usuario = $controlador->obtener($email);
 
 
 
-if($fname == "" || $lname == "" || $email == "" || $password == "" || $tele == "" || $docu == ""){
+if($fname == "" || $lname == "" || $email == "" || $tele == "" || $docu == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
     header('Location: ../registrarproveedores.php'); 
@@ -71,12 +69,6 @@ else{
         header('Location: ../registrarproveedores.php'); 
         exit();
     }
-    else if(strpos($password, " ") !== false){
-        $session->set('error_message', 'La contraseña no puede tener espacios en blanco.');
-
-        header('Location: ../registrarproveedores.php'); 
-        exit();
-    }
     else if(strpos($tele, " ") !== false){
         $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
 
@@ -85,7 +77,7 @@ else{
     }
     else{
 
-        $usuario = $controlador->insertar("proveedor", $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+        $usuario = $controlador->insertar("proveedor", $fname, $lname, $email, 1, $tele, $docu, null, null);
 
         header('Location: ../proveedores.php'); 
         exit();
