@@ -9,7 +9,7 @@ CREATE TABLE usuario(
     correo VARCHAR(100) NOT NULL UNIQUE,
     contraseña VARCHAR(255) NOT NULL,
     telefono VARCHAR(20) NOT NULL,
-    documento VARCHAR(30) NOT NULL UNIQUE,
+    documento VARCHAR(30) NOT NULL,
     reset_token VARCHAR(255) NULL,
     reset_token_expires_at DATETIME NULL
 );
@@ -43,8 +43,9 @@ CREATE TABLE venta(
 CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     estado_reserva VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
-    fecha_reserva DATE NOT NULL,
-    nombre_cliente VARCHAR(50) NOT NULL
+    fecha_reserva DATETIME NOT NULL,
+    empleado VARCHAR (100) NOT NULL,
+    FOREIGN KEY (empleado) REFERENCES usuario(correo)
 );
 
 
@@ -113,12 +114,6 @@ CREATE TABLE reserva_item(
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
     FOREIGN KEY (id_platillo) REFERENCES platillo(id_pla)
 );
-
--- INSERTAR EN TABLAS -------------------
-
--- roles
-
-INSERT INTO roles VALUES ("","Mesero"), ("","Cocinero"), ("","Limpieza")
 
 
 -- Procedure-----------------------------
@@ -206,23 +201,24 @@ END //
 
 DELIMITER //
 
-CREATE PROCEDURE obtener_reserva(IN r_id INT)
+CREATE PROCEDURE obtener_reserva(IN r_date date)
 BEGIN
-    SELECT * FROM reserva WHERE id_reserva = r_id;
+    SELECT * FROM reserva WHERE fecha_reserva = r_date;
 END //
 
 -- insertar reserva
 
 DELIMITER //
-CREATE PROCEDURE insertar_reserva(IN r_estado VARCHAR(100), IN r_date DATE)
+CREATE PROCEDURE insertar_reserva(IN r_estado VARCHAR(100), IN r_date DATETIME, IN r_rol VARCHAR(50), IN r_nombre VARCHAR(50), IN r_apellido VARCHAR(50), IN r_correo VARCHAR(100), IN r_usuario VARCHAR(100))
 BEGIN
-    INSERT INTO reserva(estado_reserva, fecha_reserva) VALUES(r_estado, r_date);
+    INSERT INTO reserva(estado_reserva, fecha_reserva, empleado) VALUES(r_estado, r_date, r_usuario);
+    INSERT INTO usuario(id_rol, nombres, apellidos, correo, contraseña, telefono, documento, reset_token, reset_token_expires_at) VALUES(r_rol, r_nombre, r_apellido, r_correo, "a", "a", "a", null, null);
 END //
 
 -- actualizar reserva
 
 DELIMITER //
-CREATE PROCEDURE actualizar_reserva(IN r_id INT, IN r_estado VARCHAR(100), IN r_date DATE)
+CREATE PROCEDURE actualizar_reserva(IN r_id INT, IN r_estado VARCHAR(100), IN r_date DATETIME)
 BEGIN
     UPDATE reserva SET fecha_reserva = r_date, estado_reserva = r_estado WHERE id_reserva = r_id;
 END //

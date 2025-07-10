@@ -9,7 +9,11 @@ class Reserva {
     public $id;
     public $date;
     public $estado;
-
+    public $nombre;
+    public $apellido;
+    public $usuario;
+    public $rol;
+    public $correo;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -17,29 +21,36 @@ class Reserva {
 
 
     public function insertar() {
-        $query = "CALL insertar_reserva(?, ?)";
+        $query = "CALL insertar_reserva(?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
     
         $stmt->bindParam(1, $this->estado);
         $stmt->bindParam(2, $this->fecha);
-
+        $stmt->bindParam(3, $this->rol);        
+        $stmt->bindParam(4, $this->nombre);
+        $stmt->bindParam(5, $this->apellido);
+        $stmt->bindParam(6, $this->correo);
+        $stmt->bindParam(7, $this->usuario);
         return $stmt->execute();
     }
 
     public function actualizar() {
-        $query = "CALL actualizar_reserva(?, ?, ?)";
+        $query = "CALL actualizar_reserva(?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->bindParam(2, $this->estado);
         $stmt->bindParam(3, $this->fecha);
+        $stmt->bindParam(4, $this->nombre);
+        $stmt->bindParam(5, $this->apellido);
+        
         return $stmt->execute();
     }
 
 
     public function obtener() {
-        $query = "CALL obtener_reserva(:id)";
+        $query = "CALL obtener_reserva(:date)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':date', $this->date);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

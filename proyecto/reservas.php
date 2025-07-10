@@ -163,13 +163,25 @@
         <th>Reserva</th>
         <th>estado_reserva</th>
         <th>fecha_reserva</th>
+        <th>Nombre Cliente</th>
+        <th>Apellido Cliente</th>
     </tr>
 
 
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM reserva";
+$sql = $sql = "SELECT
+            r.id_reserva,
+            r.estado_reserva,
+            r.fecha_reserva,
+            u.nombres,
+            u.apellidos,
+            u.correo AS empleado_correo_completo 
+        FROM
+            reserva r
+        JOIN
+            usuario u ON r.empleado = u.correo;";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
@@ -178,6 +190,8 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['id_reserva']; ?></td>
         <td><?php echo $mostrar['estado_reserva']; ?></td>
         <td><?php echo $mostrar['fecha_reserva']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['apellidos']; ?></td>
         <td>
             <a href="editar_reserva.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
         </td>

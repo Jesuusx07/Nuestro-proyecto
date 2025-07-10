@@ -40,8 +40,9 @@ $session = new SessionManager();
     <h2>Registrar Reserva</h2>
     <div class="regis">
       <form id="formu" action="./php/registerReserva.php" method="POST">
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-        <input type="date" id="apelli" name="date" placeholder="Fecha">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombres" required>
+        <input type="text" id="apellido" name="apellido" placeholder="Apellidos" required>
+        <input type="datetime-local" id="apelli" name="date" placeholder="Fecha">
 
         <input type="submit" id="boton" value="Registrar">
 
