@@ -43,7 +43,8 @@ CREATE TABLE venta(
 CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     estado_reserva VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
-    fecha_reserva DATE NOT NULL
+    fecha_reserva DATE NOT NULL,
+    nombre_cliente VARCHAR(50) NOT NULL
 );
 
 
@@ -191,9 +192,48 @@ END //
 
 DELIMITER //
 
-CREATE PROCEDURE eliminar_usuario (IN e_id INT)
+CREATE PROCEDURE eliminar_producto (IN p_id INT)
 BEGIN
 
-        DELETE FROM producto WHERE id_usuario = e_id;
+        DELETE FROM producto WHERE id_producto = p_id;
+
+END //
+
+
+-- RESERVA
+
+-- obtener reserva
+
+DELIMITER //
+
+CREATE PROCEDURE obtener_reserva(IN r_id INT)
+BEGIN
+    SELECT * FROM reserva WHERE id_reserva = r_id;
+END //
+
+-- insertar reserva
+
+DELIMITER //
+CREATE PROCEDURE insertar_reserva(IN r_estado VARCHAR(100), IN r_date DATE)
+BEGIN
+    INSERT INTO reserva(estado_reserva, fecha_reserva) VALUES(r_estado, r_date);
+END //
+
+-- actualizar reserva
+
+DELIMITER //
+CREATE PROCEDURE actualizar_reserva(IN r_id INT, IN r_estado VARCHAR(100), IN r_date DATE)
+BEGIN
+    UPDATE reserva SET fecha_reserva = r_date, estado_reserva = r_estado WHERE id_reserva = r_id;
+END //
+
+-- eliminar reserva
+
+DELIMITER //
+
+CREATE PROCEDURE eliminar_reserva (IN r_id INT)
+BEGIN
+
+        DELETE FROM reserva WHERE id_reserva = r_id;
 
 END //
