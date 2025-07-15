@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+*{
+    font-family: "Cinzel", serif;
+    margin: 0;
+    padding: 0;
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+header{
+    background-color: #201E1E;
+    width: 100%;
+
+}
+
+header nav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 13px;
+}
+
+.favicon{
+    margin-left: 13px;
+    width: 80px;
+}
+
+nav li a{
+    margin-left: 280px;
+    align-items: right;
+}
+
+li a img{
+    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
+}
+
+li a img:hover {
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
+}
+
+nav ul a{
+    width: 100px;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 25px;
+    transition: .4s;
+}
+
+nav ul a:hover{
+    border-bottom: 1px solid #fff;
+}
+
+#SEGURIDAD{
+    color: #ffffff;
+    width: 100%;
+    background-color: #201E1E;
+    margin: 0 auto;
+    position: relative;
+    padding: 60px 0%;
+}
+
+#SEGURIDAD h2{
+    margin: 0px 50px;
+    color: #A02334;
+    font-size: 70px;
+}
+
+#SEGURIDAD p{
+    text-align: center;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+
+#SEGURIDAD .fila{
+    display: flex;
+    justify-content: left;
+}
+
+#SEGURIDAD article{
+    margin: 0px 20px;
+}   
+
+#SEGURIDAD article img{
+    width: 450px;
+   margin-left: 70px;
+    transition: .4s;
+}
+
+.img_terminos article{
+    background-color: #201E1E;
+    width: 100%;
+}
+.img_terminos article img{
+    width: 900px;
+    height: 600px;
+    margin-left: 150px;
+    border-radius: 10px;    
+}
+.img_terminos article p{
+    width: 900px;
+    margin-left: 150px;
+    background-color: #fff;
+}
+
+.botoom{
+
+    background-color: #201E1E; 
+    padding: 50px;
+}
+.botoom a{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #A02334;
+    margin-top: 1500PX;
+    margin-left: 440px;     
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;  
+
+   
+}
+.botoom :hover{
+    transform: scale(1.1) ;
+}
+
+
+#SEGURIDAD article img:hover{
+    transform: scale(1.1) ;
+}
+
+
+@media (min-width: 1370px){
+    nav li a{
+        margin-left: 880px;
+        align-items: right;
+    }
+    
+    nav a{
+        margin-left: 50px;
+    }
+
+    #SEGURIDAD h2{
+        margin: 0px 50px;
+        color: #A02334;
+        font-size: 90px;
+        margin-left: 250px;
+        margin-top: 110px;
+        margin-bottom: 40px;
+    }
+
+    #SEGURIDAD p{
+        text-align: right;
+        font-size: 25px;
+        line-height: 50px;
+    }
+
+    #SEGURIDAD article img{
+        margin: 0px 40px;
+        width: 700px;    
+        transition: .4s;
+        margin-top: 50px;
+        margin-left: 100px;
+        margin-bottom: 100px;
+    }
+}
+/*todo footer*/
+.container{
+    max-width: 1200px;
+    margin:  0  auto;
+}
+.footer{
+    background-color: #000000;
+    padding: 80px 0 ;
+}
+.footer-row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+.footer-links{
+
+    width: 20%;
+    padding: 0px 15PX;
+
+}
+
+.footer-links h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border-bottom:  2px solid #00c3ff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.footer-links ul li a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #bbbbbb;
+    display: block;
+    margin-bottom: 15px;
+    transition: all .3s ease;
+}
+
+.footer-links ul li a:hover{
+    color:#fff;
+    padding-left: 6px;
+}
+
+.social-links a{
+    display: inline-block;
+    min-height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0 ;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 45px;
+    color: #fff;
+    transition: all .5 ease;
+
+}
+.social-links a:hover{
+    background-color: #00c3ff;
+}

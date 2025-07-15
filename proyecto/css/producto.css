@@ -1,0 +1,167 @@
+:root {
+      --color-principal: #1c1c1c;
+      --color-acento: #A02334;
+      --color-fondo: #f4f4f4;
+      --color-fondo-oscuro: #2a2a2a;
+      --color-texto: #333;
+      --color-texto-claro: #f0f0f0;
+      --fuente-principal: 'Exo 2', sans-serif;
+    }
+     /* Modo oscuro: al añadir la clase .dark-theme al <body> se sobreescriben las variables */
+    body.dark-theme {
+      --color-bg: #1e1e1e;
+      --color-bg-secondary: #2b2b2b;
+      --color-text: #f1f1f1;
+      --shadow-1: 0 4px 8px rgba(0, 0, 0, 0.6);
+      --shadow-2: 0 8px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--fuente-principal);
+    }
+    body {
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: var(--color-principal);
+      color: white;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-left img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .navbar-left span {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .perfil {
+      position: relative;
+    }
+    .boton-perfil {
+      background-color: var(--color-acento);
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .menu-desplegable {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .menu-desplegable a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #000;
+    }
+    .menu-desplegable a:hover {
+      background-color: #f1f1f1;
+    }
+    .container {
+      display: flex;
+      padding: 30px;
+    }
+    .menu-lateral {
+      width: 250px;
+      margin-right: 30px;
+    }
+    .menu-item {
+      margin-bottom: 15px;
+    }
+    .btn-menu {
+      width: 100%;
+      background-color: var(--color-principal);
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .sub-menu {
+      display: none;
+      background-color: #eee;
+      border-radius: 5px;
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+    .sub-btn {
+      display: block;
+      padding: 8px;
+      text-decoration: none;
+      color: var(--color-texto);
+    }
+    .sub-btn:hover {
+      background-color: #ddd;
+    }
+    .contenido {
+      flex: 1;
+    }
+    .botones {
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .amarillo {
+      background-color: #f0ad4e;
+      color: white;
+    }
+    .rojo {
+      background-color: #d9534f;
+      color: white;
+    }
+    .tabla-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .tabla-container table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .tabla-container th, .tabla-container td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    .boton-edi, .boton {
+      background-color: var(--color-acento);
+      color: white;
+      padding: 6px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .titulo {
+      margin-bottom: 15px;
+      color: var(--color-acento);
+      text-align: center;
+    }
+ 

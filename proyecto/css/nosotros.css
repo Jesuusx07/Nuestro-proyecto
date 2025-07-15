@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+*{
+    font-family: "Cinzel", serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+header{
+    background-size: cover;
+    background-color: #201E1E;
+    width: 100%;
+}
+
+header nav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 13px;
+}
+
+.favicon{
+    margin-left: 13px;
+    width: 80px;
+}
+
+nav li a{
+    margin-left: 280px;
+    align-items: right;
+}
+
+li a img{
+    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
+}
+
+li a img:hover {
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
+}
+
+nav ul a{
+    width: 100px;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 25px;
+    transition: .4s;
+}
+
+nav ul a:hover{
+    border-bottom: 1px solid #fff;
+}
+
+#NOSOTROS{   
+    width: 100%;
+    background-color: #201E1E;
+    margin: 0 auto;
+    position: relative;
+    color: #ffffff;
+    padding: 60px 0%;
+}
+
+#NOSOTROS h2{
+    color: #FFAD60;
+    font-size: 70px;
+    margin: 0px 50px;
+}
+
+#NOSOTROS p {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 2.0; /* Reduce el espaciado entre líneas */
+    text-align: center; /* Asegura alineación a la izquierda */
+    padding: 20px;
+    max-width: 600px; /* Evita que el texto se extienda demasiado */
+    margin: 0; /* Elimina márgenes extra que puedan afectar el diseño */
+}
+
+#NOSOTROS .fila{
+    display: flex;
+    justify-content: center;
+}
+
+#NOSOTROS article{
+    margin: 0px 40px;
+}
+
+#NOSOTROS article img{
+    max-width: 90%;
+    max-height: 390px;
+    position: relative;
+    top: 100px;
+    width: 750px;
+    transition: .4s;
+}
+
+#NOSOTROS article img:hover{
+    transform: scale(1.1) ;
+}
+
+/* Contenedor principal que organiza las imágenes y el texto uno al lado del otro */
+.impactos-container {
+    display: flex; /* Usa Flexbox para colocar hijos en línea (horizontalmente) */
+    gap: 110px; /* Espacio entre las imágenes y el texto */
+    align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
+    max-width: 1200px; /* Limita el ancho máximo del contenedor */
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+/* Contenedor que agrupa todas las imágenes en una columna */
+.imagenes {
+    display: flex; /* Activa Flexbox */
+    flex-direction: column; /* Organiza las imágenes en columna */
+}
+
+/* Estilos aplicados a cada imagen */
+.impacto-img {
+    width: 200px; /* Ancho fijo para todas las imágenes */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+}
+.impacto-imgg {
+
+    margin-left: 250px;
+    width: 200px; /* Ancho fijo para todas las imágenes */
+    border-radius: 10px; /* Bordes redondeados */
+    object-fit: cover; /* Asegura que la imagen mantenga proporción sin deformarse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+}
+
+/* Contenedor del texto */
+.impacto-texto {
+    margin-top: 100px;
+    max-width: 600px; /* Limita el ancho del bloque de texto */
+}
+
+/* Título del texto */
+.impacto-texto h2 {
+    font-size: 28px; /* Tamaño del título */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    text-align: center;
+}
+
+/* Párrafo del texto */
+.impacto-texto p {
+    font-size: 16px; /* Tamaño del texto */
+    line-height: 1.6; /* Altura entre líneas para mejorar la lectura */
+    text-align: justify; /* Justifica el texto a ambos lados */
+}
+.footer{
+    background-color: #000000;
+    padding: 80px 0 ;
+}
+.footer-row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+.footer-links{
+
+    width: 20%;
+    padding: 0px 15PX;
+
+}
+
+.footer-links h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border-bottom:  2px solid #00c3ff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.footer-links ul li a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #bbbbbb;
+    display: block;
+    margin-bottom: 15px;
+    transition: all .3s ease;
+}
+
+.footer-links ul li a:hover{
+    color:#fff;
+    padding-left: 6px;
+}
+
+.social-links a{
+    display: inline-block;
+    min-height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0 ;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 45px;
+    color: #fff;
+    transition: all .5 ease;
+
+}
+.social-links a:hover{
+    background-color: #00c3ff;
+}
+
+@media (min-width: 1370px){
+    nav li a{
+        margin-left: 880px;
+        align-items: right;
+    }
+
+    .login{
+        margin-left: 900px;
+    }
+    
+    nav a{
+        margin-left: 50px;
+    }
+
+    #hero img {
+        margin-top: 90px;
+        width: 800px;
+        max-height: 290px;
+        height: auto;
+    }
+
+    #NOSOTROS article{
+        margin: 0px 40px;
+        margin-bottom: 160px;
+    }
+
+    #NOSOTROS article img{
+        max-width: 100%;
+        max-height: 2000px;
+        position: relative;
+        top: 100px;
+        width: 750px;
+        transition: .4s;
+    }
+
+    #NOSOTROS h2{
+        color: #FFAD60;
+        font-size: 90px;
+        margin: 0px 50px;
+        margin-top: 150px;
+    }
+
+    #NOSOTROS p {
+        color: #ffffff;
+        font-size: 20px;
+        line-height: 2.0; 
+        text-align: left; 
+        padding: 20px;
+        max-width: 600px; 
+        margin: 0; 
+    }
+
+
+}

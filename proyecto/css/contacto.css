@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+*{
+    font-family: "Cinzel", serif;
+    margin: 0;
+    padding: 0;
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    background: url("../img/madera.png");
+    background-size: cover;
+}
+
+header{
+    width: 100%;
+    padding-top: 5px;
+}
+
+header nav{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo1 img{
+    width: 100px;
+    margin-top: 60px;
+}
+
+.flecha{
+    margin-left: 1050px;
+    margin-top: 10px;
+}
+
+.flecha img{
+    width: 45px;
+}
+
+
+.logo {
+    margin-left: 50px;
+    height: 200px;
+    width: 500px;
+    display: block;
+}
+
+.logo img{
+    width: 200px;
+}
+
+
+h2{
+    font-size: 50px;
+    color: white;
+    font-family: "Cinzel", serif;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+
+.flecha img:hover{
+    transition: .4s;
+    transform: scale(1.20);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+input{
+    width: calc(100% - 12px);
+    padding: 10px;
+    border: 1px solid #ffffff;
+    background-color: #FFAD60;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+
+.container {
+    font-size: 20px;
+    width: 50%;
+    height: auto;
+    padding: 45px;
+    border-radius: 30px;
+    margin-left: 280px;
+    text-align: center;
+    font-weight: bolder;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+.contenedor-botones {
+    display: flex;
+    gap: 20px;
+}
+
+
+.boton-registro {
+    background-color: #A02334;
+    color: #fff;
+    padding: 10px 100px;
+    border-radius: 50px;
+    margin-top: 20px ;
+    line-height: 15px;
+    border: #A02334;
+    font-size: 20px;
+}
+/*todo footer*/
+.footer {
+    background-color: #000000;
+    padding: 80px 0;
+    width: 100%;
+    text-align: left;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: none;
+    margin: 0;
+    padding: 0 40px; /* puedes ajustar el padding si lo quieres más o menos pegado */
+}
+
+.footer-links {
+    width: 20%;
+    padding: 0 15px;
+}
+
+.footer-links h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border-bottom: 2px solid #00c3ff;
+    padding-bottom: 10px;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #bbbbbb;
+    display: block;
+    margin-bottom: 15px;
+    transition: all .3s ease;
+    text-transform: capitalize;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+    padding-left: 6px;
+}
+
+.social-links a {
+    display: inline-block;
+    min-height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 45px;
+    color: #fff;
+    transition: all 0.5s ease;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    background-color: #00c3ff;
+}
+
+
+
+@media (min-width: 1370px){
+    .flecha{
+        margin-left: 1780px;
+    }
+
+    .logo {
+        margin-left: 237px;
+        margin-bottom: 50px;
+        height: 200px;
+        width: 500px;
+        display: block;
+    }
+
+    header nav{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .container {
+        font-size: 20px;
+        width: 50%;
+        height: auto;
+        padding: 45px;
+        border-radius: 30px;
+        margin-left: 420px;
+        text-align: center;
+        font-weight: bolder;
+    }
+}

@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+*{
+    font-family: "Cinzel", serif;
+    margin: 0;
+    padding: 0;
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+header{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(../img/bagground.png);
+    background-size: cover;
+}
+
+header nav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 13px;
+
+}
+ .login{
+  margin-left: 360px;
+  height: 35px;
+  margin-bottom: 100px;
+  
+}
+.favicon{
+    margin-left: 13px;
+    width: 80px;
+}
+nav li a{
+    margin-left: 280px;
+    align-items: right;
+    margin-top: 1px;
+}
+
+li a img{
+    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
+}
+
+li a img:hover {
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
+}
+
+nav ul a{
+    width: 100px;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 9px 25px;
+    margin-bottom: 10px;
+    transition: .4s;
+}
+
+nav ul a:hover{
+    border-bottom: 1px solid #FFAD60;
+}
+
+nav a:hover{
+    transition: .4s;
+    transform: scale(1.20); /* Escala el botón al 105% de su tamaño original */
+}
+
+#hero {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 50px; /* Ajusta este valor para bajar los botones */
+    justify-content: flex-start;
+    align-items: center; /* Para alinear verticalmente los elementos */
+}
+
+#hero img {
+    max-width: 100%;
+    max-height: 290px;
+    height: auto;
+    margin: 0;
+}
+
+.boton-primario {
+    background-color: #A02334;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.3s ease, transform 0.3s ease; /* Agregamos una transición suave */
+    display: inline-block; /* Añadimos esta línea */
+}
+
+.boton-primario:hover {
+    background-color: #C7374D; /* Un tono de rojo ligeramente más claro al pasar el cursor */
+    transform: scale(1.05); /* Escala el botón al 105% de su tamaño original */
+}
+
+.boton-secundario {
+    background-color: #FFAD60;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Agregamos la transición */
+    display: inline-block; /* Añadimos esta línea */
+}
+
+.boton-secundario:hover {
+    background-color: #FFC98A; /* Un tono de naranja ligeramente más claro al pasar el cursor */
+    transform: scale(1.05); /* Escala el botón al 105% */
+  }
+
+.boton-sesion{
+    background-color: #A02334;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+#botones{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 100px;
+}
+
+#botones a{
+    margin-left: 30px;
+    padding: 13px;
+}
+
+
+main{
+    width: 100%;
+    position: relative;
+}
+
+/*todo footer*/
+.container{
+    max-width: 1200px;
+    margin:  0  auto;
+}
+.footer{
+    background-color: #000000;
+    padding: 80px 0 ;
+}
+.footer-row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+.footer-links{
+
+    width: 20%;
+    padding: 0px 15PX;
+
+}
+
+.footer-links h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border-bottom:  2px solid #A02334;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.footer-links ul li a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #bbbbbb;
+    display: block;
+    margin-bottom: 15px;
+    transition: all .3s ease;
+}
+
+.footer-links ul li a:hover{
+    color:#fff;
+    padding-left: 6px;
+}
+
+.social-links a{
+    display: inline-block;
+    min-height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0 ;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 45px;
+    color: #fff;
+    transition: all .5 ease;
+
+}
+.social-links a:hover{
+   background-color: #A02334;
+}
+
+
+
+@media (min-width: 1370px){
+
+    .login{
+        margin-left: 880px;
+    }
+    
+    nav li a{
+        margin-left: 880px;
+        align-items: right;
+    }
+
+    nav a{
+        margin-left: 50px;
+        }
+
+    #hero img {
+        margin-top: 90px;
+        width: 800px;
+        max-height: 290px;
+        height: auto;
+    }
+
+}

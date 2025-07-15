@@ -1,0 +1,178 @@
+/* Barra superior */
+.navbar {
+    background: #201E1E;
+    color: #A02334;
+    padding: 0.7em 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.navbar-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.3em 0.7em;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.navbar-menu li a.active,
+.navbar-menu li a:hover {
+    background: #1565c0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2em 2em 1.5em 2em;
+}
+
+/* Título */
+.titulo {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #1976d2;
+    margin-bottom: 1.2em;
+    text-align: left;
+}
+
+/* Botón Nuevo */
+.acciones-superiores {
+    text-align: right;
+    margin-bottom: 1em;
+}
+.btn-nuevo {
+    background: #43a047;
+    color: #fff;
+    border: none;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.btn-nuevo:hover {
+    background: #388e3c;
+}
+.icon-mas {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 0.3em;
+}
+
+/* Tabla de venta */
+.tabla-venta {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.2em;
+    background: #fafbfc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.tabla-venta th, .tabla-venta td {
+    border: 1px solid #e0e0e0;
+    padding: 0.7em 0.5em;
+    text-align: center;
+}
+.tabla-venta th {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-size: 1.05em;
+    font-weight: 600;
+}
+.tabla-venta td input[type="text"],
+.tabla-venta td input[type="number"] {
+    width: 90%;
+    padding: 0.3em 0.4em;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    font-size: 1em;
+    background: #fff;
+    text-align: center;
+}
+.tabla-venta td input[readonly] {
+    background: #f5f5f5;
+    color: #757575;
+}
+
+/* Botón Eliminar */
+.btn-eliminar {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.2s;
+}
+.btn-eliminar:hover {
+    background: #b71c1c;
+}
+.icon-trash {
+    font-size: 1.1em;
+}
+
+/* Total final */
+.total-final {
+    text-align: right;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #1976d2;
+    margin-bottom: 1.2em;
+}
+
+/* Botón Registrar Venta */
+.acciones-inferiores {
+    text-align: right;
+}
+.btn-registrar {
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    padding: 0.7em 1.5em;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.btn-registrar:hover {
+    background: #1565c0;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .container {
+        padding: 1em 0.3em;
+    }
+    .tabla-venta th, .tabla-venta td {
+        font-size: 0.95em;
+        padding: 0.5em 0.2em;
+    }
+    .titulo {
+        font-size: 1.3em;
+    }
+}

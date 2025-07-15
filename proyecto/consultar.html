@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/consultar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Kenny's - Consultar</title>
+</head>
+<body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="navbar">
+    <div class="navbar-left">
+       <img src="./img/Logo Principal 2.png" alt="Logo Kenny's" class="logo-navbar" />
+  
+      <a href="index.html"> <img src="./img/logo_Favicon.png" alt="Logo Kenny's"></a>
+      <span>ADMINISTRADOR</span>
+    </div>
+    <div class="perfil">
+      <button class="boton-perfil" onclick="toggleMenu()"><i class="fas fa-user"></i> Perfil</button>
+      <div class="menu-desplegable" id="menuPerfil">
+        <a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="menu-lateral">
+      <div class="menu-container" id="menuContainer"></div>
+    </div>
+<div class="tabla-container-dashboard">
+
+  <!-- Primer bloque de estadísticas -->
+  <div class="dashboard-row">
+    <div class="dashboard-card1">
+      <h3>👤 Usuarios</h3>
+      <p class="numero">3</p>
+    </div>
+    <div class="dashboard-card2">
+      <h3>📂 Categorías</h3>
+      <p class="numero">2</p>
+    </div>
+    <div class="dashboard-card3">
+      <h3>🛒 Productos</h3>
+      <p class="numero">2</p>
+    </div>
+    <div class="dashboard-card4">
+      <h3>🛠️ Empleados</h3>
+      <p class="numero">3</p>
+    </div>
+  </div>
+
+  <!-- Bloque de tablas/resumen -->
+  <div class="dashboard-row">
+    <div class="dashboard-panel">
+      <h4>🕒 Últimas Ventas</h4>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Producto</th><th>Fecha</th><th>Venta</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Tomate 10kg</td><td>2025-06-18</td><td>$25.000</td></tr>
+          <tr><td>2</td><td>Queso 2kg</td><td>2025-06-17</td><td>$18.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dashboard-panel">
+      <h4>🔥 Productos Más Vendidos</h4>
+      <table>
+        <thead>
+          <tr><th>Título</th><th>Total</th><th>Cantidad</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tomate</td><td>$50.000</td><td>20kg</td></tr>
+          <tr><td>Harina</td><td>$30.000</td><td>15kg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Más tablas -->
+  <div class="dashboard-row">
+    <div class="dashboard-panel">
+      <h4>📥 Últimas Compras</h4>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Producto</th><th>Fecha</th><th>Compra</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Aceite 1L</td><td>2025-06-16</td><td>$8.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dashboard-panel">
+      <h4>👥 Clientes</h4>
+      <table>
+        <thead>
+          <tr><th>Nombre</th><th>Ciudad</th><th>Teléfono</th><th>Notas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Juan Ruiz</td><td>Bogotá</td><td>3001234567</td><td>Frecuente</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('graficoInventario').getContext('2d');
+  const graficoInventario = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['15 Jun', '16 Jun', '17 Jun'],
+      datasets: [
+        {
+          label: 'Entradas (kg/L)',
+          data: [5, 0, 10],
+          backgroundColor: 'rgba(75, 192, 192, 0.6)'
+        },
+        {
+          label: 'Salidas (kg/L)',
+          data: [1, 2, 0],
+          backgroundColor: 'rgba(255, 99, 132, 0.6)'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Cantidad'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        title: {
+          display: true,
+          text: 'Movimientos por Día'
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  //  Al cargar la página, ocultamos el loader con una transición suave
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader'); // obtenemos el div del loader
+    loader.style.opacity = '0'; // hacemos que se desvanezca
+    loader.style.transition = 'opacity 0.5s ease'; // transición suave
+    setTimeout(() => loader.style.display = 'none', 500); // después de 0.5 segundos lo ocultamos del todo
+  });
+
+  //  Definimos una lista de gestiones con sus respectivos íconos (FontAwesome)
+  const gestiones = [
+    { nombre: 'EMPLEADO', icono: 'fa-user-tie' },
+    { nombre: 'PEDIDO', icono: 'fa-box' },
+    { nombre: 'PRODUCTOS', icono: 'fa-tags' },
+    { nombre: 'HISTORIAL', icono: 'fa-clock' },
+    { nombre: 'PROVEEDOR', icono: 'fa-truck' },
+    { nombre: 'RESERVAS', icono: 'fa-calendar-check' },
+    { nombre: 'VENTAS', icono: 'fa-chart-line' },
+    { nombre: 'INVENTARIO', icono: 'fa-warehouse' }
+  ];
+
+  //  Seleccionamos el contenedor donde se añadirán los elementos del menú
+  const menuContainer = document.getElementById("menuContainer");
+
+  //  Recorremos cada gestión para crear su estructura visual
+  gestiones.forEach(g => {
+    const item = document.createElement("div"); // contenedor individual del ítem
+    item.classList.add("menu-item"); // clase para los estilos
+
+    // Insertamos el contenido HTML dentro del item
+    item.innerHTML = `
+      <button class="btn-menu">
+        <i class="fas ${g.icono}"></i> GESTIÓN DE <br>${g.nombre}
+      </button>
+      <div class="sub-menu">
+        <a href="${g.nombre.toLowerCase()}.php" class="sub-btn">Consultar</a>
+        <a href="registerUs.html" class="sub-btn">Registrar</a>
+      </div>
+    `;
+
+    menuContainer.appendChild(item); // lo agregamos al menú principal
+  });
+
+  //  Programamos los botones para que muestren u oculten su submenú
+  document.querySelectorAll('.menu-item').forEach(item => {
+    const btnMenu = item.querySelector('.btn-menu'); // botón principal
+    const subMenu = item.querySelector('.sub-menu'); // submenú que se despliega
+
+    btnMenu.addEventListener('click', () => {
+      // Ocultamos todos los submenús excepto el que fue clickeado
+      document.querySelectorAll('.sub-menu').forEach(sm => {
+        if (sm !== subMenu) sm.style.display = 'none';
+      });
+
+      // Mostramos u ocultamos el submenú actual
+      subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  // 👤 Función para mostrar/ocultar el menú del perfil
+  function toggleMenu() {
+    const menu = document.getElementById("menuPerfil");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  // 📴 Cerramos el menú de perfil si el usuario hace clic fuera de él
+  window.onclick = function(e) {
+    if (!e.target.closest('.boton-perfil')) {
+      const menu = document.getElementById("menuPerfil");
+      if (menu && menu.style.display === "block") {
+        menu.style.display = "none";
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
