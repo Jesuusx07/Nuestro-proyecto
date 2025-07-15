@@ -1,22 +1,10 @@
-<?php
-
-require_once './php/SessionManager.php';
-
-$session = new SessionManager();
-
-    if (!$session->isLoggedIn()){
-        header("location: login.php");
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Administrativo</title>
-  <link rel="stylesheet" href="./css/dashboardEmp.css">
+  <title>Panel Empleado</title>
+  <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -29,19 +17,21 @@ $session = new SessionManager();
   <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
-    
+     <span class="logo-text">EMPLEADO</span>
+    </div>
+
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
-        <div class="perfil">
-          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
-            <div class="menu-desplegable" id="perfilMenu">
-              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
-            </div>
-        </div>
-    </div>
+      <div class="perfil">
+        <button class="boton-perfil" id="perfilBtn">👤</button>
+       <div class="menu-desplegable" id="perfilMenu">
 
+  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+</div>
+
+      </div>
+    </div>
   </header>
 
   <!-- ░░░░░░░░░░ CONTENIDO ░░░░░░░░░░ -->
@@ -55,14 +45,6 @@ $session = new SessionManager();
           <div class="sub-menu">
             <a href="registerUs.php" class="sub-btn">Registrar</a>
             <a href="empleado.php" class="sub-btn">Consultar</a>
-          </div>
-        </div>
-
-    <div class="menu-item">
-          <button class="btn-menu">Gestión de Platillos</button>
-          <div class="sub-menu">
-            <a href="registerUs.php" class="sub-btn">Registrar</a>
-            <a href="registrarPlatillo.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
@@ -105,54 +87,23 @@ $session = new SessionManager();
             <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
+                  <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
+            <a href="inventario.php" class="sub-btn">Consultar</a>
+          </div>
         </div>
 
   </nav>
 
-  <div class="menu-item">
+
+      <div class="menu-item">
       <button class="btn-venta">HACER UNA VENTA</button>
-
-
-
     </div>
-
 </aside>
-
      <!-- ░░░  MAIN  ░░░ -->
-    <main class="main">
-      <section class="welcome-box">
-        <h2>¡Bienvenido, <span class="highlight">Jesús</span>!</h2>
-        <p>Este es tu panel administrativo, donde podrás visualizar y gestionar la información principal de tu negocio.</p>
-
-        <div class="ventas-y-graficos">
-          <!-- Stat box ejemplo -->
-          <div class="stat-box">
-            <span class="stat-number">$12.5K</span>
-            <div class="arrow">▲ 8%</div>
-            <div class="dias">Ventas esta semana</div>
-          </div>
-
-          <!-- Stat box dual ejemplo -->
-          <div class="stat-box dual">
-            <div class="column">
-              <h3>152</h3>
-              <p>Productos vendidos</p>
-            </div>
-            <div class="column">
-              <h3>38</h3>
-              <p>Nuevos clientes</p>
-            </div>
-          </div>
-
-          <!-- Placeholder para gráfico -->
-          <div class="stat-box" style="flex:1 1 400px;">
-            <canvas id="graficoVentas"></canvas>
-            
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+    
 
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
@@ -216,44 +167,47 @@ $session = new SessionManager();
       });
     }
   </script>
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE PLATILLOS</h1> 
 
-  <?php
-    // Incluye tu SessionManager en cada página protegida
-    require_once 'php/SessionManager.php';
-    $session = new SessionManager();
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombres</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Categoria</th>
+    </tr>
 
 
-    // Obtiene el tiempo de inactividad desde la clase SessionManager
-    $timeout_seconds = $session->getTimeoutSeconds();
-    ?>
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM platillo";
+$result = mysqli_query($conexion, $sql);
 
-    <script type="text/javascript">
-        // Tiempo de inactividad en milisegundos (del servidor)
-        const INACTIVITY_TIMEOUT = <?php echo $timeout_seconds * 5000; ?>; // Convertir a milisegundos
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $mostrar['id_pla']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['descripcion']; ?></td>
+        <td><?php echo $mostrar['precio']; ?></td>
+        <td><?php echo $mostrar['pla_categoria']; ?></td>
+        <td>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+        </td>
+        <td>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+        </td>
+    </tr>
+<?php
+}
+?>
+    </table>
+</div>
 
-        let inactivityTimer;
-
-        function resetInactivityTimer() {
-            clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(logoutUser, INACTIVITY_TIMEOUT);
-        }
-
-        function logoutUser() {
-            alert('Su sesión ha caducado por inactividad. Por favor, inicie sesión de nuevo.');
-            window.location.href = 'login.php?message=session_expired'; // Redirige al login con un mensaje
-        }
-
-        // Eventos que reinician el temporizador (cualquier actividad del usuario)
-        document.addEventListener('mousemove', resetInactivityTimer);
-        document.addEventListener('keypress', resetInactivityTimer);
-        document.addEventListener('click', resetInactivityTimer);
-        document.addEventListener('scroll', resetInactivityTimer); // Opcional: si el scroll cuenta como actividad
-
-        // Inicia el temporizador cuando la página carga
-        resetInactivityTimer();
-    </script>
-
-  <!-- Agrega Chart.js desde CDN si lo necesitas -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    </table>
+</div>
 </body>
 </html>
