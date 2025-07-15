@@ -31,7 +31,7 @@ $pla_categoria = $_GET['pla_categoria'] ?? ''; // Cambiado de categoria a pla_ca
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Platillo - Kenny's Restaurante</title>
     <!-- Revisa si este CSS es adecuado para tu diseño de platillos o si necesitas uno nuevo -->
-    <link rel="stylesheet" href="css/editarEmpleado.css">
+    <link rel="stylesheet" href="./css/editarEmpleado.css">
 </head>
 <body>
 

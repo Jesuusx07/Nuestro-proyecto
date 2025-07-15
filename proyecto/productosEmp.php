@@ -196,6 +196,8 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
     </tr>
 
+    <a href="reportePro.php" name="mostrar_productos" class="reporte-btn">Mostrar Reporte de Productos</a>
+
     
 <?php
 }
@@ -207,5 +209,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 </div>
 
 </div>
+
+
 </body>
 </html>

@@ -121,30 +121,7 @@
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
+    
   </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE PLATILLOS</h1> 
@@ -169,12 +146,12 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_pla']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['nombre']; ?></td>
         <td><?php echo $mostrar['descripcion']; ?></td>
         <td><?php echo $mostrar['precio']; ?></td>
         <td><?php echo $mostrar['pla_categoria']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_pla'];?> &nom=<?php echo $mostrar['nombres'];?>  &email=<?php echo $mostrar['descripcion'];?>  &tel=<?php echo $mostrar['precio'];?> &docu=<?php echo $mostrar['pla_categoria'];?>" class="boton-edi">Editar</a>
+            <a href="editarPlatillo.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_pla'];?> &nom=<?php echo $mostrar['nombre'];?>  &email=<?php echo $mostrar['descripcion'];?>  &tel=<?php echo $mostrar['precio'];?> &docu=<?php echo $mostrar['pla_categoria'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
             <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
