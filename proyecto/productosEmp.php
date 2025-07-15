@@ -203,6 +203,71 @@ while ($mostrar = mysqli_fetch_array($result)) {
 }
 ?>
     </table>
+    <style>
+        /* Tus estilos CSS aquí, incluyendo los de tabla y botones */
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        .boton-edi, .boton { /* Estilos para tus botones de Editar/Eliminar */
+            padding: 8px 12px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            margin: 2px;
+            display: inline-block;
+        }
+        .boton-edi { background-color: #28a745; } /* Color verde para editar */
+        .boton-edi:hover { background-color: #218838; }
+        .boton { background-color: #dc3545; } /* Color rojo para eliminar */
+        .boton:hover { background-color: #c82333; }
+
+        /* Estilos para el botón de reporte global */
+        .reporte-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .reporte-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos de tabla del reporte (si se muestra) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e2e6ea;
+            color: #333;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        img {
+            max-width: 80px;
+            height: auto;
+            display: block;
+            margin: auto;
+            border-radius: 4px;
+        }
+        p {
+            color: #555;
+            font-style: italic;
+        }
+    </style>
   
 
 
