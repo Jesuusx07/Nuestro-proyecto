@@ -1,6 +1,13 @@
 <?php
+
 require_once './php/SessionManager.php';
+
 $session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,33 +26,36 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+     <span class="logo-text">EMPLEADO</span>
     </div>
 
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
-        <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
+            <div class="menu-desplegable" id="perfilMenu">
+              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+            </div>
         </div>
-      </div>
     </div>
   </header>
 
 
   <div class="form">
-    <h2>Registrar Proveedor</h2>
+    <h2>Registrar Platillo</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerUsPro.php" method="POST">
-        <input type="text" id="nombre" name="fname" placeholder="Nombres">
-        <input type="text" id="apelli" name="lname" placeholder="Apellidos">
-        <input type="email" id="correo" name="email" placeholder="Correo">
-        <input type="email" id="Suministro" name="email" placeholder="Producto Suministrado">
-        <input type="text" id="telefono" name="tele" placeholder="Teléfono">
-        <input type="number" id="id" name="documento" placeholder="Documento de identidad">
+      <form id="formu" action="./php/registerEmpPla.php" method="POST">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <select name="select" id="cat">
+          <option value="">Categoria</option>
+          <option value="Fruta">Fruta</option>
+          <option value="Vegetal">Vegetal</option>
+          <option value="Salsa">Salsa</option>
+        </select>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+        <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
+
         <input type="submit" id="boton" value="Registrar">
 
         <?php

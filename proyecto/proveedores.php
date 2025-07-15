@@ -165,7 +165,10 @@
         <th>Proveedor</th>
         <th>Nombres</th>
         <th>Apellidos</th>
+        <th>Suministro</th>
+         <th>Cantidad</th>
         <th>correo</th>
+
         <th>telefono</th>
         <th>documento</th>
     </tr>
@@ -186,8 +189,19 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['correo']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
+        <td><?php echo $mostrar['suminstro']; ?></td>
+        <td><?php echo $mostrar['cantidad']; ?></td>
         <td>
-            <a href="editar_proveedor.php?id=<?php echo $mostrar['id_usuario'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+            <a href="editar_proveedor.php?id=<?php echo $mostrar['id_usuario'];?> 
+    &nom=<?php echo $mostrar['nombres'];?> 
+    &apell=<?php echo $mostrar['apellidos'];?>  
+    &email=<?php echo $mostrar['correo'];?>  
+    &tel=<?php echo $mostrar['telefono'];?> 
+    &docu=<?php echo $mostrar['documento'];?> 
+    &suministro=<?php echo $mostrar['suministro'];?> 
+    &cantidad=<?php echo $mostrar['cantidad'];?>" 
+    class="boton-edi">Editar</a>
+
         </td>
         <td>
             <a href="./php/eliminarProveedor.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
