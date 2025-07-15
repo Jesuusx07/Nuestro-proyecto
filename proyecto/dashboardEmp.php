@@ -88,7 +88,8 @@ $session = new SessionManager();
   </nav>
 
   <div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
+      
+       <a href="venta_empleado.php" class="sub-btn">Hacer una venta</a>
     </div>
 
 </aside>
