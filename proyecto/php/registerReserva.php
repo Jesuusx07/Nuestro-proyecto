@@ -18,6 +18,13 @@ $usuarioConectado = $session->getUserName();
 
 $correo = $nombre . $apellido . "@kennys.com";
 
+if($date == "" || $nombre == "" || $apellido == ""){
+    $session->set('error_message', 'Por favor, llene todos los campos.');
+
+    header('Location: ../reservasRegis.php'); 
+    exit();
+}
+
 require_once 'UsuarioController.php';
 
 $db2 = (new Database())->conectar();
@@ -26,19 +33,23 @@ $controlador2 = new UsuarioController($db);
 $usuario = $controlador2->obtener($correo);
 $reserva = $controlador->obtener($date);
 
+$zonaHorariaBogota = new DateTimeZone('America/Bogota');
+$ahora = new DateTime('now', $zonaHorariaBogota);
 
+$format = 'Y-m-d\TH:i';
 
-if($date == "" || $nombre == "" || $apellido == ""){
-    $session->set('error_message', 'Por favor, llene todos los campos.');
+$nuevaFecha = DateTime::createFromFormat($format, $date, $zonaHorariaBogota); 
 
-    header('Location: ../reservasRegis.php'); 
-    exit();
-}
-else{
     if($reserva){
         $session->set('error_message', 'Esta fecha ya esta registrada.');
 
         header('Location: ../reservasRegis.php');
+    }
+
+    elseif($nuevaFecha < $ahora) {
+        $session->set('error_message', 'No se puede reservar una fecha y hora anterior al momento actual.');
+        header('Location: ../reservasRegis.php');
+        exit();
     }
     elseif($usuario){
         $session->set('error_message', 'Este cliente ya tiene reserva.');
@@ -52,4 +63,4 @@ else{
             exit();
         }
 
-}
+

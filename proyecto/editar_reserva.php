@@ -22,18 +22,14 @@ if (!$conexion) {
 if (isset($_GET['id'])) {
     $id_reserva = mysqli_real_escape_string($conexion, $_GET['id']);
 }
-if (isset($_GET['nombre'])) {
-    $nombre = mysqli_real_escape_string($conexion, $_GET['nombre']);
-}
-if (isset($_GET['apellido'])) {
-    $apellido = mysqli_real_escape_string($conexion, $_GET['apellido']);
-}
 if (isset($_GET['fecha'])) {
     $fecha = mysqli_real_escape_string($conexion, $_GET['fecha']);
 }
 if (isset($_GET['estado'])) {
     $estado = mysqli_real_escape_string($conexion, $_GET['estado']);
 }
+
+$estado = trim($estado)
 
 ?>
 
@@ -45,12 +41,12 @@ if (isset($_GET['estado'])) {
             </div>
             <div class="form-group">
                     <label for="lname">Fecha</label>
-                    <input type="text" id="telefono" name="fecha" value="<?php echo trim($fecha)?>">
+                    <input type="datetime-local" id="telefono" name="fecha" value="<?php echo trim($fecha)?>">
             </div>
 
             <label for="estado">Estado</label>
                 <?php
-                if ($estado == "Activo "){ 
+                if ($estado == "Activo"){ 
                 ?>
                     <select name="estado" id="estado">
                     <option value="Activo">Activo</option>
@@ -60,7 +56,7 @@ if (isset($_GET['estado'])) {
                 }
                 ?>
                 <?php
-                if ($estado == 'Inactivo '){ 
+                if ($estado == 'Inactivo'){ 
                 ?>
                     <select name="estado" id="estado">
                     <option value="Inactivo">Inactivo</option>
