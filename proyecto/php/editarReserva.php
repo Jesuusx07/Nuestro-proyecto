@@ -10,7 +10,7 @@ require_once 'ReservaController.php';
 $db = (new Database())->conectar();
 $controlador = new ReservaController($db);
 
-$id_reserva = $_POST["id_reserva"];
+$id_reserva = $_POST["id"];
 $fecha = $_POST["fecha"];
 $estado = $_POST["estado"];
 
@@ -36,6 +36,7 @@ if($nuevaFecha < $ahora) {
 }
     else{
         if($estado == "Activo"){
+
             $reserva = $controlador->actualizar($id_reserva, "Activo", $fecha);
 
             header('Location: ../reservas.php'); 

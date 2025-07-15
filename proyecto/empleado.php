@@ -177,7 +177,7 @@
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin' and id_rol != 'proveedor'";
+$sql = "SELECT * FROM usuario where id_rol != 'admin' and id_rol != 'proveedor' and id_rol != 'cliente'";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
