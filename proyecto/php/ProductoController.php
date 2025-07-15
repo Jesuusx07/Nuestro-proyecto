@@ -1,5 +1,5 @@
 <?php
-require_once 'Platillo.php';
+require_once 'platillo.php';
 
 class ProductoController {
     private $producto;

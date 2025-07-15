@@ -1,178 +1,174 @@
-/* Barra superior */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap');
+
+:root {
+  --color-fondo: #f9f9f9;
+  --color-texto: #1a1a1a;
+  --color-principal: #a02334;
+  --color-secundario: #1c1c1c;
+  --color-acento: #a02334;
+  --color-error: #e74c3c;
+  --fuente-principal: 'Exo 2', sans-serif;
+  --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --borde-redondeado: 0.75rem;
+}
+
+[data-tema="oscuro"] {
+  --color-fondo: #1a1a1a;
+  --color-texto: #f9f9f9;
+  --color-principal: #2980b9;
+  --color-secundario: #34495e;
+  --color-acento: #27ae60;
+  --color-error: #c0392b;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .navbar {
-    background: #201E1E;
-    color: #A02334;
-    padding: 0.7em 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  background-color: var(--color-secundario);
+  padding: 1rem 2rem;
+  box-shadow: var(--sombra);
 }
+
 .navbar-container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .navbar-brand {
-    font-size: 1.5em;
-    font-weight: bold;
-    letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
 }
+
 .navbar-menu {
-    list-style: none;
-    display: flex;
-    gap: 1.5em;
-    margin: 0;
-    padding: 0;
-}
-.navbar-menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.3em 0.7em;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-.navbar-menu li a.active,
-.navbar-menu li a:hover {
-    background: #1565c0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
 }
 
-/* Contenedor principal */
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--borde-redondeado);
+  transition: background 0.3s ease;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active {
+  background-color: var(--color-principal);
+}
+
 .container {
-    width: 90%;
-    max-width: 900px;
-    margin: 2em auto;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 2em 2em 1.5em 2em;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--borde-redondeado);
+  box-shadow: var(--sombra);
 }
 
-/* Título */
 .titulo {
-    font-size: 2.2em;
-    font-weight: 700;
-    color: #1976d2;
-    margin-bottom: 1.2em;
-    text-align: left;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-/* Botón Nuevo */
 .acciones-superiores {
-    text-align: right;
-    margin-bottom: 1em;
+  text-align: right;
+  margin-bottom: 1rem;
 }
+
 .btn-nuevo {
-    background: #43a047;
-    color: #fff;
-    border: none;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s;
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--borde-redondeado);
+  cursor: pointer;
+  font-weight: 500;
 }
+
 .btn-nuevo:hover {
-    background: #388e3c;
+  background-color: #2980b9;
 }
+
 .icon-mas {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-left: 0.3em;
+  font-weight: bold;
+  margin-left: 0.3rem;
 }
 
-/* Tabla de venta */
 .tabla-venta {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.2em;
-    background: #fafbfc;
-    border-radius: 8px;
-    overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
 }
-.tabla-venta th, .tabla-venta td {
-    border: 1px solid #e0e0e0;
-    padding: 0.7em 0.5em;
-    text-align: center;
+
+.tabla-venta th,
+.tabla-venta td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: center;
 }
+
 .tabla-venta th {
-    background: #e3f2fd;
-    color: #1976d2;
-    font-size: 1.05em;
-    font-weight: 600;
-}
-.tabla-venta td input[type="text"],
-.tabla-venta td input[type="number"] {
-    width: 90%;
-    padding: 0.3em 0.4em;
-    border: 1px solid #bdbdbd;
-    border-radius: 4px;
-    font-size: 1em;
-    background: #fff;
-    text-align: center;
-}
-.tabla-venta td input[readonly] {
-    background: #f5f5f5;
-    color: #757575;
+  background-color: var(--color-principal);
+  color: white;
 }
 
-/* Botón Eliminar */
+.tabla-venta input[type="text"],
+.tabla-venta input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--borde-redondeado);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
 .btn-eliminar {
-    background: #e53935;
-    color: #fff;
-    border: none;
-    padding: 0.4em 0.8em;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background 0.2s;
+  background-color: var(--color-error);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
 }
+
 .btn-eliminar:hover {
-    background: #b71c1c;
-}
-.icon-trash {
-    font-size: 1.1em;
+  background-color: #c0392b;
 }
 
-/* Total final */
 .total-final {
-    text-align: right;
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #1976d2;
-    margin-bottom: 1.2em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: 1rem;
 }
 
-/* Botón Registrar Venta */
 .acciones-inferiores {
-    text-align: right;
-}
-.btn-registrar {
-    background: #1976d2;
-    color: #fff;
-    border: none;
-    padding: 0.7em 1.5em;
-    font-size: 1.1em;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-.btn-registrar:hover {
-    background: #1565c0;
+  text-align: center;
 }
 
-/* Responsive */
-@media (max-width: 700px) {
-    .container {
-        padding: 1em 0.3em;
-    }
-    .tabla-venta th, .tabla-venta td {
-        font-size: 0.95em;
-        padding: 0.5em 0.2em;
-    }
-    .titulo {
-        font-size: 1.3em;
-    }
+.btn-registrar {
+  background-color: var(--color-acento);
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--borde-redondeado);
+  cursor: pointer;
+}
+
+.btn-registrar:hover {
+  background-color: #27ae60;
 }
