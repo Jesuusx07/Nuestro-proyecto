@@ -1,13 +1,20 @@
 <?php
+
 require_once './php/SessionManager.php';
+
 $session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar Reserva</title>
+  <title>Registrar usuario</title>
   <link rel="stylesheet" href="./css/registerUs.css">
    <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -26,22 +33,28 @@ $session = new SessionManager();
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
-        <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
+            <div class="menu-desplegable" id="perfilMenu">
+              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+            </div>
         </div>
-      </div>
     </div>
   </header>
 
 
   <div class="form">
-    <h2>Registrar Reserva</h2>
+    <h2>Registrar Platillo</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerEmpRes.php" method="POST">
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-        <input type="date" id="apelli" name="date" placeholder="Fecha">
+      <form id="formu" action="./php/registerEmpPla.php" method="POST">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <select name="select" id="cat">
+          <option value="">Categoria</option>
+          <option value="Fruta">Fruta</option>
+          <option value="Vegetal">Vegetal</option>
+          <option value="Salsa">Salsa</option>
+        </select>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+        <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
 
         <input type="submit" id="boton" value="Registrar">
 

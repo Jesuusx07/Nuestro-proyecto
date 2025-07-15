@@ -69,7 +69,7 @@
       <button class="btn-menu">Gestión de Platillo</button>
       <div class="sub-menu">
         <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="platillo.php" class="sub-btn">Consultar</a>
+        <a href="platilloEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
 

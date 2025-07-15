@@ -69,7 +69,7 @@
     <div class="menu-item">
       <button class="btn-menu">Gestión de Platillo</button>
       <div class="sub-menu">
-        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
+        <a href="registrarPlatilloEmp.php" class="sub-btn">Registrar</a>
         <a href="platilloEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
@@ -174,7 +174,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['precio']; ?></td>
         <td><?php echo $mostrar['pla_categoria']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_pla'];?> &nom=<?php echo $mostrar['nombres'];?>  &email=<?php echo $mostrar['descripcion'];?>  &tel=<?php echo $mostrar['precio'];?> &docu=<?php echo $mostrar['pla_categoria'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
             <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
