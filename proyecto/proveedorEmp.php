@@ -41,39 +41,38 @@
   <nav class="menu-container">
 
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Productos</button>
-      <div class="sub-menu">
-        <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
-        <a href="productosEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+     <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
+            <a href="inventarioEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Proveedor</button>
-      <div class="sub-menu">
-        <a href="registerEmpProv.php" class="sub-btn">Registrar</a>
-        <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Proveedor</button>
+          <div class="sub-menu">
+            <a href="registerEmpProv.php" class="sub-btn">Registrar</a>
+            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Reservas</button>
-      <div class="sub-menu">
-        <a href="registerEmpRes.php" class="sub-btn">Registrar</a>
-        <a href="reservasEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Reservas</button>
+          <div class="sub-menu">
+            <a href="registerEmpRes.php" class="sub-btn">Registrar</a>
+            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Platillo</button>
-      <div class="sub-menu">
-        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
-        <a href="platilloEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
-
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Platillo</button>
+          <div class="sub-menu">
+            <a href="registrarPlatilloEmp.html" class="sub-btn">Registrar</a>
+            <a href="platilloEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
   </nav>
 

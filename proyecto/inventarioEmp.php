@@ -1,3 +1,14 @@
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,10 +51,11 @@
     <aside class="menu-lateral">
   <nav class="menu-container">
 
+
         <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
-            <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
+            <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
             <a href="inventarioEmp.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -74,23 +86,19 @@
         </div>
 
   </nav>
-
-  <div class="menu-item">
-      
-       <a href="venta_empleado.php" class="sub-btn">Hacer una venta</a>
-    </div>
-    
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
 
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
-  <script>
-    // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
+  
+<script>
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+  });
+</script>
+<script>
 
     // ----- Menú perfil desplegable -----
     const perfilBtn = document.getElementById('perfilBtn');
@@ -121,40 +129,20 @@
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
+    
   </script>
+  
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE INVENTARIO</h1> 
 
 <table>
     <tr>
         <th>id_inventario</th>
-        <th>id_producto</th>
         <th>cantidad</th>
-        <th>stock</th>
+        <th>imagen</th>
+        <th>tipo_de_movimiento</th>
+        <th>fecha</th>
+        <th>responsable</th>
 
     </tr>
 
@@ -169,16 +157,15 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_inventario']; ?></td>
-        <td><?php echo $mostrar['id_producto']; ?></td>
         <td><?php echo $mostrar['cantidad']; ?></td>
+        <td><?php echo $mostrar['imagen']; ?></td>
+        <td><?php echo $mostrar['tipo_de_movimiento']; ?></td>
         <td><?php echo $mostrar['fecha']; ?></td>
+        <td><?php echo $mostrar['responsable']; ?></td>
 
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
- 
-        </td>
-        <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/editarinventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton">Editar</a>
+            <a href="./php/eliminarInventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php

@@ -54,8 +54,8 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
-            <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
-            <a href="productosEmp.php" class="sub-btn">Consultar</a>
+            <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
+            <a href="inventarioEmp.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 

@@ -18,7 +18,7 @@ $session = new SessionManager();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar Reserva</title>
+  <title>Registrar al Inventario</title>
   <link rel="stylesheet" href="./css/registerUs.css">
    <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -48,25 +48,39 @@ $session = new SessionManager();
 
 
   <div class="form">
-    <h2>Registrar Reserva</h2>
+    <h2>Registrar Inventario</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerReserva.php" method="POST">
-        <input type="text" id="nombre" name="nombre" placeholder="Nombres" required>
-        <input type="text" id="apellido" name="apellido" placeholder="Apellidos" required>
-        <input type="datetime-local" id="apelli" name="date" placeholder="Fecha">
+      <form id="formu" action="./php/registerEmpInv.php" method="POST">
 
-        <input type="submit" id="boton" value="Registrar">
+          <input type="text" id="nombre" name="producto" placeholder="Nombre del producto" required>
 
-        <?php
-          if ($session->has('error_message')) {
-            echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
-            $session->remove('error_message');
-          } else if ($session->has('exito')) {
-            echo '<p class="exito">' . htmlspecialchars($session->get('exito')) . '</p>';
-            $session->remove('exito');
-            $session->remove('error_message');
-          }
-        ?>
+          <input type="number" id="nombre" name="cantidad" placeholder="Cantidad" min="1" max="100" required>
+          
+          <input type="file" id="imagen" name="imagen" accept="image/*">
+
+          <label for="tipo">Tipo de movimiento</label>
+                <select id="tipo" name="tipo">
+                  <option value="entrada">Entrada</option>
+                  <option value="salida">Salida</option>
+                </select>
+          <input type="number" id="responsable" name="responsable" placeholder="Responsable">
+
+          <input type="date" id="fecha" name="date" placeholder="Fecha">
+                </select>
+            
+
+                <input type="submit" id="boton" value="Registrar">
+
+                <?php
+                  if ($session->has('error_message')) {
+                    echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+                    $session->remove('error_message');
+                  } else if ($session->has('exito')) {
+                    echo '<p class="exito">' . htmlspecialchars($session->get('exito')) . '</p>';
+                    $session->remove('exito');
+                    $session->remove('error_message');
+                  }
+                ?>
       </form>
     </div>
   </div>
