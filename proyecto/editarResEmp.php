@@ -1,6 +1,17 @@
 <?php
 
 require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
+<?php
+
+require_once './php/SessionManager.php';
 require_once './php/sql.php'; // Asumiendo que este archivo contiene la clase Database con conexión PDO
 
 $session = new SessionManager();

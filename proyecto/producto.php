@@ -1,3 +1,14 @@
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,15 +58,6 @@
             <a href="empleado.php" class="sub-btn">Consultar</a>
           </div>
         </div>
-
-        <div class="menu-item">
-          <button class="btn-menu">Gestión de Productos</button>
-          <div class="sub-menu">
-            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-            <a href="producto.php" class="sub-btn">Consultar</a>
-          </div>
-        </div>
-
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
@@ -185,7 +187,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['nombre']; ?></td>
         <td><?php echo $mostrar['categoria']; ?></td>
         <td><?php echo "<img src='" . htmlspecialchars($ruta_completa_imagen) . " ' style='width:200px; height:auto;'>";?></td>
-        <td><?php echo $mostrar['precio_unitario']; ?></td>
+
         <td>
             <a href="editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
         </td>

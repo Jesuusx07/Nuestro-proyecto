@@ -1,3 +1,15 @@
+
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
 <?php
 
 require_once './php/SessionManager.php';

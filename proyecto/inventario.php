@@ -1,3 +1,14 @@
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -155,16 +166,20 @@
         }
       });
     }
+    
   </script>
+  
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE Inventario</h1> 
 
 <table>
     <tr>
         <th>id_inventario</th>
-        <th>id_producto</th>
         <th>cantidad</th>
-        <th>stock</th>
+        <th>imagen</th>
+        <th>tipo_de_movimiento</th>
+        <th>fecha</th>
+        <th>responsable</th>
 
     </tr>
 
@@ -179,16 +194,15 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_inventario']; ?></td>
-        <td><?php echo $mostrar['id_producto']; ?></td>
         <td><?php echo $mostrar['cantidad']; ?></td>
+        <td><?php echo $mostrar['imagen']; ?></td>
+        <td><?php echo $mostrar['tipo_de_movimiento']; ?></td>
         <td><?php echo $mostrar['fecha']; ?></td>
+        <td><?php echo $mostrar['responsable']; ?></td>
 
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
- 
-        </td>
-        <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/editarinventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton">Editar</a>
+            <a href="./php/eliminarInventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php
