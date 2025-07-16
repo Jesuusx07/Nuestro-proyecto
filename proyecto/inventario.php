@@ -166,7 +166,9 @@ $session = new SessionManager();
         }
       });
     }
+    
   </script>
+  
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE Inventario</h1> 
 
