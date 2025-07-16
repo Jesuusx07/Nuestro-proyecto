@@ -505,3 +505,8 @@ tr:hover {
         font-size: 0.75em;
     }
 }
+
+/* Estilos para la clase btn-report (Botón Generar Reporte/Imprimir) */
+button.btn-report {
+  background: var(--color-primary);
+}
