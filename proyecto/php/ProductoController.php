@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
+
 require_once 'producto.php';
-=======
-require_once 'platillo.php';
->>>>>>> 7cf25bd88314bacf56e6a2b4136b772f81887645
 
 class ProductoController {
     private $producto;

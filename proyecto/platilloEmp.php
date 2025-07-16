@@ -151,10 +151,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['precio']; ?></td>
         <td><?php echo $mostrar['pla_categoria']; ?></td>
         <td>
-            <a href="editarPlatillo.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_pla'];?> &nom=<?php echo $mostrar['nombre'];?>  &email=<?php echo $mostrar['descripcion'];?>  &tel=<?php echo $mostrar['precio'];?> &docu=<?php echo $mostrar['pla_categoria'];?>" class="boton-edi">Editar</a>
+            <a href="editarPlaEmp.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>&nombre=<?php echo htmlspecialchars($mostrar['nombre']); ?>&descripcion=<?php echo htmlspecialchars($mostrar['descripcion']); ?>&precio=<?php echo htmlspecialchars($mostrar['precio']); ?>&pla_categoria=<?php echo htmlspecialchars($mostrar['pla_categoria']); ?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/eliminarPlaEmp.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?');">Eliminar</a>
         </td>
     </tr>
 <?php
