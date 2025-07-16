@@ -39,10 +39,16 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Inventario</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerProducto.php" method="POST">
-        <input type="text" id="nombre" name="nombre" placeholder="Producto">
-  <input type="text" id="nombre" name="nombre" placeholder="Cantidad">
-   <input type="text" id="nombre" name="nombre" placeholder="Fecha">
+      <form id="formu" action="./php/registerinventario.php" method="POST">
+   <input type="number" id="nombre" name="nombre" placeholder="Cantidad" min="1" max="100" required>
+<input type="file" id="imagen" name="imagen" accept="image/*">
+  <label for="tipo">Tipo de movimiento</label>
+        <select id="tipo" name="tipo">
+          <option value="entrada">Entrada</option>
+          <option value="salida">Salida</option>
+        </select>
+   <input type="text" id="nombre" name="nombre" placeholder="Responsable">
+
    <input type="date" id="apelli" name="date" placeholder="Fecha">
         </select>
      

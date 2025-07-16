@@ -1,37 +1,37 @@
 <?php
-require_once 'venta.php';
+require_once 'Inventario.php';
 
-class VentaController {
-    private $venta;
+class InventarioController {
+    private $Inventario;
 
     public function __construct($db) {
-        $this->venta = new Venta($db);
+        $this->inventario = new Inventario($db);
     }
 
 
-    public function insertar($fecha, $total_venta) {
-        $this->venta->fecha = $fecha;
-        $this->venta->total_venta = $total_venta;
+    public function insertar($fecha, $total_inventario) {
+        $this->inventario->fecha = $fecha;
+        $this->inventario->total_inventario = $total_inventario;
 
-        return $this->venta->insertar();
+        return $this->inventario->insertar();
     }
 
-    public function actualizar($id, $fecha, $total_venta) {
-        $this->venta->id = $id;
-        $this->venta->fecha = $fecha;
-        $this->venta->total_venta = $total_venta;
+    public function actualizar($id, $fecha, $total_inventario) {
+        $this->inventario->id = $id;
+        $this->inventario->fecha = $fecha;
+        $this->inventario->total_inventario = $total_inventario;
        
-        return $this->venta->actualizar();
+        return $this->inventario->actualizar();
     }
 
 
     public function obtener($id) {
-        $this->venta->id = $id;
-        return $this->venta->obtener();
+        $this->inventario->id = $id;
+        return $this->inventario->obtener();
     }
 
     public function eliminar($id) {
-        $this->venta->id = $id;
-        return $this->venta->eliminar();
+        $this->inventario->id = $id;
+        return $this->inventario->eliminar();
     }
 }
