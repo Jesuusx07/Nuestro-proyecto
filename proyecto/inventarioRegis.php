@@ -63,8 +63,21 @@ $session = new SessionManager();
                   <option value="entrada">Entrada</option>
                   <option value="salida">Salida</option>
                 </select>
-          <input type="number" id="nombre" name="responsable" placeholder="Responsable">
+          <label for="tipo">Responsable</label>
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM usuario where ir_rol != 'admin'";
+$result = mysqli_query($conexion, $sql);
 
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+                <select id="tipo" name="responsable">
+                  <option value="entrada"><?php echo $mostrar->['nombres'];?></option>
+                </select>                
+<?php
+}
+?>         
           <input type="date" id="apelli" name="date" placeholder="Fecha">
                 </select>
             

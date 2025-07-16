@@ -41,6 +41,12 @@ class UsuarioController {
         return $this->usuario->obtener();
     }
 
+    
+    public function obtenerDocu($documento) {
+        $this->usuario->documento = $documento;
+        return $this->usuario->obtenerDocu();
+    }
+
     public function eliminar($id) {
         $this->usuario->id = $id;
         return $this->usuario->eliminar();

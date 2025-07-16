@@ -63,6 +63,14 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerDocu() {
+        $query = "CALL obtener_documento(:documento)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':documento', $this->documento);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function eliminar() {
         $query = "CALL eliminar_usuario(:id)";
         $stmt = $this->conn->prepare($query);
