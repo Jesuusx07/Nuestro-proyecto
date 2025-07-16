@@ -221,7 +221,7 @@
       border: none;
       border-radius: var(--radius);
       font-weight: 600;
-      background-color: #34ce34;
+      background-color: #f5cc17;
       color: var(--color-text);
       text-align: left;
       cursor: pointer;
@@ -230,7 +230,7 @@
     }
 
     .btn-venta:hover {
-      background-color: #44f444;
+      background-color: #ffdc18;
       color: #fff;
     }
 
@@ -520,8 +520,7 @@ body.dark-theme td {
         font-size: 0.75em;
     }
 }
-<<<<<<< HEAD
-=======
+
 
 
 /* Estilos para la clase btn-report (Botón Generar Reporte/Imprimir) */
@@ -674,4 +673,4 @@ body.dark-theme tr:hover {
 body.dark-theme td {
     border-bottom: 1px solid #555;
 }
->>>>>>> 5d90e46713c7cd8d0b0c336da86a186b4fd3483d
+

@@ -58,7 +58,13 @@ $session = new SessionManager();
             <a href="empleado.php" class="sub-btn">Consultar</a>
           </div>
         </div>
-
+    <div class="menu-item">
+          <button class="btn-menu">Gestión de Platillos</button>
+          <div class="sub-menu">
+            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
+            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
           <div class="sub-menu">
@@ -78,7 +84,6 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">Gestión de Ventas</button>
           <div class="sub-menu">
-            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
             <a href="ventas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -167,7 +172,7 @@ $session = new SessionManager();
         <th>Proveedor</th>
         <th>Nombres</th>
         <th>Apellidos</th>
-        <th>Suministro</th>
+        
          <th>Cantidad</th>
         <th>correo</th>
 
@@ -177,9 +182,8 @@ $session = new SessionManager();
 
 
 <?php
-// Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
+$sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
@@ -191,39 +195,30 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['correo']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
-<<<<<<< HEAD
-        <td><?php echo $mostrar['suminstro']; ?></td>
-=======
-      
-        <td><?php echo $mostrar['cantidad']; ?></td>
->>>>>>> f5c7585b37e86def28656b201259962f16db7c8c
+        <td><?php echo isset($mostrar['cantidad']) ? $mostrar['cantidad'] : 'N/A'; ?></td>
+
         <td>
-    <a href="editar_proveedor.php?id=<?php echo $mostrar['id_usuario'];?> 
-    &nom=<?php echo $mostrar['nombres'];?> 
-    &apell=<?php echo $mostrar['apellidos'];?>  
-    &email=<?php echo $mostrar['correo'];?>  
-    &tel=<?php echo $mostrar['telefono'];?> 
-    &docu=<?php echo $mostrar['documento'];?> 
-<<<<<<< HEAD
-    &suministro=<?php echo $mostrar['suministro'];?>" 
-=======
-
-    &cantidad=<?php echo $mostrar['cantidad'];?>" 
->>>>>>> f5c7585b37e86def28656b201259962f16db7c8c
-    class="boton-edi">Editar</a>
-
+            <a 
+                href="editar_proveedor.php?
+                    id=<?php echo $mostrar['id_usuario']; ?>&
+                    nom=<?php echo urlencode($mostrar['nombres']); ?>&
+                    apell=<?php echo urlencode($mostrar['apellidos']); ?>&
+                    email=<?php echo urlencode($mostrar['correo']); ?>&
+                    tel=<?php echo urlencode($mostrar['telefono']); ?>&
+                    docu=<?php echo urlencode($mostrar['documento']); ?>&
+                    cantidad=<?php echo isset($mostrar['cantidad']) ? urlencode($mostrar['cantidad']) : ''; ?>"
+                class="boton-edi"
+            >Editar</a>
         </td>
+
         <td>
-            <a href="./php/eliminarProveedor.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a 
+                href="./php/eliminarProveedor.php?id=<?php echo $mostrar['id_usuario']; ?>" 
+                class="boton" 
+                onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');"
+            >Eliminar</a>
         </td>
     </tr>
 <?php
 }
 ?>
-    </table>
-</div>
-
-    </table>
-</div>
-</body>
-</html>

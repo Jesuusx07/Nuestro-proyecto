@@ -57,17 +57,14 @@ $session = new SessionManager();
             <a href="registerUs.php" class="sub-btn">Registrar</a>
             <a href="empleado.php" class="sub-btn">Consultar</a>
           </div>
-        </div>
-
-        <div class="menu-item">
-          <button class="btn-menu">Gestión de Productos</button>
+                 <div class="menu-item">
+          <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
-            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-            <a href="producto.php" class="sub-btn">Consultar</a>
+            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
+            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
           </div>
         </div>
-
-
+        </div>
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
           <div class="sub-menu">

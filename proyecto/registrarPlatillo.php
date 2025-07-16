@@ -1,3 +1,4 @@
+
 <?php
 
 require_once './php/SessionManager.php';
@@ -8,10 +9,6 @@ $session = new SessionManager();
         header("location: login.php");
     }
 
-?>
-<?php
-require_once './php/SessionManager.php';
-$session = new SessionManager();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,25 +34,31 @@ $session = new SessionManager();
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
-        <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
+            <div class="menu-desplegable" id="perfilMenu">
+              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+            </div>
         </div>
-      </div>
     </div>
   </header>
 
 
   <div class="form">
-    <h2>Registrar Ventas</h2>
+    <h2>Registrar Platillos</h2>
     <div class="regis">
-      <form id="formu" action="./php/ventas.php" method="POST">
-        <input type="text" id="id_venta" name="fname" placeholder="Venta">
-        <input type="text" id="fecha" name="lname" placeholder="Fecha">
-        <input type="text" id="total_venta" name="fname" placeholder="Total Venta">
+      <form id="formu" action="./php/platillo.php" method="POST">
+        <input type="text" id="nombre" name="fname" placeholder="Nombre del platillo">
+        <input type="text" id="apelli" name="lname" placeholder="Descripcion">
+        <input type="text" id="correo" name="email" placeholder="Precio">
 
-        <input type="submit" id="boton" value="Registrar">
+
+        <select name="select" id="Categoria">
+          <option value="">Categoria</option>
+          <option value="Ensaladas">Ensaladas</option>
+          <option value="Sopas">Sopas</option>
+          <option value="Desayuno">Desayuno</option>
+        </select>
+        <input type="submit" id="boton" value="Registrar Platillo">
 
         <?php
           if ($session->has('error_message')) {
