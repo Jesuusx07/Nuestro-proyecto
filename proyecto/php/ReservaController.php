@@ -22,12 +22,10 @@ class ReservaController {
         return $this->reserva->insertar();
     }
 
-    public function actualizar($id, $estado, $fecha, $nombre, $apellido) {
+    public function actualizar($id, $estado, $fecha) {
         $this->reserva->id = $id;
         $this->reserva->estado = $estado;
         $this->reserva->fecha = $fecha;
-        $this->reserva->nombre = $nombre;
-        $this->reserva->apellido = $apellido;
 
         return $this->reserva->actualizar();
     }

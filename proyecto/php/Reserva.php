@@ -35,13 +35,11 @@ class Reserva {
     }
 
     public function actualizar() {
-        $query = "CALL actualizar_reserva(?, ?, ?, ?, ?)";
+        $query = "CALL actualizar_reserva(?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->bindParam(2, $this->estado);
         $stmt->bindParam(3, $this->fecha);
-        $stmt->bindParam(4, $this->nombre);
-        $stmt->bindParam(5, $this->apellido);
         
         return $stmt->execute();
     }

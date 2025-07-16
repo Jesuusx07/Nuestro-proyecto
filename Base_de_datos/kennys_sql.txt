@@ -45,7 +45,8 @@ CREATE TABLE reserva(
     estado_reserva VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
     fecha_reserva DATETIME NOT NULL,
     empleado VARCHAR (100) NOT NULL,
-    FOREIGN KEY (empleado) REFERENCES usuario(correo)
+    cliente VARCHAR (100) NOT NULL,
+    FOREIGN KEY (cliente) REFERENCES usuario(correo)
 );
 
 
@@ -211,8 +212,8 @@ END //
 DELIMITER //
 CREATE PROCEDURE insertar_reserva(IN r_estado VARCHAR(100), IN r_date DATETIME, IN r_rol VARCHAR(50), IN r_nombre VARCHAR(50), IN r_apellido VARCHAR(50), IN r_correo VARCHAR(100), IN r_usuario VARCHAR(100))
 BEGIN
-    INSERT INTO reserva(estado_reserva, fecha_reserva, empleado) VALUES(r_estado, r_date, r_usuario);
     INSERT INTO usuario(id_rol, nombres, apellidos, correo, contraseña, telefono, documento, reset_token, reset_token_expires_at) VALUES(r_rol, r_nombre, r_apellido, r_correo, "a", "a", "a", null, null);
+    INSERT INTO reserva(estado_reserva, fecha_reserva, empleado, cliente) VALUES(r_estado, r_date, r_usuario, r_correo);
 END //
 
 -- actualizar reserva

@@ -172,16 +172,18 @@
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
 $sql = $sql = "SELECT
-            r.id_reserva,
-            r.estado_reserva,
-            r.fecha_reserva,
-            u.nombres,
-            u.apellidos,
-            u.correo AS empleado_correo_completo 
-        FROM
-            reserva r
-        JOIN
-            usuario u ON r.empleado = u.correo;";
+    r.id_reserva,
+    r.estado_reserva,
+    r.fecha_reserva,
+    u.nombres,
+    u.apellidos
+FROM
+    reserva r
+JOIN
+    usuario u ON r.cliente = u.correo -- Assuming a foreign key relationship
+WHERE
+    u.id_rol = 'cliente'; -- Filter to only include clients";
+
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
