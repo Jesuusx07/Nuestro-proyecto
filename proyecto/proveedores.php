@@ -172,9 +172,9 @@ $session = new SessionManager();
         <th>Proveedor</th>
         <th>Nombres</th>
         <th>Apellidos</th>
-        
-         <th>Cantidad</th>
+      
         <th>correo</th>
+        <th>Cantidad</th>
 
         <th>telefono</th>
         <th>documento</th>

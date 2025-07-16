@@ -19,7 +19,7 @@ $docu = $_POST["documento"];
 
 $usuario = $controlador->obtener($email);
 
-
+$documento = $controlador->obtenerDocu($docu);
 
 if($fname == "" || $lname == "" || $email == "" || $tele == "" || $docu == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
@@ -45,6 +45,11 @@ else{
 
         header('Location: ../registrarproveedores.php');
     }
+    else if($documento){
+        $session->set('error_message', 'Este documento ya esta registrado.');
+
+        header('Location: ../registrarproveedores.php');
+    }  
     elseif(preg_match('/[A-Z]/', $tele)){
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 

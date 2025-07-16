@@ -9,7 +9,7 @@ CREATE TABLE usuario(
     correo VARCHAR(100) NOT NULL UNIQUE,
     contraseña VARCHAR(255) NOT NULL,
     telefono VARCHAR(20) NOT NULL,
-    documento VARCHAR(30) NOT NULL,
+    documento INT NOT NULL UNIQUE,
     reset_token VARCHAR(255) NULL,
     reset_token_expires_at DATETIME NULL
 );
@@ -52,13 +52,13 @@ CREATE TABLE reserva(
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    producto VARCHAR (100) NOT NULL,
-    cantidad INT NOT NULL,
+    producto VARCHAR(100) NOT NULL,
     imagen VARCHAR(255),
     tipo_de_movimiento ENUM('entrada', 'salida') NOT NULL,
     fecha DATE NOT NULL,
-    responsable INT NOT NULL,
-    FOREIGN KEY (responsable) REFERENCES usuario(id_usuario)
+    responsable VARCHAR (50) NOT NULL,
+    FOREIGN KEY (responsable) REFERENCES usuario(correo),
+    FOREIGN KEY (producto) REFERENCES proveedor(producto)
 );
 
 
@@ -130,6 +130,15 @@ DELIMITER //
 CREATE PROCEDURE obtener_usuario(IN e_correo varchar(100))
 BEGIN
     SELECT * FROM usuario WHERE correo = e_correo;
+END //
+
+-- obtener documento
+
+DELIMITER //
+
+CREATE PROCEDURE obtener_documento(IN u_docu INT)
+BEGIN
+    SELECT * FROM usuario WHERE documento = u_docu;
 END //
 
 -- insertar usuario

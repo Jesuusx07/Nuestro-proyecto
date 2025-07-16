@@ -18,8 +18,10 @@ $tele = $_POST["tele"];
 $docu = $_POST["documento"];
 $select = $_POST["select"];
 
+
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
+$documento = $controlador->obtenerDocu($docu);
 $usuario = $controlador->obtener($email);
 
 
@@ -36,7 +38,7 @@ else{
 
         header('Location: ../registerUs.php');
         exit(); 
-    }   
+    } 
     else if(preg_match('/[0-9]/', $fname)){
         $session->set('error_message', 'El nombre no debe contener numeros.');
 
@@ -48,6 +50,11 @@ else{
 
         header('Location: ../registerUs.php');
     }
+    else if($documento){
+        $session->set('error_message', 'Este documento ya esta registrado.');
+
+        header('Location: ../registerUs.php');
+    }  
     elseif(preg_match('/[A-Z]/', $tele)){
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 
