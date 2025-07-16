@@ -505,3 +505,155 @@ tr:hover {
         font-size: 0.75em;
     }
 }
+
+
+/* Estilos para la clase btn-report (Botón Generar Reporte/Imprimir) */
+button.btn-report {
+  background: var(--color-primary);
+}
+
+/* ---------------------
+   MODO OSCURO: TABLA
+--------------------- */
+body.dark-theme .tabla-container {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-1);
+}
+
+body.dark-theme .titulo {
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+body.dark-theme table {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+body.dark-theme th {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-theme td {
+  border-bottom: 1px solid #444;
+  color: var(--color-text);
+}
+
+body.dark-theme tr:nth-child(odd) {
+  background-color: #333;
+}
+
+body.dark-theme tr:hover {
+  background-color: #444;
+}
+/* ---------------------
+   TABLA RESPONSIVA + MODO CLARO / OSCURO
+--------------------- */
+.tabla-container {
+    font-family: Arial, sans-serif;
+    width: 1600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-1);
+    max-width: 90%;
+    overflow-x: auto;
+    color: var(--color-text);
+}
+
+/* Título de la tabla */
+.titulo {
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 25px;
+    font-size: 2em;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 10px;
+}
+
+/* Tabla general */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--color-bg-secondary);
+}
+
+/* Encabezados */
+th {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+/* Celdas */
+td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
+    color: var(--color-text);
+    vertical-align: middle;
+    font-size: 0.9em;
+}
+
+/* Filas impares */
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Hover */
+tr:hover {
+    background-color: #e9e9e9;
+    transition: background-color 0.3s ease;
+}
+
+/* Botones */
+.boton-edi,
+.boton {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin: 3px 0;
+}
+
+.boton-edi {
+    background-color: #2b2b2b;
+}
+
+.boton-edi:hover {
+    background-color: #444;
+}
+
+.boton {
+    background-color: var(--color-primary);
+}
+
+.boton:hover {
+    background-color: #801b29;
+}
+
+/* ============ MODO OSCURO ESPECÍFICO PARA TABLA ============ */
+body.dark-theme tr:nth-child(odd) {
+    background-color: #2e2e2e;
+}
+
+body.dark-theme tr:hover {
+    background-color: #3a3a3a;
+}
+
+body.dark-theme td {
+    border-bottom: 1px solid #555;
+}
