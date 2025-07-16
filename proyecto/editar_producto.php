@@ -3,6 +3,17 @@
 require_once './php/SessionManager.php';
 
 $session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
 $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_kenny');
 
 if (!$conexion) {

@@ -112,7 +112,24 @@ $session = new SessionManager();
      <!-- ░░░  MAIN  ░░░ -->
     <main class="main">
       <section class="welcome-box">
-        <h2>¡Bienvenido, <span class="highlight">Jesús</span>!</h2>
+                 <?php
+$usuarioConectado = $session->getUserName();
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM usuario WHERE correo = '$usuarioConectado'";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+<h2>¡Bienvenido, <span class="highlight"><?php echo $mostrar['nombres'];?></span>!</h2>
+<?php
+}
+?>
+          
+          <p>Hoy es <?php echo date('d/m/Y'); ?>.</p> 
+          
+
+
+
         <p>Este es tu panel administrativo, donde podrás visualizar y gestionar la información principal de tu negocio.</p>
 
         <div class="ventas-y-graficos">
