@@ -64,20 +64,39 @@ $session = new SessionManager();
                   <option value="salida">Salida</option>
                 </select>
           <label for="tipo">Responsable</label>
+          <select id="tipo" name="responsable">
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where ir_rol != 'admin'";
+$sql = "SELECT * FROM usuario where id_rol != 'admin'";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
-                <select id="tipo" name="responsable">
-                  <option value="entrada"><?php echo $mostrar->['nombres'];?></option>
-                </select>                
+  <?php
+  
+  if ($mostrar['id_rol'] == 'proveedor') {
+
+  ?>
+      <option value="entrada">Proveedor <?php echo htmlspecialchars($mostrar['correo']); ?></option>
+  <?php
+  } elseif ($mostrar['id_rol'] == 'Cocinero' || $mostrar['id_rol'] == 'Limpieza' || $mostrar['id_rol'] == 'Mesero') {
+
+  ?>
+      <option value="entrada">Empleado <?php echo htmlspecialchars($mostrar['correo']); ?></option>
+  <?php
+  } elseif ($mostrar['id_rol'] == 'Admin') {
+  ?>
+
+      <option value="entrada">Admin <?php echo htmlspecialchars($mostrar['correo']); ?></option>
+      
+  <?php
+  }
+  ?>
 <?php
 }
-?>         
+?>
+          </select>   
           <input type="date" id="apelli" name="date" placeholder="Fecha">
                 </select>
             

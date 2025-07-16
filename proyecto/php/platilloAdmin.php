@@ -14,7 +14,7 @@ $session = new SessionManager();
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Administrativo</title>
+  <title>Panel Empleado</title>
   <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
@@ -28,7 +28,7 @@ $session = new SessionManager();
   <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+     <span class="logo-text">EMPLEADO</span>
     </div>
 
     <div class="navbar-right">
@@ -49,22 +49,25 @@ $session = new SessionManager();
   <div class="container">
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
-  <nav class="menu-container">
+      <nav class="menu-container">
 
-          <div class="menu-item">
+        <div class="menu-item">
           <button class="btn-menu">Gestión de Empleados</button>
           <div class="sub-menu">
             <a href="registerUs.php" class="sub-btn">Registrar</a>
             <a href="empleado.php" class="sub-btn">Consultar</a>
           </div>
         </div>
-    <div class="menu-item">
-          <button class="btn-menu">Gestión de Platillos</button>
+
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Productos</button>
           <div class="sub-menu">
-            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
-            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="producto.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+
+
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
           <div class="sub-menu">
@@ -84,6 +87,7 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">Gestión de Ventas</button>
           <div class="sub-menu">
+            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
             <a href="ventas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -94,10 +98,20 @@ $session = new SessionManager();
             <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
+                  <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
+            <a href="inventario.php" class="sub-btn">Consultar</a>
+          </div>
         </div>
 
-
   </nav>
+
+
+      <div class="menu-item">
+      <button class="btn-venta">HACER UNA VENTA</button>
+    </div>
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
@@ -165,60 +179,46 @@ $session = new SessionManager();
     }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDORES</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE PLATILLOS</h1> 
 
 <table>
     <tr>
-        <th>Proveedor</th>
+        <th>Id</th>
         <th>Nombres</th>
-        <th>Apellidos</th>
-      
-        <th>correo</th>
-        <th>Cantidad</th>
-
-        <th>telefono</th>
-        <th>documento</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Categoria</th>
     </tr>
 
 
 <?php
+// Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
+$sql = "SELECT * FROM platillo";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
-        <td><?php echo $mostrar['id_usuario']; ?></td>
+        <td><?php echo $mostrar['id_pla']; ?></td>
         <td><?php echo $mostrar['nombres']; ?></td>
-        <td><?php echo $mostrar['apellidos']; ?></td>
-        <td><?php echo $mostrar['correo']; ?></td>
-        <td><?php echo $mostrar['telefono']; ?></td>
-        <td><?php echo $mostrar['documento']; ?></td>
-        <td><?php echo isset($mostrar['cantidad']) ? $mostrar['cantidad'] : 'N/A'; ?></td>
-
+        <td><?php echo $mostrar['descripcion']; ?></td>
+        <td><?php echo $mostrar['precio']; ?></td>
+        <td><?php echo $mostrar['pla_categoria']; ?></td>
         <td>
-            <a 
-                href="editar_proveedor.php?
-                    id=<?php echo $mostrar['id_usuario']; ?>&
-                    nom=<?php echo urlencode($mostrar['nombres']); ?>&
-                    apell=<?php echo urlencode($mostrar['apellidos']); ?>&
-                    email=<?php echo urlencode($mostrar['correo']); ?>&
-                    tel=<?php echo urlencode($mostrar['telefono']); ?>&
-                    docu=<?php echo urlencode($mostrar['documento']); ?>&
-                    cantidad=<?php echo isset($mostrar['cantidad']) ? urlencode($mostrar['cantidad']) : ''; ?>"
-                class="boton-edi"
-            >Editar</a>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
         </td>
-
         <td>
-            <a 
-                href="./php/eliminarProveedor.php?id=<?php echo $mostrar['id_usuario']; ?>" 
-                class="boton" 
-                onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');"
-            >Eliminar</a>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php
 }
 ?>
+    </table>
+</div>
+
+    </table>
+</div>
+</body>
+</html>

@@ -52,13 +52,13 @@ CREATE TABLE reserva(
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    producto VARCHAR (100) NOT NULL,
-    cantidad INT NOT NULL,
+    producto VARCHAR(100) NOT NULL,
     imagen VARCHAR(255),
     tipo_de_movimiento ENUM('entrada', 'salida') NOT NULL,
     fecha DATE NOT NULL,
-    responsable INT NOT NULL,
-    FOREIGN KEY (responsable) REFERENCES usuario(id_usuario)
+    responsable VARCHAR (50) NOT NULL,
+    FOREIGN KEY (responsable) REFERENCES usuario(correo),
+    FOREIGN KEY (producto) REFERENCES proveedor(producto)
 );
 
 

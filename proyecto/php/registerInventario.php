@@ -16,6 +16,10 @@ $tipo = $_POST["tipo"]; // entrada o salida
 $fecha = $_POST["date"];
 $responsable = $_POST["responsable"]; // Asegúrate que esto se guarda al iniciar sesión
 
+str_replace('Empleado ', "", $responsable);
+
+str_replace('Proveedor ', "", $responsable);
+
 // Validaciones
 if (
     empty($cantidad) || empty($tipo) ||

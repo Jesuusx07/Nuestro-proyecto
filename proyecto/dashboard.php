@@ -61,8 +61,8 @@ $session = new SessionManager();
     <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
-            <a href="registerUs.php" class="sub-btn">Registrar</a>
-            <a href="registrarPlatillo.php" class="sub-btn">Consultar</a>
+            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
+            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
@@ -85,7 +85,6 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">Gestión de Ventas</button>
           <div class="sub-menu">
-            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
             <a href="ventas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -101,7 +100,8 @@ $session = new SessionManager();
   </nav>
 
   <div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
+      <a href="venta_empleado.php" class="btn-venta">Hacer una venta</a>
+
 
 
 
