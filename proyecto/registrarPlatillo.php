@@ -1,13 +1,21 @@
+
 <?php
+
 require_once './php/SessionManager.php';
+
 $session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar Proveedor</title>
+  <title>Registrar usuario</title>
   <link rel="stylesheet" href="./css/registerUs.css">
    <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -19,33 +27,38 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">EMPLEADO</span>
+     <span class="logo-text">ADMINISTRADOR</span>
     </div>
 
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
-        <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
+            <div class="menu-desplegable" id="perfilMenu">
+              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+            </div>
         </div>
-      </div>
     </div>
   </header>
 
 
   <div class="form">
-    <h2>Registrar Proveedor</h2>
+    <h2>Registrar Platillos</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerEmpProv.php" method="POST">
-        <input type="text" id="nombre" name="fname" placeholder="Nombres">
-        <input type="text" id="apelli" name="lname" placeholder="Apellidos">
-        <input type="email" id="correo" name="email" placeholder="Correo">
-        <input type="text" id="telefono" name="tele" placeholder="Teléfono">
-        <input type="number" id="id" name="documento" placeholder="Documento de identidad">
-        <input type="submit" id="boton" value="Registrar">
+      <form id="formu" action="./php/platillo.php" method="POST">
+        <input type="text" id="nombre" name="fname" placeholder="Nombre del platillo">
+        <input type="text" id="apelli" name="lname" placeholder="Descripcion">
+        <input type="text" id="correo" name="email" placeholder="Precio">
+
+
+        <select name="select" id="Categoria">
+          <option value="">Categoria</option>
+          <option value="Ensaladas">Ensaladas</option>
+          <option value="Sopas">Sopas</option>
+          <option value="Desayuno">Desayuno</option>
+        </select>
+        <input type="submit" id="boton" value="Registrar Platillo">
 
         <?php
           if ($session->has('error_message')) {

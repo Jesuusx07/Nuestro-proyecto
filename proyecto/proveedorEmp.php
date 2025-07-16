@@ -1,3 +1,14 @@
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,8 +51,7 @@
     <aside class="menu-lateral">
   <nav class="menu-container">
 
-
-     <div class="menu-item">
+      <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
             <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
@@ -74,12 +84,8 @@
           </div>
         </div>
 
+
   </nav>
-
-    <div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
-    </div>
-
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
@@ -154,16 +160,18 @@
         <th>Proveedor</th>
         <th>Nombres</th>
         <th>Apellidos</th>
+        
+         <th>Cantidad</th>
         <th>correo</th>
+
         <th>telefono</th>
         <th>documento</th>
     </tr>
 
 
 <?php
-// Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
+$sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
@@ -175,20 +183,30 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['correo']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
+        <td><?php echo isset($mostrar['cantidad']) ? $mostrar['cantidad'] : 'N/A'; ?></td>
+
         <td>
-            <a href="editarProvEmp.php?id=<?php echo $mostrar['id_usuario'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+            <a 
+                href="editarProvEmp.php?
+                    id=<?php echo $mostrar['id_usuario']; ?>&
+                    nom=<?php echo urlencode($mostrar['nombres']); ?>&
+                    apell=<?php echo urlencode($mostrar['apellidos']); ?>&
+                    email=<?php echo urlencode($mostrar['correo']); ?>&
+                    tel=<?php echo urlencode($mostrar['telefono']); ?>&
+                    docu=<?php echo urlencode($mostrar['documento']); ?>&
+                    cantidad=<?php echo isset($mostrar['cantidad']) ? urlencode($mostrar['cantidad']) : ''; ?>"
+                class="boton-edi"
+            >Editar</a>
         </td>
+
         <td>
-            <a href="./php/eliminarProvEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a 
+                href="./php/eliminarProvEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" 
+                class="boton" 
+                onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');"
+            >Eliminar</a>
         </td>
     </tr>
 <?php
 }
 ?>
-    </table>
-</div>
-
-    </table>
-</div>
-</body>
-</html>

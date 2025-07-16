@@ -14,7 +14,7 @@ $session = new SessionManager();
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Administrativo</title>
+  <title>Panel Empleado</title>
   <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
@@ -28,7 +28,7 @@ $session = new SessionManager();
   <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+     <span class="logo-text">EMPLEADO</span>
     </div>
 
     <div class="navbar-right">
@@ -59,7 +59,13 @@ $session = new SessionManager();
           </div>
         </div>
 
-
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Productos</button>
+          <div class="sub-menu">
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="producto.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
         <div class="menu-item">
@@ -87,6 +93,12 @@ $session = new SessionManager();
         </div>
 
         <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
+            <a href="inventario.php" class="sub-btn">Consultar</a>
+          </div>
+                  <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
             <a href="inventarioRegis.php" class="sub-btn">Registrar</a>

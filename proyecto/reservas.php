@@ -57,6 +57,13 @@ $session = new SessionManager();
             <a href="empleado.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+       <div class="menu-item">
+          <button class="btn-menu">Gestión de Platillos</button>
+          <div class="sub-menu">
+            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
+            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
 
@@ -170,7 +177,7 @@ $session = new SessionManager();
         <th>Nombre Cliente</th>
         <th>Apellido Cliente</th>
     </tr>
-
+  </div>
 
 <?php
 // Assuming $conexion is already established

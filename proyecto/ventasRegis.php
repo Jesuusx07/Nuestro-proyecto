@@ -50,7 +50,7 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Ventas</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerUs.php" method="POST">
+      <form id="formu" action="./php/ventas.php" method="POST">
         <input type="text" id="id_venta" name="fname" placeholder="Venta">
         <input type="text" id="fecha" name="lname" placeholder="Fecha">
         <input type="text" id="total_venta" name="fname" placeholder="Total Venta">
