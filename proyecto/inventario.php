@@ -60,15 +60,6 @@ $session = new SessionManager();
         </div>
 
         <div class="menu-item">
-          <button class="btn-menu">Gestión de Productos</button>
-          <div class="sub-menu">
-            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-            <a href="producto.php" class="sub-btn">Consultar</a>
-          </div>
-        </div>
-
-
-        <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
           <div class="sub-menu">
             <a href="registrarproveedores.php" class="sub-btn">Registrar</a>
@@ -108,10 +99,12 @@ $session = new SessionManager();
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
+<script>
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+  });
+</script>
 
     // ----- Menú perfil desplegable -----
     const perfilBtn = document.getElementById('perfilBtn');
