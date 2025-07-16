@@ -60,7 +60,7 @@ if (isset($_GET['estado_reserva'])) {
     <div class="container">
         <h2>Editar Reserva</h2>
         <!-- El formulario enviará los datos al script PHP que procesará la actualización de la reserva -->
-        <form action="./php/editarReserva.php" method="POST">
+        <form action="./php/editarReservaEmp.php" method="POST">
             <div class="form-group">
                 <!-- Campo oculto para enviar el ID de la reserva a editar -->
                 <input type="hidden" name="id_reserva" value="<?php echo $id_reserva; ?>">

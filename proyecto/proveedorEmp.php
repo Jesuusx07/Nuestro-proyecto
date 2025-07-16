@@ -180,7 +180,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
             <a href="editarProvEmp.php?id=<?php echo $mostrar['id_usuario'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminar.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="./php/eliminarProvEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php

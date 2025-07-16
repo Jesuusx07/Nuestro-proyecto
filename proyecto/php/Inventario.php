@@ -5,11 +5,14 @@ require_once 'sql.php';
 class Inventario {
     private $conn;
     private $tabla = "inventario";
-    
-    public $id;
-    public $id_producto;
+
+    public $id_inventario;
     public $cantidad;
     public $fecha;
+    public $responsable;
+    public $movimiento; // entrada o salida
+    public $imagen;
+    public $producto;
     
 
     public function __construct($db) {
@@ -18,12 +21,15 @@ class Inventario {
 
 
     public function insertar() {
-        $query = "CALL insertar_inventario(?, ?)";
+        $query = "CALL insertar_inventario(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
     
-        $stmt->bindParam(1, $this->id_producto);
+        $stmt->bindParam(1, $this->producto);
         $stmt->bindParam(2, $this->cantidad);
-        $stmt->bindParam(2, $this->fecha);
+        $stmt->bindParam(3, $this->imagen);
+        $stmt->bindParam(4, $this->movimiento);
+        $stmt->bindParam(5, $this->fecha);
+        $stmt->bindParam(6, $this->responsable);
 
         return $stmt->execute();
     }
@@ -32,7 +38,7 @@ class Inventario {
         $query = "CALL actualizar_inventario(?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
-        $stmt->bindParam(2, $this->id_producto);
+        $stmt->bindParam(2, $this->id_inventario);
         $stmt->bindParam(3, $this->cantidad);
         $stmt->bindParam(3, $this->fecha);
     

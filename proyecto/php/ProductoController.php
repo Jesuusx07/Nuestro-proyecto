@@ -2,7 +2,6 @@
 
 require_once 'producto.php';
 
-
 class ProductoController {
     private $producto;
 

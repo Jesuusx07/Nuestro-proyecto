@@ -194,18 +194,9 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['responsable']; ?></td>
 
         <td>
-               <a href="./php/eliminarEmp.php?
-        id=<?php echo $mostrar['id_inventario']; ?>
-        &cantidad=<?php echo $mostrar['cantidad']; ?>
-        &imagen=<?php echo urlencode($mostrar['imagen']); ?>
-        &tipo=<?php echo urlencode($mostrar['tipo_de_movimiento']); ?>
-        &fecha=<?php echo $mostrar['fecha']; ?>
-        &responsable=<?php echo $mostrar['responsable']; ?>"
-        </td>
-        <td>
+            <a href="./php/editarinventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton">Editar</a>
             <a href="./php/eliminarInventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
-         <a href="./php/editarinventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
     </tr>
 <?php
 }

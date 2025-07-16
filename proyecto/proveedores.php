@@ -191,17 +191,25 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['correo']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
+<<<<<<< HEAD
+        <td><?php echo $mostrar['suminstro']; ?></td>
+=======
       
         <td><?php echo $mostrar['cantidad']; ?></td>
+>>>>>>> f5c7585b37e86def28656b201259962f16db7c8c
         <td>
-            <a href="editar_proveedor.php?id=<?php echo $mostrar['id_usuario'];?> 
+    <a href="editar_proveedor.php?id=<?php echo $mostrar['id_usuario'];?> 
     &nom=<?php echo $mostrar['nombres'];?> 
     &apell=<?php echo $mostrar['apellidos'];?>  
     &email=<?php echo $mostrar['correo'];?>  
     &tel=<?php echo $mostrar['telefono'];?> 
     &docu=<?php echo $mostrar['documento'];?> 
+<<<<<<< HEAD
+    &suministro=<?php echo $mostrar['suministro'];?>" 
+=======
 
     &cantidad=<?php echo $mostrar['cantidad'];?>" 
+>>>>>>> f5c7585b37e86def28656b201259962f16db7c8c
     class="boton-edi">Editar</a>
 
         </td>

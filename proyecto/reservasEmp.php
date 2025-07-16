@@ -68,7 +68,7 @@
     <div class="menu-item">
       <button class="btn-menu">Gestión de Platillo</button>
       <div class="sub-menu">
-        <a href="ventas_registrar.html" class="sub-btn">Registrar</a>
+        <a href="registrarPlatilloEmp" class="sub-btn">Registrar</a>
         <a href="platilloEmp.php" class="sub-btn">Consultar</a>
       </div>
     </div>
@@ -120,30 +120,6 @@
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
   </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
@@ -168,8 +144,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['id_reserva']; ?></td>
         <td><?php echo $mostrar['estado_reserva']; ?></td>
         <td><?php echo $mostrar['fecha_reserva']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['apellidos']; ?></td>
         <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
+            <a href="editarResEmp.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
             <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_reserva']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
