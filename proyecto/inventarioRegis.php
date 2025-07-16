@@ -52,7 +52,7 @@ $session = new SessionManager();
                   <option value="entrada">Entrada</option>
                   <option value="salida">Salida</option>
                 </select>
-          <input type="text" id="nombre" name="responsable" placeholder="Responsable">
+          <input type="number" id="nombre" name="responsable" placeholder="Responsable">
 
           <input type="date" id="apelli" name="date" placeholder="Fecha">
                 </select>

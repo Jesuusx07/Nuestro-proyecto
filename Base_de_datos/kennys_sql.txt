@@ -52,16 +52,13 @@ CREATE TABLE reserva(
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id_producto INT NOT NULL,
+    producto VARCHAR (100) NOT NULL,
     cantidad INT NOT NULL,
     imagen VARCHAR(255),
     tipo_de_movimiento ENUM('entrada', 'salida') NOT NULL,
     fecha DATE NOT NULL,
     responsable INT NOT NULL,
-
     FOREIGN KEY (responsable) REFERENCES usuario(id_usuario)
-
-
 );
 
 
@@ -250,16 +247,12 @@ CREATE PROCEDURE insertar_inventario (
     IN i_producto VARCHAR(100),
     IN i_cantidad INT,
     IN i_imagen VARCHAR(100),
-    IN i_movimiento VARCHAR (100),    
-    IN i_responsable VARCHAR (100),
-    IN i_fecha DATETIME,
+    IN i_movimiento VARCHAR (100),
+    IN i_fecha DATETIME,    
+    IN i_responsable INT
 )
 BEGIN
-        INSERT INTO inventario (nombre, precio, categoria_id, )
-        VALUES (i_nombre, i_precio, i_categoria_id);
+        INSERT INTO inventario (producto, cantidad, imagen, tipo_de_movimiento, fecha, responsable)
+        VALUES (i_producto, i_cantidad, i_imagen, i_movimiento, i_fecha, i_responsable);
 
-        SET v_producto_id = LAST_INSERT_ID();
-
-        INSERT INTO inventario (producto_id, cantidad)
-        VALUES (v_producto_id, i_cantidad);
 END //
