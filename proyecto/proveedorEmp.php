@@ -51,7 +51,7 @@ $session = new SessionManager();
     <aside class="menu-lateral">
   <nav class="menu-container">
 
-      <div class="menu-item">
+        <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
             <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
@@ -79,10 +79,18 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">Gestión de Platillo</button>
           <div class="sub-menu">
-            <a href="registrarPlatilloEmp.html" class="sub-btn">Registrar</a>
+            <a href="registrarPlatilloEmp.php" class="sub-btn">Registrar</a>
             <a href="platilloEmp.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+
+  </nav>
+
+      <form id="formu" action="./php/venta_empleado.php" method="POST"> 
+        <div class="menu-item"> 
+          <button class="btn-venta">HACER UNA VENTA</button>
+        </div>
+    </form>
 
 
   </nav>
@@ -127,43 +135,16 @@ $session = new SessionManager();
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
   </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE PROVEEDORES</h1> 
 
 <table>
     <tr>
-        <th>Proveedor</th>
+        <th>Id</th>
         <th>Nombres</th>
         <th>Apellidos</th>
-        
-         <th>Cantidad</th>
         <th>correo</th>
-
         <th>telefono</th>
         <th>documento</th>
     </tr>
@@ -178,12 +159,12 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td> 
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td><?php echo $mostrar['correo']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
-        <td><?php echo isset($mostrar['cantidad']) ? $mostrar['cantidad'] : 'N/A'; ?></td>
+        
 
         <td>
             <a 
@@ -193,8 +174,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
                     apell=<?php echo urlencode($mostrar['apellidos']); ?>&
                     email=<?php echo urlencode($mostrar['correo']); ?>&
                     tel=<?php echo urlencode($mostrar['telefono']); ?>&
-                    docu=<?php echo urlencode($mostrar['documento']); ?>&
-                    cantidad=<?php echo isset($mostrar['cantidad']) ? urlencode($mostrar['cantidad']) : ''; ?>"
+                    docu=<?php echo urlencode($mostrar['documento']); ?>"
                 class="boton-edi"
             >Editar</a>
         </td>
