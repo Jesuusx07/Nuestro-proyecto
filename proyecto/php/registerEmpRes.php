@@ -26,19 +26,23 @@ if($date == "" || $nombre == "" || $apellido == ""){
     header('Location: ../registerEmpRes.php'); 
     exit();
 }
+else if(strlen($nombre) > $longMax){
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
-else if(strlen($nom) > $longMaxnom){
-    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+    header('Location: ../registerEmpRes.php'); 
 
-    header('Location: ../registrarse.php'); 
     exit();
 }
-else if(strlen($pass) < $longMin){
-    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+else if(strlen($apellido) > $longMin){
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
+
+    header('Location: ../registerEmpRes.php'); 
+
+
     exit();
 }
+
 require_once 'UsuarioController.php';
 
 $db2 = (new Database())->conectar();

@@ -86,10 +86,12 @@ $session = new SessionManager();
 
   </nav>
 
+      <form id="formu" action="./php/venta_empleado.php" method="POST"> 
+        <div class="menu-item"> 
+          <button class="btn-venta">HACER UNA VENTA</button>
+        </div>
+    </form>
 
-      <div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
-    </div>
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
