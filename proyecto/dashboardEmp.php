@@ -16,7 +16,7 @@ $session = new SessionManager();
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel Empleado</title>
-  <link rel="stylesheet" href="./css/dashboardEmp.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -50,12 +50,19 @@ $session = new SessionManager();
     <aside class="menu-lateral">
       <nav class="menu-container">
 
-
-        <div class="menu-item">
+      <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
             <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
             <a href="inventarioEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Producto</button>
+          <div class="sub-menu">
+            <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
+            <a href="productosEmp.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
@@ -86,7 +93,7 @@ $session = new SessionManager();
 
   </nav>
 
-      <form id="formu" action="./php/venta_empleado.php" method="POST"> 
+      <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
@@ -94,11 +101,29 @@ $session = new SessionManager();
 
 </aside>
 
+
      <!-- ░░░  MAIN  ░░░ -->
     <main class="main">
       <section class="welcome-box">
-        <h2>¡Bienvenido, <span class="highlight">Jesús</span>!</h2>
-        <p>Este es tu panel administrativo, donde podrás visualizar y gestionar la información principal de tu negocio.</p>
+                 <?php
+$usuarioConectado = $session->getUserName();
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM usuario WHERE correo = '$usuarioConectado'";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+<h2>¡Bienvenido, <span class="highlight"><?php echo $mostrar['nombres'];?></span>!</h2>
+<?php
+}
+?>
+          
+          <p>Hoy es <?php echo date('d/m/Y'); ?>.</p> 
+          
+
+
+
+        <p>Este es tu panel como Empleado, donde podrás visualizar y gestionar la información principal del negocio.</p>
 
         <div class="ventas-y-graficos">
           <!-- Stat box ejemplo -->
@@ -123,6 +148,7 @@ $session = new SessionManager();
           <!-- Placeholder para gráfico -->
           <div class="stat-box" style="flex:1 1 400px;">
             <canvas id="graficoVentas"></canvas>
+            
           </div>
         </div>
       </section>
@@ -132,10 +158,18 @@ $session = new SessionManager();
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
+  // Detectar y aplicar el tema guardado al cargar
+if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
+
+// Botón para alternar tema
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  const isDark = document.body.classList.contains('dark-theme');
+  localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
+});
 
     // ----- Menú perfil desplegable -----
     const perfilBtn = document.getElementById('perfilBtn');

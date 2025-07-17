@@ -59,6 +59,14 @@ $session = new SessionManager();
           </div>
         </div>
 
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Producto</button>
+          <div class="sub-menu">
+            <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
+            <a href="productosEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
+
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
@@ -86,14 +94,11 @@ $session = new SessionManager();
 
   </nav>
 
-      <form id="formu" action="./php/venta_empleado.php" method="POST"> 
+      <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
     </form>
-
-
-  </nav>
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     

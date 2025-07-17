@@ -1,20 +1,13 @@
 <?php
-
 require_once './php/SessionManager.php';
-
 $session = new SessionManager();
-
-    if (!$session->isLoggedIn()){
-        header("location: login.php");
-    }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar usuario</title>
+  <title>Registrar Producto</title>
   <link rel="stylesheet" href="./css/registerUs.css">
    <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -33,11 +26,12 @@ $session = new SessionManager();
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
       
       <div class="perfil">
-          <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
-            <div class="menu-desplegable" id="perfilMenu">
-              <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
-            </div>
+        <button class="boton-perfil" id="perfilBtn">👤</button>
+        <div class="menu-desplegable" id="perfilMenu">
+   
+          <a href="#">Cerrar sesión</a>
         </div>
+      </div>
     </div>
   </header>
 
@@ -55,6 +49,25 @@ $session = new SessionManager();
         </select>
         <input type="file" id="imagen" name="imagen" accept="image/*">
         <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
+
+          <select name="proveedor" id="usuario">
+                <option value="">Proveedor</option>
+          <?php
+
+          $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+          $sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
+          $result = mysqli_query($conexion, $sql);
+
+          
+          while ($mostrar = mysqli_fetch_array($result)) {
+          ?>
+
+                <option value= <?php echo $mostrar['correo']?>> <?php echo htmlspecialchars($mostrar['nombres']); ?></option>
+
+          <?php
+          }
+          ?>
+          </select>
 
         <input type="submit" id="boton" value="Registrar">
 
