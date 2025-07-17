@@ -1,109 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/contacto.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto</title>
+  <link rel="stylesheet" href="./css/contacto.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <li>
-                <a class="logo1" href="index.html"><img src="img/logo_Favicon.png" alt="Logo Kennys"></a>
-                <a href="index.html" class="flecha"><img src="img/back.png" alt="Logo Kennys"></a>
-            </li>
-        </nav>
 
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html">
+        <img src="img/logo_Favicon.png" class="favicon" alt="Logo Kennys">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="nosotros.html">NOSOTROS</a></li>
+        <li><a href="objetivo.html">OBJETIVO</a></li>
+        <li><a href="seguridad.html">SEGURIDAD</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
+      </ul>
+      <div class="login-btn">
+        <a class="login" href="login.php">
+          <img src="img/login (2).png" alt="login">
+        </a>
+      </div>
+    </nav>
+  </header>
 
-        <div class="container">
-            <div class="navbar-right">
-                <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
-            </div>
-            <h2>CONTACTANOS</h2>
-            <form id="register">
-
-                <div class="input-group">
-                    <label for="reg_email">Correo electrónico</label>
-                    <input type="email" id="reg_email" placeholder="tucorreo@gmail.com">
-                </div>
-
-                <div class="input-group">
-                    <label for="reg_user">Observaciones o Comentarios</label>
-                    <input type="text" id="reg_user" placeholder="Deberian agregar esto:">
-                </div>
-
-    
-                <button type="submit" class="boton-registro" id="register-submit">Enviar</button>
-            </form>
+  <!-- FORMULARIO DE CONTACTO -->
+  <main>
+    <div class="container">
+      <div class="navbar-right">
+        <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
+      </div>
+      <h2>CONTÁCTANOS</h2>
+      <form id="register">
+        <div class="input-group">
+          <label for="reg_email">Correo electrónico</label>
+          <input type="email" id="reg_email" placeholder="tucorreo@gmail.com">
         </div>
+        <div class="input-group">
+          <label for="reg_user">Observaciones o Comentarios</label>
+          <input type="text" id="reg_user" placeholder="Deberían agregar esto:">
+        </div>
+        <button type="submit" class="boton-registro" id="register-submit">Enviar</button>
+      </form>
+    </div>
+  </main>
 
-    </header>
-    
-    <footer class="footer">
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-links">
+          <h4>Compañía</h4>
+          <ul>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="objetivo.html">Objetivo</a></li>
+            <li><a href="seguridad.html">Seguridad</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    
+  <!-- SCRIPT LOGIN (NO FUNCIONA EN ESTA PÁGINA PERO TE LO LIMPIO) -->
+  <script>
+    // Este script parece corresponder a login, no al formulario de contacto.
+    // Asegúrate de usar el ID correcto en tu HTML si quieres validación de contacto.
+  </script>
 </body>
-    <script>
-        const loginForm = document.getElementById('login');
-        const loginSubmit = document.getElementById('login-submit');
-        const mensajeDiv = document.getElementById('mensaje');
-    
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-    
-            const email = document.getElementById('login_email').value.trim();
-            const password = document.getElementById('login_password').value;
-            const rol = document.getElementById('login_rol').value;
-    
-            if (!email || !password || !rol) {
-                alert ('Por favor, complete todos los campos para iniciar sesión.');
-                return;
-            }
-    
-            const storedUser = localStorage.getItem(email);
-    
-            if (storedUser) {
-                const userData = JSON.parse(storedUser);
-                if (userData.password === password && userData.rol === rol) {
-                    alert ('Inicio de sesión exitoso como ${userData.rol} (${userData.username}). Redirigiendo...');
-                    loginForm.reset();
-                    // Redirigir al panel de control según el rol
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1500);
-                } else if (userData.password !== password) {
-                    alert ('Contraseña incorrecta.');
-                } else if (userData.rol !== rol) {
-                    alert ('Rol incorrecto para la cuenta ${email}.');
-                }
-            } else {
-                alert ('No se encontró ninguna cuenta registrada con el correo electrónico: ${email}');
-            }
-        });
-    </script>
-     <footer class="footer">
-
-        <div class="container">
-            <div class="footer-row">
-
-                <div class="footer-links">
-                    <h4>compañia</h4>
-                    <ul>
-                        <li><a href="nosotros.html">nosotros</a></li>
-                        <li><a href="objetivo.html">objetivo</a></li>
-                        <li><a href="seguridad.html">seguridad</a></li>
-                        <li><a href="contacto.html">CONTACTO</a></li>
-                    </ul>
-                </div>
-            
-
-
-            </div>
-
-        </div>
-
-    </footer>
-
 </html>
