@@ -1,4 +1,4 @@
--- 2. Tablas que dependen de las anteriores
+-- 1. Tablas que dependen de las anteriores
 
 CREATE TABLE usuario(
     id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -14,6 +14,7 @@ CREATE TABLE usuario(
 
 );
 
+--2. Producto
 
 CREATE TABLE producto (
     id_producto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -27,6 +28,7 @@ CREATE TABLE producto (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+-- 3. Platillo
 
 CREATE TABLE platillo(
     id_pla INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -36,7 +38,7 @@ CREATE TABLE platillo(
     pla_categoria VARCHAR (50) NOT NULL
 );
 
--- 3. Tablas transaccionales principales que dependen de empleados/productos
+-- 4. Venta
 
 CREATE TABLE venta(
     id_venta INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -44,6 +46,7 @@ CREATE TABLE venta(
     total_venta DECIMAL(10, 2) NOT NULL
 );
 
+-- 5. Reserva
 
 CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -54,6 +57,7 @@ CREATE TABLE reserva(
     FOREIGN KEY (cliente) REFERENCES usuario(correo)
 );
 
+-- 6. Inventario
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -66,32 +70,12 @@ CREATE TABLE inventario (
 
     CONSTRAINT fk_id_producto_inventario
         FOREIGN KEY (id_producto)
-        REFERENCES producto(id_producto)
+        REFERENCES producto(id producto)
 );
 
 
 
--- 4. Tablas de detalle que dependen de transacciones principales y productos/platillos
-
-CREATE TABLE venta_detalle(
-    id_venta_detalle INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_venta INT NOT NULL,
-    id_producto INT NOT NULL,
-    cantidad INT NOT NULL,
-    precio_unitario_venta DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
-);
-
-
--- 5. Factura (depende de pedido y empleado)
-CREATE TABLE factura(
-    id_factura INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha_factura DATE NOT NULL,
-    total_factura DECIMAL(10, 2) NOT NULL
-);
-
--- 6. Factura_detalle (depende de factura y producto)
+-- 7. Factura_detalle (depende de factura y producto)
 CREATE TABLE factura_detalle(
     id_factura_detalle INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_factura INT NOT NULL,
@@ -102,8 +86,8 @@ CREATE TABLE factura_detalle(
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
--- 7. Pago (puede depender de venta o factura)
-CREATE TABLE pago(
+-- 8. Pago (puede depender de venta o factura)
+CREATE TABLE Comprobante_pago(
     id_pago INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_venta INT NULL,
     id_factura INT NULL,
@@ -112,18 +96,6 @@ CREATE TABLE pago(
     fecha_pago DATETIME NOT NULL,
     FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
     FOREIGN KEY (id_factura) REFERENCES factura(id_factura)
-);
-
--- 8. Reserva_item (depende de reserva, producto y platillo)
-CREATE TABLE reserva_item(
-    id_reserva_item INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_reserva INT NOT NULL,
-    id_producto INT NULL,
-    id_platillo INT NULL,
-    cantidad INT NOT NULL,
-    FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
-    FOREIGN KEY (id_platillo) REFERENCES platillo(id_pla)
 );
 
 
