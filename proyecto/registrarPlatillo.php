@@ -27,7 +27,7 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">EMPLEADO</span>
+     <span class="logo-text">ADMINISTRADOR</span>
     </div>
 
     <div class="navbar-right">
@@ -46,7 +46,7 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Platillos</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerEmpPla.php" method="POST">
+      <form id="formu" action="./php/registerPlatillo.php" method="POST">
                 <!-- Campo Nombre del Platillo - 'name' corregido -->
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre del platillo">
                 

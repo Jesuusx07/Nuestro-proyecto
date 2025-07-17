@@ -61,7 +61,7 @@ $session = new SessionManager();
       <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
-<<<<<<< HEAD
+ 
 
             <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
             <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
@@ -72,14 +72,14 @@ $session = new SessionManager();
           <button class="btn-menu">Gestión de Producto</button>
           <div class="sub-menu">
             <a href="registrarProductos.php" class="sub-btn">Registrar</a>
-=======
+
         </div>
         </div>
            <div class="menu-item">
           <button class="btn-menu">Gestión de Productos </button>
           <div class="sub-menu">
             <a href="registrarProducto.php" class="sub-btn">Registrar</a>
->>>>>>> 14b8906d3e7a2238de14bbbaa004480a034125be
+
             <a href="Producto.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -179,10 +179,18 @@ while ($mostrar = mysqli_fetch_array($result)) {
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
+  // Detectar y aplicar el tema guardado al cargar
+if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
+
+// Botón para alternar tema
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  const isDark = document.body.classList.contains('dark-theme');
+  localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
+});
 
     // ----- Menú perfil desplegable -----
     const perfilBtn = document.getElementById('perfilBtn');
