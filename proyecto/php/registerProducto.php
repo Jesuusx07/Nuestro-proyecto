@@ -5,23 +5,23 @@ require_once 'sql.php';
 
 $session = new SessionManager();
 
-require_once 'Inventario.php';
+require_once 'Producto.php';
 
 $db = (new Database())->conectar();
-$controlador = new InventarioController($db);
+$controlador = new ProductoController($db);
 
-$nombre = $_POST["id_inventario"];
-$imagen = $_POST["cantidad"];
-$nombre = $_POST["imagen"];
-$imagen = $_POST["tipo_de_movimiento"];
-$imagen = $_POST["fecha"];
-$nombre = $_POST["responsable"];
+$id_inventario = $_POST["id_inventario"];
+$nombre = $_POST["nombre"];
+$categoria = $_POST["categoria"];
+$imagen = $_POST["imagen"];
+$precio = $_POST["precio"];
+$usuario = $_POST["usuario"];
 
 $producto = $controlador->obtener($nombre);
 
 
 
-if($id_inventario == "" || $cantidad == "" || $imagen == "" || $tipo_de_movimiento || $fecha == "" || $responsable == "" ){
+if($id_inventario == "" || $categoria == "" || $nombre == "" || $imagen == "" || $precio == "" || $usuario == "" ){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
     header('Location: ../registerInventario.php'); 
@@ -41,19 +41,19 @@ else{
     }
     else{
         if($select == "Fruta"){
-            $producto = $controlador->insertar($nombre, "Fruta",  $imagen, $precio);
+            $producto = $controlador->insertar($nombre, "Fruta",  $nombre, $precio);
 
             header('Location: ../inventarioRegister.php'); 
             exit();
         }
         elseif($select == "Vegetal"){
-            $producto = $controlador->insertar($nombre, "Vegetal",  $imagen, $precio);
+            $producto = $controlador->insertar($nombre, "Vegetal",  $nombre, $precio);
 
             header('Location: ../inventarioRegister.php'); 
             exit();
         }    
         elseif($select == "Salsa"){
-            $producto = $controlador->insertar($nombre, "Salsa",  $imagen, $precio);
+            $producto = $controlador->insertar($nombre, "Salsa",  $nombre, $precio);
 
             header('Location: ../inventarioRegister.php'); 
             exit();
