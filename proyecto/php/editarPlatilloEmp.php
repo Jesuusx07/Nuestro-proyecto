@@ -18,59 +18,69 @@ try {
 }
 
 // Instanciar el PlatilloController
-$controlador = new PlatilloController($db);
+$controlador = new PlatilloController($db); // Se añadió esta línea para instanciar el controlador
 
-// Obtener datos del formulario POST para el platillo
+// Inicializar variables para los campos del formulario
 // Usamos el operador null coalescing (?? '') para evitar advertencias si una variable no está definida
-$id_pla = $_POST["id_producto"] ?? ''; // Asumo que el campo se llama id_producto en el formulario
-$nombre = $_POST["nombre"] ?? '';
-$descripcion = $_POST["descripcion"] ?? ''; // Nuevo campo para la descripción
-$precio = $_POST["precio"] ?? ''; // Cambiado de precio_unitario a precio
-$pla_categoria = $_POST["categoria"] ?? ''; // Cambiado de categoria a pla_categoria
+$id_pla = $_GET['id_pla'] ?? '';
+$nombre = $_GET['nombre'] ?? '';
+$descripcion = $_GET['descripcion'] ?? '';
+$precio = $_GET['precio'] ?? '';
+$pla_categoria = $_GET['pla_categoria'] ?? '';
 
-// --- Validaciones de Entrada ---
-if (empty($id_pla) || empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_categoria)) {
-    $session->set('error_message', 'Por favor, llene todos los campos obligatorios.');
+// Nota: 'imagen' ya no es una columna en la tabla platillo, así que no se recupera ni se usa aquí.
 
-    // Redirigir de vuelta a la página de edición con los datos para que el usuario no los pierda
-    // Asegúrate de que 'editarProdEmp.php' (o tu página de edición de platillos)
-    // espere estos parámetros GET para rellenar el formulario.
-    header('Location: ../editarProdEmp.php?' .
-           'id_pla=' . urlencode($id_pla) .
-           '&nombre=' . urlencode($nombre) .
-           '&descripcion=' . urlencode($descripcion) .
-           '&precio=' . urlencode($precio) .
-           '&pla_categoria=' . urlencode($pla_categoria));
-    exit();
-} else {
-    // Si todas las validaciones básicas pasan, procedemos a actualizar
+// --- Código PHP para procesar el formulario POST ---
+// Este bloque se añadió para manejar la lógica de actualización cuando el formulario se envía
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener datos del formulario POST para el platillo
+    $id_pla_post = $_POST["id_pla"] ?? ''; // Corregido: Coincide con el name del input hidden
+    $nombre_post = $_POST["nombre"] ?? '';
+    $descripcion_post = $_POST["descripcion"] ?? '';
+    $precio_post = $_POST["precio"] ?? '';
+    $pla_categoria_post = $_POST["pla_categoria"] ?? ''; // Corregido: Coincide con el name del select
 
-    // Llamar al método 'actualizar' del controlador de platillos
-    // Asegúrate de que tu método 'actualizar' en PlatilloController
-    // acepte estos 5 parámetros en este orden: ID, Nombre, Descripcion, Precio, Categoria.
-    $actualizado = $controlador->actualizar(
-        $id_pla,
-        $nombre,
-        $descripcion,
-        $precio,
-        $pla_categoria
-    );
+    // --- Validaciones de Entrada ---
+    if (empty($id_pla_post) || empty($nombre_post) || empty($descripcion_post) || empty($precio_post) || empty($pla_categoria_post)) {
+        $session->set('error_message', 'Por favor, llene todos los campos obligatorios.');
 
-    // --- Manejo del Resultado de la Actualización ---
-    if ($actualizado) {
-        $session->set('success_message', 'Platillo actualizado exitosamente.'); // Mensaje de éxito
-        header('Location: ../platlloEmp.php'); // Redirigir a la página de listado de platillos
+        // Redirigir de vuelta a la página de edición con los datos para que el usuario no los pierda
+        header('Location: ../editarPlaEmp.php?' .
+               'id_pla=' . urlencode($id_pla_post) .
+               '&nombre=' . urlencode($nombre_post) .
+               '&descripcion=' . urlencode($descripcion_post) .
+               '&precio=' . urlencode($precio_post) .
+               '&pla_categoria=' . urlencode($pla_categoria_post));
         exit();
     } else {
-        $session->set('error_message', 'Error al actualizar el platillo. Intente de nuevo.');
-        // Si la actualización falla en la base de datos, redirige de vuelta con los datos
-        header('Location: ../editarPlaEmp.php?' .
-               'id_pla=' . urlencode($id_pla) .
-               '&nombre=' . urlencode($nombre) .
-               '&descripcion=' . urlencode($descripcion) .
-               '&precio=' . urlencode($precio) .
-               '&pla_categoria=' . urlencode($pla_categoria));
-        exit();
+        // Si todas las validaciones básicas pasan, procedemos a actualizar
+
+        // Llamar al método 'actualizar' del controlador de platillos
+        // Asegúrate de que tu método 'actualizar' en PlatilloController
+        // acepte estos 5 parámetros en este orden: ID, Nombre, Descripcion, Precio, Categoria.
+        $actualizado = $controlador->actualizar(
+            $id_pla_post,
+            $nombre_post,
+            $descripcion_post,
+            $precio_post,
+            $pla_categoria_post
+        );
+
+        // --- Manejo del Resultado de la Actualización ---
+        if ($actualizado) {
+            $session->set('success_message', 'Platillo actualizado exitosamente.'); // Mensaje de éxito
+            header('Location: ../platilloEmp.php'); // Redirigir a la página de listado de platillos
+            exit();
+        } else {
+            $session->set('error_message', 'Error al actualizar el platillo. Intente de nuevo.');
+            // Si la actualización falla en la base de datos, redirige de vuelta con los datos
+            header('Location: ../editarPlaEmp.php?' .
+                   'id_pla=' . urlencode($id_pla_post) .
+                   '&nombre=' . urlencode($nombre_post) .
+                   '&descripcion=' . urlencode($descripcion_post) .
+                   '&precio=' . urlencode($precio_post) .
+                   '&pla_categoria=' . urlencode($pla_categoria_post));
+            exit();
+        }
     }
 }
-?>

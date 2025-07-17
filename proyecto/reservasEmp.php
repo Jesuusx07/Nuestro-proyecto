@@ -131,30 +131,6 @@ $session = new SessionManager();
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
   </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE RESERVA</h1> 

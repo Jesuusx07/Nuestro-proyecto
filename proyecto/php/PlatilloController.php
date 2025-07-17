@@ -36,5 +36,7 @@ class PlatilloController {
     public function eliminar($id_pla) {
         $this->platillo->id_pla = $id_pla; // Establece el ID para la operación de eliminación
         return $this->platillo->eliminar();
+
+        
     }
 }

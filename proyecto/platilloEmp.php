@@ -131,30 +131,6 @@ $session = new SessionManager();
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
   </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE PLATILLOS</h1> 
@@ -177,19 +153,21 @@ $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
-    <tr>
-        <td><?php echo $mostrar['id_pla']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
-        <td><?php echo $mostrar['descripcion']; ?></td>
-        <td><?php echo $mostrar['precio']; ?></td>
-        <td><?php echo $mostrar['pla_categoria']; ?></td>
-        <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
-        </td>
-        <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
-        </td>
-    </tr>
+<tr>
+    <td><?php echo $mostrar['id_pla']; ?></td>
+    <td><?php echo $mostrar['nombre']; ?></td>
+    <td><?php echo $mostrar['descripcion']; ?></td>
+    <td><?php echo $mostrar['precio']; ?></td>
+    <td><?php echo $mostrar['pla_categoria']; ?></td>
+    <td>
+        <!-- Botón de Editar: Pasa los datos del platillo -->
+        <a href="editarPlaEmp.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>&nombre=<?php echo htmlspecialchars($mostrar['nombre']); ?>&descripcion=<?php echo htmlspecialchars($mostrar['descripcion']); ?>&precio=<?php echo htmlspecialchars($mostrar['precio']); ?>&pla_categoria=<?php echo htmlspecialchars($mostrar['pla_categoria']); ?>" class="boton-edi">Editar</a>
+    </td>
+    <td>
+        <!-- Botón de Eliminar: Pasa el ID del platillo y actualiza el mensaje de confirmación -->
+        <a href="./php/eliminarPlaEmp.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?');">Eliminar</a>
+    </td>
+</tr>
 <?php
 }
 ?>

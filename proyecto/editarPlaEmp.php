@@ -6,6 +6,7 @@ $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
         header("location: login.php");
+        exit();
     }
 
 ?>
@@ -26,11 +27,11 @@ try {
 
 // Inicializar variables para los campos del formulario
 // Usamos el operador null coalescing (?? '') para evitar advertencias si una variable no está definida
-$id_pla = $_GET['id_pla'] ?? ''; // Cambiado de id a id_pla
+$id_pla = $_GET['id_pla'] ?? '';
 $nombre = $_GET['nombre'] ?? '';
-$descripcion = $_GET['descripcion'] ?? ''; // Nuevo campo para la descripción
-$precio = $_GET['precio'] ?? ''; // Cambiado de precio_unitario a precio
-$pla_categoria = $_GET['pla_categoria'] ?? ''; // Cambiado de categoria a pla_categoria
+$descripcion = $_GET['descripcion'] ?? '';
+$precio = $_GET['precio'] ?? '';
+$pla_categoria = $_GET['pla_categoria'] ?? '';
 
 // Nota: 'imagen' ya no es una columna en la tabla platillo, así que no se recupera ni se usa aquí.
 
@@ -57,7 +58,7 @@ $pla_categoria = $_GET['pla_categoria'] ?? ''; // Cambiado de categoria a pla_ca
 
                 <label for="nombre">Nombre</label>
                 <!-- trim() para eliminar espacios en blanco al inicio/final del nombre -->
-                <input type="text" id="nombre" name="nombre" value="<?php echo trim($nombre); ?>" required>
+                <input type="text" id="nombre" name="nombre" value="<?php echo trim(htmlspecialchars($nombre)); ?>" required>
             </div>
 
             <div class="form-group">
@@ -77,15 +78,14 @@ $pla_categoria = $_GET['pla_categoria'] ?? ''; // Cambiado de categoria a pla_ca
                 <!-- Menú desplegable para la categoría del platillo -->
                 <select name="pla_categoria" id="pla_categoria" required>
                     <!-- Las opciones se generan dinámicamente y se selecciona la actual -->
-                    <option value="Fruta" <?php echo ($pla_categoria == 'Fruta') ? 'selected' : ''; ?>>Fruta</option>
-                    <option value="Salsa" <?php echo ($pla_categoria == 'Salsa') ? 'selected' : ''; ?>>Salsa</option>
-                    <option value="Vegetal" <?php echo ($pla_categoria == 'Vegetal') ? 'selected' : ''; ?>>Vegetal</option>
-                    <!-- Considera agregar más categorías si tus platillos son más variados,
-                         ej: <option value="Entrada">Entrada</option>
-                         <option value="Plato Fuerte">Plato Fuerte</option>
-                         <option value="Postre">Postre</option>
-                         <option value="Bebida">Bebida</option>
-                    -->
+                    <option value="">Selecciona una Categoría</option>
+                    <option value="Entrada" <?php echo ($pla_categoria == 'Entrada') ? 'selected' : ''; ?>>Entrada</option>
+                    <option value="Plato Fuerte" <?php echo ($pla_categoria == 'Plato Fuerte') ? 'selected' : ''; ?>>Plato Fuerte</option>
+                    <option value="Postre" <?php echo ($pla_categoria == 'Postre') ? 'selected' : ''; ?>>Postre</option>
+                    <option value="Bebida" <?php echo ($pla_categoria == 'Bebida') ? 'selected' : ''; ?>>Bebida</option>
+                    <option value="Ensaladas" <?php echo ($pla_categoria == 'Ensaladas') ? 'selected' : ''; ?>>Ensaladas</option>
+                    <option value="Sopas" <?php echo ($pla_categoria == 'Sopas') ? 'selected' : ''; ?>>Sopas</option>
+                    <option value="Desayuno" <?php echo ($pla_categoria == 'Desayuno') ? 'selected' : ''; ?>>Desayuno</option>
                 </select>
             </div>
 
