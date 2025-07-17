@@ -12,28 +12,55 @@ $controlador = new ReservaController($db);
 
 $date = $_POST["date"];
 $nombre = $_POST["nombre"];
+$apellido = $_POST["apellido"];
 
-$reserva = $controlador->obtener($date);
+$usuarioConectado = $session->getUserName();
 
+$correo = $nombre . $apellido . "@kennys.com";
 
-
-if($date == "" || $nombre == ""){
+if($date == "" || $nombre == "" || $apellido == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
     header('Location: ../registerEmpRes.php'); 
     exit();
 }
-else{
+
+require_once 'UsuarioController.php';
+
+$db2 = (new Database())->conectar();
+$controlador2 = new UsuarioController($db);
+
+$usuario = $controlador2->obtener($correo);
+$reserva = $controlador->obtener($date);
+
+$zonaHorariaBogota = new DateTimeZone('America/Bogota');
+$ahora = new DateTime('now', $zonaHorariaBogota);
+
+$format = 'Y-m-d\TH:i';
+
+$nuevaFecha = DateTime::createFromFormat($format, $date, $zonaHorariaBogota); 
+
     if($reserva){
-        $session->set('error_message', 'Este reserva ya esta registrado.');
+        $session->set('error_message', 'Esta fecha ya esta registrada.');
 
         header('Location: ../registerEmpRes.php');
     }
-    else{
-            $reserva = $controlador->insertar("Activo", $date);
+
+    elseif($nuevaFecha < $ahora) {
+        $session->set('error_message', 'No se puede reservar una fecha y hora anterior al momento actual.');
+        header('Location: ../registerEmpRes.php');
+        exit();
+    }
+    elseif($usuario){
+        $session->set('error_message', 'Este cliente ya tiene reserva.');
+
+        header('Location: ../registerEmpRes.php');
+    }
+     else{
+            $reserva = $controlador->insertar("Activo", $date, "cliente", $nombre, $apellido, $correo, $usuarioConectado);
 
             header('Location: ../reservasEmp.php'); 
             exit();
         }
 
-}
+

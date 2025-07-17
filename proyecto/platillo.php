@@ -14,7 +14,7 @@ $session = new SessionManager();
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Empleado</title>
+  <title>Panel Administrativo</title>
   <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
@@ -28,7 +28,7 @@ $session = new SessionManager();
   <header class="navbar">
   
 
-     <span class="logo-text">EMPLEADO</span>
+     <span class="logo-text">ADMINISTRADOR</span>
     </div>
 
     <div class="navbar-right">

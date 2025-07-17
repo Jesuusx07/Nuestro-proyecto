@@ -238,21 +238,138 @@ BEGIN
 END //
 
 
--- inventario
 
+-- PROCEDIMIENTOS PARA LA TABLA INVENTARIO
 
 DELIMITER //
+CREATE PROCEDURE obtener_inventario(IN p_id_inventario INT)
+BEGIN
+    SELECT * FROM inventario WHERE id_inventario = p_id_inventario;
+END //
+DELIMITER ;
 
-CREATE PROCEDURE insertar_inventario (
-    IN i_producto VARCHAR(100),
-    IN i_cantidad INT,
-    IN i_imagen VARCHAR(100),
-    IN i_movimiento VARCHAR (100),
-    IN i_fecha DATETIME,    
-    IN i_responsable INT
+-- INSERTAR INVENTARIO
+
+DELIMITER //
+CREATE PROCEDURE insertar_inventario(
+    IN p_producto VARCHAR(100),
+    IN p_cantidad INT,
+    IN p_imagen VARCHAR(255), -- Ajustado a VARCHAR(255) según la tabla
+    IN p_tipo_de_movimiento ENUM('entrada', 'salida'), -- Usar ENUM para mayor precisión
+    IN p_fecha DATE,         -- Ajustado a DATE según la tabla
+    IN p_responsable INT
 )
 BEGIN
-        INSERT INTO inventario (producto, cantidad, imagen, tipo_de_movimiento, fecha, responsable)
-        VALUES (i_producto, i_cantidad, i_imagen, i_movimiento, i_fecha, i_responsable);
-
+    INSERT INTO inventario(producto, cantidad, imagen, tipo_de_movimiento, fecha, responsable)
+    VALUES(p_producto, p_cantidad, p_imagen, p_tipo_de_movimiento, p_fecha, p_responsable);
 END //
+DELIMITER ;
+
+-- ACTUALIZAR INVENTARIO
+-- Este procedimiento actualiza un registro existente en la tabla inventario por su ID.
+DELIMITER //
+CREATE PROCEDURE actualizar_inventario(
+    IN p_id_inventario INT,
+    IN p_producto VARCHAR(100),
+    IN p_cantidad INT,
+    IN p_imagen VARCHAR(255),
+    IN p_tipo_de_movimiento ENUM('entrada', 'salida'),
+    IN p_fecha DATE,
+    IN p_responsable INT
+)
+BEGIN
+    UPDATE inventario
+    SET
+        producto = p_producto,
+        cantidad = p_cantidad,
+        imagen = p_imagen,
+        tipo_de_movimiento = p_tipo_de_movimiento,
+        fecha = p_fecha,
+        responsable = p_responsable
+    WHERE id_inventario = p_id_inventario;
+END //
+DELIMITER ;
+
+-- ELIMINAR INVENTARIO
+-- Este procedimiento elimina un registro de la tabla inventario por su ID.
+DELIMITER //
+CREATE PROCEDURE eliminar_inventario (IN p_id_inventario INT)
+BEGIN
+    DELETE FROM inventario WHERE id_inventario = p_id_inventario;
+END //
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- PROCEDIMIENTOS PARA LA TABLA PLATILLO
+
+-- OBTENER PLATILLO
+-- Este procedimiento permite obtener un registro de platillo por su ID.
+DELIMITER //
+
+CREATE PROCEDURE obtener_platillo(IN p_id_pla INT)
+BEGIN
+    SELECT * FROM platillo WHERE id_pla = p_id_pla;
+END //
+DELIMITER ;
+
+-- INSERTAR PLATILLO
+-- Este procedimiento inserta un nuevo registro en la tabla platillo.
+DELIMITER //
+CREATE PROCEDURE insertar_platillo(
+    IN p_nombre VARCHAR(50),
+    IN p_descripcion VARCHAR(500),
+    IN p_precio DECIMAL(10,2),
+    IN p_pla_categoria VARCHAR(50)
+)
+BEGIN
+    INSERT INTO platillo(nombre, descripcion, precio, pla_categoria)
+    VALUES(p_nombre, p_descripcion, p_precio, p_pla_categoria);
+END //
+DELIMITER ;
+
+-- ACTUALIZAR PLATILLO
+-- Este procedimiento actualiza un registro existente en la tabla platillo por su ID.
+DELIMITER //
+CREATE PROCEDURE actualizar_platillo(
+    IN p_id_pla INT,
+    IN p_nombre VARCHAR(50),
+    IN p_descripcion VARCHAR(500),
+    IN p_precio DECIMAL(10,2),
+    IN p_pla_categoria VARCHAR(50)
+)
+BEGIN
+    UPDATE platillo
+    SET
+        nombre = p_nombre,
+        descripcion = p_descripcion,
+        precio = p_precio,
+        pla_categoria = p_pla_categoria
+    WHERE id_pla = p_id_pla;
+END //
+DELIMITER ;
+
+-- ELIMINAR PLATILLO
+-- Este procedimiento elimina un registro de la tabla platillo por su ID.
+DELIMITER //
+
+CREATE PROCEDURE eliminar_platillo (IN p_id_pla INT)
+BEGIN
+    DELETE FROM platillo WHERE id_pla = p_id_pla;
+END //
+DELIMITER ;

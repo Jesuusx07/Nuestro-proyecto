@@ -21,7 +21,7 @@ $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 $usuario = $controlador->obtener($email);
 
-
+$documento = $controlador->obtenerDocu($docu);
 
 if($fname == "" || $lname == "" || $email == "" || $password == "" || $tele == "" || $docu == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
@@ -47,6 +47,11 @@ else{
 
         header('Location: ../registerEmpProv.php');
     }
+    else if($documento){
+        $session->set('error_message', 'Este documento ya esta registrado.');
+
+        header('Location: ../registerEmpProv.php');
+    }  
     elseif(preg_match('/[A-Z]/', $tele)){
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 

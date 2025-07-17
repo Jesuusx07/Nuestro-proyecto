@@ -9,12 +9,12 @@ class InventarioController {
     }
 
 
-    public function insertar($producto, $cantidad, $imagen, $movimiento, $fecha, $responsable) {
+    public function insertar($producto, $cantidad, $imagen, $tipo_de_movimiento, $fecha, $responsable) {
         $this->inventario->fecha = $fecha;
         $this->inventario->producto = $producto;
         $this->inventario->cantidad = $cantidad;
         $this->inventario->imagen = $imagen;
-        $this->inventario->movimiento = $movimiento; 
+        $this->inventario->tipo_de_movimiento = $tipo_de_movimiento; 
         $this->inventario->responsable = $responsable; 
 
         return $this->inventario->insertar();

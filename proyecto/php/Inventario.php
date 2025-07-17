@@ -1,63 +1,102 @@
 <?php
 
-require_once 'sql.php';
+require_once 'sql.php'; // Asegúrate de que este archivo maneje la conexión a la base de datos PDO
 
 class Inventario {
     private $conn;
     private $tabla = "inventario";
 
+    // Propiedades de la clase que corresponden a las columnas de la tabla
     public $id_inventario;
+    public $producto;
     public $cantidad;
+    public $imagen;
+    public $tipo_de_movimiento; // <-- ¡CORREGIDO: Ahora se llama tipo_de_movimiento!
     public $fecha;
     public $responsable;
-    public $movimiento; // entrada o salida
-    public $imagen;
-    public $producto;
     
-
     public function __construct($db) {
         $this->conn = $db;
     }
 
-
+    /**
+     * Inserta un nuevo registro de inventario en la base de datos.
+     * Corresponde al procedimiento almacenado 'insertar_inventario'.
+     * @return bool True si la inserción fue exitosa, false en caso contrario.
+     */
     public function insertar() {
+        // La consulta llama al procedimiento almacenado con 6 parámetros
         $query = "CALL insertar_inventario(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
     
+        // Limpiar y enlazar los parámetros para prevenir inyección SQL
+        // Los tipos de datos deben coincidir con los de la tabla y el SP
         $stmt->bindParam(1, $this->producto);
-        $stmt->bindParam(2, $this->cantidad);
+        $stmt->bindParam(2, $this->cantidad, PDO::PARAM_INT); // Especificar tipo INT
         $stmt->bindParam(3, $this->imagen);
-        $stmt->bindParam(4, $this->movimiento);
-        $stmt->bindParam(5, $this->fecha);
-        $stmt->bindParam(6, $this->responsable);
+        $stmt->bindParam(4, $this->tipo_de_movimiento); // <-- Ahora enlaza la propiedad correctamente
+        $stmt->bindParam(5, $this->fecha); // Formato YYYY-MM-DD
+        $stmt->bindParam(6, $this->responsable, PDO::PARAM_INT); // Especificar tipo INT
 
+        // Ejecutar la consulta
         return $stmt->execute();
     }
 
+    /**
+     * Actualiza un registro existente en la tabla inventario.
+     * Corresponde al procedimiento almacenado 'actualizar_inventario'.
+     * @return bool True si la actualización fue exitosa, false en caso contrario.
+     */
     public function actualizar() {
-        $query = "CALL actualizar_inventario(?, ?, ?)";
+        // La consulta llama al procedimiento almacenado con 7 parámetros
+        $query = "CALL actualizar_inventario(?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->id);
-        $stmt->bindParam(2, $this->id_inventario);
-        $stmt->bindParam(3, $this->cantidad);
-        $stmt->bindParam(3, $this->fecha);
-    
+        
+        // Limpiar y enlazar los parámetros
+        $stmt->bindParam(1, $this->id_inventario, PDO::PARAM_INT); // ID del registro a actualizar
+        $stmt->bindParam(2, $this->producto);
+        $stmt->bindParam(3, $this->cantidad, PDO::PARAM_INT);
+        $stmt->bindParam(4, $this->imagen);
+        $stmt->bindParam(5, $this->tipo_de_movimiento);
+        $stmt->bindParam(6, $this->fecha);
+        $stmt->bindParam(7, $this->responsable, PDO::PARAM_INT);
+
+        // Ejecutar la consulta
         return $stmt->execute();
     }
 
-
+    /**
+     * Obtiene un único registro de inventario por su ID.
+     * Corresponde al procedimiento almacenado 'obtener_inventario'.
+     * @return array|false Un array asociativo con los datos del registro, o false si no se encuentra.
+     */
     public function obtener() {
-        $query = "CALL obtener_inventario(:id)";
+        // Usar marcadores de posición con nombre es una buena práctica
+        $query = "CALL obtener_inventario(:id_inventario)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $this->id);
+        
+        // Enlazar el ID de inventario
+        $stmt->bindParam(':id_inventario', $this->id_inventario, PDO::PARAM_INT);
+        
         $stmt->execute();
+        // Devolver el resultado como un array asociativo
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Elimina un registro de inventario por su ID.
+     * Corresponde al procedimiento almacenado 'eliminar_inventario'.
+     * @return bool True si la eliminación fue exitosa, false en caso contrario.
+     */
     public function eliminar() {
-        $query = "CALL eliminar_inventario(:id)";
+        // Usar marcadores de posición con nombre
+        $query = "CALL eliminar_inventario(:id_inventario)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $this->id);
+        
+        // Enlazar el ID de inventario
+        $stmt->bindParam(':id_inventario', $this->id_inventario, PDO::PARAM_INT);
+        
+        // Ejecutar la consulta
         return $stmt->execute();
     }
 }

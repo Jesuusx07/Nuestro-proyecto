@@ -16,24 +16,20 @@ $tipo = $_POST["tipo"]; // entrada o salida
 $fecha = $_POST["date"];
 $responsable = $_POST["responsable"]; // Asegúrate que esto se guarda al iniciar sesión
 
-str_replace('Empleado ', "", $responsable);
-
-str_replace('Proveedor ', "", $responsable);
-
 // Validaciones
 if (
     empty($cantidad) || empty($tipo) ||
     empty($fecha) || empty($responsable)
 ) {
     $session->set('error_message', 'Por favor, complete todos los campos obligatorios.');
-    header('Location: ../inventarioRegis.php');
+    header('Location: ../registerEmpInv.php');
     exit();
 }
 
 // Validación extra: cantidad numérica y dentro de rango
 if (!is_numeric($cantidad) || $cantidad < 1 || $cantidad > 100) {
     $session->set('error_message', 'La cantidad debe estar entre 1 y 100.');
-    header('Location: ../inventarioRegis.php');
+    header('Location: ../registerEmpInv.php');
     exit();
 }
 
@@ -49,11 +45,11 @@ $resultado = $controlador->insertar(
 
 // Redirección si fue exitoso
 if ($resultado) {
-    header('Location: ../inventario.php');
+    header('Location: ../inventarioEmp.php');
     exit();
 } else {
     $session->set('error_message', 'Error al registrar en inventario.');
-    header('Location: ../inventarioRegis.php');
+    header('Location: ../registerEmpInv.php');
     exit();
 }
 ?>

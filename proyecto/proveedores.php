@@ -174,7 +174,14 @@ $session = new SessionManager();
         <th>Cantidad</th>
         <th>Nombres</th>
         <th>Apellidos</th>
+<<<<<<< HEAD
         <th>Correo</th>
+=======
+      
+        <th>correo</th>
+        <th>Cantidad</th>
+
+>>>>>>> ee50f96b385f3277cbe9ecf063715bf15e6776a9
         <th>telefono</th>
         <th>documento</th>
     </tr>

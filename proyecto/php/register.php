@@ -41,6 +41,8 @@ require_once 'UsuarioController.php';
 $db = (new Database())->conectar();
 $controlador = new UsuarioController($db);
 
+$documento = $controlador->obtenerDocu($docu);
+
 // 4. Validaciones de los datos recibidos.
 //    Se usan `empty()` para verificar si los campos están vacíos.
 if(empty($nom) || empty($pass) || empty($email) || empty($apell) || empty($tele) || empty($docu)){
@@ -79,19 +81,19 @@ else if(strlen($nom) > $longMaxnom){
 elseif(preg_match('/[A-Z]/', $tele)){
     $session->set('error_message', 'No se aceptan letras en el telefono.');
 
-    header('Location: ../registerUs.php'); 
+    header('Location: ../registrarse.php'); 
     exit();
     }
 elseif(preg_match('/[a-z]/', $tele)){
     $session->set('error_message', 'No se aceptan letras en el telefono.');
 
-    header('Location: ../registerUs.php'); 
+    header('Location: ../registrarse.php'); 
     exit();
 }
 else if(strpos($tele, " ") !== false){
         $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
 
-        header('Location: ../registerUs.php'); 
+        header('Location: ../registrarse.php'); 
         exit();
     }
 else if(strlen($pass) < $longMin){
@@ -100,6 +102,11 @@ else if(strlen($pass) < $longMin){
     header('Location: ../registrarse.php'); 
     exit();
 }
+else if($documento){
+    $session->set('error_message', 'Este documento ya esta registrado.');
+
+    header('Location: ../registrarse.php');
+}  
 // Validación de longitud máxima para la contraseña.
 else if(strlen($pass) > $longMax){
     $session->set('error_message', 'La longitud maxima de la contraseña son 40 caracteres.');

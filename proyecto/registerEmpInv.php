@@ -18,7 +18,7 @@ $session = new SessionManager();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar usuario</title>
+  <title>Registrar al Inventario</title>
   <link rel="stylesheet" href="./css/registerUs.css">
    <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -30,7 +30,7 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+     <span class="logo-text">EMPLEADO</span>
     </div>
 
     <div class="navbar-right">
@@ -50,7 +50,7 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Inventario</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerInventario.php" method="POST">
+      <form id="formu" action="./php/registerEmpInv.php" method="POST">
 
           <input type="text" id="nombre" name="producto" placeholder="Nombre del producto" required>
 
@@ -63,41 +63,9 @@ $session = new SessionManager();
                   <option value="entrada">Entrada</option>
                   <option value="salida">Salida</option>
                 </select>
-          <label for="tipo">Responsable</label>
-          <select id="tipo" name="responsable">
-<?php
-// Assuming $conexion is already established
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin'";
-$result = mysqli_query($conexion, $sql);
+          <input type="number" id="responsable" name="responsable" placeholder="Responsable">
 
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-  <?php
-  
-  if ($mostrar['id_rol'] == 'proveedor') {
-
-  ?>
-      <option value="entrada">Proveedor <?php echo htmlspecialchars($mostrar['correo']); ?></option>
-  <?php
-  } elseif ($mostrar['id_rol'] == 'Cocinero' || $mostrar['id_rol'] == 'Limpieza' || $mostrar['id_rol'] == 'Mesero') {
-
-  ?>
-      <option value="entrada">Empleado <?php echo htmlspecialchars($mostrar['correo']); ?></option>
-  <?php
-  } elseif ($mostrar['id_rol'] == 'Admin') {
-  ?>
-
-      <option value="entrada">Admin <?php echo htmlspecialchars($mostrar['correo']); ?></option>
-      
-  <?php
-  }
-  ?>
-<?php
-}
-?>
-          </select>   
-          <input type="date" id="apelli" name="date" placeholder="Fecha">
+          <input type="date" id="fecha" name="date" placeholder="Fecha">
                 </select>
             
 

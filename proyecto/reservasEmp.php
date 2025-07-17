@@ -1,3 +1,14 @@
+<?php
+
+require_once './php/SessionManager.php';
+
+$session = new SessionManager();
+
+    if (!$session->isLoggedIn()){
+        header("location: login.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,45 +51,45 @@
     <aside class="menu-lateral">
   <nav class="menu-container">
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Productos</button>
-      <div class="sub-menu">
-        <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
-        <a href="productosEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+         <div class="menu-item">
+          <button class="btn-menu">Gestión de Inventario</button>
+          <div class="sub-menu">
+            <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
+            <a href="inventarioEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Proveedor</button>
-      <div class="sub-menu">
-        <a href="registerEmpProv.php" class="sub-btn">Registrar</a>
-        <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Proveedor</button>
+          <div class="sub-menu">
+            <a href="registerEmpProv.php" class="sub-btn">Registrar</a>
+            <a href="proveedorEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Reservas</button>
-      <div class="sub-menu">
-        <a href="registerEmpRes.php" class="sub-btn">Registrar</a>
-        <a href="reservasEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Reservas</button>
+          <div class="sub-menu">
+            <a href="registerEmpRes.php" class="sub-btn">Registrar</a>
+            <a href="reservasEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
-    <div class="menu-item">
-      <button class="btn-menu">Gestión de Platillo</button>
-      <div class="sub-menu">
-        <a href="registrarPlatilloEmp" class="sub-btn">Registrar</a>
-        <a href="platilloEmp.php" class="sub-btn">Consultar</a>
-      </div>
-    </div>
-
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Platillo</button>
+          <div class="sub-menu">
+            <a href="registrarPlatilloEmp.html" class="sub-btn">Registrar</a>
+            <a href="platilloEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
 
   </nav>
 
-      <div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
-    </div>
+  <div class="menu-item">   
+       <a href="venta_empleado.php" class="sub-btn">Hacer una venta</a>
+  </div>
+
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
@@ -120,22 +131,60 @@
       });
     });
 
+    // ----- Grafico Placeholder (Chart.js) -----
+    // Solo un ejemplo para que puedas conectar tus datos reales
+    if (typeof Chart !== 'undefined') {
+      const ctx = document.getElementById('graficoVentas');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+          datasets: [{
+            label: 'Ventas',
+            data: [12, 19, 3, 5, 2, 3, 7],
+            fill: false,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
   </script>
 <div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE RESERVAS</h1> 
+    <h1 class="titulo">TABLA DE CONSULTA DE RESERVA</h1> 
 
 <table>
     <tr>
-        <th>id_reserva</th>
+        <th>Reserva</th>
         <th>estado_reserva</th>
         <th>fecha_reserva</th>
+        <th>Nombre Cliente</th>
+        <th>Apellido Cliente</th>
     </tr>
 
 
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM reserva";
+$sql = $sql = "SELECT
+    r.id_reserva,
+    r.estado_reserva,
+    r.fecha_reserva,
+    u.nombres,
+    u.apellidos
+FROM
+    reserva r
+JOIN
+    usuario u ON r.cliente = u.correo -- Assuming a foreign key relationship
+WHERE
+    u.id_rol = 'cliente'; -- Filter to only include clients";
+
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
@@ -147,10 +196,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['nombres']; ?></td>
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td>
-            <a href="editarResEmp.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
+            <a href="editar_reserva.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_reserva']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
+            <a href="./php/eliminarReserva.php?id=<?php echo $mostrar['id_reserva']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
         </td>
     </tr>
 <?php
