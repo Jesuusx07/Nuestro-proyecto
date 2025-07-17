@@ -176,13 +176,9 @@ $session = new SessionManager();
 <table>
     <tr>
         <th>Id</th>
-        <th>Producto</th>
-        <th>Cantidad</th>
         <th>Nombres</th>
         <th>Apellidos</th>
-        <th>Correo</th>
         <th>correo</th>
-        <th>Cantidad</th>
         <th>telefono</th>
         <th>documento</th>
     </tr>
@@ -190,15 +186,13 @@ $session = new SessionManager();
 
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario INNER JOIN proveedor ON usuario.id_usuario = proveedor.id_usuario";
+$sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['producto']; ?></td>
-        <td><?php echo $mostrar['cantidad']; ?></td>
         <td><?php echo $mostrar['nombres']; ?></td> 
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td><?php echo $mostrar['correo']; ?></td>
@@ -214,8 +208,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
                     apell=<?php echo urlencode($mostrar['apellidos']); ?>&
                     email=<?php echo urlencode($mostrar['correo']); ?>&
                     tel=<?php echo urlencode($mostrar['telefono']); ?>&
-                    docu=<?php echo urlencode($mostrar['documento']); ?>&
-                    cantidad=<?php echo isset($mostrar['cantidad']) ? urlencode($mostrar['cantidad']) : ''; ?>"
+                    docu=<?php echo urlencode($mostrar['documento']); ?>"
                 class="boton-edi"
             >Editar</a>
         </td>

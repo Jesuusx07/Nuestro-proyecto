@@ -30,6 +30,7 @@ else if(strlen($nombre) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
     header('Location: ../reservasRegis.php'); 
+<<<<<<< HEAD
     exit();
 }
 
@@ -37,6 +38,8 @@ else if(strlen($apellido) < $longMin){
     $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
     header('Location: ../reservasRegis.php'); 
+=======
+>>>>>>> 5f719c62b5507a1fe7e55b4cab954dd93812d0e9
     exit();
 }
 

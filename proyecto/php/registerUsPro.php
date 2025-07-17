@@ -45,13 +45,16 @@ else{
         exit(); 
     }
     
-else if(strlen($nom) > $longMaxnom){
+else if(strlen($fname) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
     header('Location: ../registrarproveedores.php'); 
     exit();
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f719c62b5507a1fe7e55b4cab954dd93812d0e9
     else if($usuario){
         $session->set('error_message', 'Este correo ya esta registrado.');
 

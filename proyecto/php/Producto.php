@@ -11,6 +11,7 @@ class Producto {
     public $imagen;
     public $precio;
     public $nombre;
+    public $proveedor;
 
 
     public function __construct($db) {
@@ -19,13 +20,14 @@ class Producto {
 
 
     public function insertar() {
-        $query = "CALL insertar_producto(?, ?, ?, ?)";
+        $query = "CALL insertar_producto(?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
     
         $stmt->bindParam(1, $this->nombre);
         $stmt->bindParam(2, $this->categoria);
         $stmt->bindParam(3, $this->imagen);
         $stmt->bindParam(4, $this->precio);
+        $stmt->bindParam(5, $this->proveedor);        
         return $stmt->execute();
     }
 

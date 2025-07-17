@@ -2,7 +2,7 @@
 
 require_once 'producto.php';
 
-class ProductoController {
+class ProductoController{
     private $producto;
 
     public function __construct($db) {
@@ -10,11 +10,12 @@ class ProductoController {
     }
 
 
-    public function insertar($nombre, $categoria, $imagen, $precio) {
+    public function insertar($nombre, $categoria, $imagen, $precio, $proveedor) {
         $this->producto->nombre = $nombre;
         $this->producto->categoria = $categoria;
         $this->producto->imagen = $imagen;
         $this->producto->precio = $precio;
+        $this->producto->proveedor = $proveedor;        
 
         return $this->producto->insertar();
     }
