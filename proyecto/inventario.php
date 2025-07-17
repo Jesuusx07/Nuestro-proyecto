@@ -57,6 +57,12 @@ if (!$session->isLoggedIn()) {
             <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+               <div class="menu-item">
+          <button class="btn-menu">Gestión de Productos </button>
+          <div class="sub-menu">
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="Producto.php" class="sub-btn">Consultar</a>
+          </div>
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
@@ -98,12 +104,11 @@ if (!$session->isLoggedIn()) {
       <table>
         <tr>
           <th>id_inventario</th>
-          <th>cantidad</th>
-          <th>imagen</th>
-          <th>tipo_de_movimiento</th>
-          <th>fecha</th>
-          <th>responsable</th>
-          <th>Acciones</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Imagen</th>
+          <th>Tipo_de_movimiento</th>
+          <th>Fecha</th>
         </tr>
 
         <?php
@@ -115,13 +120,12 @@ if (!$session->isLoggedIn()) {
         ?>
         <tr>
           <td><?php echo $mostrar['id_inventario']; ?></td>
+          <td><?php echo $mostrar['producto']; ?></td>
           <td><?php echo $mostrar['cantidad']; ?></td>
           <td><?php echo $mostrar['imagen']; ?></td>
           <td><?php echo $mostrar['tipo_de_movimiento']; ?></td>
           <td><?php echo $mostrar['fecha']; ?></td>
-          <td><?php echo $mostrar['responsable']; ?></td>
           <td>
-            <a href="./php/editarinventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton">Editar</a>
             <a href="./php/eliminarInventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
           </td>
         </tr>

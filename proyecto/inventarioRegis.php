@@ -52,56 +52,43 @@ $session = new SessionManager();
     <div class="regis">
       <form id="formu" action="./php/registerInventario.php" method="POST">
 
-          <input type="text" id="nombre" name="producto" placeholder="Nombre del producto" required>
+        <label for="producto">Producto</label>
+            <select id="tipo" name="producto">
+          <?php
 
-          <input type="number" id="nombre" name="cantidad" placeholder="Cantidad" min="1" max="100" required>
-          
-          <input type="file" id="imagen" name="imagen" accept="image/*">
+          $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+          $sql = "SELECT * FROM usuario where id_rol != 'admin'";
+          $result = mysqli_query($conexion, $sql);
 
-          <label for="tipo">Tipo de movimiento</label>
-                <select id="tipo" name="tipo">
-                  <option value="entrada">Entrada</option>
-                  <option value="salida">Salida</option>
-                </select>
-          <label for="tipo">Responsable</label>
-          <select id="tipo" name="responsable">
-<?php
-// Assuming $conexion is already established
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin'";
-$result = mysqli_query($conexion, $sql);
-
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-  <?php
-  
-  if ($mostrar['id_rol'] == 'proveedor') {
-
-  ?>
-      <option value="entrada">Proveedor <?php echo htmlspecialchars($mostrar['correo']); ?></option>
-  <?php
-  } elseif ($mostrar['id_rol'] == 'Cocinero' || $mostrar['id_rol'] == 'Limpieza' || $mostrar['id_rol'] == 'Mesero') {
-
-  ?>
-      <option value="entrada">Empleado <?php echo htmlspecialchars($mostrar['correo']); ?></option>
-  <?php
-  } elseif ($mostrar['id_rol'] == 'Admin') {
-  ?>
-
-      <option value="entrada">Admin <?php echo htmlspecialchars($mostrar['correo']); ?></option>
-      
-  <?php
-  }
-  ?>
-<?php
-}
-?>
-          </select>   
-          <input type="date" id="apelli" name="date" placeholder="Fecha">
-                </select>
+          while ($mostrar = mysqli_fetch_array($result)) {
+          ?>
+            <?php
             
+            if ($mostrar['id_rol'] == 'proveedor') {
 
-                <input type="submit" id="boton" value="Registrar">
+            ?>
+                <option value="entrada"><?php echo htmlspecialchars($mostrar['correo']); ?></option>
+            <?php
+            }
+            ?>
+          <?php
+          }
+          ?>
+            </select>
+
+            <input type="number" id="nombre" name="cantidad" placeholder="Cantidad" min="1" max="100" required>
+            
+            <input type="file" id="imagen" name="imagen" accept="image/*">
+
+            <label for="tipo">Tipo de movimiento</label>
+                  <select id="tipo" name="tipo">
+                    <option value="entrada">Entrada</option>
+                    <option value="salida">Salida</option>
+                  </select>
+            <label for="tipo">Fecha</label>
+            <input type="date" id="imagen" name="fecha">
+            
+            <input type="submit" id="boton" value="Registrar">
 
                 <?php
                   if ($session->has('error_message')) {

@@ -17,7 +17,8 @@ $lname = $_POST["lname"];
 $email = $_POST["email"];
 $tele = $_POST["tele"];
 $docu = $_POST["documento"];
-
+$longMin = 8;
+$longMax = 50;
 
 
 
@@ -36,6 +37,12 @@ else{
 
         exit();
     }
+    else if(strlen($fname) > $longMax){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../editarProvEmp.php'); 
+    exit();
+}
     elseif(preg_match('/[a-z]/', $tele)){
         $session->set('error_message', 'No se aceptan letras en el telefono.');
 

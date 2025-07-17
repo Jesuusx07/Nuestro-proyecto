@@ -22,6 +22,7 @@ $controlador = new PlatilloController($db); // Se añadió esta línea para inst
 
 // Inicializar variables para los campos del formulario
 // Usamos el operador null coalescing (?? '') para evitar advertencias si una variable no está definida
+
 $id_pla = $_GET['id_pla'] ?? '';
 $nombre = $_GET['nombre'] ?? '';
 $descripcion = $_GET['descripcion'] ?? '';

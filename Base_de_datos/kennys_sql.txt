@@ -1,4 +1,3 @@
-
 -- 2. Tablas que dependen de las anteriores
 
 CREATE TABLE usuario(
@@ -9,19 +8,25 @@ CREATE TABLE usuario(
     correo VARCHAR(100) NOT NULL UNIQUE,
     contraseña VARCHAR(255) NOT NULL,
     telefono VARCHAR(20) NOT NULL,
-    documento VARCHAR(30) NOT NULL,
+    documento INT NOT NULL,
     reset_token VARCHAR(255) NULL,
     reset_token_expires_at DATETIME NULL
+
 );
 
 
-CREATE TABLE producto(
+CREATE TABLE producto (
     id_producto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    categoria VARCHAR (50) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
-    precio_unitario DECIMAL(10, 2) NOT NULL
+    precio_unitario DECIMAL(10, 2) NOT NULL,
+    id_usuario INT NOT NULL,
+
+    CONSTRAINT fk_id_usuario_producto
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
+
 
 CREATE TABLE platillo(
     id_pla INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -44,7 +49,7 @@ CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     estado_reserva VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
     fecha_reserva DATETIME NOT NULL,
-    empleado VARCHAR (100) NOT NULL,
+    responsable VARCHAR (100) NOT NULL,
     cliente VARCHAR (100) NOT NULL,
     FOREIGN KEY (cliente) REFERENCES usuario(correo)
 );
@@ -52,13 +57,16 @@ CREATE TABLE reserva(
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    producto VARCHAR (100) NOT NULL,
+    id_producto INT NOT NULL,
     cantidad INT NOT NULL,
     imagen VARCHAR(255),
     tipo_de_movimiento ENUM('entrada', 'salida') NOT NULL,
     fecha DATE NOT NULL,
-    responsable INT NOT NULL,
-    FOREIGN KEY (responsable) REFERENCES usuario(id_usuario)
+    
+
+    CONSTRAINT fk_id_producto_inventario
+        FOREIGN KEY (id_producto)
+        REFERENCES producto(id_producto)
 );
 
 
@@ -119,6 +127,7 @@ CREATE TABLE reserva_item(
 );
 
 
+
 -- Procedure-----------------------------
 
 -- USUARIO
@@ -130,6 +139,15 @@ DELIMITER //
 CREATE PROCEDURE obtener_usuario(IN e_correo varchar(100))
 BEGIN
     SELECT * FROM usuario WHERE correo = e_correo;
+END //
+
+-- obtener documento
+
+DELIMITER //
+
+CREATE PROCEDURE obtener_documento(IN u_docu INT)
+BEGIN
+    SELECT * FROM usuario WHERE documento = u_docu;
 END //
 
 -- insertar usuario
@@ -159,23 +177,24 @@ BEGIN
 
 END //
 
+
 -- PRODUCTO
 
 -- obtener producto
 
 DELIMITER //
 
-CREATE PROCEDURE obtener_producto(IN p_id INT)
+CREATE PROCEDURE obtener_producto(IN p_nombre VARCHAR (100))
 BEGIN
-    SELECT * FROM producto WHERE id_producto = p_id;
+    SELECT * FROM producto WHERE nombre = p_nombre;
 END //
 
 -- insertar producto
 
 DELIMITER //
-CREATE PROCEDURE insertar_producto(IN p_nombre VARCHAR(100), IN p_categoria VARCHAR(50), IN p_imagen VARCHAR(100), IN p_precio DECIMAL(10,2))
+CREATE PROCEDURE insertar_producto(IN p_nombre VARCHAR(100), IN p_categoria VARCHAR(50), IN p_imagen VARCHAR(100), IN p_precio DECIMAL(10,2), IN p_usuario INT)
 BEGIN
-    INSERT INTO producto(nombre, categoria, imagen, precio_unitario) VALUES(p_nombre, p_categoria, p_imagen, p_precio);
+    INSERT INTO producto(nombre, categoria, imagen, precio_unitario, id_usuario) VALUES(p_nombre, p_categoria, p_imagen, p_precio, p_usuario);
 END //
 
 -- actualizar producto
@@ -215,7 +234,7 @@ DELIMITER //
 CREATE PROCEDURE insertar_reserva(IN r_estado VARCHAR(100), IN r_date DATETIME, IN r_rol VARCHAR(50), IN r_nombre VARCHAR(50), IN r_apellido VARCHAR(50), IN r_correo VARCHAR(100), IN r_usuario VARCHAR(100))
 BEGIN
     INSERT INTO usuario(id_rol, nombres, apellidos, correo, contraseña, telefono, documento, reset_token, reset_token_expires_at) VALUES(r_rol, r_nombre, r_apellido, r_correo, "a", "a", "a", null, null);
-    INSERT INTO reserva(estado_reserva, fecha_reserva, empleado, cliente) VALUES(r_estado, r_date, r_usuario, r_correo);
+    INSERT INTO reserva(estado_reserva, fecha_reserva, responsable, cliente) VALUES(r_estado, r_date, r_usuario, r_correo);
 END //
 
 -- actualizar reserva
@@ -230,10 +249,11 @@ END //
 
 DELIMITER //
 
-CREATE PROCEDURE eliminar_reserva (IN r_id INT)
+CREATE PROCEDURE eliminar_reserva (IN r_id INT, IN r_cliente VARCHAR(100))
 BEGIN
 
         DELETE FROM reserva WHERE id_reserva = r_id;
+	DELETE FROM usuario WHERE correo = r_cliente;
 
 END //
 
@@ -241,46 +261,43 @@ END //
 
 -- PROCEDIMIENTOS PARA LA TABLA INVENTARIO
 
-DELIMITER //
-CREATE PROCEDURE obtener_inventario(IN p_id_inventario INT)
-BEGIN
-    SELECT * FROM inventario WHERE id_inventario = p_id_inventario;
-END //
-DELIMITER ;
+-- inventario
 
+
+DELIMITER //
+
+<<<<<<< HEAD
 -- INSERTAR INVENTARIO
-
 DELIMITER //
-CREATE PROCEDURE insertar_inventario(
-    IN p_producto VARCHAR(100),
+CREATE PROCEDURE insertar_inventario (
+    IN p_id_producto INT, -- Cambiado de i_producto VARCHAR(100) a p_id_producto INT
     IN p_cantidad INT,
-    IN p_imagen VARCHAR(255), -- Ajustado a VARCHAR(255) según la tabla
-    IN p_tipo_de_movimiento ENUM('entrada', 'salida'), -- Usar ENUM para mayor precisión
-    IN p_fecha DATE,         -- Ajustado a DATE según la tabla
-    IN p_responsable INT
+    IN p_imagen VARCHAR(255), -- Ajustado a VARCHAR(255)
+    IN p_tipo_de_movimiento ENUM('entrada', 'salida'), -- Cambiado de i_movimiento VARCHAR(100) a p_tipo_de_movimiento ENUM
+    IN p_fecha DATE, -- Cambiado de i_fecha DATETIME a p_fecha DATE
+    IN p_responsable VARCHAR(50) -- Cambiado de i_responsable INT a p_responsable VARCHAR(50)
 )
 BEGIN
-    INSERT INTO inventario(producto, cantidad, imagen, tipo_de_movimiento, fecha, responsable)
-    VALUES(p_producto, p_cantidad, p_imagen, p_tipo_de_movimiento, p_fecha, p_responsable);
+    INSERT INTO inventario (id_producto, cantidad, imagen, tipo_de_movimiento, fecha, responsable) -- 'producto' cambiado a 'id_producto'
+    VALUES (p_id_producto, p_cantidad, p_imagen, p_tipo_de_movimiento, p_fecha, p_responsable);
 END //
 DELIMITER ;
 
 -- ACTUALIZAR INVENTARIO
--- Este procedimiento actualiza un registro existente en la tabla inventario por su ID.
 DELIMITER //
 CREATE PROCEDURE actualizar_inventario(
     IN p_id_inventario INT,
-    IN p_producto VARCHAR(100),
+    IN p_id_producto INT, -- Cambiado de p_producto VARCHAR(100) a p_id_producto INT
     IN p_cantidad INT,
     IN p_imagen VARCHAR(255),
     IN p_tipo_de_movimiento ENUM('entrada', 'salida'),
     IN p_fecha DATE,
-    IN p_responsable INT
+    IN p_responsable VARCHAR(50) -- Cambiado de p_responsable INT a p_responsable VARCHAR(50)
 )
 BEGIN
     UPDATE inventario
     SET
-        producto = p_producto,
+        id_producto = p_id_producto, -- 'producto' cambiado a 'id_producto'
         cantidad = p_cantidad,
         imagen = p_imagen,
         tipo_de_movimiento = p_tipo_de_movimiento,
@@ -291,20 +308,12 @@ END //
 DELIMITER ;
 
 -- ELIMINAR INVENTARIO
--- Este procedimiento elimina un registro de la tabla inventario por su ID.
 DELIMITER //
 CREATE PROCEDURE eliminar_inventario (IN p_id_inventario INT)
 BEGIN
     DELETE FROM inventario WHERE id_inventario = p_id_inventario;
 END //
 DELIMITER ;
-
-
-
-
-
-
-
 
 
 
@@ -373,3 +382,17 @@ BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
 DELIMITER ;
+
+CREATE PROCEDURE insertar_inventario (
+    IN i_producto VARCHAR(100),
+    IN i_cantidad INT,
+    IN i_imagen VARCHAR(100),
+    IN i_movimiento VARCHAR (100),
+    IN i_fecha DATETIME
+)
+BEGIN
+        INSERT INTO inventario (producto, cantidad, imagen, tipo_de_movimiento, fecha)
+        VALUES (i_producto, i_cantidad, i_imagen, i_movimiento, i_fecha);
+
+END //
+

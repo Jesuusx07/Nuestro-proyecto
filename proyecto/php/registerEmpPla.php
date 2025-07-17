@@ -22,6 +22,7 @@ try {
     exit();
 }
 
+
 // Instanciar el PlatilloController
 $controlador = new PlatilloController($db);
 
@@ -37,6 +38,7 @@ $pla_categoria = $_POST["pla_categoria"] ?? ''; // ¡CORREGIDO! Ahora coincide c
 
 // Validaciones de entrada: todos los campos son requeridos
 if (empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_categoria)) {
+
     $session->set('error_message', 'Por favor, llene todos los campos.');
     header('Location: ../registrarPlatilloEmp.php');
     exit();
@@ -48,6 +50,7 @@ if (empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_catego
         exit();
     }
     // Validar si el platillo ya está registrado por nombre
+
     else if ($platillo_existente) {
         $session->set('error_message', 'Este platillo ya está registrado.');
         header('Location: ../registrarPlatilloEmp.php');

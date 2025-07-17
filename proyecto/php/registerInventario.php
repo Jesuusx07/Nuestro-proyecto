@@ -20,6 +20,8 @@ str_replace('Empleado ', "", $responsable);
 
 str_replace('Proveedor ', "", $responsable);
 
+$longMin = 8;
+$longMax = 50;
 // Validaciones
 if (
     empty($cantidad) || empty($tipo) ||
@@ -30,6 +32,18 @@ if (
     exit();
 }
 
+else if(strlen($nom) > $longMaxnom){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(strlen($pass) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
 // Validación extra: cantidad numérica y dentro de rango
 if (!is_numeric($cantidad) || $cantidad < 1 || $cantidad > 100) {
     $session->set('error_message', 'La cantidad debe estar entre 1 y 100.');

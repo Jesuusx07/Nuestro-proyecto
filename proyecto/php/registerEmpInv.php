@@ -17,6 +17,8 @@ $fecha = $_POST["date"];
 $responsable = $_POST["responsable"]; // Asegúrate que esto se guarda al iniciar sesión
 
 // Validaciones
+$longMin = 8;
+$longMax = 50;
 if (
     empty($cantidad) || empty($tipo) ||
     empty($fecha) || empty($responsable)
@@ -25,7 +27,18 @@ if (
     header('Location: ../registerEmpInv.php');
     exit();
 }
+else if(strlen($producto) > $longMax){
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
+    header('Location: ../registrarseEmInv.php'); 
+    exit();
+}
+else if(strlen($producto) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registerEmpInv.php'); 
+    exit();
+}
 // Validación extra: cantidad numérica y dentro de rango
 if (!is_numeric($cantidad) || $cantidad < 1 || $cantidad > 100) {
     $session->set('error_message', 'La cantidad debe estar entre 1 y 100.');

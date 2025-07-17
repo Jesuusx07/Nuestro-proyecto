@@ -1,0 +1,20 @@
+INSERT INTO usuario (id_rol, nombres, apellidos, correo, contraseña, telefono, documento, reset_token, reset_token_expires_at) VALUES
+('admin', 'Carlos', 'Ramírez', 'carlos.ramirez@example.com', 'hashed_pass_123', '3001234567', '1012345678', NULL, NULL),
+('empleado', 'María', 'Pérez', 'maria.perez@example.com', 'hashed_pass_456', '3109876543', '1023456789', NULL, NULL),
+('empleado', 'Juan', 'Gómez', 'juan.gomez@example.com', 'hashed_pass_789', '3201122334', '1034567890', 'abc123reset', '2025-07-10 12:00:00'),
+('admin', 'Laura', 'Martínez', 'laura.martinez@example.com', 'hashed_pass_321', '3112233445', '1045678901', NULL, NULL),
+('empleado', 'Andrés', 'López', 'andres.lopez@example.com', 'hashed_pass_654', '3223344556', '1056789012', NULL, NULL),
+('empleado', 'Diana', 'Castro', 'diana.castro@example.com', 'hashed_pass_987', '3134455667', '1067890123', 'xyz789reset', '2025-07-12 18:30:00');
+
+
+INSERT INTO proveedor (nombre, direccion, telefono, email) VALUES
+('Distribuidora El Granero', 'Calle 45 #12-34, Bogotá', '3104567890', 'contacto@elgranero.com'),
+('Alimentos San Juan', 'Carrera 8 #34-56, Medellín', '3001234567', 'ventas@sanjuan.co'),
+('Suministros Globales', 'Av. El Dorado #90-21, Bogotá', '3119876543', 'info@globales.com'),
+('Proveedor Andes', 'Calle 60 #10-22, Cali', '3125558899', 'proveedores@andes.com'),
+('Distribuciones Norte', 'Carrera 18 #25-30, Barranquilla', '3137788990', 'distri.norte@correo.com'),
+('Insumos del Café', 'Cra 15 #44-12, Manizales', '3012233445', 'contacto@insumoscafe.com'),
+('Logística Express', 'Calle 23 #9-15, Bucaramanga', '3146655443', 'logistica@express.com'),
+('Proveeduría Andina', 'Transversal 5 #72-14, Pereira', '3159988776', 'atencion@proveeandina.com'),
+('Agronegocios La Vega', 'Km 4 Vía La Vega, Cundinamarca', '3164433221', 'agronegocios@lavega.com'),
+('Comercializadora Caribe', 'Carrera 50 #20-40, Cartagena', '3171112233', 'ventas@caribecom.com');

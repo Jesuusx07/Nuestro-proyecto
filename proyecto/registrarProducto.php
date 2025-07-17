@@ -50,6 +50,25 @@ $session = new SessionManager();
         <input type="file" id="imagen" name="imagen" accept="image/*">
         <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
 
+          <select name="proveedor" id="usuario">
+                <option value="">Proveedor</option>
+          <?php
+
+          $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+          $sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
+          $result = mysqli_query($conexion, $sql);
+
+          
+          while ($mostrar = mysqli_fetch_array($result)) {
+          ?>
+
+                <option value= <?php echo $mostrar['correo']?>> <?php echo htmlspecialchars($mostrar['nombres']); ?></option>
+
+          <?php
+          }
+          ?>
+          </select>
+
         <input type="submit" id="boton" value="Registrar">
 
         <?php
