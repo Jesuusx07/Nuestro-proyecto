@@ -51,10 +51,11 @@ $session = new SessionManager();
     <h2>Registrar Proveedor</h2>
     <div class="regis">
       <form id="formu" action="./php/registerUsPro.php" method="POST">
+        <input type="text" id="id" name="text" placeholder="Producto">
+        <input type="number" id="id" name="cantidad" placeholder="Cantidad">
         <input type="text" id="nombre" name="fname" placeholder="Nombres">
         <input type="text" id="apelli" name="lname" placeholder="Apellidos">
         <input type="email" id="correo" name="email" placeholder="Correo">
-      
         <input type="text" id="telefono" name="tele" placeholder="Teléfono">
         <input type="number" id="id" name="documento" placeholder="Documento de identidad">
         <input type="submit" id="boton" value="Registrar">

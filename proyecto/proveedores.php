@@ -169,13 +169,12 @@ $session = new SessionManager();
 
 <table>
     <tr>
-        <th>Proveedor</th>
+        <th>Id</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
         <th>Nombres</th>
         <th>Apellidos</th>
-        
-         <th>Cantidad</th>
-        <th>correo</th>
-
+        <th>Correo</th>
         <th>telefono</th>
         <th>documento</th>
     </tr>
@@ -183,19 +182,21 @@ $session = new SessionManager();
 
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
+$sql = "SELECT * FROM usuario INNER JOIN proveedor ON usuario.id_usuario = proveedor.id_usuario";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['producto']; ?></td>
+        <td><?php echo $mostrar['cantidad']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td> 
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td><?php echo $mostrar['correo']; ?></td>
         <td><?php echo $mostrar['telefono']; ?></td>
         <td><?php echo $mostrar['documento']; ?></td>
-        <td><?php echo isset($mostrar['cantidad']) ? $mostrar['cantidad'] : 'N/A'; ?></td>
+        
 
         <td>
             <a 
