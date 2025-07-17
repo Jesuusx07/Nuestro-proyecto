@@ -10,10 +10,12 @@ class Inventario {
     public $id_inventario;
     public $producto;
     public $cantidad;
+    public $cantidad_total;
     public $imagen;
     public $tipo_de_movimiento; // <-- ¡CORREGIDO: Ahora se llama tipo_de_movimiento!
     public $fecha;
     public $responsable;
+    public $columna;    
     
     public function __construct($db) {
         $this->conn = $db;
@@ -25,7 +27,7 @@ class Inventario {
      * @return bool True si la inserción fue exitosa, false en caso contrario.
      */
     public function insertar() {
-        // La consulta llama al procedimiento almacenado con 6 parámetros
+        // La consulta llama al procedimiento almacenado con 5 parámetros
         $query = "CALL insertar_inventario(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
     
@@ -33,10 +35,10 @@ class Inventario {
         // Los tipos de datos deben coincidir con los de la tabla y el SP
         $stmt->bindParam(1, $this->producto);
         $stmt->bindParam(2, $this->cantidad, PDO::PARAM_INT); // Especificar tipo INT
-        $stmt->bindParam(3, $this->imagen);
-        $stmt->bindParam(4, $this->tipo_de_movimiento); // <-- Ahora enlaza la propiedad correctamente
-        $stmt->bindParam(5, $this->fecha); // Formato YYYY-MM-DD
-        $stmt->bindParam(6, $this->responsable, PDO::PARAM_INT); // Especificar tipo INT
+        $stmt->bindParam(3, $this->tipo_de_movimiento); // <-- Ahora enlaza la propiedad correctamente
+        $stmt->bindParam(4, $this->fecha); // Formato YYYY-MM-DD
+        $stmt->bindParam(5, $this->responsable); // Especificar tipo INT
+        $stmt->bindParam(6, $this->cantidad_total); // Especificar tipo INT        
 
         // Ejecutar la consulta
         return $stmt->execute();
@@ -48,18 +50,13 @@ class Inventario {
      * @return bool True si la actualización fue exitosa, false en caso contrario.
      */
     public function actualizar() {
-        // La consulta llama al procedimiento almacenado con 7 parámetros
-        $query = "CALL actualizar_inventario(?, ?, ?, ?, ?, ?, ?)";
+        // La consulta llama al procedimiento almacenado con 2 parámetros
+        $query = "CALL actualizar_inventario(?, ?)";
         $stmt = $this->conn->prepare($query);
         
         // Limpiar y enlazar los parámetros
         $stmt->bindParam(1, $this->id_inventario, PDO::PARAM_INT); // ID del registro a actualizar
-        $stmt->bindParam(2, $this->producto);
-        $stmt->bindParam(3, $this->cantidad, PDO::PARAM_INT);
-        $stmt->bindParam(4, $this->imagen);
-        $stmt->bindParam(5, $this->tipo_de_movimiento);
-        $stmt->bindParam(6, $this->fecha);
-        $stmt->bindParam(7, $this->responsable, PDO::PARAM_INT);
+        $stmt->bindParam(2, $this->cantidad_total, PDO::PARAM_INT);
 
         // Ejecutar la consulta
         return $stmt->execute();
@@ -95,6 +92,18 @@ class Inventario {
         
         // Enlazar el ID de inventario
         $stmt->bindParam(':id_inventario', $this->id_inventario, PDO::PARAM_INT);
+        
+        // Ejecutar la consulta
+        return $stmt->execute();
+    }
+
+    public function sumar() {
+        // Usar marcadores de posición con nombre
+        $query = "CALL sumar_inventario(?)";
+        $stmt = $this->conn->prepare($query);
+        
+        // Enlazar el ID de inventario
+        $stmt->bindParam(1, $this->columna, PDO::PARAM_INT);
         
         // Ejecutar la consulta
         return $stmt->execute();

@@ -9,21 +9,21 @@ class InventarioController {
     }
 
 
-    public function insertar($producto, $cantidad, $imagen, $tipo_de_movimiento, $fecha, $responsable) {
+    public function insertar($producto, $cantidad, $tipo_de_movimiento, $fecha, $responsable, $cantidad_total) {
         $this->inventario->fecha = $fecha;
         $this->inventario->producto = $producto;
         $this->inventario->cantidad = $cantidad;
-        $this->inventario->imagen = $imagen;
         $this->inventario->tipo_de_movimiento = $tipo_de_movimiento; 
         $this->inventario->responsable = $responsable; 
+        $this->inventario->cantidad_total = $cantidad_total;         
 
         return $this->inventario->insertar();
     }
 
-    public function actualizar($id, $fecha, $total_inventario) {
+    public function actualizar($id, $cantidad_total) {
         $this->inventario->id = $id;
-        $this->inventario->fecha = $fecha;
-        $this->inventario->total_inventario = $total_inventario;
+        $this->inventario->cantidad_total = $cantidad_total;
+
        
         return $this->inventario->actualizar();
     }
@@ -37,5 +37,10 @@ class InventarioController {
     public function eliminar($id) {
         $this->inventario->id = $id;
         return $this->inventario->eliminar();
+    }
+
+    public function sumar($columna) {
+        $this->inventario->columna = $columna;
+        return $this->inventario->sumar();
     }
 }

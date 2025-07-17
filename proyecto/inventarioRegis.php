@@ -54,23 +54,18 @@ $session = new SessionManager();
 
         <label for="producto">Producto</label>
             <select id="tipo" name="producto">
+                <option value=""></option>
           <?php
 
           $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-          $sql = "SELECT * FROM usuario where id_rol != 'admin'";
+          $sql = "SELECT * FROM producto";
           $result = mysqli_query($conexion, $sql);
 
           while ($mostrar = mysqli_fetch_array($result)) {
           ?>
-            <?php
-            
-            if ($mostrar['id_rol'] == 'proveedor') {
 
-            ?>
-                <option value="entrada"><?php echo htmlspecialchars($mostrar['correo']); ?></option>
-            <?php
-            }
-            ?>
+                <option value=<?php echo htmlspecialchars($mostrar['id_producto']); ?>><?php echo htmlspecialchars($mostrar['nombre']); ?></option>
+
           <?php
           }
           ?>
@@ -78,15 +73,15 @@ $session = new SessionManager();
 
             <input type="number" id="nombre" name="cantidad" placeholder="Cantidad" min="1" max="100" required>
             
-            <input type="file" id="imagen" name="imagen" accept="image/*">
 
             <label for="tipo">Tipo de movimiento</label>
                   <select id="tipo" name="tipo">
+                    <option value=""></option>                    
                     <option value="entrada">Entrada</option>
                     <option value="salida">Salida</option>
                   </select>
             <label for="tipo">Fecha</label>
-            <input type="date" id="imagen" name="fecha">
+            <input type="date" id="imagen" name="date">
             
             <input type="submit" id="boton" value="Registrar">
 
