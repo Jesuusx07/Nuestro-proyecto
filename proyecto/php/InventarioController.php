@@ -38,9 +38,5 @@ class InventarioController {
         $this->inventario->id = $id;
         return $this->inventario->eliminar();
     }
-
-    public function sumar($columna) {
-        $this->inventario->columna = $columna;
-        return $this->inventario->sumar();
-    }
+    
 }

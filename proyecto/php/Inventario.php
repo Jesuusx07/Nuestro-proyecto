@@ -55,8 +55,8 @@ class Inventario {
         $stmt = $this->conn->prepare($query);
         
         // Limpiar y enlazar los parámetros
-        $stmt->bindParam(1, $this->id_inventario, PDO::PARAM_INT); // ID del registro a actualizar
-        $stmt->bindParam(2, $this->cantidad_total, PDO::PARAM_INT);
+        $stmt->bindParam(1, $this->id_inventario); // ID del registro a actualizar
+        $stmt->bindParam(2, $this->cantidad_total);
 
         // Ejecutar la consulta
         return $stmt->execute();
@@ -73,11 +73,11 @@ class Inventario {
         $stmt = $this->conn->prepare($query);
         
         // Enlazar el ID de inventario
-        $stmt->bindParam(':id_inventario', $this->id_inventario, PDO::PARAM_INT);
+        $stmt->bindParam(':id_inventario', $this->id);
         
         $stmt->execute();
         // Devolver el resultado como un array asociativo
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -91,21 +91,10 @@ class Inventario {
         $stmt = $this->conn->prepare($query);
         
         // Enlazar el ID de inventario
-        $stmt->bindParam(':id_inventario', $this->id_inventario, PDO::PARAM_INT);
+        $stmt->bindParam(':id_inventario', $this->id);
         
         // Ejecutar la consulta
         return $stmt->execute();
     }
 
-    public function sumar() {
-        // Usar marcadores de posición con nombre
-        $query = "CALL sumar_inventario(?)";
-        $stmt = $this->conn->prepare($query);
-        
-        // Enlazar el ID de inventario
-        $stmt->bindParam(1, $this->columna, PDO::PARAM_INT);
-        
-        // Ejecutar la consulta
-        return $stmt->execute();
-    }
 }

@@ -265,7 +265,7 @@ DELIMITER //
 
 CREATE PROCEDURE sumar_inventario(IN i_producto INT)
 BEGIN
-    SELECT SUM (i_producto) FROM inventario;
+    SELECT SUM(i_producto) FROM inventario;
 END //
 
 
@@ -303,14 +303,14 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE actualizar_inventario (
-    IN i_id_inventario INT,
+    IN i_id_producto INT,
     IN i_cantidad_total INT
 )
 BEGIN
     UPDATE inventario
     SET
         cantidad_total = i_cantidad_total
-    WHERE id_inventario = i_id_inventario;
+    WHERE id_producto = i_id_producto;
 END //
 
 -- ELIMINAR INVENTARIO

@@ -45,15 +45,24 @@ $resultado = $controlador->insertar(
     0
 );
 
+$cantidad_total_sumada = 0;
+
 $obtener = $controlador->obtener($producto);
 
-$suma = $controlador->sumar($obtener['cantidad']);
+foreach ($obtener as $registro) {
+        if (isset($registro['cantidad'])) {
+            $cantidad_total_sumada += $registro['cantidad'];
+        }
+    }
 
-$actu = $controlador->actualizar($obtener['id_inventario'], $suma);
+var_dump($cantidad_total_sumada);
+
+
+$actu = $controlador->actualizar($producto, echo $cantidad_total_sumada);
 
 // Redirección si fue exitoso
 if ($resultado) {
-    header('Location: ../inventario.php');
+
     exit();
 } else {
     $session->set('error_message', 'Error al registrar en inventario.');
