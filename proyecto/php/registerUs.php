@@ -24,7 +24,8 @@ $password_hash = password_hash($password, PASSWORD_DEFAULT);
 $documento = $controlador->obtenerDocu($docu);
 $usuario = $controlador->obtener($email);
 
-
+$longMin = 8;
+$longMax = 50;
 
 if($fname == "" || $lname == "" || $email == "" || $password == "" || $tele == "" || $docu == "" || $select == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
@@ -45,11 +46,25 @@ else{
         header('Location: ../registerUs.php');
         exit(); 
     }
+    
     else if($usuario){
         $session->set('error_message', 'Este correo ya esta registrado.');
 
         header('Location: ../registerUs.php');
     }
+    
+else if(strlen($nom) > $longMaxnom){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(strlen($pass) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
     else if($documento){
         $session->set('error_message', 'Este documento ya esta registrado.');
 

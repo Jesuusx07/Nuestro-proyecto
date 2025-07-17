@@ -19,7 +19,8 @@ $tele = $_POST["tele"];
 $docu = $_POST["documento"];
 $select = $_POST["select"];
 
-
+$longMin = 8;
+$longMax = 50;
 
 
 if($fname == "" || $lname == "" || $email == "" || $tele == "" || $docu == "" || $select == ""){
@@ -44,6 +45,18 @@ else{
 
         exit();
     }
+    else if(strlen($nom) > $longMaxnom){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(strlen($pass) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
     else if(strpos($tele, " ") !== false){
         $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
 

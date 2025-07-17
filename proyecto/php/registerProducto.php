@@ -19,7 +19,8 @@ $nombre = $_POST["responsable"];
 
 $producto = $controlador->obtener($nombre);
 
-
+$longMin = 8;
+$longMax = 50;
 
 if($id_inventario == "" || $cantidad == "" || $imagen == "" || $tipo_de_movimiento || $fecha == "" || $responsable == "" ){
     $session->set('error_message', 'Por favor, llene todos los campos.');
@@ -46,6 +47,18 @@ else{
             header('Location: ../inventarioRegister.php'); 
             exit();
         }
+        else if(strlen($nom) > $longMaxnom){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(strlen($pass) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
         elseif($select == "Vegetal"){
             $producto = $controlador->insertar($nombre, "Vegetal",  $imagen, $precio);
 

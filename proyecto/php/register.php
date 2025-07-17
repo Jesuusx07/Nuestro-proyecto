@@ -33,7 +33,7 @@ $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
 // 3. Definir las longitudes mínimas y máximas y otros criterios para la contraseña.
 $longMin = 8;
-$longMax = 40; // Esta longitud se aplica a la contraseña en texto plano, no al hash.
+$longMax = 50; // Esta longitud se aplica a la contraseña en texto plano, no al hash.
 $longMaxnom = 20; // Longitud máxima para nombres y apellidos.
 
 require_once 'UsuarioController.php';

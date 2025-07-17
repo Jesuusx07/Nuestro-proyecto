@@ -62,7 +62,7 @@ $session = new SessionManager();
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
             <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
-            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
+            <a href="platillo.php" class="sub-btn">Consultar</a>
           </div>
         </div>
            <div class="menu-item">
