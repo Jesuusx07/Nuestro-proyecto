@@ -53,16 +53,16 @@ else{
         header('Location: ../registerUs.php');
     }
     
-else if(strlen($nom) > $longMaxnom){
-    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+else if(strlen($fname) > $longMax){
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../registerUs.php'); 
     exit();
 }
-else if(strlen($pass) < $longMin){
+else if(strlen($password) < $longMin){
     $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../registerUs.php'); 
     exit();
 }
     else if($documento){

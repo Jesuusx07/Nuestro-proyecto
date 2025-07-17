@@ -37,16 +37,10 @@ else{
 
         exit();
     }
-    else if(strlen($nom) > $longMaxnom){
+    else if(strlen($fname) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
-    header('Location: ../registrarse.php'); 
-    exit();
-}
-else if(strlen($pass) < $longMin){
-    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
-
-    header('Location: ../registrarse.php'); 
+    header('Location: ../editarProvEmp.php'); 
     exit();
 }
     elseif(preg_match('/[a-z]/', $tele)){

@@ -176,13 +176,9 @@ $session = new SessionManager();
 <table>
     <tr>
         <th>Id</th>
-        <th>Producto</th>
-        <th>Cantidad</th>
         <th>Nombres</th>
         <th>Apellidos</th>
-        <th>Correo</th>
         <th>correo</th>
-        <th>Cantidad</th>
         <th>telefono</th>
         <th>documento</th>
     </tr>
@@ -197,7 +193,6 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['cantidad']; ?></td>
         <td><?php echo $mostrar['nombres']; ?></td> 
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td><?php echo $mostrar['correo']; ?></td>

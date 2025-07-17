@@ -209,7 +209,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['nombre']; ?></td>
         <td><?php echo $mostrar['categoria']; ?></td>
         <td><?php echo "<img src='" . htmlspecialchars($ruta_completa_imagen) . " ' style='width:200px; height:auto;'>";?></td>
-        <td><?php echo $mostrar['precio']; ?></td>
+        <td><?php echo $mostrar['precio_unitario']; ?></td>
         <td><?php echo $mostrar['id_usuario']; ?></td>        
 
         <td>

@@ -54,9 +54,10 @@ class Reserva {
     }
 
     public function eliminar() {
-        $query = "CALL eliminar_reserva(:id)";
+        $query = "CALL eliminar_reserva(:id, :cliente)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':cliente', $this->correo);
         return $stmt->execute();
     }
 }

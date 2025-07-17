@@ -36,8 +36,9 @@ class ReservaController {
         return $this->reserva->obtener();
     }
 
-    public function eliminar($id) {
+    public function eliminar($id, $correo) {
         $this->reserva->id = $id;
+        $this->reserva->correo = $correo;
         return $this->reserva->eliminar();
     }
 }

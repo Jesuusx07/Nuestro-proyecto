@@ -45,18 +45,12 @@ else{
 
         exit();
     }
-    else if(strlen($nom) > $longMaxnom){
+    else if(strlen($fname) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
-    header('Location: ../registrarse.php'); 
-    exit();
+        header('Location: ../editar_empleado.php?id=' . $id_usuario . '&id_rol=' . $id_rol . '&nom=' . $fname . '&apell=' . $lname . '&email=' . $email . '&tel=' . $tele . '&docu=' . $docu);
 }
-else if(strlen($pass) < $longMin){
-    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
-    header('Location: ../registrarse.php'); 
-    exit();
-}
     else if(strpos($tele, " ") !== false){
         $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
 
