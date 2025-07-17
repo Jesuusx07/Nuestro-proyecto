@@ -14,6 +14,16 @@ CREATE TABLE usuario(
 
 );
 
+CREATE TABLE proveedor (
+    id_proveedor INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    producto VARCHAR(100) NOT NULL,
+    cantidad INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
 
 CREATE TABLE producto (
     id_producto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -257,15 +267,16 @@ BEGIN
 END //
 
 
+<<<<<<< HEAD
 -- PROCEDIMIENTOS PARA LA TABLA INVENTARIO
+=======
+-- inventario
+
+>>>>>>> 83ca64aa4fb319ff8cc9ca898a37d0b153c99595
 
 DELIMITER //
-CREATE PROCEDURE obtener_inventario(IN p_id_inventario INT)
-BEGIN
-    SELECT * FROM inventario WHERE id_inventario = p_id_inventario;
-END //
-DELIMITER ;
 
+<<<<<<< HEAD
 -- INSERTAR INVENTARIO
 DELIMITER //
 CREATE PROCEDURE insertar_inventario (
@@ -381,3 +392,20 @@ BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
 DELIMITER ;
+=======
+CREATE PROCEDURE insertar_inventario (
+    IN i_producto VARCHAR(100),
+    IN i_cantidad INT,
+    IN i_imagen VARCHAR(100),
+    IN i_movimiento VARCHAR (100),
+    IN i_fecha DATETIME,    
+    IN i_responsable INT
+)
+BEGIN
+        INSERT INTO inventario (producto, cantidad, imagen, tipo_de_movimiento, fecha, responsable)
+        VALUES (i_producto, i_cantidad, i_imagen, i_movimiento, i_fecha, i_responsable);
+
+END //
+
+
+>>>>>>> 83ca64aa4fb319ff8cc9ca898a37d0b153c99595

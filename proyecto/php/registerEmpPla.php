@@ -38,7 +38,8 @@ try {
     exit();
 }
 
-
+$longMin = 8;
+$longMax = 50;
 // Validaciones de entrada
 if (empty($nombre) || empty($descripcion) || empty($precio) || empty($select)) {
     $session->set('error_message', 'Por favor, llene todos los campos.');
@@ -51,6 +52,18 @@ if (empty($nombre) || empty($descripcion) || empty($precio) || empty($select)) {
         header('Location: ../registrarPlatilloEmp.php');
         exit();
     }
+    else if(strlen($nom) > $longMaxnom){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(strlen($pass) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
     // Validar si el platillo ya está registrado (asumiendo que $platillo_existente contiene algo si existe)
     // De nuevo, esta validación asume que `obtener($nombre)` o un método similar te devuelve un platillo existente por su nombre.
     // Si $platillo_existente es verdadero, significa que se encontró un registro.

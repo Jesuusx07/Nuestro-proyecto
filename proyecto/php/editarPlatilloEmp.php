@@ -27,7 +27,8 @@ $nombre = $_POST["nombre"] ?? '';
 $descripcion = $_POST["descripcion"] ?? ''; // Nuevo campo para la descripción
 $precio = $_POST["precio"] ?? ''; // Cambiado de precio_unitario a precio
 $pla_categoria = $_POST["categoria"] ?? ''; // Cambiado de categoria a pla_categoria
-
+$longMin = 8;
+$longMax = 50;
 // --- Validaciones de Entrada ---
 if (empty($id_pla) || empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_categoria)) {
     $session->set('error_message', 'Por favor, llene todos los campos obligatorios.');
@@ -43,6 +44,18 @@ if (empty($id_pla) || empty($nombre) || empty($descripcion) || empty($precio) ||
            '&pla_categoria=' . urlencode($pla_categoria));
     exit();
 } else {
+    else if(strlen($nom) > $longMaxnom){
+    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
+else if(strlen($pass) < $longMin){
+    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+
+    header('Location: ../registrarse.php'); 
+    exit();
+}
     // Si todas las validaciones básicas pasan, procedemos a actualizar
 
     // Llamar al método 'actualizar' del controlador de platillos
