@@ -27,16 +27,16 @@ if (
     header('Location: ../registerEmpInv.php');
     exit();
 }
-else if(strlen($producto) > $longMaxnom){
+else if(strlen($producto) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../registrarseEmInv.php'); 
     exit();
 }
-else if(strlen($pass) < $longMin){
+else if(strlen($producto) < $longMin){
     $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../registerEmpInv.php'); 
     exit();
 }
 // Validación extra: cantidad numérica y dentro de rango

@@ -45,7 +45,8 @@ else{
 
         exit();
     }
-    else if(strlen($nom) > $longMaxnom){
+ 
+else if(strlen($nom) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
     header('Location: ../registrarse.php'); 

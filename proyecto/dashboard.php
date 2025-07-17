@@ -16,7 +16,7 @@ $session = new SessionManager();
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel Administrativo</title>
-  <link rel="stylesheet" href="./css/dashboardEmp.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -106,13 +106,10 @@ $session = new SessionManager();
 
   <div class="menu-item">
       <a href="venta_empleado.php" class="btn-venta">Hacer una venta</a>
-
-
-
-
     </div>
 
 </aside>
+
 
      <!-- ░░░  MAIN  ░░░ -->
     <main class="main">

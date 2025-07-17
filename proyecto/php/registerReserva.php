@@ -19,22 +19,24 @@ $usuarioConectado = $session->getUserName();
 $correo = $nombre . $apellido . "@kennys.com";
 $longMin = 8;
 $longMax = 50;
+
 if($date == "" || $nombre == "" || $apellido == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
     header('Location: ../reservasRegis.php'); 
     exit();
 }
-else if(strlen($nom) > $longMaxnom){
+else if(strlen($nombre) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../reservasRegis.php'); 
     exit();
 }
-else if(strlen($pass) < $longMin){
+
+else if(strlen($apellido) < $longMin){
     $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../reservasRegis.php'); 
     exit();
 }
 
