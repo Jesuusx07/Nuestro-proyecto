@@ -42,7 +42,7 @@ if (!$session->isLoggedIn()) {
     <!-- SIDEBAR -->
     <aside class="menu-lateral">
       <nav class="menu-container">
-        <div class="menu-item">
+ <div class="menu-item">
           <button class="btn-menu">Gestión de Empleados</button>
           <div class="sub-menu">
             <a href="registerUs.php" class="sub-btn">Registrar</a>
@@ -50,20 +50,23 @@ if (!$session->isLoggedIn()) {
           </div>
         </div>
 
-        <div class="menu-item">
+      <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
+
             <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
             <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
           </div>
         </div>
-               <div class="menu-item">
-          <button class="btn-menu">Gestión de Productos </button>
+
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Producto</button>
           <div class="sub-menu">
-            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+            <a href="registrarProductos.php" class="sub-btn">Registrar</a>
             <a href="Producto.php" class="sub-btn">Consultar</a>
           </div>
-
+        </div>
+    
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
           <div class="sub-menu">
@@ -83,6 +86,7 @@ if (!$session->isLoggedIn()) {
         <div class="menu-item">
           <button class="btn-menu">Gestión de Ventas</button>
           <div class="sub-menu">
+            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
             <a href="ventas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -95,6 +99,9 @@ if (!$session->isLoggedIn()) {
           </div>
         </div>
       </nav>
+       <div class="menu-item">
+      <button class="btn-venta">HACER UNA VENTA</button>
+    </div>
     </aside>
 
     <!-- TABLA DE INVENTARIO -->
