@@ -32,8 +32,7 @@ $session = new SessionManager();
                     <input type="email" id="login_email" name="correo" placeholder="tucorreo@gmail.com">
                 </div>
 
-                <button type="submit" class="boton-registro" id="login-submit">Recuperar Contraseña</button>
-                
+                <button type="submit" class="boton-registro" id="login-submit">Recuperar Contraseña</button> 
             </form>
         </div>
     </div>

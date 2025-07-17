@@ -40,7 +40,7 @@ else{
     else if(strlen($fname) > $longMax){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
-    header('Location: ../editarProvEmp.php'); 
+    header('Location: ../editarProvEmp.php?id=' . $id_usuario . '&nom=' . $fname . '&apell=' . $lname . '&email=' . $email . '&tel=' . $tele . '&docu=' . $docu); 
     exit();
 }
     elseif(preg_match('/[a-z]/', $tele)){

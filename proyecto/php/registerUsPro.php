@@ -16,13 +16,14 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $tele = $_POST["tele"];
 $docu = $_POST["documento"];
-
+$nombre = $_POST["fname"];
+$apellido = $_POST["lname"];
+$longMin = 8;
+$longMax = 50;
 $usuario = $controlador->obtener($email);
 
 $documento = $controlador->obtenerDocu($docu);
 
-$longMin = 8;
-$longMax = 50;
 
 if($fname == "" || $lname == "" || $email == "" || $tele == "" || $docu == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
@@ -50,6 +51,7 @@ else if(strlen($fname) > $longMax){
     header('Location: ../registrarproveedores.php'); 
     exit();
 }
+
     else if($usuario){
         $session->set('error_message', 'Este correo ya esta registrado.');
 

@@ -387,4 +387,8 @@ CREATE PROCEDURE eliminar_platillo (IN p_id_pla INT)
 BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
+<<<<<<< HEAD
 
+=======
+DELIMITER ;
+>>>>>>> 1b812118b910a719d5b5f2f9fcb260314841a14d

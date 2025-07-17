@@ -19,6 +19,7 @@ $usuarioConectado = $session->getUserName();
 $correo = $nombre . $apellido . "@kennys.com";
 $longMin = 8;
 $longMax = 50;
+
 if($date == "" || $nombre == "" || $apellido == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
@@ -26,9 +27,26 @@ if($date == "" || $nombre == "" || $apellido == ""){
     exit();
 }
 else if(strlen($nombre) > $longMax){
-    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
     header('Location: ../reservasRegis.php'); 
+
+    exit();
+}
+
+<<<<<<< HEAD
+else if(strlen($apellido) > $longMax){
+=======
+else if(strlen($apellido) > $longMin){
+>>>>>>> 14b8906d3e7a2238de14bbbaa004480a034125be
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
+
+    header('Location: ../reservasRegis.php'); 
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 14b8906d3e7a2238de14bbbaa004480a034125be
     exit();
 }
 

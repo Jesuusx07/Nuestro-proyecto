@@ -50,7 +50,7 @@ $pla_categoria = $_GET['pla_categoria'] ?? '';
     <div class="container">
         <h2>Editar Platillo</h2>
         <!-- El formulario enviará los datos al script PHP que procesará la actualización del platillo -->
-        <form action="./php/editarPlatilloEmp.php" method="POST">
+        <form action="./php/editarPlatillo.php" method="POST">
             <div class="form-group">
                 <!-- Campo oculto para enviar el ID del platillo a editar -->
                 <input type="hidden" name="id_pla" value="<?php echo htmlspecialchars($id_pla); ?>">

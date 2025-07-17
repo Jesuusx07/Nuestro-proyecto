@@ -19,7 +19,7 @@ try {
     $db = (new Database())->conectar();
 } catch (PDOException $e) {
     $session->set('error_message', 'Error de conexión a la base de datos: ' . $e->getMessage());
-    header('Location: ../platilloEmp.php'); // Redirige a la página de listado de platillos en caso de error de DB
+    header('Location: ../latilloAdmin.php'); // Redirige a la página de listado de platillos en caso de error de DB
     exit();
 }
 
@@ -31,7 +31,7 @@ if (isset($_GET['id_pla'])) { // El ID debe venir como 'id_pla' desde el enlace 
     $id_platillo = $_GET['id_pla']; // Se obtiene directamente el ID, PDO lo manejará de forma segura
 } else {
     $session->set('error_message', 'ID de platillo no proporcionado para eliminar.');
-    header('Location: ../platilloEmp.php'); // Redirige si no hay ID
+    header('Location: ../latilloAdmin.php'); // Redirige si no hay ID
     exit();
 }
 
@@ -50,7 +50,7 @@ try {
 }
 
 // Redirigir de vuelta a la página de listado de platillos
-header("location: ../platilloEmp.php");
+header("location: ../platilloAdmin.php");
 exit();
 
 ?>

@@ -40,20 +40,20 @@ $pla_categoria = $_POST["pla_categoria"] ?? ''; // ¡CORREGIDO! Ahora coincide c
 if (empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_categoria)) {
 
     $session->set('error_message', 'Por favor, llene todos los campos.');
-    header('Location: ../registrarPlatilloEmp.php');
+    header('Location: ../registrarPlatillo.php');
     exit();
 } else {
     // Validar que el nombre no contenga números
     if (preg_match('/[0-9]/', $nombre)) {
         $session->set('error_message', 'El nombre del platillo no debe contener números.');
-        header('Location: ../registrarPlatilloEmp.php');
+        header('Location: ../registrarPlatillo.php');
         exit();
     }
     // Validar si el platillo ya está registrado por nombre
 
     else if ($platillo_existente) {
         $session->set('error_message', 'Este platillo ya está registrado.');
-        header('Location: ../registrarPlatilloEmp.php');
+        header('Location: ../registrarPlatillo.php');
         exit();
     } else {
         // Insertar el platillo utilizando el controlador
@@ -62,12 +62,12 @@ if (empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_catego
 
         if ($insertado) {
             $session->set('exito', 'Platillo registrado con éxito!');
-            header('Location: ../platilloEmp.php'); // Redirigir a la página de éxito o listado
+            header('Location: ../platilloAdmin.php'); // Redirigir a la página de éxito o listado
             exit();
         } else {
             // Manejar error de inserción
             $session->set('error_message', 'Error al registrar el platillo. Intente de nuevo.');
-            header('Location: ../registrarPlatilloEmp.php');
+            header('Location: ../registrarPlatillo.php');
             exit();
         }
     }

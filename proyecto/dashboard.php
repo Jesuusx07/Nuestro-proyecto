@@ -16,7 +16,7 @@ $session = new SessionManager();
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel Administrativo</title>
-  <link rel="stylesheet" href="./css/dashboardEmp.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -61,15 +61,23 @@ $session = new SessionManager();
       <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
+<<<<<<< HEAD
 
             <a href="registerUs.php" class="sub-btn">Registrar</a>
             <a href="registrarPlatillo.php" class="sub-btn">Consultar</a>
+=======
+ 
+
+            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
+            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
+>>>>>>> 1b812118b910a719d5b5f2f9fcb260314841a14d
           </div>
         </div>
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Producto</button>
           <div class="sub-menu">
+<<<<<<< HEAD
             <a href="registerUs.php" class="sub-btn">Registrar</a>
             <a href="registrarPlatillo.php" class="sub-btn">Consultar</a>
 
@@ -77,13 +85,21 @@ $session = new SessionManager();
             <a href="platillo.php" class="sub-btn">Consultar</a>
 
           </div>
+=======
+            <a href="registrarProductos.php" class="sub-btn">Registrar</a>
+
+        </div>
+>>>>>>> 1b812118b910a719d5b5f2f9fcb260314841a14d
         </div>
            <div class="menu-item">
           <button class="btn-menu">Gestión de Productos </button>
           <div class="sub-menu">
             <a href="registrarProducto.php" class="sub-btn">Registrar</a>
+
             <a href="Producto.php" class="sub-btn">Consultar</a>
           </div>
+        </div>
+    
         <div class="menu-item">
           <button class="btn-menu">Gestión de Proveedor</button>
           <div class="sub-menu">
@@ -116,16 +132,12 @@ $session = new SessionManager();
           </div>
         </div>
   </nav>
-
-  <div class="menu-item">
-      <a href="venta_empleado.php" class="btn-venta">Hacer una venta</a>
-
-
-
-
+<div class="menu-item">
+      <button class="btn-venta">HACER UNA VENTA</button>
     </div>
 
 </aside>
+
 
      <!-- ░░░  MAIN  ░░░ -->
     <main class="main">
@@ -183,10 +195,18 @@ while ($mostrar = mysqli_fetch_array($result)) {
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
+  // Detectar y aplicar el tema guardado al cargar
+if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
+
+// Botón para alternar tema
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  const isDark = document.body.classList.contains('dark-theme');
+  localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
+});
 
     // ----- Menú perfil desplegable -----
     const perfilBtn = document.getElementById('perfilBtn');

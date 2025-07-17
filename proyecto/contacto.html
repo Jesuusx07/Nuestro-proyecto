@@ -16,37 +16,41 @@
         <img src="img/logo_Favicon.png" class="favicon" alt="Logo Kennys">
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="nosotros.html">NOSOTROS</a></li>
-        <li><a href="objetivo.html">OBJETIVO</a></li>
-        <li><a href="seguridad.html">SEGURIDAD</a></li>
-        <li><a href="contacto.html">CONTACTO</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="objetivo.html">Objetivo</a></li>
+        <li><a href="seguridad.html">Seguridad</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
       <div class="login-btn">
-        <a class="login" href="login.php">
-          <img src="img/login (2).png" alt="login">
+        <a href="login.php" class="login">
+          <img src="img/login (2).png" alt="Iniciar sesión">
         </a>
       </div>
     </nav>
   </header>
 
   <!-- FORMULARIO DE CONTACTO -->
-  <main>
-    <div class="container">
-      <div class="navbar-right">
-        <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
+  <main class="contacto-main">
+    <div class="container contacto-container">
+      <div class="logo-container">
+        <img src="img/Logo Principal (1).png" class="logo" alt="Logo principal" />
       </div>
-      <h2>CONTÁCTANOS</h2>
-      <form id="register">
+
+      <h2>Contáctanos</h2>
+
+      <form id="contacto-form">
         <div class="input-group">
-          <label for="reg_email">Correo electrónico</label>
-          <input type="email" id="reg_email" placeholder="tucorreo@gmail.com">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" placeholder="tucorreo@gmail.com" required>
         </div>
+
         <div class="input-group">
-          <label for="reg_user">Observaciones o Comentarios</label>
-          <input type="text" id="reg_user" placeholder="Deberían agregar esto:">
+          <label for="comentarios">Observaciones o comentarios</label>
+          <input type="text" id="comentarios" placeholder="Deberían agregar esto:" required>
         </div>
-        <button type="submit" class="boton-registro" id="register-submit">Enviar</button>
+
+        <button type="submit" class="boton-registro">Enviar</button>
       </form>
     </div>
   </main>
@@ -68,10 +72,5 @@
     </div>
   </footer>
 
-  <!-- SCRIPT LOGIN (NO FUNCIONA EN ESTA PÁGINA PERO TE LO LIMPIO) -->
-  <script>
-    // Este script parece corresponder a login, no al formulario de contacto.
-    // Asegúrate de usar el ID correcto en tu HTML si quieres validación de contacto.
-  </script>
 </body>
 </html>

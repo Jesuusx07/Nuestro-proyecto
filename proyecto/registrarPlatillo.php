@@ -15,7 +15,7 @@ $session = new SessionManager();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar usuario</title>
+  <title>Registrar Platillo</title>
   <link rel="stylesheet" href="./css/registerUs.css">
    <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -46,31 +46,42 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Platillos</h2>
     <div class="regis">
-      <form id="formu" action="./php/platillo.php" method="POST">
-        <input type="text" id="nombre" name="fname" placeholder="Nombre del platillo">
-        <input type="text" id="apelli" name="lname" placeholder="Descripcion">
-        <input type="text" id="correo" name="email" placeholder="Precio">
+      <form id="formu" action="./php/registerPlatillo.php" method="POST">
+                <!-- Campo Nombre del Platillo - 'name' corregido -->
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del platillo">
+                
+                <!-- Campo Descripción - Cambiado a textarea y 'name' corregido -->
+                <textarea id="descripcion" name="descripcion" placeholder="Descripcion" rows="4"></textarea>
+                
+                <!-- Campo Precio - 'type', 'name', 'step' y 'min' corregidos -->
+                <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
 
+                <!-- Campo Categoría - 'name' e 'id' corregidos -->
+                <select name="pla_categoria" id="pla_categoria">
+                    <option value="">Categoria</option>
+                    <option value="Ensaladas">Ensaladas</option>
+                    <option value="Sopas">Sopas</option>
+                    <option value="Desayuno">Desayuno</option>
+                    <option value="Plato Fuerte">Plato Fuerte</option>
+                    <option value="Postre">Postre</option>
+                    <option value="Bebida">Bebida</option>
+                    <!-- Añade más categorías si es necesario -->
+                </select>
+                
+                <input type="submit" id="boton" value="Registrar Platillo">
 
-        <select name="select" id="Categoria">
-          <option value="">Categoria</option>
-          <option value="Ensaladas">Ensaladas</option>
-          <option value="Sopas">Sopas</option>
-          <option value="Desayuno">Desayuno</option>
-        </select>
-        <input type="submit" id="boton" value="Registrar Platillo">
-
-        <?php
-          if ($session->has('error_message')) {
-            echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
-            $session->remove('error_message');
-          } else if ($session->has('exito')) {
-            echo '<p class="exito">' . htmlspecialchars($session->get('exito')) . '</p>';
-            $session->remove('exito');
-            $session->remove('error_message');
-          }
-        ?>
-      </form>
+                <?php
+                // Manejo de mensajes de sesión (error o éxito) - Clases de estilo eliminadas
+                if ($session->has('error_message')) {
+                    echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+                    $session->remove('error_message');
+                } else if ($session->has('exito')) {
+                    echo '<p class="exito">' . htmlspecialchars($session->get('exito')) . '</p>';
+                    $session->remove('exito');
+                    $session->remove('error_message'); // Limpiar ambos por si acaso
+                }
+                ?>
+            </form>
     </div>
   </div>
 

@@ -45,7 +45,9 @@ else{
 
         exit();
     }
-    else if(strlen($fname) > $longMax){
+ 
+else if(strlen($nom) > $longMax){
+
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
         header('Location: ../editar_empleado.php?id=' . $id_usuario . '&id_rol=' . $id_rol . '&nom=' . $fname . '&apell=' . $lname . '&email=' . $email . '&tel=' . $tele . '&docu=' . $docu);

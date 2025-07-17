@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $session->set('error_message', 'Por favor, llene todos los campos obligatorios.');
 
         // Redirigir de vuelta a la página de edición con los datos para que el usuario no los pierda
-        header('Location: ../editarPlaEmp.php?' .
+        header('Location: ../editarPlatillo.php?' .
                'id_pla=' . urlencode($id_pla_post) .
                '&nombre=' . urlencode($nombre_post) .
                '&descripcion=' . urlencode($descripcion_post) .
@@ -70,12 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // --- Manejo del Resultado de la Actualización ---
         if ($actualizado) {
             $session->set('success_message', 'Platillo actualizado exitosamente.'); // Mensaje de éxito
-            header('Location: ../platilloEmp.php'); // Redirigir a la página de listado de platillos
+            header('Location: ../platilloAdmin.php'); // Redirigir a la página de listado de platillos
             exit();
         } else {
             $session->set('error_message', 'Error al actualizar el platillo. Intente de nuevo.');
             // Si la actualización falla en la base de datos, redirige de vuelta con los datos
-            header('Location: ../editarPlaEmp.php?' .
+            header('Location: ../editarPlatillo.php?' .
                    'id_pla=' . urlencode($id_pla_post) .
                    '&nombre=' . urlencode($nombre_post) .
                    '&descripcion=' . urlencode($descripcion_post) .

@@ -220,8 +220,7 @@
       padding: 34px 18px;
       border: none;
       border-radius: var(--radius);
-      font-weight: 600;
-      background-color: #f5cc17;
+      background-color: #ffad60;
       color: var(--color-text);
       text-align: left;
       cursor: pointer;
@@ -230,7 +229,7 @@
     }
 
     .btn-venta:hover {
-      background-color: #ffdc18;
+      background-color: #a02334;
       color: #fff;
     }
 

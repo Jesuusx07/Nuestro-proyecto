@@ -19,7 +19,7 @@
                 <input type="password" class="form-control" id="floatingInput" name="new_contraseña" required> 
                 <label for="floatingInput">Introduzca su nueva contraseña</label>
             </div>
-            <input type="hidden" name="id_admin" value="<?php echo isset($_GET['id_admin']) ? htmlspecialchars($_GET['id_admin']) : ''; ?>">
+            <input type="hidden" name="id_usuario" value="<?php echo isset($_GET['id_usuario']) ? htmlspecialchars($_GET['id_usuario']) : ''; ?>">
 
             <button class="boton-recuperacion" type="submit">Recuperar Contraseña</button>
         </form>
