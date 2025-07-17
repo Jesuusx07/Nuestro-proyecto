@@ -50,8 +50,7 @@ $session = new SessionManager();
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
   <nav class="menu-container">
-
-         <div class="menu-item">
+            <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
             <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
@@ -79,20 +78,18 @@ $session = new SessionManager();
         <div class="menu-item">
           <button class="btn-menu">Gestión de Platillo</button>
           <div class="sub-menu">
-            <a href="registrarPlatilloEmp.html" class="sub-btn">Registrar</a>
+            <a href="registrarPlatilloEmp.php" class="sub-btn">Registrar</a>
             <a href="platilloEmp.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
   </nav>
 
-   
-    <form id="formu" action="./php/venta_empleado.php" method="POST"> 
+      <form id="formu" action="./php/venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
     </form>
-
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
@@ -134,6 +131,7 @@ $session = new SessionManager();
       });
     });
 
+
   </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE RESERVA</h1> 
@@ -145,8 +143,9 @@ $session = new SessionManager();
         <th>fecha_reserva</th>
         <th>Nombre Cliente</th>
         <th>Apellido Cliente</th>
+        <th>Responsable</th>
     </tr>
-
+  </div>
 
 <?php
 // Assuming $conexion is already established
@@ -155,8 +154,10 @@ $sql = $sql = "SELECT
     r.id_reserva,
     r.estado_reserva,
     r.fecha_reserva,
+    r.responsable,
     u.nombres,
-    u.apellidos
+    u.apellidos,
+    u.correo
 FROM
     reserva r
 JOIN
@@ -174,11 +175,12 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['fecha_reserva']; ?></td>
         <td><?php echo $mostrar['nombres']; ?></td>
         <td><?php echo $mostrar['apellidos']; ?></td>
+        <td><?php echo $mostrar['responsable']; ?></td>
         <td>
-            <a href="editar_reserva.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
+            <a href="editarResEmp.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarReserva.php?id=<?php echo $mostrar['id_reserva']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
+            <a href="./php/eliminarReserva.php?id=<?php echo $mostrar['id_reserva']; ?> &correo=<?php echo $mostrar['correo']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
         </td>
     </tr>
 <?php
