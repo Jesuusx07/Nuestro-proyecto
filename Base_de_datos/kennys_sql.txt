@@ -46,6 +46,7 @@ CREATE TABLE venta(
     total_venta DECIMAL(10, 2) NOT NULL
 );
 
+
 -- 5. Reserva
 
 CREATE TABLE reserva(
@@ -75,8 +76,8 @@ CREATE TABLE inventario (
 
 
 
--- 7. Factura_detalle (depende de factura y producto)
-CREATE TABLE factura_detalle(
+-- 7. Factura (depende de factura y producto)
+CREATE TABLE factura(
     id_factura_detalle INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_factura INT NOT NULL,
     id_producto INT NOT NULL,
@@ -85,6 +86,9 @@ CREATE TABLE factura_detalle(
     FOREIGN KEY (id_factura) REFERENCES factura(id_factura),
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
+
+
+
 
 -- 8. Pago (puede depender de venta o factura)
 CREATE TABLE Comprobante_pago(
