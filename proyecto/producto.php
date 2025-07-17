@@ -191,6 +191,7 @@ $session = new SessionManager();
         <th>Categoria</th>
         <th>Imagen</th>
         <th>Precio</th>
+        <th>Proveedor</th>
     </tr>
 
 
@@ -208,6 +209,8 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['nombre']; ?></td>
         <td><?php echo $mostrar['categoria']; ?></td>
         <td><?php echo "<img src='" . htmlspecialchars($ruta_completa_imagen) . " ' style='width:200px; height:auto;'>";?></td>
+        <td><?php echo $mostrar['precio']; ?></td>
+        <td><?php echo $mostrar['id_usuario']; ?></td>        
 
         <td>
             <a href="editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>

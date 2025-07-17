@@ -6,19 +6,21 @@ require_once 'sql.php';
 $session = new SessionManager();
 
 require_once 'Producto.php';
+require_once 'Usuario.php';
 
 $db = (new Database())->conectar();
 $controlador = new ProductoController($db);
+$controlador2 = new UsuarioController($db);
 
 $id_inventario = $_POST["id_inventario"];
 $nombre = $_POST["nombre"];
 $categoria = $_POST["categoria"];
 $imagen = $_POST["imagen"];
 $precio = $_POST["precio"];
-$usuario = $_POST["usuario"];
+$usuario = $_POST["proveedor"];
 
 $producto = $controlador->obtener($nombre);
-
+$proveedor = $controlador2->obtener($usuario);
 
 
 if($id_inventario == "" || $categoria == "" || $nombre == "" || $imagen == "" || $precio == "" || $usuario == "" ){
@@ -39,21 +41,24 @@ else{
 
         header('Location: ../inventarioRegister.php');
     }
+    elseif($proveedor['id_rol'] == 'proveedor'){
+        $proveedor = $proveedor['id_usuario'];
+    }
     else{
         if($select == "Fruta"){
-            $producto = $controlador->insertar($nombre, "Fruta",  $nombre, $precio);
+            $producto = $controlador->insertar($nombre, "Fruta",  $imagen, $precio, $proveedor);
 
             header('Location: ../inventarioRegister.php'); 
             exit();
         }
         elseif($select == "Vegetal"){
-            $producto = $controlador->insertar($nombre, "Vegetal",  $nombre, $precio);
+            $producto = $controlador->insertar($nombre, "Vegetal",  $imagen, $precio, $proveedor);
 
             header('Location: ../inventarioRegister.php'); 
             exit();
         }    
         elseif($select == "Salsa"){
-            $producto = $controlador->insertar($nombre, "Salsa",  $nombre, $precio);
+            $producto = $controlador->insertar($nombre, "Salsa",  $imagen, $precio, $proveedor);
 
             header('Location: ../inventarioRegister.php'); 
             exit();
