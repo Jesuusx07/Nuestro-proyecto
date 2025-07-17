@@ -104,95 +104,58 @@ nav ul a:hover{
 }
 
 /* Contenedor principal que organiza las imágenes y el texto uno al lado del otro */
-.impactos-container {
-    display: flex; /* Usa Flexbox para colocar hijos en línea (horizontalmente) */
-    gap: 110px; /* Espacio entre las imágenes y el texto */
-    align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
-    max-width: 1200px; /* Limita el ancho máximo del contenedor */
-    margin-left: 50px;
-    margin-top: 50px;
+
+.footer {
+  background-color: #000000;
+  padding: 80px 0;
 }
 
-/* Contenedor que agrupa todas las imágenes en una columna */
-.imagenes {
-    display: flex; /* Activa Flexbox */
-    flex-direction: column; /* Organiza las imágenes en columna */
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-/* Estilos aplicados a cada imagen */
-.impacto-img {
-    width: 200px; /* Ancho fijo para todas las imágenes */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
-}
-.impacto-imgg {
-
-    margin-left: 250px;
-    width: 200px; /* Ancho fijo para todas las imágenes */
-    border-radius: 10px; /* Bordes redondeados */
-    object-fit: cover; /* Asegura que la imagen mantenga proporción sin deformarse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
-}
-
-/* Contenedor del texto */
-.impacto-texto {
-    margin-top: 100px;
-    max-width: 600px; /* Limita el ancho del bloque de texto */
-}
-
-/* Título del texto */
-.impacto-texto h2 {
-    font-size: 28px; /* Tamaño del título */
-    margin-bottom: 15px; /* Espacio debajo del título */
-    text-align: center;
-}
-
-/* Párrafo del texto */
-.impacto-texto p {
-    font-size: 16px; /* Tamaño del texto */
-    line-height: 1.6; /* Altura entre líneas para mejorar la lectura */
-    text-align: justify; /* Justifica el texto a ambos lados */
-}
-.footer{
-    background-color: #000000;
-    padding: 80px 0 ;
-}
-.footer-row{
-    display: flex;
-    flex-wrap: wrap;
-
-}
-
-
-.footer-links{
-
-    width: 20%;
-    padding: 0px 15PX;
-
+.footer-links {
+  width: 20%;
+  padding: 0 15px;
 }
 
 .footer-links h4 {
-    font-size: 20px;
-    color: #fff;
-    margin-bottom: 25px;
-    font-weight: 500;
-    border-bottom:  2px solid #00c3ff;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-.footer-links ul li a{
-    font-size: 18px;
-    text-decoration: none;
-    color: #bbbbbb;
-    display: block;
-    margin-bottom: 15px;
-    transition: all .3s ease;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 25px;
+  font-weight: 500;
+  border-bottom: 2px solid #00c3ff;
+  padding-bottom: 10px;
+  display: inline-block;
+  text-transform: uppercase;
 }
 
-.footer-links ul li a:hover{
-    color:#fff;
-    padding-left: 6px;
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #bbbbbb;
+  display: block;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #fff;
+  padding-left: 6px;
+}
+
 
 .social-links a{
     display: inline-block;
