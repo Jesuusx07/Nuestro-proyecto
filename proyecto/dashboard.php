@@ -33,7 +33,6 @@ $session = new SessionManager();
     
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
-      
         <div class="perfil">
           <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
             <div class="menu-desplegable" id="perfilMenu">
@@ -41,6 +40,7 @@ $session = new SessionManager();
             </div>
         </div>
     </div>
+    
 
   </header>
 
@@ -49,8 +49,7 @@ $session = new SessionManager();
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
       <nav class="menu-container">
-
-      <div class="menu-item">
+ <div class="menu-item">
           <button class="btn-menu">Gestión de Empleados</button>
           <div class="sub-menu">
             <a href="registerUs.php" class="sub-btn">Registrar</a>
@@ -61,6 +60,7 @@ $session = new SessionManager();
       <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
+<<<<<<< HEAD
 
 
             <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
@@ -72,9 +72,18 @@ $session = new SessionManager();
         </div>
            <div class="menu-item">
           <button class="btn-menu">Gestión de Productos </button>
+=======
+
+            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
+            <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Producto</button>
+>>>>>>> d3e15bcc1d1c1e5eee0409a26af1b7cd454d1dc0
           <div class="sub-menu">
             <a href="registrarProducto.php" class="sub-btn">Registrar</a>
-
             <a href="Producto.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -110,11 +119,14 @@ $session = new SessionManager();
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
         </div>
-  </nav>
-<div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
-    </div>
+      </nav>
 
+      
+  <form id="formu" action="./venta_empleado.php" method="POST"> 
+        <div class="menu-item"> 
+          <button class="btn-venta">HACER UNA VENTA</button>
+        </div>
+    </form>
 </aside>
 
 

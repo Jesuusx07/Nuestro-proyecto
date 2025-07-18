@@ -18,7 +18,10 @@ $session = new SessionManager();
 <body>
 <header class="navbar">
   
+ 
 
+    
+    
      <span class="logo-text">ADMINISTRADOR</span>
     </div>
 

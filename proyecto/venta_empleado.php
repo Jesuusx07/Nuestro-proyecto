@@ -11,11 +11,15 @@ if (!$session->isLoggedIn()) {
 <head>
     <meta charset="UTF-8">
     <title>Vender</title>
-    <link rel="stylesheet" href="venta_empleado.css">
+    <link rel="stylesheet" href="./css/venta_empleado.css"">
 </head>
 <body>
     <!-- Barra superior -->
     <nav class="navbar">
+           <div class="perfil">
+    
+   
+            </div>
         <div class="navbar-container">
             <span class="navbar-brand">VENDER</span>
             <ul class="navbar-menu">
@@ -60,12 +64,17 @@ if (!$session->isLoggedIn()) {
             </div>
 
             <div class="acciones-inferiores">
-                <button type="submit" class="sub-btn">Registrar venta</button>
+                <button type="submit" class="sub-btn">Generar Factura</button>
             </div>
         </form>
     </div>
 
     <script>
+            // ----- Tema claro / oscuro -----
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
         function calcularFila(element) {
             const row = element.closest('tr');
             const cantidad = parseFloat(row.querySelector('input[name="cantidad[]"]').value) || 0;
