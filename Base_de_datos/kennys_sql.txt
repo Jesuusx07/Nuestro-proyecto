@@ -38,10 +38,21 @@ CREATE TABLE platillo(
     pla_categoria VARCHAR(50) NOT NULL
 );
 
+
 -- 4. Venta
 
-CREATE TABLE venta (
+CREATE TABLE venta(
     id_venta INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_pla INT NOT NULL,
+    id_inventario INT NOT NULL,
+
+);
+
+
+-- 5. Historial de Venta
+
+CREATE TABLE Historial_venta (
+    id_Hventa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     fecha DATE NOT NULL,
     total_venta DECIMAL(10, 2) NOT NULL,
     id_usuario INT NOT NULL, -- ID del empleado que realizó la venta
@@ -51,7 +62,7 @@ CREATE TABLE venta (
 );
 
 
--- 5. Reserva
+-- 6. Reserva
 
 CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -62,7 +73,7 @@ CREATE TABLE reserva(
     FOREIGN KEY (cliente) REFERENCES usuario(correo)
 );
 
--- 6. Inventario
+-- 7. Inventario
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -80,11 +91,11 @@ CREATE TABLE inventario (
 );
 
 
--- 7. Factura
+-- 8. Factura
 
 CREATE TABLE factura (
     id_factura INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Clave primaria única para cada factura
-    id_venta INT NULL, -- Clave foránea opcional a la tabla 'venta'
+    id_Hventa INT NULL, -- Clave foránea opcional a la tabla 'venta'
     id_pla INT NOT NULL, -- Clave foránea al platillo facturado
     id_inventario INT NOT NULL, -- Clave foránea al inventario relacionado
 
@@ -93,7 +104,7 @@ CREATE TABLE factura (
 
     -- Claves foráneas
     CONSTRAINT fk_factura_venta
-        FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
+        FOREIGN KEY (id_Hventa) REFERENCES venta(id_venta),
     CONSTRAINT fk_factura_platillo
         FOREIGN KEY (id_pla) REFERENCES platillo(id_pla),
     CONSTRAINT fk_factura_inventario
@@ -102,7 +113,7 @@ CREATE TABLE factura (
 
 
 
--- 8. Pago (puede depender de venta o factura)
+-- 9. Pago (puede depender de venta o factura)
 CREATE TABLE Comprobante_pago(
     id_pago INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_venta INT NULL,

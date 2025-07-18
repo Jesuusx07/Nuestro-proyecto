@@ -524,7 +524,19 @@ body.dark-theme td {
 
 /* Estilos para la clase btn-report (Botón Generar Reporte/Imprimir) */
 button.btn-report {
-  background: var(--color-primary);
+  background: #ffad60;
+  border: 3px solid black;
+  padding: 10px 20px;
+  margin-top: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button.btn-report:hover {
+  color: #ffffff;
+  background-color: var(--color-primary);
+
 }
 
 /* ---------------------

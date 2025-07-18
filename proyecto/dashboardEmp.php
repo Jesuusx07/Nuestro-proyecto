@@ -22,8 +22,7 @@ $session = new SessionManager();
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-   
-</head>
+   </head>
 <body>
   <!-- ░░░░░░░░░░  NAVBAR  ░░░░░░░░░░ -->
   <header class="navbar">
