@@ -49,8 +49,7 @@ $session = new SessionManager();
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
       <nav class="menu-container">
-
-     <div class="menu-item">
+ <div class="menu-item">
           <button class="btn-menu">Gestión de Empleados</button>
           <div class="sub-menu">
             <a href="registerUs.php" class="sub-btn">Registrar</a>
@@ -61,45 +60,15 @@ $session = new SessionManager();
       <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-            <a href="registerUs.php" class="sub-btn">Registrar</a>
-            <a href="registrarPlatillo.php" class="sub-btn">Consultar</a>
-=======
- 
->>>>>>> 5bc0c6e192c08c9ea23b3fdecf44eab38fcd8e20
 
             <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
             <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
->>>>>>> 1b812118b910a719d5b5f2f9fcb260314841a14d
           </div>
         </div>
 
         <div class="menu-item">
           <button class="btn-menu">Gestión de Producto</button>
           <div class="sub-menu">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            <a href="registerUs.php" class="sub-btn">Registrar</a>
-            <a href="registrarPlatillo.php" class="sub-btn">Consultar</a>
-
-            <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
-            <a href="platillo.php" class="sub-btn">Consultar</a>
-
-          </div>
-=======
-            <a href="registrarProductos.php" class="sub-btn">Registrar</a>
-
-        </div>
->>>>>>> 1b812118b910a719d5b5f2f9fcb260314841a14d
-        </div>
-           <div class="menu-item">
-          <button class="btn-menu">Gestión de Productos </button>
-          <div class="sub-menu">
->>>>>>> 5bc0c6e192c08c9ea23b3fdecf44eab38fcd8e20
             <a href="registrarProducto.php" class="sub-btn">Registrar</a>
             <a href="Producto.php" class="sub-btn">Consultar</a>
           </div>
@@ -136,6 +105,9 @@ $session = new SessionManager();
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+      </nav>
+
+      
   <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>

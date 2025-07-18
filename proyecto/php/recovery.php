@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recuperar Contraseña</title>
+</head>
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -35,6 +42,7 @@ if ($result && $result->num_rows > 0) {
     $mail = new PHPMailer(true);
 
     try {
+        
         // Configuración SMTP
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
@@ -43,13 +51,15 @@ if ($result && $result->num_rows > 0) {
         $mail->Password   = 'q h h c f j p t o p j q h q x w'; // Usa una contraseña de aplicación si es necesario
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
+        $mail->CharSet = 'UTF-8';
+
 
         $mail->setFrom('jesuusx71@gmail.com', 'Equipo de Kenny\'s');
         $mail->addAddress($email);
 
         // Enlace con id_usuario en vez de id_admin
         $mail->isHTML(true);
-        $mail->Subject = 'Recuperación de contraseña';
+        $mail->Subject = 'Recuperación de Contraseña';
         $mail->Body    = 'Hola,<br><br>Este es un correo para solicitar tu recuperación de contraseña. ' .
                          'Por favor, visita la siguiente página para restablecer tu contraseña: ' .
                          '<a href="http://localhost/Nuestro-proyecto/proyecto/change_password.php?id_usuario=' . $row['id_usuario'] . '">Restablecer Contraseña</a>' .
@@ -75,3 +85,5 @@ if ($result && $result->num_rows > 0) {
 // Cierre de la conexión
 mysqli_close($enlace);
 ?>
+</head>
+</html>
