@@ -50,11 +50,19 @@ $session = new SessionManager();
     <!-- ░░░  SIDEBAR  ░░░ -->
     <aside class="menu-lateral">
   <nav class="menu-container">
-            <div class="menu-item">
+        <div class="menu-item">
           <button class="btn-menu">Gestión de Inventario</button>
           <div class="sub-menu">
             <a href="registerEmpInv.php" class="sub-btn">Registrar</a>
             <a href="inventarioEmp.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <button class="btn-menu">Gestión de Producto</button>
+          <div class="sub-menu">
+            <a href="registerEmpPro.php" class="sub-btn">Registrar</a>
+            <a href="productosEmp.php" class="sub-btn">Consultar</a>
           </div>
         </div>
 
@@ -85,7 +93,7 @@ $session = new SessionManager();
 
   </nav>
 
-      <form id="formu" action="./php/venta_empleado.php" method="POST"> 
+      <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>

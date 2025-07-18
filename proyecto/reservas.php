@@ -182,7 +182,7 @@ $session = new SessionManager();
         <th>fecha_reserva</th>
         <th>Nombre Cliente</th>
         <th>Apellido Cliente</th>
-        <th>Responsable</th>
+        <th>Usuario responsable</th>
     </tr>
   </div>
 

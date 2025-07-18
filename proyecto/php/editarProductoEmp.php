@@ -19,12 +19,10 @@ $categoria = $_POST["categoria"];
 $longMin = 8;
 $longMax = 50;
 
-
-
 if($nombre == "" || $precio_unitario == "" || $categoria == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
-    header('Location: ../editarProdEmp.php?id=' . $id_producto . '&categoria=' . $categoria . ' &nombre=' . $nombre . '&imagen=' . $imagen1 . '&precio_unitario=' . $precio_unitario); 
+    header('Location: ../editarProEmp.php?id=' . $id_producto . '&categoria=' . $categoria . ' &nombre=' . $nombre . '&imagen=' . $imagen1 . '&precio_unitario=' . $precio_unitario); 
 
     exit();
 }
@@ -38,14 +36,14 @@ else{
             header('Location: ../productosEmp.php'); 
             exit();
         }
-        else if(strlen($nom) > $longMaxnom){
-    $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
+        else if(strlen($nom) > $longMax){
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
     header('Location: ../registrarse.php'); 
     exit();
 }
 else if(strlen($pass) < $longMin){
-    $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
+    $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
     header('Location: ../registrarse.php'); 
     exit();

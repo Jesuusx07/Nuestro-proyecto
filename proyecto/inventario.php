@@ -115,9 +115,10 @@ if (!$session->isLoggedIn()) {
           <th>id_inventario</th>
           <th>Producto</th>
           <th>Cantidad</th>
-          <th>Imagen</th>
           <th>Tipo_de_movimiento</th>
           <th>Fecha</th>
+          <th>Usuario responsable</th>
+          <th>Cantidad total</th>          
         </tr>
 
         <?php
@@ -129,11 +130,12 @@ if (!$session->isLoggedIn()) {
         ?>
         <tr>
           <td><?php echo $mostrar['id_inventario']; ?></td>
-          <td><?php echo $mostrar['producto']; ?></td>
+          <td><?php echo $mostrar['id_producto']; ?></td>
           <td><?php echo $mostrar['cantidad']; ?></td>
-          <td><?php echo $mostrar['imagen']; ?></td>
           <td><?php echo $mostrar['tipo_de_movimiento']; ?></td>
           <td><?php echo $mostrar['fecha']; ?></td>
+          <td><?php echo $mostrar['responsable']; ?></td>
+          <td><?php echo $mostrar['cantidad_total']; ?></td>                    
           <td>
             <a href="./php/eliminarInventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
           </td>
