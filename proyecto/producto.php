@@ -197,7 +197,16 @@ $session = new SessionManager();
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM producto";
+$sql = "SELECT p.id_producto,
+                p.nombre,
+                p.categoria,
+                p.imagen,
+                p.precio_unitario,
+                u.correo
+            FROM 
+                producto p
+            JOIN
+                usuario u ON p.id_usuario = u.id_usuario";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
@@ -209,7 +218,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['categoria']; ?></td>
         <td><?php echo "<img src='" . htmlspecialchars($ruta_completa_imagen) . " ' style='width:200px; height:auto;'>";?></td>
         <td><?php echo $mostrar['precio_unitario']; ?></td>
-        <td><?php echo $mostrar['id_usuario']; ?></td>        
+        <td><?php echo $mostrar['correo']; ?></td>        
 
         <td>
             <a href="editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>

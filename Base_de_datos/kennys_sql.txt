@@ -113,7 +113,9 @@ CREATE TABLE factura (
 
 
 
+
 -- 9. Pago (puede depender de venta o factura)
+
 CREATE TABLE Comprobante_pago(
     id_pago INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_venta INT NULL,
@@ -311,6 +313,25 @@ BEGIN
     WHERE id_inventario = i_id_inventario;
 END //
 
+
+-- ACTUALIZAR DATOS INVENTARIO
+
+DELIMITER //
+
+CREATE PROCEDURE actualizar_datos_inventario (
+    IN i_id_inventario INT,
+    IN i_cantidad INT,
+    IN i_tipo_de_movimiento ENUM('entrada', 'salida')
+)
+BEGIN
+    UPDATE inventario
+    SET
+        cantidad = i_cantidad,
+	tipo_de_movimiento = i_tipo_de_movimiento
+    WHERE id_inventario = i_id_inventario;
+END //
+
+
 -- ELIMINAR INVENTARIO
 DELIMITER //
 CREATE PROCEDURE eliminar_inventario (IN p_id_inventario INT)
@@ -386,4 +407,8 @@ BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
 
+<<<<<<< HEAD
 DELIMITER ;
+=======
+DELIMITER ;
+>>>>>>> f65e221806b89f512074ee4cec55ee79904418f3

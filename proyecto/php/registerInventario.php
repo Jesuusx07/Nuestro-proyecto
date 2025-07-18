@@ -8,7 +8,7 @@ $session = new SessionManager();
 $db = (new Database())->conectar();
 $controlador = new InventarioController($db);
 
-// Captura de datos del formulario
+
 $producto = $_POST["producto"];
 $cantidad = $_POST["cantidad"];
 $tipo = $_POST["tipo"]; // entrada o salida
@@ -17,7 +17,11 @@ $responsable = $session->getUserName();
 
 $longMin = 8;
 $longMax = 50;
-// Validaciones
+
+$obtener = $controlador->obtener($producto);
+
+
+
 if (
     $cantidad == "" || $tipo == "" ||
     $fecha == "" || $producto == ""
@@ -34,6 +38,21 @@ if (!is_numeric($cantidad) || $cantidad < 1 || $cantidad > 100) {
     exit();
 }
 
+$cantidad_total = 0;
+
+if($tipo == "entrada") {
+
+    $cantidad = $cantidad;
+    
+} 
+else if ($tipo == "salida") {
+
+    $cantidad = -$cantidad;
+}
+
+if ($cantidad_total == 0){
+    $cantidad_total = $cantidad;
+}
 // Registro del movimiento en inventario
 
 $resultado = $controlador->insertar(
@@ -42,27 +61,23 @@ $resultado = $controlador->insertar(
     $tipo,
     $fecha,
     $responsable,
-    0
+    $cantidad_total
 );
 
-$cantidad_total_sumada = 0;
 
-$obtener = $controlador->obtener($producto);
-
-foreach ($obtener as $registro) {
+    foreach ($obtener as $registro) {
         if (isset($registro['cantidad'])) {
-            $cantidad_total_sumada += $registro['cantidad'];
+            $cantidad_total += $registro['cantidad'];
         }
     }
 
-var_dump($cantidad_total_sumada);
 
 
-$actu = $controlador->actualizar($producto, echo $cantidad_total_sumada);
+$actu = $controlador->actualizar($producto, $cantidad_total);
 
 // Redirección si fue exitoso
 if ($resultado) {
-
+    header('Location: ../inventario.php');
     exit();
 } else {
     $session->set('error_message', 'Error al registrar en inventario.');

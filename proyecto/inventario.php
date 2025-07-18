@@ -117,30 +117,76 @@ if (!$session->isLoggedIn()) {
           <th>Cantidad</th>
           <th>Tipo_de_movimiento</th>
           <th>Fecha</th>
-          <th>Usuario responsable</th>
-          <th>Cantidad total</th>          
+          <th>Usuario responsable</th>     
         </tr>
 
         <?php
         $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-        $sql = "SELECT * FROM inventario";
+        $sql = "SELECT i.id_inventario, 
+                       p.nombre,
+                       i.cantidad, 
+                       i.tipo_de_movimiento, 
+                       i.fecha, 
+                       i.responsable 
+                    FROM 
+                       inventario i
+                    JOIN
+                       producto p ON i.id_producto = p.id_producto";
+
         $result = mysqli_query($conexion, $sql);
+
+        $sql_cantidad = " SELECT
+                          p.nombre,
+                          i.cantidad_total
+                      FROM
+                          inventario i
+                      JOIN
+                          producto p ON i.id_producto = p.id_producto
+                      GROUP BY
+                          p.id_producto, p.nombre -- Agrupamos por ID y nombre para asegurar unicidad y que el nombre sea correcto
+                      ORDER BY
+                          p.nombre ASC; ";
+        $result_sum = mysqli_query($conexion, $sql_cantidad);
+
 
         while ($mostrar = mysqli_fetch_array($result)) {
         ?>
         <tr>
           <td><?php echo $mostrar['id_inventario']; ?></td>
-          <td><?php echo $mostrar['id_producto']; ?></td>
+          <td><?php echo $mostrar['nombre']; ?></td>
           <td><?php echo $mostrar['cantidad']; ?></td>
           <td><?php echo $mostrar['tipo_de_movimiento']; ?></td>
           <td><?php echo $mostrar['fecha']; ?></td>
-          <td><?php echo $mostrar['responsable']; ?></td>
-          <td><?php echo $mostrar['cantidad_total']; ?></td>                    
+          <td><?php echo $mostrar['responsable']; ?></td>         
           <td>
-            <a href="./php/eliminarInventario.php?id=<?php echo $mostrar['id_inventario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="editar_inventario.php?id_inventario=<?php echo $mostrar['id_inventario'];?> &cantidad=<?php echo $mostrar['cantidad'];?> &tipo=<?php echo $mostrar['tipo_de_movimiento'];?>" class="boton-edi">Editar</a>
           </td>
         </tr>
-        <?php } ?>
+        <?php
+        }
+        mysqli_free_result($result); // Free the result set from the inventory query
+        ?>
+      </tbody>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad total</th>          
+        </tr>
+      <tbody>
+        <?php
+        // Iterar y mostrar la suma total para cada producto
+        while ($mostrar_total = mysqli_fetch_array($result_sum)) {
+        ?>
+        <tr>
+          <td><?php echo $mostrar_total['nombre']; ?></td>
+          <td><?php echo $mostrar_total['cantidad_total']; ?></td>
+        </tr>
+        <?php
+        }
+        mysqli_free_result($result_sum); // Liberar el conjunto de resultados
+        ?>
+      </tbody>
+    </table>
+
       </table>
     </main>
   </div>

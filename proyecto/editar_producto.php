@@ -117,9 +117,13 @@ if (isset($_GET['precio_unitario'])) {
                           $session->remove('error_message'); // Borra el mensaje después de mostrarlo
                       }
                     ?>
-            <button type="submit" class="btn">Editar producto</button>
+            <button type="submit" class="btn">Editar</button>
         </form>
     </div>
 
 </body>
 </html>
+
+
+
+
