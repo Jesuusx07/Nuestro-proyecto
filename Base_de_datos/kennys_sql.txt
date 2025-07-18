@@ -14,7 +14,7 @@ CREATE TABLE usuario(
 
 );
 
---2. Producto
+-- 2. Producto
 
 CREATE TABLE producto (
     id_producto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -71,19 +71,17 @@ CREATE TABLE inventario (
 
     CONSTRAINT fk_id_producto_inventario
         FOREIGN KEY (id_producto)
-        REFERENCES producto(id producto)
+        REFERENCES producto(id_producto)
 );
 
 
 
 -- 7. Factura (depende de factura y producto)
 CREATE TABLE factura(
-    id_factura_detalle INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_factura INT NOT NULL,
     id_producto INT NOT NULL,
     cantidad INT NOT NULL,
     precio_unitario_factura DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_factura) REFERENCES factura(id_factura),
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
@@ -98,8 +96,7 @@ CREATE TABLE Comprobante_pago(
     metodo_pago VARCHAR(50) NOT NULL,
     monto_pago DECIMAL(10, 2) NOT NULL,
     fecha_pago DATETIME NOT NULL,
-    FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
-    FOREIGN KEY (id_factura) REFERENCES factura(id_factura)
+    FOREIGN KEY (id_venta) REFERENCES venta(id_venta)
 );
 
 
@@ -229,7 +226,7 @@ CREATE PROCEDURE eliminar_reserva (IN r_id INT, IN r_cliente VARCHAR(100))
 BEGIN
 
         DELETE FROM reserva WHERE id_reserva = r_id;
-	DELETE FROM usuario WHERE correo = r_cliente;
+DELETE FROM usuario WHERE correo = r_cliente;
 
 END //
 
@@ -241,7 +238,7 @@ DELIMITER //
 
 CREATE PROCEDURE sumar_inventario(IN i_producto INT)
 BEGIN
-    SELECT SUM(i_producto) FROM inventario;
+    SELECT SUM (i_producto) FROM inventario;
 END //
 
 
@@ -261,10 +258,10 @@ DELIMITER //
 -- INSERTAR INVENTARIO
 DELIMITER //
 CREATE PROCEDURE insertar_inventario (
-    IN i_id_producto INT, 
+    IN i_id_producto INT,
     IN i_cantidad INT,
-    IN i_tipo_de_movimiento ENUM('entrada', 'salida'), 
-    IN i_fecha DATE, 
+    IN i_tipo_de_movimiento ENUM('entrada', 'salida'),
+    IN i_fecha DATE,
     IN i_responsable VARCHAR(100),
     IN i_cantidad_total INT
 )
@@ -288,6 +285,25 @@ BEGIN
         cantidad_total = i_cantidad_total
     WHERE id_producto = i_id_producto;
 END //
+
+
+-- ACTUALIZAR DATOS INVENTARIO
+
+DELIMITER //
+
+CREATE PROCEDURE actualizar_datos_inventario (
+    IN i_id_inventario INT,
+    IN i_cantidad INT,
+    IN i_tipo_de_movimiento ENUM('entrada', 'salida')
+)
+BEGIN
+    UPDATE inventario
+    SET
+        cantidad = i_cantidad,
+	tipo_de_movimiento = i_tipo_de_movimiento
+    WHERE id_inventario = i_id_inventario;
+END //
+
 
 -- ELIMINAR INVENTARIO
 DELIMITER //
@@ -363,8 +379,5 @@ CREATE PROCEDURE eliminar_platillo (IN p_id_pla INT)
 BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
-<<<<<<< HEAD
 
-=======
 DELIMITER ;
->>>>>>> 1b812118b910a719d5b5f2f9fcb260314841a14d

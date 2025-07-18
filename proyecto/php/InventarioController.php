@@ -20,8 +20,8 @@ class InventarioController {
         return $this->inventario->insertar();
     }
 
-    public function actualizar($id, $cantidad_total) {
-        $this->inventario->id = $id;
+    public function actualizar($producto, $cantidad_total) {
+        $this->inventario->id = $producto;
         $this->inventario->cantidad_total = $cantidad_total;
 
        
@@ -34,9 +34,11 @@ class InventarioController {
         return $this->inventario->obtener();
     }
 
-    public function eliminar($id) {
+    public function actualizar_datos($id, $cantidad, $tipo_de_movimiento) {
         $this->inventario->id = $id;
-        return $this->inventario->eliminar();
+        $this->inventario->cantidad = $cantidad;
+        $this->inventario->tipo_de_movimiento = $tipo_de_movimiento;         
+        return $this->inventario->actualizar_datos();
     }
     
 }
