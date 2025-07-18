@@ -32,6 +32,7 @@ body {
 .navbar {
   background-color: var(--color-secundario);
   padding: 1rem 2rem;
+  
   box-shadow: var(--sombra);
 }
 
@@ -42,6 +43,7 @@ body {
 }
 
 .navbar-brand {
+  color: #a02334;
   font-size: 1.5rem;
   font-weight: 600;
   color: white;
