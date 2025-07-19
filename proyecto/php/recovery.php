@@ -4,7 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Recuperar Contraseña</title>
+  <style>
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      z-index: 1000;
+      animation: fadein 0.5s, fadeout 0.5s 1.5s;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; top: 0; }
+      to { opacity: 1; top: 20px; }
+    }
+
+    @keyframes fadeout {
+      from { opacity: 1; top: 20px; }
+      to { opacity: 0; top: 0; }
+    }
+  </style>
 </head>
+<body>
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -42,7 +70,6 @@ if ($result && $result->num_rows > 0) {
     $mail = new PHPMailer(true);
 
     try {
-        
         // Configuración SMTP
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
@@ -51,13 +78,11 @@ if ($result && $result->num_rows > 0) {
         $mail->Password   = 'q h h c f j p t o p j q h q x w'; // Usa una contraseña de aplicación si es necesario
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
-        $mail->CharSet = 'UTF-8';
-
+        $mail->CharSet    = 'UTF-8';
 
         $mail->setFrom('jesuusx71@gmail.com', 'Equipo de Kenny\'s');
         $mail->addAddress($email);
 
-        // Enlace con id_usuario en vez de id_admin
         $mail->isHTML(true);
         $mail->Subject = 'Recuperación de Contraseña';
         $mail->Body    = 'Hola,<br><br>Este es un correo para solicitar tu recuperación de contraseña. ' .
@@ -67,13 +92,16 @@ if ($result && $result->num_rows > 0) {
 
         $mail->send();
 
-        echo "<script type='text/javascript'>";
-        echo "alert('Correo enviado.');"; 
-        echo "window.location.href = '../login.php'";
-        echo "</script>";
+        // Mostrar toast y redirigir con JS
+        echo "<div class='toast'>Correo enviado correctamente.</div>";
+        echo "<script>
+            setTimeout(() => {
+                window.location.href = '../login.php';
+            }, 2000);
+        </script>";
         exit();
     } catch (Exception $e) {
-        error_log("Error al enviar correo de recuperación: " . $e->getMessage());
+        error_log('Error al enviar correo: ' . $e->getMessage());
         header("Location: ../login.php?message=email_send_error");
         exit();
     }
@@ -85,5 +113,5 @@ if ($result && $result->num_rows > 0) {
 // Cierre de la conexión
 mysqli_close($enlace);
 ?>
-</head>
+</body>
 </html>

@@ -34,19 +34,13 @@ else if(strlen($nombre) > $longMax){
     exit();
 }
 
-<<<<<<< HEAD
+
 else if(strlen($apellido) > $longMax){
-=======
-else if(strlen($apellido) > $longMin){
->>>>>>> 14b8906d3e7a2238de14bbbaa004480a034125be
+
     $session->set('error_message', 'La longitud maxima para el nombre son 50 caracteres.');
 
     header('Location: ../reservasRegis.php'); 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 14b8906d3e7a2238de14bbbaa004480a034125be
     exit();
 }
 

@@ -123,6 +123,7 @@ if (!$session->isLoggedIn()) {
         <?php
         $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
         $sql = "SELECT i.id_inventario, 
+                       i.id_producto,  
                        p.nombre,
                        i.cantidad, 
                        i.tipo_de_movimiento, 
@@ -159,7 +160,7 @@ if (!$session->isLoggedIn()) {
           <td><?php echo $mostrar['fecha']; ?></td>
           <td><?php echo $mostrar['responsable']; ?></td>         
           <td>
-            <a href="editar_inventario.php?id_inventario=<?php echo $mostrar['id_inventario'];?> &cantidad=<?php echo $mostrar['cantidad'];?> &tipo=<?php echo $mostrar['tipo_de_movimiento'];?>" class="boton-edi">Editar</a>
+              <a href="./php/eliminarInventario.php?id_inventario=<?php echo $mostrar['id_inventario']; ?> &producto=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este inventario?');">Eliminar</a>
           </td>
         </tr>
         <?php
