@@ -1,5 +1,5 @@
 <?php
-require_once 'venta.php';
+require_once 'Venta.php';
 
 class VentaController {
     private $venta;
@@ -8,22 +8,24 @@ class VentaController {
         $this->venta = new Venta($db);
     }
 
-
-    public function insertar($fecha, $total_venta) {
-        $this->venta->fecha = $fecha;
-        $this->venta->total_venta = $total_venta;
+    public function insertar($id_pla, $cantidad) {
+        $this->venta->id_pla = $id_pla;
+        $this->venta->cantidad = $cantidad;
 
         return $this->venta->insertar();
     }
 
+    // Métodos opcionales según lo que necesites (actualizar, obtener, eliminar)
+    // pero si no usas esos procedimientos, puedes eliminarlos o comentarlos:
+
+    /*
     public function actualizar($id, $fecha, $total_venta) {
         $this->venta->id = $id;
         $this->venta->fecha = $fecha;
         $this->venta->total_venta = $total_venta;
-       
+
         return $this->venta->actualizar();
     }
-
 
     public function obtener($id) {
         $this->venta->id = $id;
@@ -34,4 +36,5 @@ class VentaController {
         $this->venta->id = $id;
         return $this->venta->eliminar();
     }
+    */
 }

@@ -1,134 +1,157 @@
 <?php
+// 1. Verifica si el usuario ha iniciado sesión, si no, lo redirige a login.php
 require_once './php/SessionManager.php';
-
 $session = new SessionManager();
+
 if (!$session->isLoggedIn()) {
     header("location: login.php");
+    exit();
 }
+
+// 2. Conexión a la base de datos
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Vender</title>
-    <link rel="stylesheet" href="./css/venta_empleado.css"">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Administrativo</title>
+  <link rel="stylesheet" href="./css/ventaEmpleado.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Barra superior -->
-    <nav class="navbar">
-           <div class="perfil">
-    
-   
-            </div>
-        <div class="navbar-container">
-            <span class="navbar-brand">VENDER</span>
-            <ul class="navbar-menu">
-                <li><a href="venta_empleado.php" class="active">Vender</a></li>
-                <li><a href="historial_venta.php">Ventas</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="container">
-        <h1 class="titulo">PROCESO DE VENTA</h1>
-        <form id="ventaForm" method="post" action="registrar_venta.php">
-            <div class="acciones-superiores">
-                <button type="button" class="btn-nuevo" onclick="agregarFila()">Nuevo <span class="icon-mas">+</span></button>
-            </div>
-
-            <table class="tabla-venta" id="platillosTable">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Platillo</th>
-                        <th>Cantidad</th>
-                        <th>Precio por unidad</th>
-                        <th>Precio total</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="num-fila">1</td>
-                        <td><input type="text" name="platillo[]" required></td>
-                        <td><input type="number" name="cantidad[]" min="1" value="1" required onchange="calcularFila(this)"></td>
-                        <td><input type="number" name="precio_unidad[]" step="0.01" value="0.00" required onchange="calcularFila(this)"></td>
-                        <td><input type="text" name="precio_total[]" value="0.00" readonly></td>
-                        <td><button type="button" class="btn-eliminar" onclick="eliminarFila(this)">🗑️</button></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="total-final">
-                <span>Precio Final: $<span id="precioFinal">0.00</span></span>
-            </div>
-
-            <div class="acciones-inferiores">
-                <button type="submit" class="sub-btn">Generar Factura</button>
-            </div>
-        </form>
+<!-- 3. Barra de navegación superior -->
+<header class="navbar">
+  <span class="logo-text">ADMINISTRADOR</span>
+  <div class="navbar-right">
+    <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
+    <div class="perfil">
+      <button class="boton-perfil" id="perfilBtn">👤</button>
+      <div class="menu-desplegable" id="perfilMenu">
+        <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+      </div>
     </div>
+  </div>
+</header>
 
-    <script>
-            // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
-        function calcularFila(element) {
-            const row = element.closest('tr');
-            const cantidad = parseFloat(row.querySelector('input[name="cantidad[]"]').value) || 0;
-            const precioUnidad = parseFloat(row.querySelector('input[name="precio_unidad[]"]').value) || 0;
-            const precioTotal = cantidad * precioUnidad;
-            row.querySelector('input[name="precio_total[]"]').value = precioTotal.toFixed(2);
-            calcularPrecioFinal();
+<main>
+<div class="container">
+  <div class="tabla-container">
+    <h2 class="titulo">PROCESO VENTA</h2>
+
+    <!-- 6. Tabla que contiene el formulario y las ventas registradas -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID Venta</th>
+          <th>Platillo</th>
+          <th>Cantidad</th>
+          <th>Precio Unidad</th>
+          <th>Precio Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- FORMULARIO DE REGISTRO DE VENTA -->
+        <form action="./php/factura.php" method="POST">
+          <tr>
+            <td>Auto</td>
+            <td>
+              <select name="id_pla" id="platillo" required>
+                <option value="">Seleccione...</option>
+                <?php
+                // Cargar platillos con precio
+                $platillosQuery = mysqli_query($conexion, "SELECT id_pla, nombre, precio FROM platillo");
+                while ($row = mysqli_fetch_assoc($platillosQuery)) {
+                  echo "<option value='{$row['id_pla']}' data-precio='{$row['precio']}'>" . htmlspecialchars($row['nombre']) . "</option>";
+                }
+                ?>
+              </select>
+            </td>
+            <td><input type="number" name="cantidad" placeholder="Cantidad" required></td>
+            <td><input type="number" name="precio" id="precioUnidad" step="0.01" placeholder="$" readonly required></td>
+            <td><input type="number" name="total" step="0.01" placeholder="$" readonly></td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align: center;">
+              <button type="submit" class="boton">REGISTRAR VENTA</button>
+            </td>
+          </tr>
+        </form>
+
+        <!-- MOSTRAR REGISTROS DE VENTAS -->
+        <?php
+        $sql = "SELECT v.id_venta, 
+                       p.nombre, 
+                       v.cantidad, 
+                       p.precio, 
+                       v.precio_total
+                FROM venta v
+                JOIN platillo p ON v.id_pla = p.id_pla";
+        $result = mysqli_query($conexion, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "<tr>
+                  <td>{$row['id_venta']}</td>
+                  <td>" . htmlspecialchars($row['nombre']) . "</td>
+                  <td>{$row['cantidad']}</td>
+                  <td>" . number_format($row['precio'], 2) . "</td>
+                  <td>" . number_format($row['precio_total'], 2) . "</td>
+                </tr>";
         }
+        ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+</main>
 
-        function calcularPrecioFinal() {
-            let suma = 0;
-            document.querySelectorAll('input[name="precio_total[]"]').forEach(input => {
-                suma += parseFloat(input.value) || 0;
-            });
-            document.getElementById('precioFinal').textContent = suma.toFixed(2);
-        }
+<!-- SCRIPTS -->
+<script>
+  // Cambiar tema
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+  });
 
-        function agregarFila() {
-            const tabla = document.querySelector('#platillosTable tbody');
-            const nuevaFila = tabla.rows[0].cloneNode(true);
-            nuevaFila.querySelectorAll('input').forEach(input => {
-                if (input.name === "platillo[]") input.value = "";
-                if (input.name === "cantidad[]") input.value = 1;
-                if (input.name === "precio_unidad[]") input.value = "0.00";
-                if (input.name === "precio_total[]") input.value = "0.00";
-            });
-            tabla.appendChild(nuevaFila);
-            actualizarNumerosFila();
-        }
+  // Cerrar menú perfil
+  const perfilBtn = document.getElementById('perfilBtn');
+  const perfilMenu = document.getElementById('perfilMenu');
+  document.addEventListener('click', (e) => {
+    if (!perfilBtn.contains(e.target) && !perfilMenu.contains(e.target)) {
+      perfilMenu.style.display = 'none';
+    }
+  });
 
-        function eliminarFila(btn) {
-            const tabla = document.querySelector('#platillosTable tbody');
-            if (tabla.rows.length > 1) {
-                btn.closest('tr').remove();
-                calcularPrecioFinal();
-                actualizarNumerosFila();
-            }
-        }
+  // Calcular precio total automáticamente
+  const platilloSelect = document.getElementById('platillo');
+  const cantidadInput = document.querySelector('input[name="cantidad"]');
+  const precioInput = document.querySelector('input[name="precio"]');
+  const totalInput = document.querySelector('input[name="total"]');
 
-        function actualizarNumerosFila() {
-            const filas = document.querySelectorAll('#platillosTable tbody tr');
-            filas.forEach((tr, idx) => {
-                tr.querySelector('.num-fila').textContent = idx + 1;
-            });
-        }
+  platilloSelect.addEventListener('change', () => {
+    const selectedOption = platilloSelect.options[platilloSelect.selectedIndex];
+    const precio = parseFloat(selectedOption.dataset.precio || 0);
+    precioInput.value = precio.toFixed(2);
+    calcularTotal();
+  });
 
-        // Inicialización
-        document.querySelectorAll('input[name="cantidad[]"], input[name="precio_unidad[]"]').forEach(input => {
-            input.addEventListener('change', function () {
-                calcularFila(this);
-            });
-        });
+  cantidadInput.addEventListener('input', calcularTotal);
+  precioInput.addEventListener('input', calcularTotal);
 
-        calcularPrecioFinal();
-    </script>
+  function calcularTotal() {
+    const cantidad = parseInt(cantidadInput.value) || 0;
+    const precio = parseFloat(precioInput.value) || 0;
+    const total = cantidad * precio;
+    totalInput.value = total.toFixed(2);
+  }
+</script>
+
 </body>
 </html>

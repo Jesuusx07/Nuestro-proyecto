@@ -38,48 +38,12 @@ CREATE TABLE platillo(
     pla_categoria VARCHAR(50) NOT NULL
 );
 
-
--- 4. Venta
-
-CREATE TABLE venta(
-    id_venta INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_pla INT NOT NULL,
-    id_inventario INT NOT NULL,
-
-);
-
-
--- 5. Historial de Venta
-
-CREATE TABLE Historial_venta (
-    id_Hventa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    total_venta DECIMAL(10, 2) NOT NULL,
-    id_usuario INT NOT NULL, -- ID del empleado que realizó la venta
-
-    CONSTRAINT fk_venta_usuario
-        FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) -- Clave foránea corregida
-);
-
-
--- 6. Reserva
-
-CREATE TABLE reserva(
-    id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    estado_reserva VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
-    fecha_reserva DATETIME NOT NULL,
-    responsable VARCHAR (100) NOT NULL,
-    cliente VARCHAR (100) NOT NULL,
-    FOREIGN KEY (cliente) REFERENCES usuario(correo)
-);
-
--- 7. Inventario
+-- 4. Inventario
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_producto INT NOT NULL,
     cantidad INT NOT NULL,
-    imagen VARCHAR(255),
     tipo_de_movimiento ENUM('entrada', 'salida') NOT NULL,
     fecha DATE NOT NULL,
     responsable VARCHAR(100),
@@ -88,6 +52,51 @@ CREATE TABLE inventario (
     CONSTRAINT fk_id_producto_inventario
         FOREIGN KEY (id_producto)
         REFERENCES producto(id_producto)
+);
+
+
+-- 5. Venta
+
+CREATE TABLE venta (
+    id_venta INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_pla INT NOT NULL,
+    precio_total DECIMAL(10, 2) NOT NULL,
+    cantidad INT NOT NULL,
+
+    FOREIGN KEY (id_pla) REFERENCES platillo(id_pla)
+);
+
+
+
+
+-- 6. Historial de Venta
+
+CREATE TABLE Historial_venta (
+    id_Hventa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_venta INT NOT NULL, -- ID de la venta a la que se refiere este historial
+    fecha DATE NOT NULL,
+    -- La columna 'precio total' o 'total_venta' no se incluye aquí,
+    -- ya que se obtendría de la tabla 'venta' a través de 'id_venta'.
+    id_usuario INT NOT NULL, -- ID del empleado que realizó la venta (referencia a la tabla 'usuario')
+
+    -- Definición de claves foráneas
+    CONSTRAINT fk_historial_venta_venta -- Nueva clave foránea para relacionar con la tabla 'venta'
+        FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
+    CONSTRAINT fk_historial_venta_usuario -- Nombre del CONSTRAINT actualizado para mayor claridad
+        FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+
+
+-- 7. Reserva
+
+CREATE TABLE reserva(
+    id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    estado_reserva VARCHAR(30) NOT NULL DEFAULT 'Pendiente',
+    fecha_reserva DATETIME NOT NULL,
+    responsable VARCHAR (100) NOT NULL,
+    cliente VARCHAR (100) NOT NULL,
+    FOREIGN KEY (cliente) REFERENCES usuario(correo)
 );
 
 
@@ -407,8 +416,34 @@ BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
 
-<<<<<<< HEAD
 DELIMITER ;
-=======
+
+
+-- VENTA
+
+DELIMITER $$
+
+CREATE PROCEDURE registrar_venta(
+    IN p_id_pla INT,
+    IN p_cantidad INT
+)
+BEGIN
+    DECLARE v_precio_unitario DECIMAL(10, 2);
+    DECLARE v_total DECIMAL(10, 2);
+
+    -- Obtener el precio del platillo
+    SELECT precio INTO v_precio_unitario
+    FROM platillo
+    WHERE id_pla = p_id_pla;
+
+    -- Calcular el total
+    SET v_total = v_precio_unitario * p_cantidad;
+
+    -- Insertar la venta
+    INSERT INTO venta (id_pla, cantidad, precio_total)
+    VALUES (p_id_pla, p_cantidad, v_total);
+END$$
+
 DELIMITER ;
->>>>>>> f65e221806b89f512074ee4cec55ee79904418f3
+
+
