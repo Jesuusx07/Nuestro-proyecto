@@ -34,20 +34,35 @@ CREATE TABLE platillo(
     id_pla INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     descripcion VARCHAR(500) NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL,
-    pla_categoria VARCHAR (50) NOT NULL
+    precio DECIMAL (10, 2) NOT NULL,
+    pla_categoria VARCHAR(50) NOT NULL
 );
+
 
 -- 4. Venta
 
 CREATE TABLE venta(
     id_venta INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    total_venta DECIMAL(10, 2) NOT NULL
+    id_pla INT NOT NULL,
+    id_inventario INT NOT NULL,
+
 );
 
 
--- 5. Reserva
+-- 5. Historial de Venta
+
+CREATE TABLE Historial_venta (
+    id_Hventa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    total_venta DECIMAL(10, 2) NOT NULL,
+    id_usuario INT NOT NULL, -- ID del empleado que realizó la venta
+
+    CONSTRAINT fk_venta_usuario
+        FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) -- Clave foránea corregida
+);
+
+
+-- 6. Reserva
 
 CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -58,12 +73,13 @@ CREATE TABLE reserva(
     FOREIGN KEY (cliente) REFERENCES usuario(correo)
 );
 
--- 6. Inventario
+-- 7. Inventario
 
 CREATE TABLE inventario (
     id_inventario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_producto INT NOT NULL,
     cantidad INT NOT NULL,
+    imagen VARCHAR(255),
     tipo_de_movimiento ENUM('entrada', 'salida') NOT NULL,
     fecha DATE NOT NULL,
     responsable VARCHAR(100),
@@ -75,20 +91,31 @@ CREATE TABLE inventario (
 );
 
 
+-- 8. Factura
 
--- 7. Factura (depende de factura y producto)
-CREATE TABLE factura(
-    id_factura INT NOT NULL,
-    id_producto INT NOT NULL,
-    cantidad INT NOT NULL,
-    precio_unitario_factura DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+CREATE TABLE factura (
+    id_factura INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Clave primaria única para cada factura
+    id_Hventa INT NULL, -- Clave foránea opcional a la tabla 'venta'
+    id_pla INT NOT NULL, -- Clave foránea al platillo facturado
+    id_inventario INT NOT NULL, -- Clave foránea al inventario relacionado
+
+    total_factura_SinImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura sin puestos
+    total_factura_ConImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura con impuestos
+
+    -- Claves foráneas
+    CONSTRAINT fk_factura_venta
+        FOREIGN KEY (id_Hventa) REFERENCES venta(id_venta),
+    CONSTRAINT fk_factura_platillo
+        FOREIGN KEY (id_pla) REFERENCES platillo(id_pla),
+    CONSTRAINT fk_factura_inventario
+        FOREIGN KEY (id_inventario) REFERENCES inventario(id_inventario)
 );
 
 
 
 
--- 8. Pago (puede depender de venta o factura)
+-- 9. Pago (puede depender de venta o factura)
+
 CREATE TABLE Comprobante_pago(
     id_pago INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_venta INT NULL,
@@ -276,14 +303,14 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE actualizar_inventario (
-    IN i_id_producto INT,
+    IN i_id_inventario INT,
     IN i_cantidad_total INT
 )
 BEGIN
     UPDATE inventario
     SET
         cantidad_total = i_cantidad_total
-    WHERE id_producto = i_id_producto;
+    WHERE id_inventario = i_id_inventario;
 END //
 
 
@@ -362,4 +389,8 @@ BEGIN
     DELETE FROM platillo WHERE id_pla = p_id_pla;
 END //
 
+<<<<<<< HEAD
 DELIMITER ;
+=======
+DELIMITER ;
+>>>>>>> f65e221806b89f512074ee4cec55ee79904418f3

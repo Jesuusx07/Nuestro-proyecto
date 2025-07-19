@@ -30,7 +30,7 @@ if (!$session->isLoggedIn()) {
     </nav>
 
     <div class="container">
-        <h1 class="titulo">Vender</h1>
+        <h1 class="titulo">PROCESO DE VENTA</h1>
         <form id="ventaForm" method="post" action="registrar_venta.php">
             <div class="acciones-superiores">
                 <button type="button" class="btn-nuevo" onclick="agregarFila()">Nuevo <span class="icon-mas">+</span></button>
