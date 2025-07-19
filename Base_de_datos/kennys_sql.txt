@@ -287,24 +287,6 @@ BEGIN
 END //
 
 
--- ACTUALIZAR DATOS INVENTARIO
-
-DELIMITER //
-
-CREATE PROCEDURE actualizar_datos_inventario (
-    IN i_id_inventario INT,
-    IN i_cantidad INT,
-    IN i_tipo_de_movimiento ENUM('entrada', 'salida')
-)
-BEGIN
-    UPDATE inventario
-    SET
-        cantidad = i_cantidad,
-	tipo_de_movimiento = i_tipo_de_movimiento
-    WHERE id_inventario = i_id_inventario;
-END //
-
-
 -- ELIMINAR INVENTARIO
 DELIMITER //
 CREATE PROCEDURE eliminar_inventario (IN p_id_inventario INT)

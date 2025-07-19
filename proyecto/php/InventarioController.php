@@ -29,16 +29,14 @@ class InventarioController {
     }
 
 
-    public function obtener($id) {
-        $this->inventario->id = $id;
+    public function obtener($producto) {
+        $this->inventario->producto = $producto;
         return $this->inventario->obtener();
     }
 
-    public function actualizar_datos($id, $cantidad, $tipo_de_movimiento) {
-        $this->inventario->id = $id;
-        $this->inventario->cantidad = $cantidad;
-        $this->inventario->tipo_de_movimiento = $tipo_de_movimiento;         
-        return $this->inventario->actualizar_datos();
+    public function eliminar($id_inventario) {
+        $this->inventario->id_inventario = $id_inventario;
+        return $this->inventario->eliminar();
     }
     
 }

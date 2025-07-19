@@ -11,7 +11,6 @@ class Inventario {
     public $producto;
     public $cantidad;
     public $cantidad_total;
-    public $imagen;
     public $tipo_de_movimiento; 
     public $fecha;
     public $responsable;    
@@ -26,7 +25,7 @@ class Inventario {
      * @return bool True si la inserción fue exitosa, false en caso contrario.
      */
     public function insertar() {
-        // La consulta llama al procedimiento almacenado con 5 parámetros
+        // La consulta llama al procedimiento almacenado con 6 parámetros
         $query = "CALL insertar_inventario(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
     
@@ -68,11 +67,11 @@ class Inventario {
      */
     public function obtener() {
         // Usar marcadores de posición con nombre es una buena práctica
-        $query = "CALL obtener_inventario(:id_inventario)";
+        $query = "CALL obtener_inventario(:producto)";
         $stmt = $this->conn->prepare($query);
         
         // Enlazar el ID de inventario
-        $stmt->bindParam(':id_inventario', $this->id);
+        $stmt->bindParam(':producto', $this->producto);
         
         $stmt->execute();
         // Devolver el resultado como un array asociativo
@@ -84,18 +83,13 @@ class Inventario {
      * Corresponde al procedimiento almacenado 'eliminar_inventario'.
      * @return bool True si la eliminación fue exitosa, false en caso contrario.
      */
-    public function actualizar_datos() {
-
-        $query = "CALL actualizar_datos_inventario(:id_inventario, :cantidad, :tipo_de_movimiento)";
+    public function eliminar() {
+        // Usar marcadores de posición con nombre
+        $query = "CALL eliminar_inventario(:id_inventario)";
         $stmt = $this->conn->prepare($query);
-        
         // Enlazar el ID de inventario
-        $stmt->bindParam(':id_inventario', $this->id);
-        $stmt->bindParam(':cantidad', $this->cantidad,); // Especificar tipo INT
-        $stmt->bindParam(':tipo_de_movimiento', $this->tipo_de_movimiento);
-        
-
+        $stmt->bindParam(':id_inventario', $this->id_inventario);
+        // Ejecutar la consulta
         return $stmt->execute();
     }
-
 }
