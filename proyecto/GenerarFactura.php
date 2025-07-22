@@ -160,6 +160,29 @@
         
         </tr>
       </tbody>
+      <?php 
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM factura where";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $mostrar['id_factura']; ?></td>
+        <td><?php echo $mostrar['id_pla']; ?></td>
+        <td><?php echo $mostrar['nombre']; ?></td>
+        <td><?php echo $mostrar['cantidad']; ?></td>
+        <td><?php echo $mostrar['precio']; ?></td>
+        <td><?php echo $mostrar['precio_total']; ?></td>
+         <td><?php echo $mostrar['metodo_pago']; ?></td>
+        <td>
+            <a href="editar_empleado.php">Confirmar venta</a>
+        </td>
+    </tr>
+<?php
+}
+?>
     </table>
       <div class="totales">
       <div><strong>Forma de Pago:</strong> Efectivo</div>
