@@ -172,6 +172,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 <?php
 }
 ?>
+
     </table>
       <div class="totales">
       <div><strong>Forma de Pago:</strong> Efectivo</div>

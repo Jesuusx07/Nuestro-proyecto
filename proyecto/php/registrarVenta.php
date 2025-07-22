@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Si todo salió bien
         $session = new SessionManager();
         $session->set('success_message', 'Venta registrada correctamente.');
-        header("Location: ../GenerarFactura.php?mensaje=ok");
+        header("Location: ./RegistrarFactura.php?mensaje=ok");
         exit();
     } else {
         header("Location: ../venta_empleado.php?error=datos_incompletos");

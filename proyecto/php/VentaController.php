@@ -15,4 +15,9 @@ class VentaController {
 
         return $this->venta->insertar();
     }
+
+
+public function obtenerTodos() {
+    return $this->venta->obtenerTodos();
 }
+   }

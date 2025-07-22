@@ -92,5 +92,30 @@ class Platillo {
         $stmt->bindParam(':id_platillo', $this->id_pla);
 
         return $stmt->execute();
+        
     }
+    
+                
+        // Puedes agregar más funciones si quieres consultar todos los platillos, buscar por nombre, etc.
+   public function obtenerTodos() {
+    try {
+        // Preparar la consulta al procedimiento almacenado
+        $query = "CALL obtener_todos_los_platillos()";
+        $stmt = $this->conn->prepare($query);
+
+        // Ejecutar la consulta
+        $stmt->execute();
+
+        // Obtener todos los resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Cerrar el cursor para liberar conexión
+        $stmt->closeCursor();
+
+        return $resultados;
+
+    } catch (PDOException $e) {
+        return ['error' => $e->getMessage()];
+    }
+}
 }

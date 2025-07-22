@@ -31,4 +31,27 @@ class Venta {
     }
 }
 
+
+public function obtenerTodos() {
+    try {
+        // Preparar la consulta al procedimiento almacenado
+        $query = "CALL obtener_todas_las_ventas()";
+        $stmt = $this->conn->prepare($query);
+
+        // Ejecutar la consulta
+        $stmt->execute();
+
+        // Obtener todos los resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Cerrar el cursor para liberar conexión
+        $stmt->closeCursor();
+
+        return $resultados;
+
+    } catch (PDOException $e) {
+        return ['error' => $e->getMessage()];
+    }
 }
+}
+

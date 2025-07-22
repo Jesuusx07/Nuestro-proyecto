@@ -1,7 +1,10 @@
 <?php
 
+require_once 'sql.php';
+
 class Factura {
-    private $db;
+   private $conn;
+    private $tabla = "factura"; // Nombre de tu tabla
 
     public $id_Hventa;
     public $id_pla;
@@ -10,32 +13,19 @@ class Factura {
     public $responsable;
 
     public function __construct($db) {
-        $this->db = $db;
+        $this->conn = $db;
     }
 
-    public function insertar() {
-        $sql = "CALL insertar_factura(?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($sql);
+  public function insertar() {
+        $query = "CALL insertar_factura(?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($query);
 
-        if (!$stmt) {
-            die("Error en la preparación: " . $this->db->error);
-        }
-
-        $stmt->bind_param(
-            "iiids", 
-            $this->id_Hventa,
-            $this->id_pla,
-            $this->id_pago,
-            $this->total_factura_ConImpuestos,
-            $this->responsable
-        );
-
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            error_log("Error al ejecutar el procedimiento: " . $stmt->error);
-            return false;
-        }
+        $stmt->bindParam(1, $this->id_Hventa);
+        $stmt->bindParam(2, $this->id_pla);
+        $stmt->bindParam(3, $this->id_pago);
+        $stmt->bindParam(4, $this->total_factura_ConImpuestos);
+        $stmt->bindParam(5, $this->responbsable);        
+        return $stmt->execute();
     }
-}
+     }
 ?>
