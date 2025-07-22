@@ -103,14 +103,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
             </td>
           </tr>
           <tr>
+      
+        </div>
+    </form>
             <td colspan="6" style="text-align: center;">
-              <button type="submit" class="boton">REGISTRAR VENTA</button>
+              <button type="submit" class="boton">GENERAR FACTURA</button>
             </td>
           </tr>
         </tfoot>
         <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'ok'): ?>
   <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
-    ✅ Venta registrada correctamente.
+    <?php
+          if ($session->has('error_message')) {
+            echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+            $session->remove('error_message');
+          }
+          ?>
   </div>
 <?php elseif (isset($_GET['error'])): ?>
   <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
@@ -119,8 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 <?php endif; ?>
       </table>
     </form>
-      
-
   </div>
 </div>
 </main>

@@ -143,28 +143,16 @@
       </thead>
       <tbody>
         <tr>
-          <td>001</td>
-        <td>454565632</td>
-          <td>Pizza Hawaiana</td>
-          <td>2</td>
-          <td>$25.000</td>
-          <td>$50.000</td>
-      
-        </tr>
-        <tr>
-          <td>002</td>
-               <td>35443533</td>
-          <td>Gaseosa</td>
-          <td>2</td>
-          <td>$5.000</td>
-          <td>$10.000</td>
-        
-        </tr>
+         
       </tbody>
       <?php 
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM factura where";
+$sql = "SELECT f.id_factura, f.id_pla, p.nombre, v.cantidad, p.precio, v.precio_total, f.metodo_pago
+        FROM factura f
+        JOIN platillo p ON f.id_pla = p.id_pla
+        JOIN venta v ON f.id_Hventa = v.id_Hventa";
+
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {

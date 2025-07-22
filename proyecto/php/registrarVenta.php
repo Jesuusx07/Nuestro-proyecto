@@ -1,7 +1,7 @@
 <?php
 require_once 'Venta.php';
 require_once 'VentaController.php';
-
+require_once 'SessionManager.php';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (
         isset($_POST['id_pla'], $_POST['cantidad'], $_POST['total']) &&
@@ -40,8 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
+       
         // Si todo salió bien
-        header("Location: ../venta_empleado.php?mensaje=ok");
+        $session = new SessionManager();
+        $session->set('success_message', 'Venta registrada correctamente.');
+        header("Location: ../GenerarFactura.php?mensaje=ok");
         exit();
     } else {
         header("Location: ../venta_empleado.php?error=datos_incompletos");
