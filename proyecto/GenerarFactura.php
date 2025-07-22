@@ -128,7 +128,8 @@
 
     </div>
 
-    <div><strong>Fecha:</strong> 19/07/2025</div>
+    <div><strong>Fecha:</strong></div>
+
 
     <table>
       <thead>
