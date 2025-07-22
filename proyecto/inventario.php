@@ -53,7 +53,6 @@ if (!$session->isLoggedIn()) {
       <div class="menu-item">
           <button class="btn-menu">Gestión de Platillos</button>
           <div class="sub-menu">
-
             <a href="registrarPlatillo.php" class="sub-btn">Registrar</a>
             <a href="platilloAdmin.php" class="sub-btn">Consultar</a>
           </div>
@@ -62,7 +61,7 @@ if (!$session->isLoggedIn()) {
         <div class="menu-item">
           <button class="btn-menu">Gestión de Producto</button>
           <div class="sub-menu">
-            <a href="registrarProductos.php" class="sub-btn">Registrar</a>
+            <a href="registrarProducto.php" class="sub-btn">Registrar</a>
             <a href="Producto.php" class="sub-btn">Consultar</a>
           </div>
         </div>
@@ -84,9 +83,9 @@ if (!$session->isLoggedIn()) {
         </div>
 
         <div class="menu-item">
-          <button class="btn-menu">Gestión de Ventas</button>
+          <button class="btn-menu">Historial de Ventas</button>
           <div class="sub-menu">
-            <a href="ventasRegis.php" class="sub-btn">Registrar</a>
+            
             <a href="ventas.php" class="sub-btn">Consultar</a>
           </div>
         </div>
