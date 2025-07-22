@@ -114,8 +114,54 @@ $session = new SessionManager();
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE PLATILLOS</h1> 
 
-  <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombres</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Categoria</th>
+        <th>Acciones</th>
+        <th>Categoria</th>
+    </tr>
+
+
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM platillo";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+<tr>
+    <td><?php echo $mostrar['id_pla']; ?></td>
+    <td><?php echo $mostrar['nombre']; ?></td>
+    <td><?php echo $mostrar['descripcion']; ?></td>
+    <td><?php echo $mostrar['precio']; ?></td>
+    <td><?php echo $mostrar['pla_categoria']; ?></td>
+    <td>
+        <!-- Botón de Editar: Pasa los datos del platillo -->
+        <a href="editarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>&nombre=<?php echo htmlspecialchars($mostrar['nombre']); ?>&descripcion=<?php echo htmlspecialchars($mostrar['descripcion']); ?>&precio=<?php echo htmlspecialchars($mostrar['precio']); ?>&pla_categoria=<?php echo htmlspecialchars($mostrar['pla_categoria']); ?>" class="boton-edi">Editar</a>
+    </td>
+    <td>
+        <!-- Botón de Eliminar: Pasa el ID del platillo y actualiza el mensaje de confirmación -->
+        <a href="./php/eliminarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?');">Eliminar</a>
+    </td>
+</tr>
+<?php
+}
+?>
+    </table>
+    <button class="btn-report" onclick="printReport()">GENERAR REPORTE / IMPRIMIR</button>
+</div>
+
+</div>
+
+<!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
     const themeToggle = document.getElementById('themeToggle');
@@ -152,50 +198,51 @@ $session = new SessionManager();
       });
     });
 
-  </script>
-<div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE PLATILLOS</h1> 
+      // --- FUNCIONALIDAD PARA IMPRIMIR/GENERAR REPORTE ---
+function printReport() {
+    // Abre una nueva ventana para imprimir solo el contenido de la tabla
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write('<html><head><title>Reporte de Platillos</title>');
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Nombres</th>
-        <th>Descripcion</th>
-        <th>Precio</th>
-        <th>Categoria</th>
-    </tr>
+    // Incluye CSS para la impresión
+    printWindow.document.write('<style>');
+    printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+    printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+    printWindow.document.write('th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }');
+    printWindow.document.write('th { background-color: #f2f2f2; }');
+    printWindow.document.write('h1 { text-align: center; margin-bottom: 20px; }');
+    printWindow.document.write('@media print { .no-print { display: none; } }');
+    printWindow.document.write('</style>');
 
+    printWindow.document.write('</head><body>');
 
-<?php
-// Assuming $conexion is already established
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM platillo";
-$result = mysqli_query($conexion, $sql);
+    // Agrega el título del reporte
+    printWindow.document.write('<h1>Reporte de Platillos Kenny\'s</h1>');
 
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-<tr>
-    <td><?php echo $mostrar['id_pla']; ?></td>
-    <td><?php echo $mostrar['nombre']; ?></td>
-    <td><?php echo $mostrar['descripcion']; ?></td>
-    <td><?php echo $mostrar['precio']; ?></td>
-    <td><?php echo $mostrar['pla_categoria']; ?></td>
-    <td>
-        <!-- Botón de Editar: Pasa los datos del platillo -->
-        <a href="editarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>&nombre=<?php echo htmlspecialchars($mostrar['nombre']); ?>&descripcion=<?php echo htmlspecialchars($mostrar['descripcion']); ?>&precio=<?php echo htmlspecialchars($mostrar['precio']); ?>&pla_categoria=<?php echo htmlspecialchars($mostrar['pla_categoria']); ?>" class="boton-edi">Editar</a>
-    </td>
-    <td>
-        <!-- Botón de Eliminar: Pasa el ID del platillo y actualiza el mensaje de confirmación -->
-        <a href="./php/eliminarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?');">Eliminar</a>
-    </td>
-</tr>
-<?php
+    // Copia el contenido de la tabla original
+    const originalTable = document.querySelector('.tabla-container table');
+    const clonedTable = originalTable.cloneNode(true); // Clona la tabla completa
+
+    // --- ELIMINAR LAS DOS ÚLTIMAS COLUMNAS DE CADA FILA ---
+    const allRows = clonedTable.querySelectorAll('tr');
+    allRows.forEach(row => {
+        for (let i = 0; i < 2; i++) {
+            if (row.lastElementChild) {
+                row.lastElementChild.remove();
+            }
+        }
+    });
+
+    // Agrega la tabla modificada al documento
+    printWindow.document.write(clonedTable.outerHTML);
+
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
 }
-?>
-    </table>
-</div>
 
-    </table>
-</div>
+  </script>
+
 </body>
 </html>

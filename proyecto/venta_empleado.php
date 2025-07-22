@@ -118,15 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
   </div>
 <?php endif; ?>
       </table>
-      <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'ok'): ?>
-  <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
-    ✅ Venta registrada correctamente.
-  </div>
-<?php elseif (isset($_GET['error'])): ?>
-  <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
-    ❌ Error: <?php echo htmlspecialchars($_GET['error']); ?>
-  </div>
-<?php endif; ?>
     </form>
       
 

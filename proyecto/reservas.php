@@ -104,80 +104,16 @@ $session = new SessionManager();
             <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
-           <div class="menu-item">
-          <button class="btn-menu">Gestión de Inventario</button>
-          <div class="sub-menu">
-            <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
-            <a href="inventario.php" class="sub-btn">Consultar</a>
-          </div>
         </div>
       </nav>
+  <form id="formu" action="./venta_empleado.php" method="POST"> 
+        <div class="menu-item"> 
+          <button class="btn-venta">HACER UNA VENTA</button>
+        </div>
+    </form>
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
-
-  <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
-  <script>
-    // ----- Tema claro / oscuro -----
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
-    });
-
-    // ----- Menú perfil desplegable -----
-    const perfilBtn = document.getElementById('perfilBtn');
-    const perfilMenu = document.getElementById('perfilMenu');
-    perfilBtn.addEventListener('click', () => {
-      perfilMenu.style.display = perfilMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', (e) => {
-      if (!perfilBtn.contains(e.target) && !perfilMenu.contains(e.target)) {
-        perfilMenu.style.display = 'none';
-      }
-    });
-
-    // ----- Sub-menús laterales -----
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach(item => {
-      const button = item.querySelector('.btn-menu');
-      const subMenu = item.querySelector('.sub-menu');
-      button.addEventListener('click', () => {
-        const isOpen = subMenu.style.display === 'flex';
-        // Cierra otros submenús
-        document.querySelectorAll('.sub-menu').forEach(sm => sm.style.display = 'none');
-        if (!isOpen) {
-          subMenu.style.display = 'flex';
-        }
-      });
-    });
-
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
-  </script>
 <div class="tabla-container">
     <h1 class="titulo">TABLA DE CONSULTA DE RESERVA</h1> 
 
@@ -189,6 +125,8 @@ $session = new SessionManager();
         <th>Nombre Cliente</th>
         <th>Apellido Cliente</th>
         <th>Usuario responsable</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
     </tr>
   </div>
 
@@ -232,9 +170,93 @@ while ($mostrar = mysqli_fetch_array($result)) {
 }
 ?>
     </table>
+    <button class="btn-report" onclick="printReport()">GENERAR REPORTE / IMPRIMIR</button>
 </div>
 
-    </table>
 </div>
+
+<!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
+  <script>
+    // ----- Tema claro / oscuro -----
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // ----- Menú perfil desplegable -----
+    const perfilBtn = document.getElementById('perfilBtn');
+    const perfilMenu = document.getElementById('perfilMenu');
+    perfilBtn.addEventListener('click', () => {
+      perfilMenu.style.display = perfilMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!perfilBtn.contains(e.target) && !perfilMenu.contains(e.target)) {
+        perfilMenu.style.display = 'none';
+      }
+    });
+
+    // ----- Sub-menús laterales -----
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      const button = item.querySelector('.btn-menu');
+      const subMenu = item.querySelector('.sub-menu');
+      button.addEventListener('click', () => {
+        const isOpen = subMenu.style.display === 'flex';
+        // Cierra otros submenús
+        document.querySelectorAll('.sub-menu').forEach(sm => sm.style.display = 'none');
+        if (!isOpen) {
+          subMenu.style.display = 'flex';
+        }
+      });
+    });
+
+       // --- FUNCIONALIDAD PARA IMPRIMIR/GENERAR REPORTE ---
+function printReport() {
+    // Abre una nueva ventana para imprimir solo el contenido de la tabla
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write('<html><head><title>Reporte de Empleados</title>');
+
+    // Incluye CSS para la impresión
+    printWindow.document.write('<style>');
+    printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+    printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+    printWindow.document.write('th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }');
+    printWindow.document.write('th { background-color: #f2f2f2; }');
+    printWindow.document.write('h1 { text-align: center; margin-bottom: 20px; }');
+    printWindow.document.write('@media print { .no-print { display: none; } }');
+    printWindow.document.write('</style>');
+
+    printWindow.document.write('</head><body>');
+
+    // Agrega el título del reporte
+    printWindow.document.write('<h1>Reporte de Empleados Kenny\'s</h1>');
+
+    // Copia el contenido de la tabla original
+    const originalTable = document.querySelector('.tabla-container table');
+    const clonedTable = originalTable.cloneNode(true); // Clona la tabla completa
+
+    // --- ELIMINAR LAS DOS ÚLTIMAS COLUMNAS DE CADA FILA ---
+    const allRows = clonedTable.querySelectorAll('tr');
+    allRows.forEach(row => {
+        for (let i = 0; i < 2; i++) {
+            if (row.lastElementChild) {
+                row.lastElementChild.remove();
+            }
+        }
+    });
+
+    // Agrega la tabla modificada al documento
+    printWindow.document.write(clonedTable.outerHTML);
+
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+}
+
+  </script>
+
 </body>
 </html>

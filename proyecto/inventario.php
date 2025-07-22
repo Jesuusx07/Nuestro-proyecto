@@ -116,7 +116,9 @@ if (!$session->isLoggedIn()) {
           <th>Cantidad</th>
           <th>Tipo_de_movimiento</th>
           <th>Fecha</th>
-          <th>Usuario responsable</th>     
+          <th>Usuario responsable</th> 
+          <th>Eliminar</th> 
+             
         </tr>
 
         <?php
@@ -168,7 +170,8 @@ if (!$session->isLoggedIn()) {
         ?>
         <tr>
           <th>Producto</th>
-          <th>Cantidad total</th>          
+          <th>Cantidad total</th>   
+          <th>Eliminar</th>       
         </tr>
       <tbody>
         <?php
@@ -192,6 +195,7 @@ if (!$session->isLoggedIn()) {
           }
           ?>
       </table>
+      <button class="btn-report" onclick="printReport()">GENERAR REPORTE / IMPRIMIR</button>
     </main>
   </div>
 
@@ -230,29 +234,66 @@ if (!$session->isLoggedIn()) {
       });
     });
 
-    // Gráfico de ejemplo (Chart.js)
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
+    
+    // --- FUNCIONALIDAD PARA IMPRIMIR/GENERAR REPORTE ---
+  function printReport() {
+      // Abre una nueva ventana para imprimir solo el contenido de la tabla
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write('<html><head><title>Reporte de Productos</title>');
+      // Incluye CSS para la impresión. Puedes usar los mismos estilos de tabla o uno específico para impresión.
+      printWindow.document.write('<style>');
+      printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+      printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+      printWindow.document.write('th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }');
+      printWindow.document.write('th { background-color: #f2f2f2; }');
+      printWindow.document.write('h1 { text-align: center; margin-bottom: 20px; }');
+      // Oculta elementos que no quieres imprimir (ej. elementos con clase 'no-print')
+      printWindow.document.write('@media print { .no-print { display: none; } }');
+      printWindow.document.write('</style>');
+      printWindow.document.write('</head><body>');
+
+      // Agrega el título del reporte
+      printWindow.document.write('<h1>Reporte de Productos Kenny\'s</h1>');
+
+      // Copia el contenido de la tabla original
+      const originalTable = document.querySelector('.tabla-container table');
+      // Clona la tabla para poder modificarla sin afectar la tabla visible en la página
+      const clonedTable = originalTable.cloneNode(true); // 'true' para clonar todos los hijos
+
+      // --- LÓGICA PARA ELIMINAR SOLO LA COLUMNA DE ACCIONES (LA ÚLTIMA) ---
+
+      // 1. Eliminar el último encabezado (<th>) de la fila de encabezados
+      const headerRow = clonedTable.querySelector('thead tr');
+      if (headerRow) {
+          // Elimina el último <th> (que es "Acciones")
+          if (headerRow.lastElementChild) {
+              headerRow.lastElementChild.remove();
           }
-        }
+          // Eliminamos la segunda llamada a .remove() que causaba que se borrara "Proveedor"
+      }
+
+      // 2. Eliminar la última celda (<td>) de cada fila del cuerpo de la tabla
+      const bodyRows = clonedTable.querySelectorAll('tbody tr');
+      bodyRows.forEach(row => {
+          // Elimina la última <td> (que contiene los botones Editar y Eliminar)
+          if (row.lastElementChild) {
+              row.lastElementChild.remove();
+          }
+          // Eliminamos la segunda llamada a .remove() que causaba que se borrara el valor de "Proveedor"
       });
-    }
+
+      // --- FIN DE LA LÓGICA PARA ELIMINAR SOLO LA COLUMNA DE ACCIONES ---
+
+      // Escribe la tabla modificada (sin la columna de acciones) en la ventana de impresión
+      printWindow.document.write(clonedTable.outerHTML);
+
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+  }
+
+  
   </script>
 </body>
 </html>

@@ -114,8 +114,59 @@ $session = new SessionManager();
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
 
-  <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
+<table>
+    <tr>
+        <th>id_Empleado</th>
+        <th>Rol</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>correo</th>
+        <th>contraseña</th>
+        <th>telefono</th>
+        <th>documento</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+
+
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM usuario where id_rol != 'admin' and id_rol != 'proveedor' and id_rol != 'cliente'";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $mostrar['id_usuario']; ?></td>
+        <td><?php echo $mostrar['id_rol']; ?></td>
+        <td><?php echo $mostrar['nombres']; ?></td>
+        <td><?php echo $mostrar['apellidos']; ?></td>
+        <td><?php echo $mostrar['correo']; ?></td>
+        <td><?php echo $mostrar['contraseña']; ?></td>
+        <td><?php echo $mostrar['telefono']; ?></td>
+        <td><?php echo $mostrar['documento']; ?></td>
+        <td>
+            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
+        </td>
+        <td>
+            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+        </td>
+    </tr>
+<?php
+}
+?>
+    </table>
+    <button class="btn-report" onclick="printReport()">GENERAR REPORTE / IMPRIMIR</button>
+
+</div>
+   
+</div>
+
+<!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
     const themeToggle = document.getElementById('themeToggle');
@@ -152,78 +203,51 @@ $session = new SessionManager();
       });
     });
 
-    // ----- Grafico Placeholder (Chart.js) -----
-    // Solo un ejemplo para que puedas conectar tus datos reales
-    if (typeof Chart !== 'undefined') {
-      const ctx = document.getElementById('graficoVentas');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            label: 'Ventas',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true }
-          }
+  // --- FUNCIONALIDAD PARA IMPRIMIR/GENERAR REPORTE ---
+function printReport() {
+    // Abre una nueva ventana para imprimir solo el contenido de la tabla
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write('<html><head><title>Reporte de Empleados</title>');
+
+    // Incluye CSS para la impresión
+    printWindow.document.write('<style>');
+    printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+    printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+    printWindow.document.write('th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }');
+    printWindow.document.write('th { background-color: #f2f2f2; }');
+    printWindow.document.write('h1 { text-align: center; margin-bottom: 20px; }');
+    printWindow.document.write('@media print { .no-print { display: none; } }');
+    printWindow.document.write('</style>');
+
+    printWindow.document.write('</head><body>');
+
+    // Agrega el título del reporte
+    printWindow.document.write('<h1>Reporte de Empleados Kenny\'s</h1>');
+
+    // Copia el contenido de la tabla original
+    const originalTable = document.querySelector('.tabla-container table');
+    const clonedTable = originalTable.cloneNode(true); // Clona la tabla completa
+
+    // --- ELIMINAR LAS DOS ÚLTIMAS COLUMNAS DE CADA FILA ---
+    const allRows = clonedTable.querySelectorAll('tr');
+    allRows.forEach(row => {
+        for (let i = 0; i < 2; i++) {
+            if (row.lastElementChild) {
+                row.lastElementChild.remove();
+            }
         }
-      });
-    }
-  </script>
-<div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE EMPLEADO</h1> 
+    });
 
-<table>
-    <tr>
-        <th>id_Empleado</th>
-        <th>Rol</th>
-        <th>Nombres</th>
-        <th>Apellidos</th>
-        <th>correo</th>
-        <th>contraseña</th>
-        <th>telefono</th>
-        <th>documento</th>
-    </tr>
+    // Agrega la tabla modificada al documento
+    printWindow.document.write(clonedTable.outerHTML);
 
-
-<?php
-// Assuming $conexion is already established
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM usuario where id_rol != 'admin' and id_rol != 'proveedor' and id_rol != 'cliente'";
-$result = mysqli_query($conexion, $sql);
-
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-    <tr>
-        <td><?php echo $mostrar['id_usuario']; ?></td>
-        <td><?php echo $mostrar['id_rol']; ?></td>
-        <td><?php echo $mostrar['nombres']; ?></td>
-        <td><?php echo $mostrar['apellidos']; ?></td>
-        <td><?php echo $mostrar['correo']; ?></td>
-        <td><?php echo $mostrar['contraseña']; ?></td>
-        <td><?php echo $mostrar['telefono']; ?></td>
-        <td><?php echo $mostrar['documento']; ?></td>
-        <td>
-            <a href="editar_empleado.php?id=<?php echo $mostrar['id_usuario'];?> &id_rol=<?php echo $mostrar['id_rol'];?> &nom=<?php echo $mostrar['nombres'];?> &apell=<?php echo $mostrar['apellidos'];?>  &email=<?php echo $mostrar['correo'];?>  &tel=<?php echo $mostrar['telefono'];?> &docu=<?php echo $mostrar['documento'];?>" class="boton-edi">Editar</a>
-        </td>
-        <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_usuario']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
-        </td>
-    </tr>
-<?php
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
 }
-?>
-    </table>
-</div>
 
-    </table>
-</div>
+  </script>
+
 </body>
 </html>
