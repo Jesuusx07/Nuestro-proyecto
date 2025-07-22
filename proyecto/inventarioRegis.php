@@ -81,8 +81,7 @@ $session = new SessionManager();
                     <option value="salida">Salida</option>
                   </select>
             <label for="tipo">Fecha</label>
-            <input type="date" id="imagen" name="date">
-            <input type="number" id="nombre" name="responsable" placeholder="Responsable" min="1" max="100" required>
+            <input type="datetime-local" id="imagen" name="date">
             
             <input type="submit" id="boton" value="Registrar">
 

@@ -124,6 +124,7 @@
       background-color: #881d2c;
     }
     .p-error {
+      margin-top: 400px;
       color: var(--color-acento);
       text-align: center;
       font-size: 16px;

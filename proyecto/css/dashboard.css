@@ -686,3 +686,10 @@ body.dark-theme td {
     border-bottom: 1px solid #555;
 }
 
+.p-error {
+    margin-top: 400px;
+    color: var(--color-acento);
+    text-align: center;
+    font-size: 20px;
+}
+
