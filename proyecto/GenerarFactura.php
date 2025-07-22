@@ -148,10 +148,10 @@
       <?php 
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT f.id_factura, f.id_pla, p.nombre, v.cantidad, p.precio, v.precio_total, f.metodo_pago
+$sql = "SELECT f.id_factura, f.id_pla, p.nombre, v.cantidad, p.precio, v.precio_total, f.id_pago
         FROM factura f
         JOIN platillo p ON f.id_pla = p.id_pla
-        JOIN venta v ON f.id_Hventa = v.id_Hventa";
+        JOIN venta v ON f.id_Hventa = v.id_venta";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -164,7 +164,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['cantidad']; ?></td>
         <td><?php echo $mostrar['precio']; ?></td>
         <td><?php echo $mostrar['precio_total']; ?></td>
-         <td><?php echo $mostrar['metodo_pago']; ?></td>
+         <td><?php echo $mostrar['id_pago']; ?></td>
         <td>
             <a href="editar_empleado.php">Confirmar venta</a>
         </td>
@@ -181,10 +181,25 @@ while ($mostrar = mysqli_fetch_array($result)) {
  <h2>Resumen de Impuestos</h2>
 
     <div class="totales">
-      <div><span>Subtotal:</span> <span>$60.000</span></div>
+      <?php
+      $sql_total = " SELECT
+                          SUM(v.precio_total) AS subtotal_general,
+                          SUM(f.total_factura_ConImpuestos) AS total_factura_ConImpuestos
+                      FROM
+                          factura f
+                      JOIN
+                          venta v ON f.id_Hventa = v.id_venta";
+      $result_total = mysqli_query($conexion, $sql_total);
+
+      while ($mostrar = mysqli_fetch_array($result_total)) {
+      ?>
+      <div><span>Subtotal:</span> <?php echo $mostrar['subtotal_general']; ?> </div>
       <div><span>IVA (19%):</span> <span>$11.400</span></div>
       <div><span>Descuento:</span> <span>-$2.000</span></div>
-      <div><strong>Total a Pagar:</strong> <strong>$69.400</strong></div>
+      <div><strong>Total a Pagar:  <?php echo $mostrar['total_factura_ConImpuestos']; ?></div>
+      <?php
+      }
+      ?>
     </div>
  
        

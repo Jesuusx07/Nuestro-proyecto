@@ -4,6 +4,7 @@ require_once 'PlatilloController.php';
 require_once 'VentaController.php';
 require_once 'SessionManager.php';
 require_once 'sql.php';
+
 $session = new SessionManager();
 $db = (new Database())->conectar();
 $controlador1 = new FacturaController($db);
@@ -16,12 +17,14 @@ $venta =  $controlador3 -> obtenerTodos();
 
 
 $responsable = $session->getUserName();
+var_dump($responsable);
+
 $ultimoPlatillo = end($platillo);
 $ultimoventa = end($venta);
+
 $ultimoIdPlatillo = $ultimoPlatillo['id_pla'];
 $ultimoIdVenta = $ultimoventa['id_venta'];
-var_dump($ultimoIdPlatillo);
-var_dump($ultimoIdVenta);
+
 $total_venta = $ultimoventa['precio_total'];
 $iva = $total_venta * 0.19;
 $total_factura_ConImpuestos = $total_venta + $iva;

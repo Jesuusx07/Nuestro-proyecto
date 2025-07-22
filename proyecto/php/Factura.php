@@ -24,7 +24,7 @@ class Factura {
         $stmt->bindParam(2, $this->id_pla);
         $stmt->bindParam(3, $this->id_pago);
         $stmt->bindParam(4, $this->total_factura_ConImpuestos);
-        $stmt->bindParam(5, $this->responbsable);        
+        $stmt->bindParam(5, $this->responsable);        
         return $stmt->execute();
     }
      }
