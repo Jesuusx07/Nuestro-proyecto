@@ -166,7 +166,6 @@ if (!$session->isLoggedIn()) {
         }
         mysqli_free_result($result); // Free the result set from the inventory query
         ?>
-      </tbody>
         <tr>
           <th>Producto</th>
           <th>Cantidad total</th>          
@@ -186,7 +185,12 @@ if (!$session->isLoggedIn()) {
         ?>
       </tbody>
     </table>
-
+          <?php
+          if ($session->has('error_message')) {
+            echo '<p class="p-error">' . htmlspecialchars($session->get('error_message')) . '</p>';
+            $session->remove('error_message');
+          }
+          ?>
       </table>
     </main>
   </div>

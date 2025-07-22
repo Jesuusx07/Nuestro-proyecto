@@ -20,6 +20,15 @@ $longMax = 50;
 
 $obtener = $controlador->obtener($producto);
 
+$zonaHorariaBogota = new DateTimeZone('America/Bogota');
+$ahora = new DateTime('now', $zonaHorariaBogota);
+
+$format = 'Y-m-d\TH:i';
+
+$nuevaFecha = DateTime::createFromFormat($format, $fecha, $zonaHorariaBogota); 
+
+
+$fila1 = $obtener[0];
 
 
 if (
@@ -36,6 +45,11 @@ if (!is_numeric($cantidad) || $cantidad < 1 || $cantidad > 100) {
     $session->set('error_message', 'La cantidad debe estar entre 1 y 100.');
     header('Location: ../inventarioRegis.php');
     exit();
+}    
+if($nuevaFecha < $ahora) {
+    $session->set('error_message', 'No se puede registrar una fecha y hora anterior al momento actual.');
+    header('Location: ../inventarioRegis.php');
+    exit();
 }
 
 $cantidad_total = 0;
@@ -47,7 +61,14 @@ if($tipo == "entrada") {
 } 
 else if ($tipo == "salida") {
 
+    if($fila1['cantidad_total'] < $cantidad) {
+        $session->set('error_message', 'No hay suficiente inventario para realizar esta salida.');
+        header('Location: ../inventarioRegis.php');
+        exit();
+    } 
+
     $cantidad = -$cantidad;
+
 }
 
 if ($cantidad_total == 0){
