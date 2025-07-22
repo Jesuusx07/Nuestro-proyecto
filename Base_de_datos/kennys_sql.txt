@@ -69,26 +69,7 @@ CREATE TABLE venta (
 
 
 
--- 6. Historial de Venta
-
-CREATE TABLE Historial_venta (
-    id_Hventa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_venta INT NOT NULL, -- ID de la venta a la que se refiere este historial
-    fecha DATE NOT NULL,
-    -- La columna 'precio total' o 'total_venta' no se incluye aquí,
-    -- ya que se obtendría de la tabla 'venta' a través de 'id_venta'.
-    id_usuario INT NOT NULL, -- ID del empleado que realizó la venta (referencia a la tabla 'usuario')
-
-    -- Definición de claves foráneas
-    CONSTRAINT fk_historial_venta_venta -- Nueva clave foránea para relacionar con la tabla 'venta'
-        FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
-    CONSTRAINT fk_historial_venta_usuario -- Nombre del CONSTRAINT actualizado para mayor claridad
-        FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-);
-
-
-
--- 7. Reserva
+-- 6. Reserva
 
 CREATE TABLE reserva(
     id_reserva INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -100,16 +81,19 @@ CREATE TABLE reserva(
 );
 
 
--- 8. Factura
+-- 7. Factura
 
 CREATE TABLE factura (
     id_factura INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Clave primaria única para cada factura
-    id_Hventa INT NULL, -- Clave foránea opcional a la tabla 'venta'
-    id_pla INT NOT NULL, -- Clave foránea al platillo facturado
-    id_inventario INT NOT NULL, -- Clave foránea al inventario relacionado
+    id_venta INT NOT NULL, -- Llama cantidad, precio_total
+    id_Hventa INT NULL, -- Clave foránea llama tabla fecha'
+    id_pla INT NOT NULL, -- Clave foránea llama id, nombre, precio, 
+    id_pago INT NOT NULL, --llama método de pago
 
-    total_factura_SinImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura sin puestos
+
     total_factura_ConImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura con impuestos
+    responsable VARCHAR(100),
+
 
     -- Claves foráneas
     CONSTRAINT fk_factura_venta
@@ -121,6 +105,23 @@ CREATE TABLE factura (
 );
 
 
+-- 8. Historial de Venta
+
+CREATE TABLE Historial_venta (
+    id_Hventa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_factura INT NOT NULL,
+    fecha DATE NOT NULL,
+    -- La columna 'precio total' o 'total_venta' no se incluye aquí,
+    -- ya que se obtendría de la tabla 'venta' a través de 'id_venta'.
+    id_usuario INT NOT NULL, -- ID del empleado que realizó la venta (referencia a la tabla 'usuario')
+
+    -- Definición de claves foráneas
+    CONSTRAINT fk_historial_factura -- Nueva clave foránea para relacionar con la tabla 'venta'
+        FOREIGN KEY (id_factura) REFERENCES factura(id_factura),
+    CONSTRAINT fk_historial_venta_usuario -- Nombre del CONSTRAINT actualizado para mayor claridad
+        FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
 
 
 -- 9. Pago (puede depender de venta o factura)
@@ -129,9 +130,10 @@ CREATE TABLE Comprobante_pago(
     id_pago INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_venta INT NULL,
     id_factura INT NULL,
+    id_Hventa INT NOT NULL,
     metodo_pago VARCHAR(50) NOT NULL,
     monto_pago DECIMAL(10, 2) NOT NULL,
-    fecha_pago DATETIME NOT NULL,
+
     FOREIGN KEY (id_venta) REFERENCES venta(id_venta)
 );
 
@@ -401,31 +403,57 @@ END //
 DELIMITER ;
 
 
+
 -- VENTA
+
+
+-- PROCEDURE: registrar_venta
+-- FUNCION: Inserta una nueva venta en la tabla 'venta'
+--          Calcula automáticamente el precio_total con base en el precio del platillo
+
 
 DELIMITER $$
 
 CREATE PROCEDURE registrar_venta(
     IN p_id_pla INT,
-    IN p_cantidad INT
+    IN p_cantidad INT,
+    IN p_precio_total DECIMAL(10,2)
 )
 BEGIN
-    DECLARE v_precio_unitario DECIMAL(10, 2);
-    DECLARE v_total DECIMAL(10, 2);
-
-    -- Obtener el precio del platillo
-    SELECT precio INTO v_precio_unitario
-    FROM platillo
-    WHERE id_pla = p_id_pla;
-
-    -- Calcular el total
-    SET v_total = v_precio_unitario * p_cantidad;
-
-    -- Insertar la venta
+    -- Insertar la venta en la tabla
     INSERT INTO venta (id_pla, cantidad, precio_total)
-    VALUES (p_id_pla, p_cantidad, v_total);
+    VALUES (p_id_pla, p_cantidad, p_precio_total);
 END$$
 
 DELIMITER ;
 
 
+-- PROCEDURE: obtener_ventas
+-- FUNCION: Recupera todas las ventas con los nombres de los platillos
+
+
+CREATE PROCEDURE obtener_ventas()
+BEGIN
+    SELECT 
+        v.id_venta,
+        v.id_pla,
+        p.nombre AS nombre_platillo,
+        v.cantidad,
+        v.precio_total
+    FROM venta v
+    INNER JOIN platillo p ON v.id_pla = p.id_pla
+    ORDER BY v.id_venta DESC;
+END$$
+
+
+-- PROCEDURE: eliminar_venta
+-- FUNCION: Elimina una venta específica por su ID
+
+
+CREATE PROCEDURE eliminar_venta(
+    IN p_id_venta INT
+)
+BEGIN
+    DELETE FROM venta
+    WHERE id_venta = p_id_venta;
+END$$

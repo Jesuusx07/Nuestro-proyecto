@@ -1,5 +1,4 @@
 <?php
-// 1. Verifica si el usuario ha iniciado sesión, si no, lo redirige a login.php
 require_once './php/SessionManager.php';
 $session = new SessionManager();
 
@@ -8,9 +7,29 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-// 2. Conexión a la base de datos
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+?>
+
+<?php
+
+require_once './php/Venta.php'; // Clase modificada
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
+    $controller = new VentaController($conexion);
+    
+    $ids = $_POST['id_pla'];
+    $cantidades = $_POST['cantidad'];
+    $precios = $_POST['precio_total'];
+
+    for ($i = 0; $i < count($ids); $i++) {
+        $controller->insertar($ids[$i], $cantidades[$i], $precios[$i]);
+    }
+
+    header("Location: venta_empleado.php?registrado=1");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +43,9 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 </head>
+
 <body>
 
-<!-- 3. Barra de navegación superior -->
 <header class="navbar">
   <span class="logo-text">ADMINISTRADOR</span>
   <div class="navbar-right">
@@ -45,28 +64,25 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   <div class="tabla-container">
     <h2 class="titulo">PROCESO VENTA</h2>
 
-    <!-- 6. Tabla que contiene el formulario y las ventas registradas -->
-    <table>
-      <thead>
-        <tr>
-          <th>ID Venta</th>
-          <th>Platillo</th>
-          <th>Cantidad</th>
-          <th>Precio Unidad</th>
-          <th>Precio Total</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- FORMULARIO DE REGISTRO DE VENTA -->
-        <form action="./php/factura.php" method="POST">
+    <form action="./php/registrarVenta.php" method="POST">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Venta</th>
+            <th>Platillo</th>
+            <th>Cantidad</th>
+            <th>Precio Unidad</th>
+            <th>Precio Total</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody id="ventaRows">
           <tr>
             <td>Auto</td>
             <td>
-              <select name="id_pla" id="platillo" required>
+              <select name="id_pla[]" class="platillo" required>
                 <option value="">Seleccione...</option>
                 <?php
-                // Cargar platillos con precio
                 $platillosQuery = mysqli_query($conexion, "SELECT id_pla, nombre, precio FROM platillo");
                 while ($row = mysqli_fetch_assoc($platillosQuery)) {
                   echo "<option value='{$row['id_pla']}' data-precio='{$row['precio']}'>" . htmlspecialchars($row['nombre']) . "</option>";
@@ -74,53 +90,56 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
                 ?>
               </select>
             </td>
-            <td><input type="number" name="cantidad" placeholder="Cantidad" required></td>
-            <td><input type="number" name="precio" id="precioUnidad" step="0.01" placeholder="$" readonly required></td>
-            <td><input type="number" name="total" step="0.01" placeholder="$" readonly></td>
+            <td><input type="number" name="cantidad[]" class="cantidad" required></td>
+            <td><input type="number" name="precio[]" class="precioUnidad" step="0.01" readonly required></td>
+            <td><input type="number" name="total[]" class="total" step="0.01" readonly></td>
+            <td><button type="button" class="eliminar-fila boton" onclick="eliminarFila(this)">🗑</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" style="text-align: center;">
+              <button type="button" onclick="agregarFila()" class="boton">+</button>
+            </td>
           </tr>
           <tr>
-            <td colspan="5" style="text-align: center;">
+            <td colspan="6" style="text-align: center;">
               <button type="submit" class="boton">REGISTRAR VENTA</button>
             </td>
           </tr>
-        </form>
+        </tfoot>
+        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'ok'): ?>
+  <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
+    ✅ Venta registrada correctamente.
+  </div>
+<?php elseif (isset($_GET['error'])): ?>
+  <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
+    ❌ Error: <?php echo htmlspecialchars($_GET['error']); ?>
+  </div>
+<?php endif; ?>
+      </table>
+      <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'ok'): ?>
+  <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
+    ✅ Venta registrada correctamente.
+  </div>
+<?php elseif (isset($_GET['error'])): ?>
+  <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
+    ❌ Error: <?php echo htmlspecialchars($_GET['error']); ?>
+  </div>
+<?php endif; ?>
+    </form>
+      
 
-        <!-- MOSTRAR REGISTROS DE VENTAS -->
-        <?php
-        $sql = "SELECT v.id_venta, 
-                       p.nombre, 
-                       v.cantidad, 
-                       p.precio, 
-                       v.precio_total
-                FROM venta v
-                JOIN platillo p ON v.id_pla = p.id_pla";
-        $result = mysqli_query($conexion, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-          echo "<tr>
-                  <td>{$row['id_venta']}</td>
-                  <td>" . htmlspecialchars($row['nombre']) . "</td>
-                  <td>{$row['cantidad']}</td>
-                  <td>" . number_format($row['precio'], 2) . "</td>
-                  <td>" . number_format($row['precio_total'], 2) . "</td>
-                </tr>";
-        }
-        ?>
-      </tbody>
-    </table>
   </div>
 </div>
 </main>
 
-<!-- SCRIPTS -->
 <script>
-  // Cambiar tema
   const themeToggle = document.getElementById('themeToggle');
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
   });
 
-  // Cerrar menú perfil
   const perfilBtn = document.getElementById('perfilBtn');
   const perfilMenu = document.getElementById('perfilMenu');
   document.addEventListener('click', (e) => {
@@ -129,29 +148,57 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     }
   });
 
-  // Calcular precio total automáticamente
-  const platilloSelect = document.getElementById('platillo');
-  const cantidadInput = document.querySelector('input[name="cantidad"]');
-  const precioInput = document.querySelector('input[name="precio"]');
-  const totalInput = document.querySelector('input[name="total"]');
+  function agregarFila() {
+    const tabla = document.getElementById('ventaRows');
+    const nuevaFila = tabla.rows[0].cloneNode(true);
 
-  platilloSelect.addEventListener('change', () => {
-    const selectedOption = platilloSelect.options[platilloSelect.selectedIndex];
-    const precio = parseFloat(selectedOption.dataset.precio || 0);
-    precioInput.value = precio.toFixed(2);
-    calcularTotal();
-  });
+    nuevaFila.querySelectorAll('input').forEach(input => input.value = '');
+    nuevaFila.querySelector('select').selectedIndex = 0;
 
-  cantidadInput.addEventListener('input', calcularTotal);
-  precioInput.addEventListener('input', calcularTotal);
-
-  function calcularTotal() {
-    const cantidad = parseInt(cantidadInput.value) || 0;
-    const precio = parseFloat(precioInput.value) || 0;
-    const total = cantidad * precio;
-    totalInput.value = total.toFixed(2);
+    tabla.appendChild(nuevaFila);
+    actualizarEventos();
   }
+
+  function eliminarFila(boton) {
+    const fila = boton.closest('tr');
+    const totalFilas = document.querySelectorAll('#ventaRows tr').length;
+
+    if (totalFilas > 1) {
+      fila.remove();
+    } else {
+      alert("Debe haber al menos una fila de venta.");
+    }
+  }
+
+  function actualizarEventos() {
+    const filas = document.querySelectorAll('#ventaRows tr');
+    filas.forEach(fila => {
+      const platillo = fila.querySelector('.platillo');
+      const cantidad = fila.querySelector('.cantidad');
+      const precio = fila.querySelector('.precioUnidad');
+      const total = fila.querySelector('.total');
+
+      platillo.onchange = () => {
+        const selected = platillo.options[platillo.selectedIndex];
+        const precioVal = parseFloat(selected.dataset.precio || 0);
+        precio.value = precioVal.toFixed(2);
+        calcularFila(cantidad, precio, total);
+      };
+
+      cantidad.oninput = () => calcularFila(cantidad, precio, total);
+    });
+  }
+
+  function calcularFila(cantidadInput, precioInput, totalInput) {
+    const cantidad = parseFloat(cantidadInput.value) || 0;
+    const precio = parseFloat(precioInput.value) || 0;
+    totalInput.value = (cantidad * precio).toFixed(2);
+  }
+
+  // Ejecutar al cargar
+  actualizarEventos();
 </script>
 
 </body>
+
 </html>

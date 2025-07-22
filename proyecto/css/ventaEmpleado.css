@@ -219,6 +219,19 @@ tr:hover {
   margin: 3px 0;
 }
 
+.boto {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  margin: 3px 0;
+}
+
+
 .boton-edi {
   background-color: #2b2b2b;
 }
@@ -234,6 +247,7 @@ tr:hover {
 .boton:hover {
   background-color: #801b29;
 }
+
 
 /* ---------------------
    MODO OSCURO ESPECÍFICO

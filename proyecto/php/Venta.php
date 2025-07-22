@@ -7,18 +7,28 @@ class Venta {
 
     public $id_pla;
     public $cantidad;
+    public $precio_total;
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
     public function insertar() {
-        $query = "CALL insertar_venta(:id_pla, :cantidad)";
-        $stmt = $this->conn->prepare($query);
+    $query = "CALL registrar_venta(?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
 
-        $stmt->bindParam(':id_pla', $this->id_pla, PDO::PARAM_INT);
-        $stmt->bindParam(':cantidad', $this->cantidad, PDO::PARAM_INT);
-
-        return $stmt->execute();
+    if (!$stmt) {
+        die("Error en prepare: " . $this->conn->error);
     }
+
+    $stmt->bind_param("iid", $this->id_pla, $this->cantidad, $this->precio_total); // i: int, d: double
+
+    try {
+        return $stmt->execute();
+    } catch (mysqli_sql_exception $e) {
+        error_log("Error al insertar venta: " . $e->getMessage());
+        return false;
+    }
+}
+
 }
