@@ -118,7 +118,46 @@ $session = new SessionManager();
     
 
   <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
-  <script>
+  
+<div class="tabla-container">
+    <h1 class="titulo">TABLA DE CONSULTA DE VENTAS</h1> 
+
+<table>
+    <tr>
+        <th>id_venta</th>
+        <th>Fecha</th>
+        <th>Responsable</th>
+       
+    </tr>
+
+
+<?php
+// Assuming $conexion is already established
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$sql = "SELECT * FROM venta";
+$result = mysqli_query($conexion, $sql);
+
+while ($mostrar = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $mostrar['id_venta']; ?></td>
+        <td><?php echo $mostrar['fecha']; ?></td>
+        <td><?php echo $mostrar['id_usuario']; ?></td>
+
+  
+    </tr>
+<?php
+}
+?>
+
+    </table>
+<button class="btn-report" onclick="printReport()">VER DETALLES</button>
+</div>
+
+   
+    
+</div>
+<script>
     // ----- Tema claro / oscuro -----
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
@@ -178,46 +217,39 @@ $session = new SessionManager();
         }
       });
     }
+    // --- FUNCIONALIDAD PARA IMPRIMIR/GENERAR REPORTE ---
+  function printReport() {
+      // Abre una nueva ventana para imprimir solo el contenido de la tabla
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write('<html><head><title>Reporte de Productos</title>');
+      // Incluye CSS para la impresión. Puedes usar los mismos estilos de tabla o uno específico para impresión.
+      printWindow.document.write('<style>');
+      printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
+      printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+      printWindow.document.write('th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }');
+      printWindow.document.write('th { background-color: #f2f2f2; }');
+      printWindow.document.write('h1 { text-align: center; margin-bottom: 20px; }');
+      // Oculta elementos que no quieres imprimir (ej. elementos con clase 'no-print')
+      printWindow.document.write('@media print { .no-print { display: none; } }');
+      printWindow.document.write('</style>');
+      printWindow.document.write('</head><body>');
+
+      // Agrega el título del reporte
+      printWindow.document.write('<h1>Reporte de Productos Kenny\'s</h1>');
+
+      // Copia el contenido de la tabla original
+      const originalTable = document.querySelector('.tabla-container table');
+      // Clona la tabla para poder modificarla sin afectar la tabla visible en la página
+      const clonedTable = originalTable.cloneNode(true); // 'true' para clonar todos los hijos
+
+      // Escribe la tabla modificada (sin la columna de acciones) en la ventana de impresión
+      printWindow.document.write(clonedTable.outerHTML);
+
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+  }
   </script>
-<div class="tabla-container">
-    <h1 class="titulo">TABLA DE CONSULTA DE VENTAS</h1> 
-
-<table>
-    <tr>
-        <th>id_venta</th>
-        <th>Fecha</th>
-        <th>Venta</th>
- 
-    </tr>
-
-
-<?php
-// Assuming $conexion is already established
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM venta";
-$result = mysqli_query($conexion, $sql);
-
-while ($mostrar = mysqli_fetch_array($result)) {
-?>
-    <tr>
-        <td><?php echo $mostrar['id_venta']; ?></td>
-        <td><?php echo $mostrar['fecha']; ?></td>
-        <td><?php echo $mostrar['total_venta']; ?></td>
-
-        <td>
-          <a href="editar_empleado.php?id=<?php echo $mostrar['id_venta']; ?>&fecha=<?php echo $mostrar['fecha']; ?>&total=<?php echo $mostrar['total_venta']; ?>" class="boton-edi">Editar</a>
-
-        <td>
-            <a href="./php/eliminarEmp.php?id=<?php echo $mostrar['id_venta']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
-        </td>
-    </tr>
-<?php
-}
-?>
-    </table>
-</div>
-
-    </table>
-</div>
 </body>
 </html>
