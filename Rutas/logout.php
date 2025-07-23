@@ -1,5 +1,5 @@
 <?php
-require_once 'SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 $session->logout();

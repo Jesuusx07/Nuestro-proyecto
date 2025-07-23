@@ -1,8 +1,8 @@
 <?php  
 require_once 'Venta.php';
 require_once 'VentaController.php';
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 session_start();
 $_SESSION['ventas_recientes'] = []; // Limpiamos anteriores

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'SessionManager.php';
+require_once '../Config/SessionManager.php';
 require_once 'sql.php';
 require_once 'InventarioController.php';
 
