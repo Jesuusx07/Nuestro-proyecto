@@ -19,7 +19,7 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">EMPLEADO</span>
+        <a href="dashboardEmp.php" class="logo-text">EMPLEADO</a>
     </div>
 
     <div class="navbar-right">
@@ -43,9 +43,24 @@ $session = new SessionManager();
         <input type="text" id="nombre" name="nombre" placeholder="Nombre">
         <select name="select" id="cat">
           <option value="">Categoria</option>
-          <option value="Fruta">Fruta</option>
-          <option value="Vegetal">Vegetal</option>
-          <option value="Salsa">Salsa</option>
+        <option value="Fruta">Fruta</option>
+<option value="Vegetal">Vegetal</option>
+<option value="Salsa">Salsa</option>
+<option value="Carne">Carne</option>
+<option value="Pollo">Pollo</option>
+<option value="Pescado y Mariscos">Pescado y Mariscos</option>
+<option value="Cereal y Harinas">Cereal y Harinas</option>
+<option value="Lácteo">Lácteo</option>
+<option value="Bebida">Bebida</option>
+<option value="Postre">Postre</option>
+<option value="Panadería">Panadería</option>
+<option value="Aceites y Grasas">Aceites y Grasas</option>
+<option value="Especias y Condimentos">Especias y Condimentos</option>
+<option value="Congelados">Congelados</option>
+<option value="Enlatados">Enlatados</option>
+<option value="Limpieza">Limpieza</option>
+<option value="Desechables">Desechables</option>
+<option value="Otros">Otros</option>
         </select>
         <input type="file" id="imagen" name="imagen" accept="image/*">
         <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
@@ -86,6 +101,16 @@ $session = new SessionManager();
   </div>
 
   <script>
+     if (localStorage.getItem('darkTheme') === 'enabled') {
+      document.body.classList.add('dark-theme');
+    }
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
+    });
     const perfilBtn = document.getElementById("perfilBtn");
     const perfilMenu = document.getElementById("perfilMenu");
     const themeToggle = document.getElementById("themeToggle");

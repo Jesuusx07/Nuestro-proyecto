@@ -104,6 +104,12 @@ $session = new SessionManager();
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+                <div class="menu-item">
+          <button class="btn-menu">Gestión de Facturas</button>
+          <div class="sub-menu">
+            <a href="Facturas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
       </nav>
   <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
@@ -176,8 +182,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
 <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
-    // ----- Tema claro / oscuro -----
-    if (localStorage.getItem('darkTheme') === 'enabled') {
+     if (localStorage.getItem('darkTheme') === 'enabled') {
   document.body.classList.add('dark-theme');
 }
     const themeToggle = document.getElementById('themeToggle');
@@ -218,7 +223,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 function printReport() {
     // Abre una nueva ventana para imprimir solo el contenido de la tabla
     const printWindow = window.open('', '_blank');
-    printWindow.document.write('<html><head><title>Reporte de Empleados</title>');
+    printWindow.document.write('<html><head><title>Reporte de Reservas</title>');
 
     // Incluye CSS para la impresión
     printWindow.document.write('<style>');
@@ -233,7 +238,7 @@ function printReport() {
     printWindow.document.write('</head><body>');
 
     // Agrega el título del reporte
-    printWindow.document.write('<h1>Reporte de Empleados Kenny\'s</h1>');
+    printWindow.document.write('<h1>Reporte de Reservas Kenny\'s</h1>');
 
     // Copia el contenido de la tabla original
     const originalTable = document.querySelector('.tabla-container table');

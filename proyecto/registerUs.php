@@ -54,10 +54,20 @@ $session = new SessionManager();
         <input type="text" id="telefono" name="tele" placeholder="Teléfono">
         <input type="number" id="id" name="documento" placeholder="Documento de identidad">
         <select name="select" id="rol">
-          <option value="">Rol</option>
-          <option value="Mesero">Mesero</option>
-          <option value="Cocinero">Cocinero</option>
-          <option value="Limpieza">Limpieza</option>
+          <option value="">Seleccionar Rol</option>
+<option value="Cocinero">Cocinero</option>
+<option value="Lavaplatos">Lavaplatos</option>
+<option value="Mesero">Mesero / Camarero</option>
+<option value="Cajero">Cajero</option>
+<option value="Limpieza">Personal de limpieza</option>
+
+
+<!-- Área Administrativa -->
+
+
+
+
+
         </select>
         <input type="submit" id="boton" value="Registrar">
 

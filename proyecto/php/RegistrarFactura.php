@@ -1,6 +1,5 @@
 <?php
 require_once 'FacturaController.php';
-require_once 'PlatilloController.php';
 require_once 'VentaController.php';
 require_once 'SessionManager.php';
 require_once 'sql.php';
@@ -8,21 +7,16 @@ require_once 'sql.php';
 $session = new SessionManager();
 $db = (new Database())->conectar();
 $controlador1 = new FacturaController($db);
-$controlador2 = new PlatilloController($db);
 $controlador3 = new VentaController($db);
-  
-$platillo  =  $controlador2 -> obtenerTodos();   
+   
 $venta =  $controlador3 -> obtenerTodos();   
 
 
 
 $responsable = $session->getUserName();
-var_dump($responsable);
 
-$ultimoPlatillo = end($platillo);
 $ultimoventa = end($venta);
 
-$ultimoIdPlatillo = $ultimoPlatillo['id_pla'];
 $ultimoIdVenta = $ultimoventa['id_venta'];
 
 $total_venta = $ultimoventa['precio_total'];

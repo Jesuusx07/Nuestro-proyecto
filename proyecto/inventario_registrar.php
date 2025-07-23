@@ -78,6 +78,7 @@ $session = new SessionManager();
   </div>
 
   <script>
+    
     const perfilBtn = document.getElementById("perfilBtn");
     const perfilMenu = document.getElementById("perfilMenu");
     const themeToggle = document.getElementById("themeToggle");

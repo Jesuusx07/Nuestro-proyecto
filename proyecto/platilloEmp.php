@@ -152,10 +152,15 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
 <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
-    // ----- Tema claro / oscuro -----
+    if (localStorage.getItem('darkTheme') === 'enabled') {
+      document.body.classList.add('dark-theme');
+    }
+
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
     });
 
     // ----- Menú perfil desplegable -----

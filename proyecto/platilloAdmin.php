@@ -104,6 +104,12 @@ $session = new SessionManager();
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+                <div class="menu-item">
+          <button class="btn-menu">Gestión de Facturas</button>
+          <div class="sub-menu">
+            <a href="Facturas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
       </nav>
 
 

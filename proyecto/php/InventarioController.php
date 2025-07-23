@@ -2,7 +2,7 @@
 require_once 'Inventario.php';
 
 class InventarioController {
-    private $Inventario;
+    private $inventario;
 
     public function __construct($db) {
         $this->inventario = new Inventario($db);
@@ -21,7 +21,7 @@ class InventarioController {
     }
 
     public function actualizar($producto, $cantidad_total) {
-        $this->inventario->id = $producto;
+        $this->inventario->producto = $producto;
         $this->inventario->cantidad_total = $cantidad_total;
 
        

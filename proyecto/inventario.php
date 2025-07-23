@@ -96,6 +96,12 @@ if (!$session->isLoggedIn()) {
             <a href="inventarioRegis.php" class="sub-btn">Registrar</a>
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
+                  <div class="menu-item">
+          <button class="btn-menu">Gestión de Facturas</button>
+          <div class="sub-menu">
+            <a href="Facturas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
         </div>
       </nav>
      <form id="formu" action="./venta_empleado.php" method="POST"> 
@@ -171,7 +177,6 @@ if (!$session->isLoggedIn()) {
         <tr>
           <th>Producto</th>
           <th>Cantidad total</th>   
-          <th>Eliminar</th>       
         </tr>
       <tbody>
         <?php
@@ -242,7 +247,7 @@ if (!$session->isLoggedIn()) {
   function printReport() {
       // Abre una nueva ventana para imprimir solo el contenido de la tabla
       const printWindow = window.open('', '_blank');
-      printWindow.document.write('<html><head><title>Reporte de Productos</title>');
+      printWindow.document.write('<html><head><title>Reporte de Inventario</title>');
       // Incluye CSS para la impresión. Puedes usar los mismos estilos de tabla o uno específico para impresión.
       printWindow.document.write('<style>');
       printWindow.document.write('body { font-family: Arial, sans-serif; margin: 20px; }');
@@ -256,7 +261,7 @@ if (!$session->isLoggedIn()) {
       printWindow.document.write('</head><body>');
 
       // Agrega el título del reporte
-      printWindow.document.write('<h1>Reporte de Productos Kenny\'s</h1>');
+      printWindow.document.write('<h1>Reporte de Inventario Kenny\'s</h1>');
 
       // Copia el contenido de la tabla original
       const originalTable = document.querySelector('.tabla-container table');
