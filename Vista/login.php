@@ -1,7 +1,7 @@
 <?php
 
 
-require_once '../config/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
