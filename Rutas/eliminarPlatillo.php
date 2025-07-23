@@ -1,7 +1,7 @@
 <?php
 
-require_once 'SessionManager.php';
-require_once 'sql.php'; // Asegúrate de que este archivo contiene la clase Database con conexión PDO
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php'; // Asegúrate de que este archivo contiene la clase Database con conexión PDO
 
 $session = new SessionManager();
 
@@ -12,14 +12,14 @@ if (!$session->isLoggedIn()){
 }
 
 // Carga el controlador de Platillos
-require_once 'PlatilloController.php'; // ¡Ruta corregida!
+require_once '../Controlador/PlatilloController.php'; // ¡Ruta corregida!
 
 // Conectar a la base de datos
 try {
     $db = (new Database())->conectar();
 } catch (PDOException $e) {
     $session->set('error_message', 'Error de conexión a la base de datos: ' . $e->getMessage());
-    header('Location: ../latilloAdmin.php'); // Redirige a la página de listado de platillos en caso de error de DB
+    header('Location: ../platilloAdmin.php'); // Redirige a la página de listado de platillos en caso de error de DB
     exit();
 }
 
@@ -31,7 +31,7 @@ if (isset($_GET['id_pla'])) { // El ID debe venir como 'id_pla' desde el enlace 
     $id_platillo = $_GET['id_pla']; // Se obtiene directamente el ID, PDO lo manejará de forma segura
 } else {
     $session->set('error_message', 'ID de platillo no proporcionado para eliminar.');
-    header('Location: ../latilloAdmin.php'); // Redirige si no hay ID
+    header('Location: ../Vista/platilloAdmin.php'); // Redirige si no hay ID
     exit();
 }
 
@@ -50,7 +50,7 @@ try {
 }
 
 // Redirigir de vuelta a la página de listado de platillos
-header("location: ../platilloAdmin.php");
+header("location: ../Vista/platilloAdmin.php");
 exit();
 
 ?>

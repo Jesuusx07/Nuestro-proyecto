@@ -137,7 +137,11 @@ $session = new SessionManager();
 
 <?php
 // Assuming $conexion is already established
+<<<<<<< HEAD
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
 $conexion = mysqli_connect("151.106.96.29", "root", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 $sql = $sql = "SELECT
     r.id_reserva,
     r.estado_reserva,

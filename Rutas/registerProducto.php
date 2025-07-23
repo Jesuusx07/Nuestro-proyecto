@@ -61,25 +61,87 @@ else{
         if($categoria == "Fruta"){
             $producto = $controlador->insertar($nombre, "Fruta",  $imagen, $precio, $proveedor);
 
-            header('Location: ../producto.php'); 
+            header('Location: ../Vista/producto.php'); 
             exit();
         }
         elseif($categoria == "Vegetal"){
             $producto = $controlador->insertar($nombre, "Vegetal",  $imagen, $precio, $proveedor);
 
-            header('Location: ../producto.php'); 
+            header('Location: ../Vista/producto.php'); 
             exit();
         }    
         elseif($categoria == "Salsa"){
             $producto = $controlador->insertar($nombre, "Salsa",  $imagen, $precio, $proveedor);
 
-            header('Location: ../producto.php'); 
+            header('Location: ../Vista/producto.php'); 
             exit();
         }
+ 
+    elseif ($categoria == "Carne") {
+        $producto = $controlador->insertar($nombre, "Carne", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Pollo") {
+        $producto = $controlador->insertar($nombre, "Pollo", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Pescado y Mariscos") {
+        $producto = $controlador->insertar($nombre, "Pescado y Mariscos", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Cereal y Harinas") {
+        $producto = $controlador->insertar($nombre, "Cereal y Harinas", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Lácteo") {
+        $producto = $controlador->insertar($nombre, "Lácteo", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Bebida") {
+        $producto = $controlador->insertar($nombre, "Bebida", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Postre") {
+        $producto = $controlador->insertar($nombre, "Postre", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Panadería") {
+        $producto = $controlador->insertar($nombre, "Panadería", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Aceites y Grasas") {
+        $producto = $controlador->insertar($nombre, "Aceites y Grasas", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Especias y Condimentos") {
+        $producto = $controlador->insertar($nombre, "Especias y Condimentos", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Congelados") {
+        $producto = $controlador->insertar($nombre, "Congelados", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Enlatados") {
+        $producto = $controlador->insertar($nombre, "Enlatados", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Limpieza") {
+        $producto = $controlador->insertar($nombre, "Limpieza", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Desechables") {
+        $producto = $controlador->insertar($nombre, "Desechables", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    } elseif ($categoria == "Otros") {
+        $producto = $controlador->insertar($nombre, "Otros", $imagen, $precio, $proveedor);
+        header('Location: ../Vista/producto.php');
+        exit();
+    }
+}
 
     }
 
 
-}
 
 ?>

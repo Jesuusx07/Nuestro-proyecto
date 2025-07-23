@@ -1,8 +1,11 @@
 <?php
 
 $servidor = "151.106.96.29";
+
 $usuario = "u112415144_Kennys"; 
+
 $clave = "Kennys12345";
+
 $baseDatos = "u112415144_proyecto_kenny";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDatos);

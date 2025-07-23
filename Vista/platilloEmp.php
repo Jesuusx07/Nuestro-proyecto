@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+require_once './config/SessionManager.php';
+=======
 require_once '../Config/SessionManager.php';
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 
 $session = new SessionManager();
 
@@ -38,7 +42,7 @@ $session = new SessionManager();
         <button class="boton-perfil" id="perfilBtn">👤</button>
        <div class="menu-desplegable" id="perfilMenu">
 
-  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+  <a href="./Rutas/logout.php"><span>🔓</span> Cerrar sesión</a>
 </div>
 
       </div>
@@ -120,7 +124,11 @@ $session = new SessionManager();
 
 <?php
 // Assuming $conexion is already established
+<<<<<<< HEAD
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
 $conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 $sql = "SELECT * FROM platillo";
 $result = mysqli_query($conexion, $sql);
 

@@ -38,7 +38,7 @@ $session = new SessionManager();
         <button class="boton-perfil" id="perfilBtn">👤</button>
        <div class="menu-desplegable" id="perfilMenu">
 
-  <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+  <a href="./Rutas/logout.php"><span>🔓</span> Cerrar sesión</a>
 </div>
 
       </div>
@@ -138,7 +138,11 @@ $session = new SessionManager();
 
 <?php
 // Assuming $conexion is already established
+<<<<<<< HEAD
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
 $conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 $sql = "SELECT p.id_producto,
                 p.nombre,
                 p.categoria,
@@ -166,7 +170,11 @@ while ($mostrar = mysqli_fetch_array($result)) {
             <a href="../Rutas/editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
+<<<<<<< HEAD
+            <a href="./Rutas/eliminarPro.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+=======
             <a href="../Rutas/eliminarPro.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
         </td>
     </tr>
 <?php
