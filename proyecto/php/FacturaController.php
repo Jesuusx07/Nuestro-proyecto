@@ -9,12 +9,11 @@ class FacturaController {
         $this->factura = new Factura($db);
     }
 
-    public function insertar($id_Hventa, $id_pla, $id_pago, $total_factura_ConImpuestos, $responsable) {
-        $this->factura->id_Hventa = $id_Hventa;
-        $this->factura->id_pla = $id_pla;
-        $this->factura->id_pago = $id_pago;
+    public function insertar($id_venta, $total_factura_ConImpuestos, $responsable, $metodo_pago) {
+        $this->factura->id_venta = $id_venta;
         $this->factura->total_factura_ConImpuestos = $total_factura_ConImpuestos;
         $this->factura->responsable = $responsable;
+        $this->factura->metodo_pago = $metodo_pago;
 
         return $this->factura->insertar();
     }
