@@ -1,6 +1,6 @@
 <?php
 
-$servidor = "Kennys.online";
+$servidor = "localhost";
 
 $usuario = "u112415144_Kennys"; 
 
@@ -11,7 +11,7 @@ $baseDatos = "u112415144_proyecto_kenny";
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDatos);
 
 class Database {
-    private $host = "Kennys.online";
+    private $host = "localhost";
     private $db_name = "u112415144_proyecto_kenny";
     private $username = "u112415144_Kennys";
     private $password = "Kennys12345";
