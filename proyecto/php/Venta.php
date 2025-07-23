@@ -1,6 +1,6 @@
 <?php
 
-require_once 'sql.php'; // Asegúrate de que sql.php devuelve $enlace o conexión PDO
+require_once 'sql.php'; // Asegúrate de que este archivo retorna una conexión PDO en $enlace o similar
 
 class Venta {
     private $conn;
@@ -8,50 +8,46 @@ class Venta {
     public $id_pla;
     public $cantidad;
     public $precio_total;
+    public $fecha;
 
     public function __construct($db) {
-        $this->conn = $db;
+        $this->conn = $db; // MySQLi
     }
 
     public function insertar() {
-    $query = "CALL registrar_venta(?, ?, ?)";
-    $stmt = $this->conn->prepare($query);
+        $stmt = $this->conn->prepare("CALL registrar_venta(?, ?, ?, ?)");
 
-    if (!$stmt) {
-        die("Error en prepare: " . $this->conn->error);
+        if (!$stmt) {
+            error_log("Error preparando la consulta: " . $this->conn->error);
+            return false;
+        }
+
+        $stmt->bind_param("iids", $this->id_pla, $this->cantidad, $this->precio_total, $this->fecha);
+        $resultado = $stmt->execute();
+
+        if (!$resultado) {
+            error_log("Error al ejecutar: " . $stmt->error);
+        }
+
+        $stmt->close();
+        return $resultado;
     }
 
-    $stmt->bind_param("iid", $this->id_pla, $this->cantidad, $this->precio_total); // i: int, d: double
+    public function obtenerTodos() {
+        $resultados = [];
+        $result = $this->conn->query("CALL obtener_todas_las_ventas()");
 
-    try {
-        return $stmt->execute();
-    } catch (mysqli_sql_exception $e) {
-        error_log("Error al insertar venta: " . $e->getMessage());
-        return false;
-    }
-}
-
-
-public function obtenerTodos() {
-    try {
-        // Preparar la consulta al procedimiento almacenado
-        $query = "CALL obtener_todas_las_ventas()";
-        $stmt = $this->conn->prepare($query);
-
-        // Ejecutar la consulta
-        $stmt->execute();
-
-        // Obtener todos los resultados
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Cerrar el cursor para liberar conexión
-        $stmt->closeCursor();
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $resultados[] = $row;
+            }
+            $result->free();
+            $this->conn->next_result(); // Muy importante para liberar el resultado del procedimiento
+        } else {
+            error_log("Error al obtener ventas: " . $this->conn->error);
+        }
 
         return $resultados;
-
-    } catch (PDOException $e) {
-        return ['error' => $e->getMessage()];
     }
-}
 }
 

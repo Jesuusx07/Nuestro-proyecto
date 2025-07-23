@@ -8,16 +8,22 @@ class VentaController {
         $this->venta = new Venta($db);
     }
 
-    public function insertar($id_pla, $cantidad, $precio_total) {
+    /**
+     * Inserta una nueva venta con platillo, cantidad, total y fecha
+     */
+    public function insertar($id_pla, $cantidad, $precio_total, $fecha) {
         $this->venta->id_pla = $id_pla;
         $this->venta->cantidad = $cantidad;
         $this->venta->precio_total = $precio_total;
+        $this->venta->fecha = $fecha;
 
         return $this->venta->insertar();
     }
 
-
-public function obtenerTodos() {
-    return $this->venta->obtenerTodos();
+    /**
+     * Obtiene todas las ventas registradas
+     */
+    public function obtenerTodos() {
+        return $this->venta->obtenerTodos();
+    }
 }
-   }

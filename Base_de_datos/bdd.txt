@@ -86,7 +86,7 @@ CREATE TABLE reserva(
 
 CREATE TABLE factura (
     id_factura INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Clave primaria única para cada factura
-    id_venta INT NOT NULL, -- Clave foránea: llama a la tabla id, nombre, precio
+    id_venta INT NOT NULL, -- Clave foránea: llama a la tabla id, nombre, precio, fecha
 
     total_factura_ConImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura con impuestos
     responsable VARCHAR(100),
