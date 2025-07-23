@@ -27,8 +27,7 @@ $session = new SessionManager();
   <!-- ░░░░░░░░░░  NAVBAR  ░░░░░░░░░░ -->
   <header class="navbar">
   
-
-     <span class="logo-text">EMPLEADO</span>
+   <a href="dashboardEmp.php" class="logo-text">EMPLEADO</a>
     </div>
 
     <div class="navbar-right">
@@ -164,7 +163,9 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
 <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
-    // ----- Tema claro / oscuro -----
+         if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');

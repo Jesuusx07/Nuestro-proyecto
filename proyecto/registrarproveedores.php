@@ -30,17 +30,13 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-        <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
-    </div>
-
+     <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
-      
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
+        <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
         <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
         </div>
       </div>
     </div>

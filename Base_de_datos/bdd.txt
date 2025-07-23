@@ -86,7 +86,7 @@ CREATE TABLE reserva(
 
 CREATE TABLE factura (
     id_factura INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Clave primaria única para cada factura
-    id_venta INT NOT NULL, -- Clave foránea: llama a la tabla id, nombre, precio
+    id_venta INT NOT NULL, -- Clave foránea: llama a la tabla id, nombre, precio, fecha
 
     total_factura_ConImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura con impuestos
     responsable VARCHAR(100),
@@ -384,18 +384,22 @@ DELIMITER ;
 -- Función: Inserta una nueva venta en la tabla 'venta'
 
 
-DELIMITER //
-
-CREATE PROCEDURE registrar_venta(
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_venta`(
     IN p_id_pla INT,
     IN p_cantidad INT,
     IN p_precio_total DECIMAL(10,2),
     IN p_fecha DATE
 )
 BEGIN
+    -- Insertamos la venta en la tabla
     INSERT INTO venta (id_pla, cantidad, precio_total, fecha)
     VALUES (p_id_pla, p_cantidad, p_precio_total, p_fecha);
-END//
+
+    -- Devolvemos el ID generado automáticamente
+    SELECT LAST_INSERT_ID() AS id_venta;
+END$$
+DELIMITER ;
 
 
 -- PROCEDIMIENTO 2: obtener_ventas

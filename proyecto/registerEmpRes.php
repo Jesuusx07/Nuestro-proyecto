@@ -30,17 +30,13 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">EMPLEADO</span>
-    </div>
-
+      <a href="dashboard.php" class="logo-text">EMPLEADO</a>
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
-      
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
+        <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
         <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
         </div>
       </div>
     </div>
@@ -72,6 +68,16 @@ $session = new SessionManager();
   </div>
 
   <script>
+     if (localStorage.getItem('darkTheme') === 'enabled') {
+      document.body.classList.add('dark-theme');
+    }
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
+    });
     const perfilBtn = document.getElementById("perfilBtn");
     const perfilMenu = document.getElementById("perfilMenu");
     const themeToggle = document.getElementById("themeToggle");

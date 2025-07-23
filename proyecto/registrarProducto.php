@@ -27,17 +27,13 @@ $session = new SessionManager();
 
     
     
-       <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
-    </div>
-
+      <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
-      
       <div class="perfil">
-        <button class="boton-perfil" id="perfilBtn">👤</button>
+        <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
         <div class="menu-desplegable" id="perfilMenu">
-   
-          <a href="#">Cerrar sesión</a>
+          <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
         </div>
       </div>
     </div>
@@ -54,6 +50,26 @@ $session = new SessionManager();
           <option value="Fruta">Fruta</option>
           <option value="Vegetal">Vegetal</option>
           <option value="Salsa">Salsa</option>
+          <option value="">Categoría</option>
+<option value="Fruta">Fruta</option>
+<option value="Vegetal">Vegetal</option>
+<option value="Salsa">Salsa</option>
+<option value="Carne">Carne</option>
+<option value="Pollo">Pollo</option>
+<option value="Pescado y Mariscos">Pescado y Mariscos</option>
+<option value="Cereal y Harinas">Cereal y Harinas</option>
+<option value="Lácteo">Lácteo</option>
+<option value="Bebida">Bebida</option>
+<option value="Postre">Postre</option>
+<option value="Panadería">Panadería</option>
+<option value="Aceites y Grasas">Aceites y Grasas</option>
+<option value="Especias y Condimentos">Especias y Condimentos</option>
+<option value="Congelados">Congelados</option>
+<option value="Enlatados">Enlatados</option>
+<option value="Limpieza">Limpieza</option>
+<option value="Desechables">Desechables</option>
+<option value="Otros">Otros</option>
+
         </select>
         <input type="file" id="imagen" name="imagen" accept="image/*">
         <input type="number" id="precio" name="precio" placeholder="Precio" step="0.01" min="0">
