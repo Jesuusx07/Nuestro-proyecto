@@ -100,6 +100,16 @@ $session = new SessionManager();
   </div>
 
   <script>
+     if (localStorage.getItem('darkTheme') === 'enabled') {
+      document.body.classList.add('dark-theme');
+    }
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
+    });
     const perfilBtn = document.getElementById("perfilBtn");
     const perfilMenu = document.getElementById("perfilMenu");
     const themeToggle = document.getElementById("themeToggle");

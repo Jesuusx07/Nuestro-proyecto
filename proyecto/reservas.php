@@ -182,11 +182,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
 <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
-        if (localStorage.getItem('darkTheme') === 'enabled') {
-  document.body.classList.add('dark-theme');
-}
-    // ----- Tema claro / oscuro -----
-    if (localStorage.getItem('darkTheme') === 'enabled') {
+     if (localStorage.getItem('darkTheme') === 'enabled') {
   document.body.classList.add('dark-theme');
 }
     const themeToggle = document.getElementById('themeToggle');

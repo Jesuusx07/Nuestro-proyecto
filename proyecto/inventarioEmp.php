@@ -23,7 +23,7 @@ if (!$session->isLoggedIn()) {
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
-    <span class="logo-text">EMPLEADO</span>
+       <a href="dashboardEmp.php" class="logo-text">EMPLEADO</a>
 
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
@@ -135,10 +135,15 @@ if (!$session->isLoggedIn()) {
 
   <!-- SCRIPTS -->
   <script>
-    // Tema claro/oscuro
-    const themeToggle = document.getElementById("themeToggle");
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-theme");
+   if (localStorage.getItem('darkTheme') === 'enabled') {
+      document.body.classList.add('dark-theme');
+    }
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      localStorage.setItem('darkTheme', isDark ? 'enabled' : 'disabled');
     });
 
     // Menú perfil

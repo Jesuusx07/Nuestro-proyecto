@@ -46,14 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 
 <body>
 
-<header class="navbar">
-     <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
-  <div class="navbar-right">
-    <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
-    <div class="perfil">
-      <button class="boton-perfil" id="perfilBtn">👤</button>
-      <div class="menu-desplegable" id="perfilMenu">
-        <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
+  <header class="navbar">
+    <div class="navbar-right">
+      <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
+      <div class="perfil">
+        <button class="boton-perfil" id="perfilBtn">👤 Perfil</button>
+        <div class="menu-desplegable" id="perfilMenu">
+          <a href="./php/logout.php"><span>🔓</span> Cerrar sesión</a>
       </div>
     </div>
   </div>
@@ -134,11 +133,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 </main>
 
 <script>
-  const themeToggle = document.getElementById('themeToggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-  });
-
+     if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
   const perfilBtn = document.getElementById('perfilBtn');
   const perfilMenu = document.getElementById('perfilMenu');
   document.addEventListener('click', (e) => {

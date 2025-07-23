@@ -27,7 +27,7 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">EMPLEADO</span>
+   <a href="dashboardEmp.php" class="logo-text">EMPLEADO</a>
     </div>
 
     <div class="navbar-right">
