@@ -1,17 +1,22 @@
 <?php
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 $session = new SessionManager();
 
 if (!$session->isLoggedIn()) {
-    header("location: login.php");
+    header("location: ../Vista/login.php");
     exit();
 }
 
 $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_kennys");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
+<<<<<<< HEAD
 require_once './Modelo/Venta.php';
 require_once './Controlador/VentaController.php';
+=======
+require_once '../Modelo/Venta.php';
+require_once '../Controlador/VentaController.php';
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (
@@ -21,8 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         is_array($_POST['total']) &&
         is_array($_POST['fecha'])
     ) {
+<<<<<<< HEAD
         require_once './config/sql.php';
         require_once './Controlador/VentaController.php';
+=======
+        require_once '../Config/sql.php';
+        require_once '../Controlador/VentaController.php';
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 
         $controller = new VentaController($enlace);
 
@@ -74,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="tabla-container">
     <h2 class="titulo">PROCESO VENTA</h2>
 
-    <form action="./php/registrarVenta.php" method="POST">
+    <form action="../Rutas/registrarVenta.php" method="POST">
       <table>
         <thead>
           <tr>

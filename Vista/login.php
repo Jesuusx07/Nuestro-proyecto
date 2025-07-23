@@ -8,9 +8,9 @@ $session = new SessionManager();
 if (!$session->isLoggedIn()) {
 } else {
     if ($_SESSION['user_id'] == 1) {
-        header("location: dashboard.php");
+        header("location: ../Vista/dashboard.php");
     } else {
-        header("location: dashboardEmp.php");
+        header("location: ../Vista/dashboardEmp.php");
     }
 }
 ?>

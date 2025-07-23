@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -88,7 +88,7 @@ $session = new SessionManager();
 
     </nav>
 
-        <form id="formu" action="./venta_empleado.php" method="POST"> 
+        <form id="formu" action="venta_empleado.php" method="POST"> 
           <div class="menu-item"> 
             <button class="btn-venta">HACER UNA VENTA</button>
           </div>
@@ -113,7 +113,11 @@ $session = new SessionManager();
 
   <?php
   // Assuming $conexion is already established
+<<<<<<< HEAD
   $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
+  $conexion = mysqli_connect("151.106.96.29", "root", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
   $sql = "SELECT * FROM producto";
   $result = mysqli_query($conexion, $sql);
 
@@ -129,8 +133,8 @@ $session = new SessionManager();
           <td><?php echo $mostrar['id_usuario']; ?></td>        
 
           <td>
-              <a href="editarProdEmp.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
-              <a href="./php/eliminarProdEmp.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+              <a href="../Rutas/editarProdEmp.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
+              <a href="../Rutas/eliminarProdEmp.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
           </td>
       </tr>
   <?php

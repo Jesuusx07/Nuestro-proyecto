@@ -1,6 +1,6 @@
 <?php
 
-require_once 'sql.php'; // Asegúrate de que este archivo retorna una conexión PDO en $enlace o similar
+require_once '../Config/sql.php'; // Asegúrate de que este archivo retorna una conexión PDO en $enlace o similar
 
 class Venta {
     private $conn;

@@ -50,7 +50,11 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Inventario</h2>
     <div class="regis">
+<<<<<<< HEAD
       <form id="formu" action="./Rutas/registerInventario.php" method="POST">
+=======
+      <form id="formu" action="../Rutas/registerInventario.php" method="POST">
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 
         <label for="producto">Producto</label>
             <select id="tipo" name="producto">

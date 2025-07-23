@@ -1,6 +1,6 @@
 <?php
 
-require_once 'sql.php'; // Asegúrate de que 'sql.php' contiene tu clase de conexión a la base de datos
+require_once '../Config/sql.php'; // Asegúrate de que 'sql.php' contiene tu clase de conexión a la base de datos
 
 class Platillo {
     private $conn;

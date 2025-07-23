@@ -1,12 +1,12 @@
 
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -46,7 +46,7 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Empleados</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerUs.php" method="POST">
+      <form id="formu" action="../Rutas/registerUs.php" method="POST">
         <input type="text" id="nombre" name="fname" placeholder="Nombres">
         <input type="text" id="apelli" name="lname" placeholder="Apellidos">
         <input type="email" id="correo" name="email" placeholder="Correo">

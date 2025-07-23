@@ -1,9 +1,9 @@
 <?php
-require_once './php/SessionManager.php';
+require_once './Config/SessionManager.php';
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -43,7 +43,7 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Producto</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerProducto.php" method="POST">
+      <form id="formu" action="../Rutas/registerProducto.php" method="POST">
         <input type="text" id="nombre" name="nombre" placeholder="Nombre">
         <select name="select" id="cat">
           <option value="">Categoria</option>

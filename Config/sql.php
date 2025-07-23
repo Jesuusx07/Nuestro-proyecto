@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 $servidor = "kennys.online";
+=======
+$servidor = "151.106.96.29";
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 $usuario = "u112415144_kenny"; 
 $clave = "Kennys12345";
 $baseDatos = "u112415144_proyecto_kenny";
@@ -8,7 +12,7 @@ $baseDatos = "u112415144_proyecto_kenny";
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDatos);
 
 class Database {
-    private $host = "kennys.online";
+    private $host = "151.106.96.29";
     private $db_name = "u112415144_proyecto_kenny";
     private $username = "u112415144_kenny";
     private $password = "Kennys12345";

@@ -1,19 +1,19 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
         exit();
     }
 
 ?>
 <?php
 
-require_once './php/SessionManager.php';
-require_once './php/sql.php'; // Asumiendo que este archivo contiene la clase Database con conexión PDO
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php'; // Asumiendo que este archivo contiene la clase Database con conexión PDO
 
 $session = new SessionManager();
 
@@ -50,7 +50,7 @@ $pla_categoria = $_GET['pla_categoria'] ?? '';
     <div class="container">
         <h2>Editar Platillo</h2>
         <!-- El formulario enviará los datos al script PHP que procesará la actualización del platillo -->
-        <form action="./php/editarPlatilloEmp.php" method="POST">
+        <form action="../Rutas/editarPlatilloEmp.php" method="POST">
             <div class="form-group">
                 <!-- Campo oculto para enviar el ID del platillo a editar -->
                 <input type="hidden" name="id_pla" value="<?php echo htmlspecialchars($id_pla); ?>">

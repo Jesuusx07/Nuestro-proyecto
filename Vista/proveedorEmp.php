@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -89,7 +89,7 @@ $session = new SessionManager();
 
   </nav>
 
-      <form id="formu" action="./venta_empleado.php" method="POST"> 
+      <form id="formu" action="venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
@@ -114,7 +114,11 @@ $session = new SessionManager();
 
 
 <?php
+<<<<<<< HEAD
 $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
+$conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 $sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
 $result = mysqli_query($conexion, $sql);
 
