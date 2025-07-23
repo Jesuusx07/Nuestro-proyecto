@@ -9,14 +9,14 @@ require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
 
-require_once 'SessionManager.php'; 
-require_once 'sql.php'; // Contiene la conexión a la base de datos $enlace
+require_once '../config/SessionManager.php'; 
+require_once '../config/sql.php'; // Contiene la conexión a la base de datos $enlace
 
 $session = new SessionManager(); 
 
 // 1. Obtener los datos del formulario (usando ?? '' para evitar errores si no se envían)
 // Los nombres de las variables ($_POST['nombre'], etc.) deben coincidir con los atributos 'name'
-// de los inputs en tu formulario HTML (registrarse.html).
+// de los inputs en tu formulario HTML (Vista/registrarse.html).
 $nom = $_POST['nombre'] ?? '';
 $pass = $_POST['pass'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -36,7 +36,7 @@ $longMin = 8;
 $longMax = 50; // Esta longitud se aplica a la contraseña en texto plano, no al hash.
 $longMaxnom = 20; // Longitud máxima para nombres y apellidos.
 
-require_once 'UsuarioController.php';
+require_once '../Controlador/UsuarioController.php';
 
 $db = (new Database())->conectar();
 $controlador = new UsuarioController($db);
@@ -48,98 +48,98 @@ $documento = $controlador->obtenerDocu($docu);
 if(empty($nom) || empty($pass) || empty($email) || empty($apell) || empty($tele) || empty($docu)){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
-    header('Location: ../login.php'); 
+    header('Location: ../Vista/login.php'); 
     exit();
 }
 // Validación de longitud máxima para apellido.
 else if(strlen($apell) > $longMaxnom){
     $session->set('error_message', 'La longitud maxima para el apellido son 20 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 
 else if(preg_match('/[0-9]/', $apell)){
     $session->set('error_message', 'El apellido no debe contener numeros.');
 
-    header('Location: ../registrarse.php');
+    header('Location: ../Vista/registrarse.php');
     exit(); 
 }
 else if(preg_match('/[0-9]/', $nom)){
     $session->set('error_message', 'El nombre no debe contener numeros.');
 
-    header('Location: ../registrarse.php');
+    header('Location: ../Vista/registrarse.php');
     exit(); 
 }
 else if(strlen($nom) > $longMaxnom){
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 
 elseif(preg_match('/[A-Z]/', $tele)){
     $session->set('error_message', 'No se aceptan letras en el telefono.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
     }
 elseif(preg_match('/[a-z]/', $tele)){
     $session->set('error_message', 'No se aceptan letras en el telefono.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 else if(strpos($tele, " ") !== false){
         $session->set('error_message', 'El telefono no puede tener espacios en blanco.');
 
-        header('Location: ../registrarse.php'); 
+        header('Location: ../Vista/registrarse.php'); 
         exit();
     }
 else if(strlen($pass) < $longMin){
     $session->set('error_message', 'La contraseña minimo necesita 8 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 else if($documento){
     $session->set('error_message', 'Este documento ya esta registrado.');
 
-    header('Location: ../registrarse.php');
+    header('Location: ../Vista/registrarse.php');
 }  
 // Validación de longitud máxima para la contraseña.
 else if(strlen($pass) > $longMax){
     $session->set('error_message', 'La longitud maxima de la contraseña son 40 caracteres.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 // Validación de mayúscula en la contraseña.
 else if(!preg_match('/[A-Z]/', $pass)){
     $session->set('error_message', 'La contraseña necesita al menos una letra mayuscula.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 // Validación de minúscula en la contraseña.
 else if(!preg_match('/[a-z]/', $pass)){
     $session->set('error_message', 'La contraseña necesita al menos una letra minuscula.');
 
-    header('Location: ../registrarse.php'); 
+    header('Location: ../Vista/registrarse.php'); 
     exit();
 }
 // Validación de número en la contraseña.
 else if(!preg_match('/[0-9]/', $pass)){
     $session->set('error_message', 'La contraseña necesita al menos un numero.');
 
-    header('Location: ../registrarse.php');
+    header('Location: ../Vista/registrarse.php');
     exit(); 
 }
 // Validación de espacios en blanco en la contraseña.
 else if(strpos($pass, " ") !== false){
     $session->set('error_message', 'La contraseña no debe contener espacios en blanco.');
 
-    header('Location: ../registrarse.php');
+    header('Location: ../Vista/registrarse.php');
     exit(); 
 }
 // Si todas las validaciones pasan...
@@ -154,7 +154,7 @@ else {
     if($usuario){ // Cambiado de $email_bd == $email a simplemente verificar $user_email
         $session->set('error_message', 'Este correo ya esta registrado.');
 
-        header('Location: ../registrarse.php');
+        header('Location: ../Vista/registrarse.php');
     exit(); 
     }
     // Si el correo no está registrado, procede con la inserción.
@@ -170,7 +170,7 @@ else {
         if ($usuario) {
             $session->set('exito', 'Registro exitoso.');
 
-            header('Location: login.php');
+            header('Location: ../Vista/login.php');
 
             $mail = new PHPMailer(true);
 
@@ -210,7 +210,7 @@ else {
                 // En caso de error en el envío del correo, redirige con un mensaje de error
                 // Para depurar: echo "Error al enviar correo: {$mail->ErrorInfo}";
                 error_log("Error al enviar correo de recuperación: " . $e->getMessage()); // Guarda el error en los logs del servidor
-                header("Location: ../login.php?message=email_send_error");
+                header("Location: ../Vista/login.php?message=email_send_error");
                 exit(); // Termina el script
             }
         }
@@ -218,7 +218,7 @@ else {
             // Manejo de error si la inserción falla (por ejemplo, problema con la base de datos)
             $session->set('error_message', 'Error con la base de datos.');
 
-            header('Location: ../registrarse.php');
+            header('Location: ../Vista/registrarse.php');
         }
     }
 }

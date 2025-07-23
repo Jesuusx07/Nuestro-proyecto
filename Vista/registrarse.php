@@ -1,7 +1,7 @@
 <?php
 
 
-require_once './php/SessionManager.php';
+require_once '../config/SessionManager.php';
 
 $session = new SessionManager();
 
@@ -29,7 +29,7 @@ if (!$session->isLoggedIn()) {
     <img src="./img/Logo Principal (1).png" class="logo" alt="icono" />
     <h2>Crear una cuenta</h2>
     <p>Es rápido y fácil.</p>
-    <form action="./php/register.php" method="post">
+    <form action="../Rutas/register.php" method="post">
       <div class="name-fields">
         <input type="text" placeholder="Nombres" name="nombre" required />
         <input type="text" placeholder="Apellidos" name="apellido" required />
