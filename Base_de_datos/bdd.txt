@@ -90,7 +90,7 @@ CREATE TABLE factura (
 
     total_factura_ConImpuestos DECIMAL(10, 2) NOT NULL, -- Monto total de la factura con impuestos
     responsable VARCHAR(100),
-    metodo_pago VARCHAR(50) NOT NULL,
+    metodo_pago ENUM('Efectivo', 'Tarjeta') NOT NULL,
 
     -- Claves foráneas
 
@@ -291,14 +291,14 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE actualizar_inventario (
-    IN i_id_inventario INT,
+    IN i_id_producto INT,
     IN i_cantidad_total INT
 )
 BEGIN
     UPDATE inventario
     SET
         cantidad_total = i_cantidad_total
-    WHERE id_inventario = i_id_inventario;
+    WHERE id_producto = i_id_producto;
 END //
 
 
@@ -384,7 +384,7 @@ DELIMITER ;
 -- Función: Inserta una nueva venta en la tabla 'venta'
 
 
-DELIMITER $$
+DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_venta`(
     IN p_id_pla INT,
     IN p_cantidad INT,
@@ -398,7 +398,7 @@ BEGIN
 
     -- Devolvemos el ID generado automáticamente
     SELECT LAST_INSERT_ID() AS id_venta;
-END$$
+END//
 DELIMITER ;
 
 
@@ -406,7 +406,9 @@ DELIMITER ;
 -- Función: Devuelve todas las ventas con nombre del platillo
 
 
-CREATE PROCEDURE obtener_ventas()
+DELIMITER //
+
+CREATE PROCEDURE obtener_ventas() 
 BEGIN
     SELECT 
         v.id_venta,
@@ -420,10 +422,14 @@ BEGIN
     ORDER BY v.id_venta DESC;
 END//
 
+DELIMITER ;
+
+
 
 -- PROCEDIMIENTO 3: eliminar_venta
 -- Función: Elimina una venta según su ID
 
+DELIMITER //
 
 CREATE PROCEDURE eliminar_venta(
     IN p_id_venta INT
@@ -436,7 +442,8 @@ END//
 DELIMITER ;
 
 
---FACTURA
+
+-- FACTURA
 
 DELIMITER //
 
@@ -444,7 +451,7 @@ CREATE PROCEDURE insertar_factura (
     IN p_id_venta INT,
     IN p_total_factura DECIMAL(10,2),
     IN p_responsable VARCHAR(100),
-    IN P_metodo_pago VARCHAR(100)
+    IN p_metodo_pago ENUM('Efectivo', 'Tarjeta')
 )
 BEGIN
     INSERT INTO factura (
@@ -458,3 +465,7 @@ BEGIN
         p_responsable,
         p_metodo_pago
     );
+END //
+
+DELIMITER ;
+

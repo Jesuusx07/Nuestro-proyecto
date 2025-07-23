@@ -86,6 +86,8 @@ if (isset($_GET['docu'])) {
                         <option value="Mesero">Mesero</option>
                         <option value="Cocinero">Cocinero</option>
                         <option value="Limpieza">Limpieza</option>
+                        <option value="Cajero">Cajero</option>
+                        <option value="Lavaplatos">Lavaplatos</option>
                         </select>
                     <?php
                     }
@@ -94,6 +96,34 @@ if (isset($_GET['docu'])) {
                     if ($id_rol == 'Cocinero '){ 
                     ?>
                         <select name="select" id="rol">
+                        <option value="Cocinero">Cocinero</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Mesero">Mesero</option>
+                        <option value="Cajero">Cajero</option>
+                        <option value="Lavaplatos">Lavaplatos</option>
+                        </select>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if ($id_rol == 'Cajero '){ 
+                    ?>
+                        <select name="select" id="rol">
+                        <option value="Cajero">Cajero</option>
+                        <option value="Lavaplatos">Lavaplatos</option>
+                        <option value="Cocinero">Cocinero</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Mesero">Mesero</option>
+                        </select>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if ($id_rol == 'Lavaplatos '){ 
+                    ?>
+                        <select name="select" id="rol">
+                        <option value="Lavaplatos">Lavaplatos</option>
+                        <option value="Cajero">Cajero</option>
                         <option value="Cocinero">Cocinero</option>
                         <option value="Limpieza">Limpieza</option>
                         <option value="Mesero">Mesero</option>
@@ -108,6 +138,8 @@ if (isset($_GET['docu'])) {
                         <option value="Limpieza">Limpieza</option>
                         <option value="Cocinero">Cocinero</option>
                         <option value="Mesero">Mesero</option>
+                        <option value="Cajero">Cajero</option>
+                        <option value="Lavaplatos">Lavaplatos</option>
                         </select>
                     <?php
                     }

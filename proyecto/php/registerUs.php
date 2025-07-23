@@ -125,6 +125,18 @@ else if(strlen($password) < $longMin){
             header('Location: ../empleado.php'); 
             exit();
         }
+        elseif($select == "Cajero"){
+            $usuario = $controlador->insertar("Cajero", $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+
+            header('Location: ../empleado.php'); 
+            exit();
+        }
+        elseif($select == "Lavaplatos"){
+            $usuario = $controlador->insertar("Lavaplatos", $fname, $lname, $email, $password_hash, $tele, $docu, null, null);
+
+            header('Location: ../empleado.php'); 
+            exit();
+        }
 
     }
 

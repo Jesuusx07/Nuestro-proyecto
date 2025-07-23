@@ -32,8 +32,8 @@ foreach ($obtener as $fila) {
     }
 }
 
-if ($fila['cantidad'] > 0){
-    if($fila['cantidad_total'] - $fila['cantidad'] < 0){
+if ($fila_id['cantidad'] > 0){
+    if($fila_id['cantidad_total'] - $fila_id['cantidad'] < 0){
         $session->set('error_message', 'No se puede eliminar este registro.');
         header('Location: ../inventario.php');
         exit();
@@ -50,7 +50,7 @@ foreach ($obtener as $registro) {
     }
 }
 
-$actu = $controlador->actualizar($producto, $cantidad_total);
+$inventario = $controlador->actualizar($producto, $cantidad_total);
 
 header('Location: ../inventario.php');
 

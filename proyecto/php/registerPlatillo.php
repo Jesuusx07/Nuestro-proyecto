@@ -61,7 +61,6 @@ if (empty($nombre) || empty($descripcion) || empty($precio) || empty($pla_catego
         $insertado = $controlador->insertar($nombre, $descripcion, $precio, $pla_categoria);
 
         if ($insertado) {
-            $session->set('exito', 'Platillo registrado con éxito!');
             header('Location: ../platilloAdmin.php'); // Redirigir a la página de éxito o listado
             exit();
         } else {

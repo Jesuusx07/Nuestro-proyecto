@@ -129,8 +129,10 @@ $session = new SessionManager();
 <table>
     <tr>
         <th>id_venta</th>
+        <th>Platillo</th>
+        <th>Valor Total</th>
+        <th>Cantidad</th>
         <th>Fecha</th>
-        <th>Responsable</th>
        
     </tr>
 
@@ -138,17 +140,24 @@ $session = new SessionManager();
 <?php
 // Assuming $conexion is already established
 $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
-$sql = "SELECT * FROM venta";
+$sql = "SELECT 
+          v.id_venta, 
+          v.fecha,
+          p.nombre, 
+          v.precio_total, 
+          v.cantidad
+          FROM venta v
+          JOIN platillo p ON v.id_pla = p.id_pla";
 $result = mysqli_query($conexion, $sql);
 
 while ($mostrar = mysqli_fetch_array($result)) {
 ?>
     <tr>
         <td><?php echo $mostrar['id_venta']; ?></td>
+        <td><?php echo $mostrar['nombre']; ?></td>
+        <td><?php echo $mostrar['precio_total']; ?></td>
+        <td><?php echo $mostrar['cantidad']; ?></td>
         <td><?php echo $mostrar['fecha']; ?></td>
-        <td><?php echo $mostrar['id_usuario']; ?></td>
-
-  
     </tr>
 <?php
 }

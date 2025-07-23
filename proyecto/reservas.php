@@ -223,7 +223,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 function printReport() {
     // Abre una nueva ventana para imprimir solo el contenido de la tabla
     const printWindow = window.open('', '_blank');
-    printWindow.document.write('<html><head><title>Reporte de Empleados</title>');
+    printWindow.document.write('<html><head><title>Reporte de Reservas</title>');
 
     // Incluye CSS para la impresión
     printWindow.document.write('<style>');
@@ -238,7 +238,7 @@ function printReport() {
     printWindow.document.write('</head><body>');
 
     // Agrega el título del reporte
-    printWindow.document.write('<h1>Reporte de Empleados Kenny\'s</h1>');
+    printWindow.document.write('<h1>Reporte de Reservas Kenny\'s</h1>');
 
     // Copia el contenido de la tabla original
     const originalTable = document.querySelector('.tabla-container table');

@@ -94,7 +94,7 @@ $resultado = $controlador->insertar(
 
 
 
-$actu = $controlador->actualizar($producto, $cantidad_total);
+$inventario = $controlador->actualizar($producto, $cantidad_total);
 
 // Redirección si fue exitoso
 if ($resultado) {

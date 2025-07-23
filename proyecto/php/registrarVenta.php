@@ -1,4 +1,4 @@
-<?php 
+<?php  
 require_once 'Venta.php';
 require_once 'VentaController.php';
 require_once 'SessionManager.php';
@@ -44,28 +44,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $venta->precio_total = $precio_total;
             $venta->fecha = $fecha_actual;
 
-            // Insertar venta
-            $id_venta = $venta->insertar(); // ✅ Aquí se inserta y se guarda el ID
-            if (!$id_venta) {
-                echo "<script>alert('❌ Fallo al registrar la venta en la fila " . ($i + 1) . "'); window.history.back();</script>";
-                exit();
-            }
+            $idInsertado = $controller->registrar($venta);
 
-            $_SESSION['ventas_recientes'][] = $id_venta; // Guardar en sesión
-            $ventasInsertadas[] = $id_venta; // Guardar para redirigir
+            if ($idInsertado) {
+                $ventasInsertadas[] = $idInsertado;
+            }
         }
 
-        // Redirigir con los IDs
-        $ids = implode(',', $ventasInsertadas);
-        echo "<script>
-            alert('✅ Venta registrada correctamente.');
-            window.location.href = '../GenerarFactura.php?ventas=$ids';
-        </script>";
+        $_SESSION['ventas_recientes'] = $ventasInsertadas;
+        header("Location: GenerarFactura.php");
         exit();
+    }
+}
 
+// --- Confirmar venta: insertar factura ---
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['accion']) && $_POST['accion'] === 'confirmar_venta') {
+    $metodo = mysqli_real_escape_string($conexion, $_POST['metodo_pago_enviar']);
+    $totalFactura = floatval($_POST['total_factura']);
+
+    // Última venta registrada
+    $nFactura = intval($_SESSION['ventas_recientes'][0] ?? 0);
+
+    // Correo del responsable desde la sesión
+    $responsable = mysqli_real_escape_string($conexion, $_SESSION['correo'] ?? 'No especificado');
+
+    // Insertar factura (sin fecha)
+    $insert_factura = "INSERT INTO factura (id_venta, total_factura_ConImpuestos, responsable, metodo_pago)
+                       VALUES ($nFactura, $totalFactura, '$responsable', '$metodo')";
+
+    if (mysqli_query($conexion, $insert_factura)) {
+        echo "<script>alert('Venta confirmada y guardada exitosamente.');</script>";
+        unset($_SESSION['ventas_recientes']);
     } else {
-        echo "<script>alert('❌ Datos incompletos.'); window.history.back();</script>";
-        exit();
+        echo "<script>alert('Error al guardar la factura: " . mysqli_error($conexion) . "');</script>";
     }
 }
 ?>
