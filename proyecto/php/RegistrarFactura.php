@@ -1,36 +1,24 @@
 <?php
-require_once 'FacturaController.php';
-require_once 'VentaController.php';
-require_once 'SessionManager.php';
-require_once 'sql.php';
+session_start();
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
 
-$session = new SessionManager();
-$db = (new Database())->conectar();
-$controlador1 = new FacturaController($db);
-$controlador3 = new VentaController($db);
-   
-$venta =  $controlador3 -> obtenerTodos();   
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['accion']) && $_POST['accion'] === 'confirmar_venta') {
+    $metodo = mysqli_real_escape_string($conexion, $_POST['metodo_pago_enviar']);
+    $totalFactura = floatval($_POST['total_factura']);
+    $fecha = date("Y-m-d H:i:s");
 
+    $insert_factura = "INSERT INTO factura (fecha, metodo_pago, total) VALUES ('$fecha', '$metodo', $totalFactura)";
 
-
-$responsable = $session->getUserName();
-
-$ultimoventa = end($venta);
-
-$ultimoIdVenta = $ultimoventa['id_venta'];
-
-$total_venta = $ultimoventa['precio_total'];
-$iva = $total_venta * 0.19;
-$total_factura_ConImpuestos = $total_venta + $iva;
-
-$Factura = $controlador1->insertar($ultimoIdVenta, $ultimoIdPlatillo, 1, $total_factura_ConImpuestos, $responsable);
-
-
-if ($Factura) {
-    $session->set('success_message', 'Factura registrada correctamente.');
-    header("Location: ../GenerarFactura.php?mensaje=ok");
-} else {
-    $session->set('error_message', 'Error al registrar la factura.');
-    header("Location: ../RegistrarFactura.php?error=registro_fallido");
+    if (mysqli_query($conexion, $insert_factura)) {
+        // Redirigir de nuevo a GenerarFactura con éxito
+        header("Location: GenerarFactura.php?mensaje=ok");
+        exit();
+    } else {
+        header("Location: GenerarFactura.php?mensaje=error");
+        exit();
+    }
 }
 ?>
