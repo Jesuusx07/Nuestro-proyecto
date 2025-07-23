@@ -384,7 +384,7 @@ DELIMITER ;
 -- Función: Inserta una nueva venta en la tabla 'venta'
 
 
-DELIMITER $$
+DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_venta`(
     IN p_id_pla INT,
     IN p_cantidad INT,
@@ -398,7 +398,7 @@ BEGIN
 
     -- Devolvemos el ID generado automáticamente
     SELECT LAST_INSERT_ID() AS id_venta;
-END$$
+END//
 DELIMITER ;
 
 

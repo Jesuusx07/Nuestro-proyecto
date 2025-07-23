@@ -161,39 +161,47 @@ if (!$conexion) {
     }
     ?>
 
-    <!-- RESUMEN DE IMPUESTOS -->
     <h2>Resumen de Impuestos</h2>
-    <div class="totales">
-        <?php
-        $sql_total = "SELECT
-                        SUM(v.precio_total) AS subtotal_general,
-                        SUM(f.total_factura_ConImpuestos) AS total_factura_ConImpuestos
-                    FROM
-                        factura f
-                    JOIN
-                        venta v ON f.id_Hventa = v.id_venta";
-        $result_total = mysqli_query($conexion, $sql_total);
+<div class="totales">
+<?php
+$id_venta = $_GET['id_venta'] ?? null;
 
-        while ($mostrar = mysqli_fetch_array($result_total)) {
-            $subtotal = $mostrar['subtotal_general'];
-            $totalConImpuestos = $mostrar['total_factura_ConImpuestos'];
-            $iva = $subtotal * 0.19;
-            $descuento = 2000; // Puedes hacer esto dinámico si deseas
+if ($id_venta) {
+    $sql_total = "
+        SELECT SUM(precio_total) AS subtotal_general
+        FROM venta
+        WHERE id_venta = $id_venta
+    ";
 
-            echo "<div><span>Subtotal:</span> \$" . number_format($subtotal, 2) . "</div>";
-            echo "<div><span>IVA (19%):</span> \$" . number_format($iva, 2) . "</div>";
-            echo "<div><span>Descuento:</span> -\$" . number_format($descuento, 2) . "</div>";
-            echo "<div><strong>Total a Pagar:</strong> \$" . number_format($totalConImpuestos, 2) . "</div>";
-        }
-        ?>
-    </div>
+    $result_total = mysqli_query($conexion, $sql_total);
+    $mostrar = mysqli_fetch_assoc($result_total);
 
-    <button class="btn-confirmar">Confirmar Venta</button>
+    $subtotal = $mostrar['subtotal_general'] ?? 0;
+    $iva = $subtotal * 0.19;
+    $descuento = 2000;
+    $total_a_pagar = $subtotal + $iva - $descuento;
+?>
+    <div><span>Subtotal:</span> $<?php echo number_format($subtotal, 2); ?></div>
+    <div><span>IVA (19%):</span> $<?php echo number_format($iva, 2); ?></div>
+    <div><span>Descuento:</span> -$<?php echo number_format($descuento, 2); ?></div>
+    <div><strong>Total a Pagar:</strong> $<?php echo number_format($total_a_pagar, 2); ?></strong></div>
+<?php
+} else {
+    echo "<div>No se encontró el ID de la venta actual.</div>";
+}
+?>
+</div>
 
-    <div class="footer">
-        Esta factura se expide como título valor.<br>
-        Para efectos fiscales se considera equivalente a factura según Art. 616-1 del E.T.
-    </div>
+
+
+<button class="btn-confirmar">Confirmar Venta</button>
+
+<div class="footer">
+    Esta factura se expide como título valor.<br>
+    Para efectos fiscales se considera equivalente a factura según Art. 616-1 del E.T.
+</div>
+
+
 
 </div>
 </body>
