@@ -55,24 +55,12 @@ $session = new SessionManager();
         <input type="number" id="id" name="documento" placeholder="Documento de identidad">
         <select name="select" id="rol">
           <option value="">Seleccionar Rol</option>
-<option value="Cocinero principal">Cocinero principal</option>
-<option value="Cocinero auxiliar">Cocinero auxiliar</option>
-<option value="Pastelero">Pastelero (Repostero)</option>
-<option value="Ayudante de cocina">Ayudante de cocina</option>
+<option value="Cocinero">Cocinero</option>
 <option value="Lavaplatos">Lavaplatos</option>
 <option value="Mesero">Mesero / Camarero</option>
-<option value="Bartender">Bartender</option>
 <option value="Cajero">Cajero</option>
-
-
-<!-- Área de Almacén -->
-<option value="Bodeguero">Almacenista</option>
-
-
-
-<!-- Limpieza y Mantenimiento -->
 <option value="Limpieza">Personal de limpieza</option>
-<option value="Mantenimiento">Mantenimiento</option>
+
 
 <!-- Área Administrativa -->
 

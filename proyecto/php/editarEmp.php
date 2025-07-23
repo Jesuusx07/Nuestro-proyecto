@@ -46,11 +46,12 @@ else{
         exit();
     }
  
-else if(strlen($nom) > $longMax){
+else if(strlen($fname) > $longMax){
 
     $session->set('error_message', 'La longitud maxima para el nombre son 20 caracteres.');
 
         header('Location: ../editar_empleado.php?id=' . $id_usuario . '&id_rol=' . $id_rol . '&nom=' . $fname . '&apell=' . $lname . '&email=' . $email . '&tel=' . $tele . '&docu=' . $docu);
+        exit();
 }
 
     else if(strpos($tele, " ") !== false){
@@ -72,7 +73,19 @@ else if(strlen($nom) > $longMax){
 
             header('Location: ../empleado.php'); 
             exit();
-        }    
+        }
+        elseif($select == "Lavaplatos"){
+            $usuario = $controlador->actualizar($id_usuario, 'Lavaplatos', $fname, $lname, $email, $tele, $docu, null, null);
+
+            header('Location: ../empleado.php'); 
+            exit();
+        }  
+        elseif($select == "Cajero"){
+            $usuario = $controlador->actualizar($id_usuario, 'Cajero', $fname, $lname, $email, $tele, $docu, null, null);
+
+            header('Location: ../empleado.php'); 
+            exit();
+        }      
         elseif($select == "Limpieza"){
             $usuario = $controlador->actualizar($id_usuario, 'Limpieza', $fname, $lname, $email, $tele, $docu, null, null);
 
