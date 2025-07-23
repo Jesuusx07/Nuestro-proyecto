@@ -1,7 +1,7 @@
 <?php
 
 
-require_once './php/SessionManager.php';
+require_once '../config/SessionManager.php';
 
 $session = new SessionManager();
 
@@ -32,7 +32,7 @@ if (!$session->isLoggedIn()) {
         <p style="text-align: center;">¿No tienes cuenta? <a class="inc" href="registrarse.php">Registrarse</a></p>
 
         <div>
-            <form id="login" action="./php/login.php" method="POST">
+            <form id="login" action="../Rutas/login.php" method="POST">
                 <div class="input-group">
                     <label for="login_email">Correo electrónico</label>
                     <input type="email" id="login_email" name="correo" placeholder="tucorreo@gmail.com">

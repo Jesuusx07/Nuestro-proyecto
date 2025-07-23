@@ -1,12 +1,12 @@
 <?php
 // php/login.php
 
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 $session = new SessionManager();
 
-require_once 'UsuarioController.php';
+require_once '../Controlador/UsuarioController.php';
 
 $db = (new Database())->conectar();
 $controlador = new UsuarioController($db);
@@ -20,7 +20,7 @@ $user_password = $_POST['contra'] ?? '';
 
         $session->set('error_message', 'Por favor, ingresa tu correo electrónico y contraseña.');
 
-        header('Location: ../login.php'); 
+        header('Location: ../Vista/login.php'); 
         exit();
     } 
 
@@ -38,7 +38,7 @@ if ($usuario) {
         // Autenticación exitosa como administrador.
         // Asume que el rol '1' es para administradores.
         $session->login(1, $user_email); // Puedes pasar $admin_data['id_admin'] si tu SessionManager lo espera.
-        header("location: ../dashboard.php");
+        header("location: ../Vista/dashboard.php");
         exit();
     }
 }
@@ -57,7 +57,7 @@ if ($usuario) {
         // Autenticación exitosa como empleado.
         // Asume que el rol '2' es para empleados.
         $session->login(2, $user_email); // Puedes pasar $emple_data['id_empleado'] si tu SessionManager lo espera.
-        header("location: ../dashboardEmp.php");
+        header("location: ../Vista/dashboardEmp.php");
         exit();
     }
 }
@@ -66,7 +66,7 @@ if ($usuario) {
 // Redirige al login con un mensaje de error genérico para seguridad (no dice si el usuario existe o no).
 $session->set('error_message', 'Credenciales invalidas.');
 
-header('Location: ../login.php'); 
+header('Location: ../Vista/login.php'); 
 exit();
 
 // Cierre de la conexión a la base de datos (Buena práctica).
