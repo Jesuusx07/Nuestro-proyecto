@@ -201,6 +201,9 @@ if (!$session->isLoggedIn()) {
 
   <!-- SCRIPTS -->
   <script>
+    if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
     // Tema claro/oscuro
     const themeToggle = document.getElementById("themeToggle");
     themeToggle.addEventListener("click", () => {

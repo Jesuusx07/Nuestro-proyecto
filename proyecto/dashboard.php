@@ -111,7 +111,7 @@ $session = new SessionManager();
         </div>
       </nav>
 
-      
+
   <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
