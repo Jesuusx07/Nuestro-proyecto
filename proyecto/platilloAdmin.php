@@ -27,8 +27,7 @@ $session = new SessionManager();
   <!-- ░░░░░░░░░░  NAVBAR  ░░░░░░░░░░ -->
   <header class="navbar">
   
-
-     <span class="logo-text">ADMINISTRADOR</span>
+    <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
     </div>
 
     <div class="navbar-right">
@@ -108,9 +107,11 @@ $session = new SessionManager();
       </nav>
 
 
-      <div class="menu-item">
-      <button class="btn-venta">HACER UNA VENTA</button>
-    </div>
+    <form id="formu" action="./venta_empleado.php" method="POST"> 
+        <div class="menu-item"> 
+          <button class="btn-venta">HACER UNA VENTA</button>
+        </div>
+    </form>
 </aside>
      <!-- ░░░  MAIN  ░░░ -->
     
@@ -164,6 +165,9 @@ while ($mostrar = mysqli_fetch_array($result)) {
 <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
     // ----- Tema claro / oscuro -----
+    if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');

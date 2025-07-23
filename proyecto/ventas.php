@@ -16,7 +16,7 @@ $session = new SessionManager();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ventas</title>
   <link rel="stylesheet" href="./css/dashboard.css">
-
+    
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -28,7 +28,7 @@ $session = new SessionManager();
   <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+    <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
     </div>
 
     <div class="navbar-right">

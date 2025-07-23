@@ -23,7 +23,7 @@ if (!$session->isLoggedIn()) {
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
-    <span class="logo-text">ADMINISTRADOR</span>
+        <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
 
     <div class="navbar-right">
       <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
@@ -201,6 +201,9 @@ if (!$session->isLoggedIn()) {
 
   <!-- SCRIPTS -->
   <script>
+    if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
     // Tema claro/oscuro
     const themeToggle = document.getElementById("themeToggle");
     themeToggle.addEventListener("click", () => {

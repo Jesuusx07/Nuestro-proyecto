@@ -454,4 +454,3 @@ BEGIN
         p_responsable,
         p_metodo_pago
     );
-END //

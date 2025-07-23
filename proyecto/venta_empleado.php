@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 <body>
 
 <header class="navbar">
-  <span class="logo-text">ADMINISTRADOR</span>
+     <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
   <div class="navbar-right">
     <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
     <div class="perfil">
@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
             <th>Cantidad</th>
             <th>Precio Unidad</th>
             <th>Precio Total</th>
+            <th>Fecha</th>
             <th>Eliminar</th>
           </tr>
         </thead>
@@ -93,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
             <td><input type="number" name="cantidad[]" class="cantidad" required></td>
             <td><input type="number" name="precio[]" class="precioUnidad" step="0.01" readonly required></td>
             <td><input type="number" name="total[]" class="total" step="0.01" readonly></td>
+            <td><script>document.currentScript.parentElement.textContent = new Date().toLocaleDateString("es-CO");</script></td>
             <td><button type="button" class="eliminar-fila boton" onclick="eliminarFila(this)">🗑</button></td>
           </tr>
         </tbody>

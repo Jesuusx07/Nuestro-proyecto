@@ -128,7 +128,8 @@
 
     </div>
 
-    <div><strong>Fecha:</strong> 19/07/2025</div>
+    <div><strong>Fecha:</strong></div>
+
 
     <table>
       <thead>
@@ -165,9 +166,6 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['precio']; ?></td>
         <td><?php echo $mostrar['precio_total']; ?></td>
          <td><?php echo $mostrar['id_pago']; ?></td>
-        <td>
-            <a href="editar_empleado.php">Confirmar venta</a>
-        </td>
     </tr>
 <?php
 }
@@ -176,7 +174,17 @@ while ($mostrar = mysqli_fetch_array($result)) {
     </table>
       <div class="totales">
       <div><strong>Forma de Pago:</strong> Efectivo</div>
-      <div><strong>Fecha de Pago:</strong> 19/07/2025</div>
+    <div><strong>Fecha de Pago:</strong> <?php echo date('d/m/Y'); ?></div>
+<div><strong>Fecha de Pago:</strong> <span id="fecha-pago"></span></div>
+
+<script>
+  const hoy = new Date();
+  const dia = String(hoy.getDate()).padStart(2, '0');
+  const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // enero es 0
+  const anio = hoy.getFullYear();
+  document.getElementById('fecha-pago').textContent = `${dia}/${mes}/${anio}`;
+</script>
+
     </div>
  <h2>Resumen de Impuestos</h2>
 
