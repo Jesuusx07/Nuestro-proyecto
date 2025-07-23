@@ -136,7 +136,7 @@ $session = new SessionManager();
 
 
 <?php
-$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+$conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
 $sql = "SELECT * FROM usuario WHERE id_rol = 'proveedor'";
 $result = mysqli_query($conexion, $sql);
 

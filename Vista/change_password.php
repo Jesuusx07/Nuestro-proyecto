@@ -11,7 +11,7 @@
 <body class="text-center">
     <main class="form-signin w-100 m-auto">
         <div class="container">
-        <form action="php/change_password.php" method="POST">
+        <form action="../Rutas/change_password.php" method="POST">
             <a href="index.html"> <img class="logo" src="img/Logo Principal (1).png" alt="Kenny's Logo"> </a>
             <h1>Recuperacion de su contraseña</h1>
             <h3>Por favor, introduzca su nueva contraseña</h3>

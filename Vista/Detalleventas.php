@@ -1,25 +1,16 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
-<?php
 
-require_once './php/SessionManager.php';
-
-$session = new SessionManager();
-
-    if (!$session->isLoggedIn()){
-        header("location: login.php");
-    }
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">

@@ -138,7 +138,7 @@ $session = new SessionManager();
 
 <?php
 // Assuming $conexion is already established
-$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+$conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
 $sql = "SELECT p.id_producto,
                 p.nombre,
                 p.categoria,

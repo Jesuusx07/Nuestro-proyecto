@@ -1,6 +1,6 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
@@ -11,10 +11,10 @@ $session = new SessionManager();
 ?>
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
-$conexion = mysqli_connect('kennys.online', 'u112415144_kenny', '', 'u112415144_proyecto_kenny');
+$conexion = mysqli_connect('151.106.96.29', 'u112415144_kenny', '', 'u112415144_proyecto_kenny');
 
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
@@ -46,7 +46,7 @@ $estado = trim($estado)
 
     <div class="container">
         <h2>Editar Reserva</h2>
-        <form action="./php/editarReserva.php" method="POST">
+        <form action="../Rutas/editarReserva.php" method="POST">
             <div class="form-group">
                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($id_reserva); ?>">
             </div>
