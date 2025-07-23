@@ -128,7 +128,8 @@
 
     </div>
 
-    <div><strong>Fecha:</strong> 19/07/2025</div>
+    <div><strong>Fecha:</strong></div>
+
 
     <table>
       <thead>
@@ -165,9 +166,6 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['precio']; ?></td>
         <td><?php echo $mostrar['precio_total']; ?></td>
          <td><?php echo $mostrar['id_pago']; ?></td>
-        <td>
-            <a href="editar_empleado.php">Confirmar venta</a>
-        </td>
     </tr>
 <?php
 }
