@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 <body>
 
 <header class="navbar">
-  <span class="logo-text">ADMINISTRADOR</span>
+     <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
   <div class="navbar-right">
     <button id="themeToggle" title="Cambiar tema claro/oscuro">🌓</button>
     <div class="perfil">

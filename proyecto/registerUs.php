@@ -27,7 +27,7 @@ $session = new SessionManager();
 <header class="navbar">
   
 
-     <span class="logo-text">ADMINISTRADOR</span>
+        <a href="dashboard.php" class="logo-text">ADMINISTRADOR</a>
     </div>
 
     <div class="navbar-right">
