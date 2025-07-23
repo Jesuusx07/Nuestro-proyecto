@@ -110,7 +110,7 @@ if (!$session->isLoggedIn()) {
         </tr>
 
         <?php
-        $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+        $conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
         $sql = "SELECT * FROM inventario";
         $result = mysqli_query($conexion, $sql);
 

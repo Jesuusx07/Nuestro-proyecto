@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }

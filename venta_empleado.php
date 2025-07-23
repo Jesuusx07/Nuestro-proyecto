@@ -7,7 +7,7 @@ if (!$session->isLoggedIn()) {
     exit();
 }
 
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$conexion = mysqli_connect("kennys.online", "root", "", "u112415144_kennys");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 require_once './php/Venta.php';

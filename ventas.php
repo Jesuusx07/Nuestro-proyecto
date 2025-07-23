@@ -139,7 +139,7 @@ $session = new SessionManager();
 
 <?php
 // Assuming $conexion is already established
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$conexion = mysqli_connect("kennys.online", "root", "", "u112415144_kennys");
 $sql = "SELECT 
           v.id_venta, 
           v.fecha,

@@ -106,7 +106,7 @@ $session = new SessionManager();
       <section class="welcome-box">
         <?php
         $usuarioConectado = $session->getUserName();
-        $conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+        $conexion = mysqli_connect("localhost", "root", "", "u112415144_kennys");
         $sql = "SELECT * FROM usuario WHERE correo = '$usuarioConectado'";
         $result = mysqli_query($conexion, $sql);
         while ($mostrar = mysqli_fetch_array($result)) {
