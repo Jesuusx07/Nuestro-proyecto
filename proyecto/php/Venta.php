@@ -15,23 +15,33 @@ class Venta {
     }
 
     public function insertar() {
-        $stmt = $this->conn->prepare("CALL registrar_venta(?, ?, ?, ?)");
+    $stmt = $this->conn->prepare("CALL registrar_venta(?, ?, ?, ?)");
 
-        if (!$stmt) {
-            error_log("Error preparando la consulta: " . $this->conn->error);
-            return false;
-        }
-
-        $stmt->bind_param("iids", $this->id_pla, $this->cantidad, $this->precio_total, $this->fecha);
-        $resultado = $stmt->execute();
-
-        if (!$resultado) {
-            error_log("Error al ejecutar: " . $stmt->error);
-        }
-
-        $stmt->close();
-        return $resultado;
+    if (!$stmt) {
+        error_log("Error preparando la consulta: " . $this->conn->error);
+        return false;
     }
+
+    $stmt->bind_param("iids", $this->id_pla, $this->cantidad, $this->precio_total, $this->fecha);
+    
+    if (!$stmt->execute()) {
+        error_log("Error al ejecutar: " . $stmt->error);
+        $stmt->close();
+        return false;
+    }
+
+    $stmt->close();
+
+    // Recuperar el resultado del SELECT LAST_INSERT_ID()
+    $result = $this->conn->query("SELECT LAST_INSERT_ID() AS id_venta");
+    if ($result && $row = $result->fetch_assoc()) {
+        return $row['id_venta']; // ✅ Retorna el ID insertado
+    } else {
+        error_log("Error al recuperar el ID insertado: " . $this->conn->error);
+        return false;
+    }
+}
+
 
     public function obtenerTodos() {
         $resultados = [];

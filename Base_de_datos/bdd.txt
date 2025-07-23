@@ -384,18 +384,22 @@ DELIMITER ;
 -- Función: Inserta una nueva venta en la tabla 'venta'
 
 
-DELIMITER //
-
-CREATE PROCEDURE registrar_venta(
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_venta`(
     IN p_id_pla INT,
     IN p_cantidad INT,
     IN p_precio_total DECIMAL(10,2),
     IN p_fecha DATE
 )
 BEGIN
+    -- Insertamos la venta en la tabla
     INSERT INTO venta (id_pla, cantidad, precio_total, fecha)
     VALUES (p_id_pla, p_cantidad, p_precio_total, p_fecha);
-END//
+
+    -- Devolvemos el ID generado automáticamente
+    SELECT LAST_INSERT_ID() AS id_venta;
+END$$
+DELIMITER ;
 
 
 -- PROCEDIMIENTO 2: obtener_ventas
@@ -454,5 +458,3 @@ BEGIN
         p_responsable,
         p_metodo_pago
     );
-END //
-
