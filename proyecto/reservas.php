@@ -104,6 +104,12 @@ $session = new SessionManager();
             <a href="inventario.php" class="sub-btn">Consultar</a>
           </div>
         </div>
+                <div class="menu-item">
+          <button class="btn-menu">Gestión de Facturas</button>
+          <div class="sub-menu">
+            <a href="Facturas.php" class="sub-btn">Consultar</a>
+          </div>
+        </div>
       </nav>
   <form id="formu" action="./venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
@@ -176,6 +182,9 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
 <!-- ░░░░░░░░░░  SCRIPTS  ░░░░░░░░░░ -->
   <script>
+        if (localStorage.getItem('darkTheme') === 'enabled') {
+  document.body.classList.add('dark-theme');
+}
     // ----- Tema claro / oscuro -----
     if (localStorage.getItem('darkTheme') === 'enabled') {
   document.body.classList.add('dark-theme');
