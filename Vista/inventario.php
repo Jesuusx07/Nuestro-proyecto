@@ -128,7 +128,7 @@ if (!$session->isLoggedIn()) {
         </tr>
 
         <?php
-        $conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
+        $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_proyecto_kenny");
         $sql = "SELECT i.id_inventario, 
                        i.id_producto,  
                        p.nombre,

@@ -14,7 +14,7 @@ $session = new SessionManager();
 require_once './php/SessionManager.php';
 
 $session = new SessionManager();
-$conexion = mysqli_connect('localhost', 'root', '', 'u112415144_proyecto_kenny');
+$conexion = mysqli_connect('localhost', 'u112415144_kenny', '', 'u112415144_proyecto_kenny');
 
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());

@@ -69,7 +69,7 @@ $session = new SessionManager();
                 <option value="">Proveedor</option>
           <?php
 
-          $conexion = mysqli_connect("localhost", "root", "", "u112415144_proyecto_kenny");
+          $conexion = mysqli_connect("localhost", "u112415144_kenny", "", "u112415144_proyecto_kenny");
           $sql = "SELECT * FROM usuario where id_rol = 'proveedor'";
           $result = mysqli_query($conexion, $sql);
 

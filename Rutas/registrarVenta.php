@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // --- Confirmar venta: insertar factura ---
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_kenny");
+$conexion = mysqli_connect("localhost", "u112415144_kenny", "", "proyecto_kenny");
 
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());

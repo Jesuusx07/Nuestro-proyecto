@@ -139,8 +139,8 @@ $session = new SessionManager();
 
 
 <?php
-// Assuming $conexion is already established
-$conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
+// ASUME QUE LA CONEXION YA ESTA ESTABLESIDA 
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_proyecto_kenny");
 $sql = "SELECT * FROM usuario where id_rol != 'admin' and id_rol != 'proveedor' and id_rol != 'cliente'";
 $result = mysqli_query($conexion, $sql);
 
