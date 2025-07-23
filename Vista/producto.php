@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -112,7 +112,7 @@ $session = new SessionManager();
           </div>
         </div>
       </nav>
-  <form id="formu" action="./venta_empleado.php" method="POST"> 
+  <form id="formu" action="venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
@@ -163,10 +163,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['correo']; ?></td>        
 
         <td>
-            <a href="editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
+            <a href="../Rutas/editar_producto.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarPro.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+            <a href="../Rutas/eliminarPro.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
         </td>
     </tr>
 <?php

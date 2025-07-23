@@ -1,6 +1,6 @@
 <?php
 
-require_once 'sql.php';
+require_once '../Config/sql.php';
 
 class Reserva {
     private $conn;

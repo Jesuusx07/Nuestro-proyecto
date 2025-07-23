@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>

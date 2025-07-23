@@ -1,7 +1,7 @@
 
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
@@ -26,7 +26,7 @@ $session = new SessionManager();
         <h3>Por favor, introduzca su correo electronico</h3>
 
         <div>
-            <form id="login" action="./php/recovery.php" method="POST">
+            <form id="login" action="../Rutas/recovery.php" method="POST">
                 <div class="input-group">
                     <label for="login_email">Correo electrónico</label>
                     <input type="email" id="login_email" name="correo" placeholder="tucorreo@gmail.com">

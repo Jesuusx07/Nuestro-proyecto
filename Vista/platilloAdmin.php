@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -113,7 +113,7 @@ $session = new SessionManager();
       </nav>
 
 
-    <form id="formu" action="./venta_empleado.php" method="POST"> 
+    <form id="formu" action="venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
@@ -152,11 +152,11 @@ while ($mostrar = mysqli_fetch_array($result)) {
     <td><?php echo $mostrar['pla_categoria']; ?></td>
     <td>
         <!-- Botón de Editar: Pasa los datos del platillo -->
-        <a href="editarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>&nombre=<?php echo htmlspecialchars($mostrar['nombre']); ?>&descripcion=<?php echo htmlspecialchars($mostrar['descripcion']); ?>&precio=<?php echo htmlspecialchars($mostrar['precio']); ?>&pla_categoria=<?php echo htmlspecialchars($mostrar['pla_categoria']); ?>" class="boton-edi">Editar</a>
+        <a href="../Rutas/editarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>&nombre=<?php echo htmlspecialchars($mostrar['nombre']); ?>&descripcion=<?php echo htmlspecialchars($mostrar['descripcion']); ?>&precio=<?php echo htmlspecialchars($mostrar['precio']); ?>&pla_categoria=<?php echo htmlspecialchars($mostrar['pla_categoria']); ?>" class="boton-edi">Editar</a>
     </td>
     <td>
         <!-- Botón de Eliminar: Pasa el ID del platillo y actualiza el mensaje de confirmación -->
-        <a href="./php/eliminarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?');">Eliminar</a>
+        <a href="../Rutas/eliminarPlatillo.php?id_pla=<?php echo htmlspecialchars($mostrar['id_pla']); ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?');">Eliminar</a>
     </td>
 </tr>
 <?php

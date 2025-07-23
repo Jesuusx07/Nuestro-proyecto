@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -88,7 +88,7 @@ $session = new SessionManager();
 
     </nav>
 
-        <form id="formu" action="./venta_empleado.php" method="POST"> 
+        <form id="formu" action="venta_empleado.php" method="POST"> 
           <div class="menu-item"> 
             <button class="btn-venta">HACER UNA VENTA</button>
           </div>
@@ -129,8 +129,8 @@ $session = new SessionManager();
           <td><?php echo $mostrar['id_usuario']; ?></td>        
 
           <td>
-              <a href="editarProdEmp.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
-              <a href="./php/eliminarProdEmp.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
+              <a href="../Rutas/editarProdEmp.php?id=<?php echo $mostrar['id_producto'];?> &categoria=<?php echo $mostrar['categoria'];?> &nombre=<?php echo $mostrar['nombre'];?> &imagen=<?php echo $mostrar['imagen'];?>  &precio_unitario=<?php echo $mostrar['precio_unitario'];?>" class="boton-edi">Editar</a>
+              <a href="../Rutas/eliminarProdEmp.php?id=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</a>
           </td>
       </tr>
   <?php

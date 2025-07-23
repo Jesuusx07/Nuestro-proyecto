@@ -1,6 +1,6 @@
 <?php
 
-require_once 'sql.php'; // Asegúrate de que este archivo maneje la conexión a la base de datos PDO
+require_once '../Config/sql.php'; // Asegúrate de que este archivo maneje la conexión a la base de datos PDO
 
 class Inventario {
     private $conn;

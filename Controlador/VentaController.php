@@ -1,5 +1,5 @@
 <?php
-require_once 'Venta.php';
+require_once '../Modelo/Venta.php';
 
 class VentaController {
     private $venta;

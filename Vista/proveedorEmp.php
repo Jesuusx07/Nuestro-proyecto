@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -89,7 +89,7 @@ $session = new SessionManager();
 
   </nav>
 
-      <form id="formu" action="./venta_empleado.php" method="POST"> 
+      <form id="formu" action="venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>

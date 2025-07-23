@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -111,7 +111,7 @@ $session = new SessionManager();
           </div>
         </div>
       </nav>
-  <form id="formu" action="./venta_empleado.php" method="POST"> 
+  <form id="formu" action="venta_empleado.php" method="POST"> 
         <div class="menu-item"> 
           <button class="btn-venta">HACER UNA VENTA</button>
         </div>
@@ -166,7 +166,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
 
         <td>
             <a 
-                href="./php/eliminarProveedor.php?id=<?php echo $mostrar['id_usuario']; ?>" 
+                href="../Rutas/eliminarProveedor.php?id=<?php echo $mostrar['id_usuario']; ?>" 
                 class="boton" 
                 onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');"
             >Eliminar</a>
