@@ -10,8 +10,8 @@ if (!$session->isLoggedIn()) {
 $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_kennys");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-require_once './php/Venta.php';
-require_once './php/VentaController.php';
+require_once './Modelo/Venta.php';
+require_once './Controlador/VentaController.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (
@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         is_array($_POST['total']) &&
         is_array($_POST['fecha'])
     ) {
-        require_once 'php/sql.php';
-        require_once 'php/VentaController.php';
+        require_once './config/sql.php';
+        require_once './Controlador/VentaController.php';
 
         $controller = new VentaController($enlace);
 

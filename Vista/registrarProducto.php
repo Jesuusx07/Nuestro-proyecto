@@ -50,10 +50,8 @@ $session = new SessionManager();
           <option value="Fruta">Fruta</option>
           <option value="Vegetal">Vegetal</option>
           <option value="Salsa">Salsa</option>
-          <option value="">Categoría</option>
-<option value="Fruta">Fruta</option>
-<option value="Vegetal">Vegetal</option>
-<option value="Salsa">Salsa</option>
+       
+
 <option value="Carne">Carne</option>
 <option value="Pollo">Pollo</option>
 <option value="Pescado y Mariscos">Pescado y Mariscos</option>

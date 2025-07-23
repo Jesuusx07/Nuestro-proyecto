@@ -7,7 +7,7 @@ $nueva_contraseña = $_POST['new_contraseña'] ?? '';
 
 // 2. Validar que los datos recibidos no estén vacíos.
 if (empty($id_usuario) || empty($nueva_contraseña)) {
-    header("Location: ../login.php?message=change_password_error");
+    header("Location: ../Vista/login.php?message=change_password_error");
     exit();
 }
 
@@ -21,11 +21,11 @@ $result = $enlace->query($query);
 
 // 5. Verificar si la actualización fue exitosa y redirigir.
 if ($result) {
-    header("Location: ../login.php?message=password_changed_ok");
+    header("Location: ../Vista/login.php?message=password_changed_ok");
     exit();
 } else {
     error_log("Error al actualizar contraseña en la base de datos: " . mysqli_error($enlace));
-    header("Location: ../login.php?message=password_changed_error");
+    header("Location: ../Vista/login.php?message=password_changed_error");
     exit();
 }
 

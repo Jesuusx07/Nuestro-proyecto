@@ -50,14 +50,14 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Inventario</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerInventario.php" method="POST">
+      <form id="formu" action="./Rutas/registerInventario.php" method="POST">
 
         <label for="producto">Producto</label>
             <select id="tipo" name="producto">
                 <option value=""></option>
           <?php
 
-          $conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
+          $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
           $sql = "SELECT * FROM producto";
           $result = mysqli_query($conexion, $sql);
 
