@@ -1,5 +1,5 @@
 <?php
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 $session = new SessionManager();
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ $session = new SessionManager();
   <div class="form">
     <h2>Registrar Producto</h2>
     <div class="regis">
-      <form id="formu" action="./php/registerEmpPro.php" method="POST">
+      <form id="formu" action="../Rutas/registerEmpPro.php" method="POST">
         <input type="text" id="nombre" name="nombre" placeholder="Nombre">
         <select name="select" id="cat">
           <option value="">Categoria</option>

@@ -1,25 +1,16 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
-<?php
 
-require_once './php/SessionManager.php';
-
-$session = new SessionManager();
-
-    if (!$session->isLoggedIn()){
-        header("location: login.php");
-    }
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -151,7 +142,7 @@ $session = new SessionManager();
             </script>
 
 <?php
-$conexion = mysqli_connect('kennys.online', 'u112415144_kenny', '', 'u112415144_proyecto_kenny');
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
 
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());

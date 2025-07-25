@@ -1,6 +1,6 @@
 <?php
     
-require_once 'Factura.php';
+require_once '../Modelo/Factura.php';
 
 class FacturaController {
     private $factura;

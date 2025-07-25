@@ -1,6 +1,6 @@
 <?php
 
-require_once 'prveedor.php';
+require_once '../Modelo/proveedor.php';
 
 class ProveedorController {
     private $proveedor;

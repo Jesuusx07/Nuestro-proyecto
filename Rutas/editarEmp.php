@@ -1,11 +1,11 @@
 <?php
 
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 $session = new SessionManager();
 
-require_once 'UsuarioController.php';
+require_once '../ControladorUsuarioController.php';
 
 $db = (new Database())->conectar();
 $controlador = new UsuarioController($db);

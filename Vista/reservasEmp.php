@@ -1,11 +1,11 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
@@ -118,7 +118,7 @@ $session = new SessionManager();
 
 <?php
 // Assuming $conexion is already established
-$conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
 $sql = $sql = "SELECT
     r.id_reserva,
     r.estado_reserva,
@@ -146,10 +146,10 @@ while ($mostrar = mysqli_fetch_array($result)) {
         <td><?php echo $mostrar['apellidos']; ?></td>
         <td><?php echo $mostrar['responsable']; ?></td>
         <td>
-            <a href="editarResEmp.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
+            <a href="../Rutas/editarResEmp.php?id=<?php echo $mostrar['id_reserva'];?> &estado=<?php echo $mostrar['estado_reserva'];?> &fecha=<?php echo $mostrar['fecha_reserva'];?>" class="boton-edi">Editar</a>
         </td>
         <td>
-            <a href="./php/eliminarResEmp.php?id=<?php echo $mostrar['id_reserva']; ?> &correo=<?php echo $mostrar['correo']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
+            <a href="../Rutas/eliminarResEmp.php?id=<?php echo $mostrar['id_reserva']; ?> &correo=<?php echo $mostrar['correo']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar esta reserva?');">Eliminar</a>
         </td>
     </tr>
 <?php

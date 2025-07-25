@@ -1,11 +1,11 @@
 <?php
 
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 $session = new SessionManager();
 
-require_once 'InventarioController.php';
+require_once '../Controlador/InventarioController.php';
 
 $db = (new Database())->conectar();
 $controlador = new InventarioController($db);
@@ -35,7 +35,7 @@ foreach ($obtener as $fila) {
 if ($fila_id['cantidad'] > 0){
     if($fila_id['cantidad_total'] - $fila_id['cantidad'] < 0){
         $session->set('error_message', 'No se puede eliminar este registro.');
-        header('Location: ../inventario.php');
+        header('Location: ../Modelo/inventario.php');
         exit();
     }
 }
@@ -52,6 +52,6 @@ foreach ($obtener as $registro) {
 
 $inventario = $controlador->actualizar($producto, $cantidad_total);
 
-header('Location: ../inventario.php');
+header('Location: ../Modelo/inventario.php');
 
 ?>

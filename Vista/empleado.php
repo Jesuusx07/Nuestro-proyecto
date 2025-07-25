@@ -140,7 +140,11 @@ $session = new SessionManager();
 
 <?php
 // ASUME QUE LA CONEXION YA ESTA ESTABLESIDA 
-$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+<<<<<<< HEAD
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
+$conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 $sql = "SELECT * FROM usuario where id_rol != 'admin' and id_rol != 'proveedor' and id_rol != 'cliente'";
 $result = mysqli_query($conexion, $sql);
 

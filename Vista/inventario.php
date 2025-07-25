@@ -128,7 +128,11 @@ if (!$session->isLoggedIn()) {
         </tr>
 
         <?php
-        $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+<<<<<<< HEAD
+        $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
+        $conexion = mysqli_connect("151.106.96.29", "u112415144_kenny", "", "u112415144_proyecto_kenny");
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
         $sql = "SELECT i.id_inventario, 
                        i.id_producto,  
                        p.nombre,
@@ -167,7 +171,7 @@ if (!$session->isLoggedIn()) {
           <td><?php echo $mostrar['fecha']; ?></td>
           <td><?php echo $mostrar['responsable']; ?></td>         
           <td>
-              <a href="./php/eliminarInventario.php?id_inventario=<?php echo $mostrar['id_inventario']; ?> &producto=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este inventario?');">Eliminar</a>
+              <a href="./Rutas/eliminarInventario.php?id_inventario=<?php echo $mostrar['id_inventario']; ?> &producto=<?php echo $mostrar['id_producto']; ?>" class="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este inventario?');">Eliminar</a>
           </td>
         </tr>
         <?php

@@ -1,11 +1,11 @@
 <?php
 
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 $session = new SessionManager();
 
-require_once 'ReservaController.php';
+require_once '../Controlador/ReservaController.php';
 
 $db = (new Database())->conectar();
 $controlador = new ReservaController($db);
@@ -19,6 +19,6 @@ if (isset($_GET['correo'])) {
 
 $usuario = $controlador->eliminar($id_reserva, $correo);
 
-header("location: ../reservasEmp.php");
+header("location: ../Vista/reservasEmp.php");
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once 'Platillo.php'; // Asegúrate de que esta ruta sea correcta para tu modelo Platillo
+require_once '../Modelo/Platillo.php'; // Asegúrate de que esta ruta sea correcta para tu modelo Platillo
 
 class PlatilloController {
     private $platillo;

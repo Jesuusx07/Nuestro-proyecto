@@ -1,11 +1,11 @@
 <?php
 
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 $session = new SessionManager();
 
-require_once 'ProductoController.php';
+require_once '../Controlador/ProductoController.php';
 
 $db = (new Database())->conectar();
 $controlador = new ProductoController($db);
@@ -16,6 +16,6 @@ if (isset($_GET['id'])) {
 
 $producto = $controlador->eliminar($id_producto);
 
-header("location: ../productosEmp.php");
+header("location: ../Vista/productosEmp.php");
 
 ?>

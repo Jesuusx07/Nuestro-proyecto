@@ -1,9 +1,9 @@
 <?php
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 $session = new SessionManager();
 
 if (!$session->isLoggedIn()) {
-    header("location: login.php");
+    header("location: ../Vista/login.php");
     exit();
 }
 ?>
@@ -118,7 +118,9 @@ if (!$session->isLoggedIn()) {
       <section class="welcome-box">
         <?php
         $usuarioConectado = $session->getUserName();
-        $conexion = mysqli_connect("kennys.online", "root", "", "u112415144_proyecto_kenny");
+
+        $conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+
         $sql = "SELECT * FROM usuario WHERE correo = '$usuarioConectado'";
         $result = mysqli_query($conexion, $sql);
         while ($mostrar = mysqli_fetch_array($result)) {

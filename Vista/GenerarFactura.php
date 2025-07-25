@@ -2,7 +2,7 @@
 session_start();
 
 // Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "u112415144_proyecto_kenny");
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }

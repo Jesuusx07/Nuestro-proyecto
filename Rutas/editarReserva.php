@@ -1,11 +1,11 @@
 <?php
 
-require_once 'SessionManager.php';
-require_once 'sql.php';
+require_once '../Config/SessionManager.php';
+require_once '../Config/sql.php';
 
 $session = new SessionManager();
 
-require_once 'ReservaController.php';
+require_once '../Controlador/ReservaController.php';
 
 $db = (new Database())->conectar();
 $controlador = new ReservaController($db);
@@ -18,7 +18,7 @@ $longMax = 50;
 if($fecha == "" || $estado == ""){
     $session->set('error_message', 'Por favor, llene todos los campos.');
 
-    header('Location: ../editar_reserva.php?id=' . $id_reserva . '&fecha=' . $fecha . '&estado=' . $estado); 
+    header('Location: ../Vista/editar_reserva.php?id=' . $id_reserva . '&fecha=' . $fecha . '&estado=' . $estado); 
 
     exit();
 }
@@ -32,7 +32,7 @@ $nuevaFecha = DateTime::createFromFormat($format, $fecha, $zonaHorariaBogota);
 
 if($nuevaFecha < $ahora) {
     $session->set('error_message', 'No se puede reservar una fecha y hora anterior al momento actual.');
-    header('Location: ../editar_reserva.php?id=' . $id_reserva . '&fecha=' . $fecha . '&estado=' . $estado);
+    header('Location: ../Vista/editar_reserva.php?id=' . $id_reserva . '&fecha=' . $fecha . '&estado=' . $estado);
     exit();
 }
     else{
@@ -40,14 +40,14 @@ if($nuevaFecha < $ahora) {
 
             $reserva = $controlador->actualizar($id_reserva, "Activo", $fecha);
 
-            header('Location: ../reservas.php'); 
+            header('Location: ../Vista/reservas.php'); 
             exit();
         }       
 
         elseif($estado == "Inactivo"){
             $reserva = $controlador->actualizar($id_reserva, "Inactivo", $fecha);
 
-            header('Location: ../reservas.php'); 
+            header('Location: ../Vista/reservas.php'); 
             exit();
         }
 }

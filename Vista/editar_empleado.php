@@ -1,20 +1,23 @@
 <?php
 
-require_once './php/SessionManager.php';
+require_once '../Config/SessionManager.php';
 
 $session = new SessionManager();
 
     if (!$session->isLoggedIn()){
-        header("location: login.php");
+        header("location: ../Vista/login.php");
     }
 
 ?>
 <?php
 
-require_once './php/SessionManager.php';
 
+<<<<<<< HEAD
 $session = new SessionManager();
-$conexion = mysqli_connect('kennys.online', 'u112415144_kenny', '', 'u112415144_proyecto_kenny');
+$conexion = mysqli_connect("kennys.online", "u112415144_kenny", "Kennys12345", "u112415144_proyecto_kenny");
+=======
+$conexion = mysqli_connect('151.106.96.29', 'u112415144_kenny', '', 'u112415144_proyecto_kenny');
+>>>>>>> 67da95da794188e84d41f98f008e259865f2bd1e
 
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
@@ -56,7 +59,7 @@ if (isset($_GET['docu'])) {
 
     <div class="container">
         <h2>Editar empleado</h2>
-        <form action="./php/editarEmp.php" method="POST">
+        <form action="../Rutas/editarEmp.php" method="POST">
             <div class="form-group">
                     <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($id_usuario); ?>">
                     <input type="hidden" name="id_rol" value="<?php echo htmlspecialchars($id_rol); ?>">
